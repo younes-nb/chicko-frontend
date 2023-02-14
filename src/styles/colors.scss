@@ -1,0 +1,7 @@
+@use "sass:map";
+@import 'src/styles/styles.scss';
+
+
+@function primary-color($key) {
+  @return map.get($chicko-tour-frontend-primary, $key)
+}

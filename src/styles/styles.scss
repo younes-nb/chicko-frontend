@@ -1,4 +1,4 @@
-@use '@angular/material' as mat;
+@use '../../node_modules/@angular/material/index' as mat;
 
 @include mat.core();
 
@@ -18,16 +18,16 @@ $chicko-tour-frontend-theme: mat.define-light-theme((
 
 @font-face {
   font-family: "Vazir";
-  src: url("assets/fonts/Vazir.eot"),
-  url("assets/fonts/Vazir.eot?#iefix") format("embedded-opentype"),
-  url("assets/fonts/Vazir.woff2") format("woff2"),
-  url("assets/fonts/Vazir.woff") format("woff"),
-  url("assets/fonts/Vazir.ttf") format("truetype");
+  src: url("../assets/fonts/Vazir.eot"),
+  url("../assets/fonts/Vazir.eot?#iefix") format("embedded-opentype"),
+  url("../assets/fonts/Vazir.woff2") format("woff2"),
+  url("../assets/fonts/Vazir.woff") format("woff"),
+  url("../assets/fonts/Vazir.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Pattaya";
-  src: url("assets/fonts/Pattaya.ttf") format("truetype");
+  src: url("../assets/fonts/Pattaya.ttf") format("truetype");
 }
 
 html, body {
