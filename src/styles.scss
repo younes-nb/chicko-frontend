@@ -1,1 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$chicko-tour-frontend-primary: mat.define-palette(mat.$blue-palette);
+$chicko-tour-frontend-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$chicko-tour-frontend-warn: mat.define-palette(mat.$red-palette);
+
+$chicko-tour-frontend-theme: mat.define-light-theme((
+  color: (
+    primary: $chicko-tour-frontend-primary,
+    accent: $chicko-tour-frontend-accent,
+    warn: $chicko-tour-frontend-warn,
+  )
+));
+
+@include mat.all-component-themes($chicko-tour-frontend-theme);
+
+@font-face {
+  font-family: "Vazir";
+  src: url("assets/fonts/Vazir.eot"),
+  url("assets/fonts/Vazir.eot?#iefix") format("embedded-opentype"),
+  url("assets/fonts/Vazir.woff2") format("woff2"),
+  url("assets/fonts/Vazir.woff") format("woff"),
+  url("assets/fonts/Vazir.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Pattaya";
+  src: url("assets/fonts/Pattaya.ttf") format("truetype");
+}
+
+html, body {
+  height: 100%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Vazir, serif;
+}
+
+a {
+  color: black;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none !important;
+}
