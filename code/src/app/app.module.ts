@@ -11,8 +11,18 @@ import {NavbarComponent} from './core/navbar/navbar.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserCircle,
+  faShoppingCart,
+  faFolder,
+  faShareNodes,
+  faQrcode,
+  faHome
+} from "@fortawesome/free-solid-svg-icons";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {TypingAnimatorModule} from "angular-typing-animator";
+import {MatCardModule} from "@angular/material/card";
+import {LoadingBarHttpClientModule} from "@ngx-loading-bar/http-client";
 
 @NgModule({
   declarations: [
@@ -29,13 +39,23 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatToolbarModule,
     MatIconModule,
     FontAwesomeModule,
-    MatTooltipModule
+    MatTooltipModule,
+    TypingAnimatorModule,
+    MatCardModule,
+    LoadingBarHttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
-    library.addIcons(faUserCircle)
+    library.addIcons(
+      faUserCircle,
+      faShoppingCart,
+      faFolder,
+      faShareNodes,
+      faQrcode,
+      faHome
+    )
   }
 }

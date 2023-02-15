@@ -1,6 +1,23 @@
-<mat-toolbar class="px-5 shadow">
-  <h1 id="title" class="ms-auto">چیکو</h1>
-  <button mat-icon-button color="primary" matTooltip="ورود به حساب کاربری">
+<mat-toolbar class="px-5 shadow align-items-baseline">
+  <h1 id="title" class="me-5" routerLink="/home">چیکو</h1>
+  <ul class="ms-auto d-flex align-items-center">
+    <li>
+      <button class="rounded-pill ms-2" routerLink="/home" mat-button>خانه</button>
+    </li>
+    <li>
+      <button class="rounded-pill ms-2" routerLink="/" mat-button>منو ساز</button>
+    </li>
+    <li>
+      <button class="rounded-pill ms-2" routerLink="/" mat-button>تعرفه ها</button>
+    </li>
+    <li>
+      <button class="rounded-pill ms-2" routerLink="/" mat-button>درباره ما</button>
+    </li>
+    <li>
+      <button class="rounded-pill" routerLink="/" mat-button>تماس با ما</button>
+    </li>
+  </ul>
+  <button class="mt-1" mat-icon-button color="primary" matTooltip="ورود به حساب کاربری" routerLink="/">
     <fa-icon [icon]="['fas','user-circle']"></fa-icon>
   </button>
 </mat-toolbar>

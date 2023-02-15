@@ -22,6 +22,8 @@
     "@angular/router": "^15.1.0",
     "@fortawesome/angular-fontawesome": "^0.12.1",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@ngx-loading-bar/http-client": "^6.0.2",
+    "angular-typing-animator": "^0.0.9",
     "bootstrap": "^5.2.3",
     "jquery": "^3.6.3",
     "rxjs": "~7.8.0",
