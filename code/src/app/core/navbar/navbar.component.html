@@ -13,10 +13,14 @@
       </button>
     </li>
     <li>
-      <button class="rounded-pill ms-2" routerLink="/" mat-button>درباره ما</button>
+      <button class="rounded-pill ms-2" routerLink="/home" fragment="about-us" (click)="scrollTo('about-us')"
+              mat-button>درباره ما
+      </button>
     </li>
     <li>
-      <button class="rounded-pill" routerLink="/" mat-button>تماس با ما</button>
+      <button class="rounded-pill" routerLink="/home" fragment="contact-us" (click)="scrollTo('contact-us')" mat-button>
+        تماس با ما
+      </button>
     </li>
   </ul>
   <button class="mt-1" mat-icon-button color="primary" matTooltip="ورود به حساب کاربری" routerLink="/">

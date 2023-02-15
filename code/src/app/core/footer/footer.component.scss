@@ -1,0 +1,21 @@
+@import "src/styles/colors";
+
+footer {
+  background-color: $dark-blue;
+
+  .brand {
+    font-family: Khandevane, serif;
+    color: primary-color(400);
+    cursor: pointer;
+    font-size: 4.5rem;
+  }
+
+  .brand-icons {
+    cursor: pointer;
+    transition: color .5s;
+
+    &:hover {
+      color: primary-color(500) !important;
+    }
+  }
+}

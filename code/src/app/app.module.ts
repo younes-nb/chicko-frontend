@@ -20,17 +20,20 @@ import {
   faHome,
   faCreditCard
 } from "@fortawesome/free-solid-svg-icons";
+import {faTelegram, faInstagram, faLinkedin, faGithub} from "@fortawesome/free-brands-svg-icons"
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {TypingAnimatorModule} from "angular-typing-animator";
 import {MatCardModule} from "@angular/material/card";
 import {LoadingBarHttpClientModule} from "@ngx-loading-bar/http-client";
+import {FooterComponent} from './core/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,11 @@ export class AppModule {
       faShareNodes,
       faQrcode,
       faHome,
-      faCreditCard
+      faCreditCard,
+      faTelegram,
+      faInstagram,
+      faLinkedin,
+      faGithub
     )
   }
 }

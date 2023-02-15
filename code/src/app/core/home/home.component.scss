@@ -5,12 +5,6 @@
   margin-bottom: 2.5rem;
 }
 
-.brand {
-  font-family: Khandevane, serif;
-  color: primary-color(600);
-  cursor: pointer;
-}
-
 .icon {
   background-color: primary-color(50);
   color: primary-color(600);
@@ -49,3 +43,8 @@
   }
 }
 
+.brand {
+  font-family: Khandevane, serif;
+  color: primary-color(600);
+  cursor: pointer;
+}
