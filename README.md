@@ -1,4 +1,4 @@
-# ChickoTourFrontend
+# ChickoFrontend
 
 ## Build 
 

@@ -3,5 +3,5 @@
 
 
 @function primary-color($key) {
-  @return map.get($chicko-tour-frontend-primary, $key)
+  @return map.get($chicko-frontend-primary, $key)
 }

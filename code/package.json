@@ -1,5 +1,5 @@
 {
-  "name": "chicko-tour-frontend",
+  "name": "chicko-frontend",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "chicko-tour-frontend": {
+    "chicko-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/chicko-tour-frontend",
+            "outputPath": "dist/chicko-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -69,11 +69,11 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "chicko-tour-frontend:build:production",
+              "browserTarget": "chicko-frontend:build:production",
               "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
-              "browserTarget": "chicko-tour-frontend:build:development"
+              "browserTarget": "chicko-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "chicko-tour-frontend:build"
+            "browserTarget": "chicko-frontend:build"
           }
         },
         "test": {

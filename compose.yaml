@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "4200:4200"
-    container_name: chicko-tour-frontend
+    container_name: chicko-frontend
     volumes:
       - ./code:/usr/code
       - /usr/code/node_modules
