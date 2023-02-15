@@ -4,8 +4,7 @@
       viewBox="0 0 541.17206 328.45184"
       height="328.45184"
       width="541.17206"
-      id="svg2"
-      version="1.1">
+      id="svg2">
       <metadata
         id="metadata8">
       </metadata>
@@ -26,7 +25,6 @@
             id="rect5419"/>
         </pattern>
         <linearGradient
-          osb:paint="solid"
           id="linearGradient6096">
           <stop
             id="stop6094"
@@ -42,7 +40,7 @@
         >
           <path
             transform="matrix(1.0150687,0,0,11.193923,-1.3895945,-2685.7441)"
-            style="display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+            style="display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:.1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
             d="m 145.0586,263.51309 c -90.20375,-0.0994 -119.20375,-0.0994 -119.20375,-0.0994"
             id="path6180"/>
           <g
@@ -57,7 +55,7 @@
             <path
               id="path4490"
               d="m 84.984382,-0.03816399 c 0.911733,-5.0186e-4 1.661858,18.47051499 1.674386,41.22988399 0.0069,12.610431 -0.214009,23.904598 -0.56753,31.469836 -0.282878,6.088471 -0.652275,9.761785 -1.058838,9.762119 -0.406564,3.33e-4 -0.78198,-3.672386 -1.074838,-9.760657 -0.36185,-7.564779 -0.595233,-18.858715 -0.602175,-31.469228 -0.01253,-22.759565 0.717262,-41.23145213 1.628995,-41.23195399 z"
-              style="display:inline;fill:#000000;stroke:none;stroke-width:0.23743393px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"/>
+              style="display:inline;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"/>
             <path
               id="path4496"
               d="m 85.115421,100.5729 c -0.0036,3.37532 -0.0071,6.75165 -0.0107,10.12897 m 0.512159,0.18258 c -1.914603,-0.23621 -3.505591,1.17801 -4.861444,2.68113 -1.355853,1.50312 -2.473764,3.09173 -3.387866,4.59538 -0.914103,1.50365 -1.620209,2.91586 -2.416229,4.41952 -0.79602,1.50365 -1.67928,3.09352 -0.808656,3.24054 0.870624,0.14702 3.490408,-1.14815 5.700074,-1.91396 2.209666,-0.76581 4.001473,-1.00079 5.922125,-0.86765 1.920652,0.13314 3.947462,0.6325 6.245357,1.6195 2.297896,0.98701 4.861161,2.46015 4.9051,0.91309 0.04394,-1.54706 -2.430929,-6.11379 -4.787811,-9.33976 -2.356882,-3.22597 -4.596047,-5.11158 -6.51065,-5.34779 z"
@@ -113,7 +111,7 @@
             <path
               id="path4560"
               d="m 13.113199,198.16821 c 47.547038,0.40361 95.093071,0.80721 142.638101,1.2108"
-              style="display:inline;fill:none;stroke:#000000;stroke-width:1.00614154px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"/>
+              style="display:inline;fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"/>
             <path
               id="path4529"
               d="m 132.6875,263.34998 c -4.2289,18.4155 -8.45806,36.83216 -12.6875,55.25"
@@ -206,7 +204,9 @@
     </svg>
   </div>
   <p id="errorText" class="mt-5 fs-3">صفحه ی مورد نظر یافت نشد.</p>
-  <button mat-raised-button color="primary" class="fs-5 p-4" routerLink="/">صفحه ی اصلی</button>
+  <button mat-icon-button color="primary" matTooltip="بازگشت به خانه" routerLink="/home">
+    <fa-icon [icon]="['fas','home']"></fa-icon>
+  </button>
 </main>
 
 
