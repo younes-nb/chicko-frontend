@@ -26,8 +26,8 @@ $chicko-frontend-theme: mat.define-light-theme((
 }
 
 @font-face {
-  font-family: "Pattaya";
-  src: url("../assets/fonts/Pattaya.ttf") format("truetype");
+  font-family: "Khandevane";
+  src: url("../assets/fonts/Khandevane.ttf") format("truetype");
 }
 
 html, body {
@@ -35,8 +35,6 @@ html, body {
 }
 
 * {
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
   font-family: Vazir, serif;
 }
@@ -49,4 +47,8 @@ a {
 
 ul {
   list-style-type: none !important;
+}
+
+.fs-5-5{
+  font-size: 1.125rem;
 }
