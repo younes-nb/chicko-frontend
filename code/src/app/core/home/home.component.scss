@@ -4,3 +4,26 @@
   color: primary-color(600);
   margin-bottom: 2.5rem;
 }
+
+.brand {
+  font-family: Khandevane, serif;
+  color: primary-color(600);
+  cursor: pointer;
+}
+
+mat-card {
+  transition: transform .5s;
+
+  &:hover {
+    transform: translateY(-3%);
+  }
+
+  .icon {
+    background-color: primary-color(50);
+    color: primary-color(600);
+    border-radius: 15px;
+    padding: 15px;
+    display: inline-flex;
+  }
+
+}

@@ -4,9 +4,13 @@
     <div class="row gx-5">
       <div class="col-6 d-flex justify-content-center flex-column">
         <div>
-          <h1 class="mb-4 fs-1">منوی دیجیتال چیکو</h1>
+          <h1 class="mb-4 fs-1">منوساز هوشمند چیکو</h1>
           <h3 id="sub-header" class="fs-5-5">سامانه ویترین محصولات و فروش آنلاین</h3>
-          <p class="mb-4 fs-5">راهی هوشمندانه برای ساخت منو دیجیتال با کد های QR و اشتراک گذاری آن با مشتریان شما</p>
+          <div class="mb-4">
+            <span class="fs-5" routerLink="/home">با <span class="fs-3 brand">چیکو </span> </span>
+            <span class="fs-5-5" typingAnimator
+                  [sentences]="['خدماتت رو خیلی راحت به اشتراک بزار.','فقط با چند کلیک منوی هوشمندتو بساز.','محصولاتت رو آنلاین بفروش.']"></span>
+          </div>
           <button class="fs-5-5 p-4 rounded-pill" mat-stroked-button color="primary">ساخت منو</button>
         </div>
       </div>
@@ -16,3 +20,59 @@
     </div>
   </div>
 </header>
+<div style="height: 150px; overflow: hidden;">
+  <svg viewBox="0 0 500 150" preserveAspectRatio="none"
+       style="height: 100%; width: 100%;">
+    <path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+          style="stroke: none; fill: #F8F9FA;"></path>
+  </svg>
+</div>
+<section class="bg-light">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h2 class="my-3 fw-bold">با <span class="fs-1 brand">چیکو </span> بروز باش</h2>
+        <p class="fs-5">راهی هوشمندانه برای ساخت و اشتراک گذاری منو های دیجیتال</p>
+      </div>
+      <div class="col-md-6 mt-3 mt-md-0">
+        <div class="row align-content-center justify-content-md-start">
+          <div class="col-md-6">
+            <mat-card class="text-center shadow mb-4">
+              <mat-card-content>
+                <fa-icon [icon]="['fas', 'shopping-cart']" class="fs-2 icon text-primary"></fa-icon>
+                <h5 class="mt-4">پرداخت آنلاین</h5>
+              </mat-card-content>
+            </mat-card>
+            <mat-card class="text-center shadow mb-4">
+              <mat-card-content>
+                <fa-icon [icon]="['fas', 'folder']" class="fs-2 icon text-primary"></fa-icon>
+                <h5 class="mt-4">ایجاد دسته بندی ها</h5>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="col-md-6 mt-md-5 mt-0">
+            <mat-card class="text-center shadow mb-4">
+              <mat-card-content>
+                <fa-icon [icon]="['fas', 'share-nodes']" class="fs-2 icon text-primary"></fa-icon>
+                <h5 class="mt-4">اشتراک گذاری سریع</h5>
+              </mat-card-content>
+            </mat-card>
+            <mat-card class="text-center shadow mb-4">
+              <mat-card-content>
+                <fa-icon [icon]="['fas', 'qrcode']" class="fs-2 icon text-primary"></fa-icon>
+                <h5 class="mt-4">کد QR برای منو ها</h5>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div style="height: 100px; overflow: hidden;">
+  <svg viewBox="0 0 500 150" preserveAspectRatio="none"
+       style="height: 100%; width: 100%;">
+    <path d="M0.00,49.98 C149.99,150.00 271.49,-49.98 500.00,49.98 L500.00,0.00 L0.00,0.00 Z"
+          style="stroke: none; fill: #F8F9FA;"></path>
+  </svg>
+</div>
