@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: ./code
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    container_name: chicko-tour-frontend
+    volumes:
+      - ./code:/usr/code
+      - /usr/code/node_modules
