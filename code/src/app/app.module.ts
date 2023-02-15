@@ -17,7 +17,8 @@ import {
   faFolder,
   faShareNodes,
   faQrcode,
-  faHome
+  faHome,
+  faCreditCard
 } from "@fortawesome/free-solid-svg-icons";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {TypingAnimatorModule} from "angular-typing-animator";
@@ -55,7 +56,8 @@ export class AppModule {
       faFolder,
       faShareNodes,
       faQrcode,
-      faHome
+      faHome,
+      faCreditCard
     )
   }
 }

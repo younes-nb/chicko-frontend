@@ -11,19 +11,41 @@
   cursor: pointer;
 }
 
-mat-card {
+.icon {
+  background-color: primary-color(50);
+  color: primary-color(600);
+  border-radius: 15px;
+  padding: 15px;
+  display: inline-flex;
+}
+
+.feature-card {
   transition: transform .5s;
 
   &:hover {
     transform: translateY(-3%);
   }
-
-  .icon {
-    background-color: primary-color(50);
-    color: primary-color(600);
-    border-radius: 15px;
-    padding: 15px;
-    display: inline-flex;
-  }
-
 }
+
+.pricing-card {
+  transition: all .7s;
+  background-color: #F8F9FA;
+
+  &:hover {
+    background-color: #1b2a4e;
+    transform: translateY(-5%);
+
+    .pricing-card-title {
+      color: white !important;
+    }
+
+    .pricing-card-header {
+      color: primary-color(50) !important;
+    }
+
+    .pricing-card-text {
+      color: primary-color(100) !important;
+    }
+  }
+}
+
