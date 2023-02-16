@@ -4,7 +4,7 @@ WORKDIR /usr/code
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install -g @angular/cli && npm install --force
 
 EXPOSE 4200
 
