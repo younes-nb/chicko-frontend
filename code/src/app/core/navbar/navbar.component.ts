@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ScrollService} from "../../shared/scroll.service";
+import {scrollTo} from "../../shared/scroll";
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +8,7 @@ import {ScrollService} from "../../shared/scroll.service";
 })
 export class NavbarComponent {
 
-  constructor(private scrollService: ScrollService) {
-  }
-
   scrollTo(fragment: string) {
-    this.scrollService.scrollTo(fragment);
+    scrollTo(fragment);
   }
 }

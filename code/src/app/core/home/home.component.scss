@@ -21,9 +21,18 @@
   }
 }
 
+@mixin pricing-card-transition{
+  transition: all .6s;
+  transition-delay: 150ms;
+}
+
 .pricing-card {
-  transition: all .7s;
+  @include pricing-card-transition();
   background-color: #F8F9FA;
+
+  .pricing-card-title, .pricing-card-header, .pricing-card-text{
+    @include pricing-card-transition();
+  }
 
   &:hover {
     background-color: #1b2a4e;

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ScrollService} from "../../shared/scroll.service";
+import {scrollTo} from "../../shared/scroll";
 
 @Component({
   selector: 'app-footer',
@@ -7,10 +7,8 @@ import {ScrollService} from "../../shared/scroll.service";
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-  constructor(private scrollService: ScrollService) {
-  }
 
   scrollTo(fragment: string) {
-    this.scrollService.scrollTo(fragment);
+    scrollTo(fragment);
   }
 }
