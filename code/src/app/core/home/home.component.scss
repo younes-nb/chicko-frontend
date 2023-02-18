@@ -1,8 +1,13 @@
 @import "src/styles/colors";
 
-#sub-header {
-  color: primary-color(600);
-  margin-bottom: 2.5rem;
+
+header {
+  margin: 5rem 0;
+
+  #sub-header {
+    color: primary-color(600);
+    margin-bottom: 2.5rem;
+  }
 }
 
 .icon {
@@ -21,33 +26,42 @@
   }
 }
 
-@mixin pricing-card-transition{
+@mixin pricing-card-transition {
   transition: all .6s;
   transition-delay: 150ms;
 }
 
-.pricing-card {
-  @include pricing-card-transition();
-  background-color: #F8F9FA;
+#pricing {
+  margin-top: 5rem;
+  margin-bottom: 10rem;
 
-  .pricing-card-title, .pricing-card-header, .pricing-card-text{
-    @include pricing-card-transition();
+  #pricing-header{
+    margin-bottom: 4rem;
   }
 
-  &:hover {
-    background-color: #1b2a4e;
-    transform: translateY(-5%);
+  .pricing-card {
+    @include pricing-card-transition();
+    background-color: #F8F9FA;
 
-    .pricing-card-title {
-      color: white !important;
+    .pricing-card-title, .pricing-card-header, .pricing-card-text {
+      @include pricing-card-transition();
     }
 
-    .pricing-card-header {
-      color: primary-color(50) !important;
-    }
+    &:hover {
+      background-color: #1b2a4e;
+      transform: translateY(-5%);
 
-    .pricing-card-text {
-      color: primary-color(100) !important;
+      .pricing-card-title {
+        color: white !important;
+      }
+
+      .pricing-card-header {
+        color: primary-color(50) !important;
+      }
+
+      .pricing-card-text {
+        color: primary-color(100) !important;
+      }
     }
   }
 }
