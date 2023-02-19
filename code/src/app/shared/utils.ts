@@ -6,3 +6,7 @@ export function scrollTo(fragment: string) {
     window.scrollTo({top: y, behavior: 'smooth'});
   }
 }
+
+export function numLatinToFa(n: string): string {
+  return n.replace(/\d/g, (d: string) => "۰۱۲۳۴۵۶۷۸۹"[parseInt(d)]);
+}

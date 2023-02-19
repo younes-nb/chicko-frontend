@@ -26,6 +26,13 @@ import {TypingAnimatorModule} from "angular-typing-animator";
 import {MatCardModule} from "@angular/material/card";
 import {LoadingBarHttpClientModule} from "@ngx-loading-bar/http-client";
 import {FooterComponent} from './core/footer/footer.component';
+import {RegisterComponent} from './core/auth/register/register.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatStepperModule} from "@angular/material/stepper";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -33,7 +40,8 @@ import {FooterComponent} from './core/footer/footer.component';
     HomeComponent,
     PageNotFoundComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +55,13 @@ import {FooterComponent} from './core/footer/footer.component';
     TypingAnimatorModule,
     MatCardModule,
     LoadingBarHttpClientModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatStepperModule,
+    MatSnackBarModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

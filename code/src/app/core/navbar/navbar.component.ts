@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {scrollTo} from "../../shared/scroll";
+import {scrollTo} from "../../shared/utils";
 
 @Component({
   selector: 'app-navbar',

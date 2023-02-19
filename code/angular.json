@@ -30,7 +30,6 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/aos/dist/aos.css",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles/styles.scss"
             ],
