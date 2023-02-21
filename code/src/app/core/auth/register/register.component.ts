@@ -1,15 +1,14 @@
 import {Component, ViewChild} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {AuthService} from "../auth.service";
+import {AuthService} from "../../../shared/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatStepper} from "@angular/material/stepper";
 import {numLatinToFa} from "../../../shared/utils";
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  templateUrl: './register.component.html'
 })
 export class RegisterComponent {
   @ViewChild('stepper') stepper!: MatStepper;
@@ -53,7 +52,7 @@ export class RegisterComponent {
         this.openSnackBar('کد تایید برای شما ارسال شد.')
         this.stepper.next();
       },
-      error: err => {
+      error: (err: any) => {
         if (err.error.username || err.error.email || err.error.phone_number) {
           for (const errorsKey in err.error) {
             this.errors.set(errorsKey, err.error[errorsKey][0]);
@@ -78,7 +77,7 @@ export class RegisterComponent {
           this.openSnackBar('حساب کاربری شما با موفقیت ایجاد شد.');
           this.stepper.reset();
           this.router.navigate(['login']);
-        }, error: err => {
+        }, error: (err: any) => {
           if (err.status === 406) {
             this.errors.set('verificationCode', 'کد وارد شده نادرست می باشد.');
             this.verificationForm.get('verificationCode')?.setErrors({invalid: true});

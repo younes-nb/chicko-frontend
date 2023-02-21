@@ -1,96 +1,27 @@
 <div class="d-flex align-items-center justify-content-center h-100 bg-light">
-  <section class="vw-75 row p-5 d-flex align-items-center bg-white shadow rounded">
-    <mat-stepper linear #stepper class="col-8">
-      <mat-step [stepControl]="registerForm" [editable]="false" label="ثبت اطلاعات">
-        <form [formGroup]="registerForm"
-              (ngSubmit)="registerForm.valid && onSubmit()"
-              class="row gy-3 mt-3"
-        >
-          <mat-form-field class="col-6" appearance="fill">
-            <mat-label>نام کاربری</mat-label>
-            <input matInput formControlName="username" name="username" type="text" required>
-            <mat-error *ngIf="submitted && registerForm.get('username')?.hasError('required')">وارد کردن نام کاربری
-              الزامی می باشد.
-            </mat-error>
-            <mat-error *ngIf="registerForm.get('username')?.hasError('maxlength')">حداکثر تعداد حروف مجاز ۳۰ می باشد.
-            </mat-error>
-            <mat-error *ngIf="registerForm.get('username')?.hasError('minlength')">حداقل تعداد حروف مجاز ۶ می باشد.
-            </mat-error>
-            <mat-error *ngIf="registerForm.get('username')?.hasError('invalid')">{{errors.get('username')}}</mat-error>
-          </mat-form-field>
-          <mat-form-field class="col-6" appearance="fill">
-            <mat-label>ایمیل</mat-label>
-            <input matInput formControlName="email" name="email" type="email" required>
-            <mat-error *ngIf="submitted && registerForm.get('email')?.hasError('required')">وارد کردن ایمیل الزامی می
-              باشد.
-            </mat-error>
-            <mat-error *ngIf="registerForm.get('email')?.hasError('email')">ایمیل معتبر نیست.</mat-error>
-            <mat-error *ngIf="registerForm.get('email')?.hasError('invalid')">{{errors.get('email')}}</mat-error>
-          </mat-form-field>
-          <mat-form-field class="col-6" appearance="fill">
-            <mat-label>رمز عبور</mat-label>
-            <input matInput formControlName="password" name="password" type="password" required>
-            <mat-error *ngIf="submitted && registerForm.get('password')?.hasError('required')">وارد کردن رمز عبور الزامی
-              می باشد.
-            </mat-error>
-            <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">رمز عبور حداقل باید شامل ۸ حرف باشد.
-            </mat-error>
-            <mat-error class="fs-6" *ngIf="registerForm.get('password')?.hasError('maxlength')">رمز عبور حداکثر باید
-              شامل ۳۲ حرف باشد.
-            </mat-error>
-            <mat-error *ngIf="registerForm.get('password')?.hasError('invalid')">{{errors.get('password')}}</mat-error>
-          </mat-form-field>
-          <mat-form-field class="col-6" appearance="fill">
-            <mat-label>تکرار رمز عبور</mat-label>
-            <input matInput formControlName="confirmPassword" name="confirmPassword" type="password"
-                   pattern="{{registerForm.value.password}}" required>
-            <mat-error *ngIf="submitted && confirmPasswordValidator(registerForm)">رمز عبور وارد شده متفاوت می باشد.
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field class="col-6" appearance="fill">
-            <mat-label>شماره تلفن</mat-label>
-            <input matInput formControlName="phone_number" name="phone_number" type="tel" required>
-            <mat-error *ngIf="submitted && registerForm.get('phone_number')?.hasError('required')">وارد کردن شماره تلفن
-              الزامی
-              می باشد.
-            </mat-error>
-            <mat-error *ngIf="registerForm.get('phone_number')?.hasError('pattern')">شماره تلفن معتبر نیست.</mat-error>
-            <mat-error
-              *ngIf="registerForm.get('phone_number')?.hasError('invalid')">{{errors.get('phone_number')}}</mat-error>
-          </mat-form-field>
-          <mat-checkbox class="mt-3" color="primary" formControlName="acceptTerms">شرایط و قوانین سایت را می پذیرم.
-            <mat-error *ngIf="submitted && !registerForm.controls['acceptTerms'].value">پذیرش شرایط و قوانین الزامی می
-              باشد.
-            </mat-error>
-          </mat-checkbox>
-          <div class="d-flex mt-4">
-            <button type="submit" class="ms-4" (click)="submitted=true" mat-raised-button color="primary">ثبت</button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step [stepControl]="verificationForm" [editable]="false" label="تایید شماره تلفن">
-        <form class="mt-3" [formGroup]="verificationForm" (ngSubmit)="verificationForm.valid && verify()">
-          <p class="fs-5-5 mb-5">لطفا کد تایید ارسال شده به شماره
-            ی <strong>{{numLatinToFa(registerForm.get('phone_number')?.value)}}</strong>
-            را وارد کنید.</p>
-          <mat-form-field class="col-6" appearance="fill">
-            <mat-label>کد تایید</mat-label>
-            <input matInput formControlName="verificationCode" name="verificationCode" type="number" required>
-            <mat-error *ngIf="verificationForm.get('verificationCode')?.hasError('required')">وارد کردن کد تایید الزامی
-              می باشد.
-            </mat-error>
-            <mat-error *ngIf="verificationForm.get('verificationCode')?.hasError('pattern')">کد تایید معتبر نیست.
-            </mat-error>
-            <mat-error
-              *ngIf="verificationForm.get('verificationCode')?.hasError('invalid')">{{errors.get('verificationCode')}}</mat-error>
-          </mat-form-field>
-          <div class="mt-4">
-            <button type="submit" mat-raised-button color="primary">تایید</button>
-          </div>
-        </form>
-      </mat-step>
-    </mat-stepper>
-    <div class="col-4">
+  <section class="vw-50 p-5 ps-0 d-flex align-items-center bg-white shadow rounded">
+    <form class="w-85" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onSubmit()">
+      <h1 class="fs-2 mb-5">ورود به حساب کاربری</h1>
+      <mat-form-field class="w-100 mb-3" appearance="fill">
+        <mat-label>نام کاربری</mat-label>
+        <input matInput formControlName="username" name="username" type="text" required>
+        <mat-error class="fs-6" *ngIf="submitted && loginForm.get('username')?.hasError('required')">وارد کردن نام
+          کاربری الزامی می باشد.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="fill">
+        <mat-label>رمز عبور</mat-label>
+        <input matInput formControlName="password" name="password" type="password" required>
+        <mat-error *ngIf="submitted && loginForm.get('password')?.hasError('required')">وارد کردن رمز عبور الزامی می
+          باشد.
+        </mat-error>
+      </mat-form-field>
+      <div class="w-100 d-flex justify-content-between mt-4">
+        <button class="" type="submit" (click)="submitted=true" mat-raised-button color="primary">ورود</button>
+        <button class="p-3 rounded-pill" mat-button color="primary" routerLink="/register">حساب کاربری ندارید؟</button>
+      </div>
+    </form>
+    <div>
       <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
            xmlns:xlink="http://www.w3.org/1999/xlink"
            viewBox="0 0 351.9 396.01" width="406" height="306" class="illustration styles_illustrationTablet__1DWOa">

@@ -33,6 +33,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { LoginComponent } from './core/auth/login/login.component';
+import {httpInterceptorProviders} from "./shared/http.interceptor";
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     PageNotFoundComponent,
     NavbarComponent,
     FooterComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     MatSnackBarModule,
     FormsModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {

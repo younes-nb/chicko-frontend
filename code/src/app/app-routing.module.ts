@@ -3,11 +3,13 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "./core/home/home.component";
 import {PageNotFoundComponent} from "./core/page-not-found/page-not-found.component";
 import {RegisterComponent} from "./core/auth/register/register.component";
+import {LoginComponent} from "./core/auth/login/login.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
