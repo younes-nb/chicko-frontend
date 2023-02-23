@@ -2,29 +2,39 @@
   <h1 id="title" class="me-5" routerLink="/home">چیکو</h1>
   <ul class="ms-auto d-flex align-items-center">
     <li>
-      <button class="rounded-pill ms-2" routerLink="/home" mat-button>خانه</button>
+      <button class="rounded-pill p-3 ms-1" routerLink="/home" mat-button>خانه</button>
     </li>
     <li>
-      <button class="rounded-pill ms-2" routerLink="/" mat-button>منو ساز</button>
+      <button class="rounded-pill p-3 ms-1" routerLink="/" mat-button>منو ساز</button>
     </li>
     <li>
-      <button class="rounded-pill ms-2" routerLink="/home" fragment="pricing" (click)="scrollTo('pricing')" mat-button>
+      <button class="rounded-pill p-3 ms-1" routerLink="/home" fragment="pricing" (click)="scrollTo('pricing')"
+              mat-button>
         تعرفه ها
       </button>
     </li>
     <li>
-      <button class="rounded-pill ms-2" routerLink="/home" fragment="about-us" (click)="scrollTo('about-us')"
+      <button class="rounded-pill p-3 ms-1" routerLink="/home" fragment="about-us" (click)="scrollTo('about-us')"
               mat-button>درباره ما
       </button>
     </li>
     <li>
-      <button class="rounded-pill" routerLink="/home" fragment="contact-us" (click)="scrollTo('contact-us')" mat-button>
+      <button class="rounded-pill p-3" routerLink="/home" fragment="contact-us" (click)="scrollTo('contact-us')"
+              mat-button>
         تماس با ما
       </button>
     </li>
   </ul>
-  <button class="mt-1" mat-icon-button color="primary" matTooltip="ورود به حساب کاربری" routerLink="/login">
+  <button *ngIf="!isLoggedIn" class="align-self-center" mat-icon-button color="primary" matTooltip="ورود به حساب کاربری"
+          routerLink="/login">
     <fa-icon [icon]="['fas','user-circle']"></fa-icon>
   </button>
+  <div *ngIf="isLoggedIn" class="d-flex align-items-center">
+    <button class="p-3 ms-2 rounded-pill" color="primary" mat-button
+            matTooltip="حساب کاربری">{{currentUser.username}}</button>
+    <button color="primary" mat-icon-button matTooltip="خروج از حساب">
+      <fa-icon [icon]="['fas','arrow-right-from-bracket']"></fa-icon>
+    </button>
+  </div>
 </mat-toolbar>
 
