@@ -19,7 +19,9 @@ import {
   faQrcode,
   faHome,
   faCreditCard,
-  faArrowRightFromBracket
+  faArrowRightFromBracket,
+  faBars,
+  faGaugeSimpleHigh
 } from "@fortawesome/free-solid-svg-icons";
 import {faTelegram, faInstagram, faLinkedin, faGithub} from "@fortawesome/free-brands-svg-icons"
 import {MatTooltipModule} from "@angular/material/tooltip";
@@ -37,6 +39,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {LoginComponent} from './core/auth/login/login.component';
 import {httpInterceptorProviders} from "./shared/http.interceptor";
 import {ProfileComponent} from "./users/profile/profile.component";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 @NgModule({
   declarations: [
@@ -67,7 +70,8 @@ import {ProfileComponent} from "./users/profile/profile.component";
     MatInputModule,
     MatStepperModule,
     MatSnackBarModule,
-    FormsModule
+    FormsModule,
+    MatSidenavModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
@@ -86,7 +90,9 @@ export class AppModule {
       faInstagram,
       faLinkedin,
       faGithub,
-      faArrowRightFromBracket
+      faArrowRightFromBracket,
+      faBars,
+      faGaugeSimpleHigh
     )
   }
 }

@@ -1,0 +1,47 @@
+<div class="vh-100">
+  <mat-drawer-container class="h-100">
+    <mat-drawer #drawer>
+      <ul class="p-3">
+        <li>
+          <button [color]="'primary'" class="rounded-pill p-3 fs-5-5 mb-3" mat-button>
+            <fa-icon [icon]="['fas','gauge-simple-high']"></fa-icon>
+            <span class="me-3">داشبورد</span></button>
+        </li>
+        <li>
+          <button class="rounded-pill p-3 fs-5-5 mb-3" mat-button>
+            <fa-icon [icon]="['fas','bars']"></fa-icon>
+            <span class="me-3">منو ها</span></button>
+        </li>
+        <li>
+          <button class="rounded-pill p-3 fs-5-5 mb-3" mat-button>
+            <fa-icon [icon]="['fas','folder']"></fa-icon>
+            <span class="me-3">دسته بندی ها</span></button>
+        </li>
+        <li>
+          <button class="rounded-pill p-3 fs-5-5 mb-3" mat-button>
+            <fa-icon [icon]="['fas','user-circle']"></fa-icon>
+            <span class="me-3">اطلاعات کاربری</span></button>
+        </li>
+        <li>
+          <button (click)="logout()" class="rounded-pill p-3 fs-5-5 mb-3" mat-button>
+            <fa-icon [icon]="['fas','arrow-right-from-bracket']"></fa-icon>
+            <span class="me-3">خروج</span></button>
+        </li>
+      </ul>
+    </mat-drawer>
+    <mat-drawer-content class="p-5">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-baseline">
+          <button mat-icon-button color="primary" (click)="drawer.toggle()">
+            <fa-icon [icon]="['fas','bars']"></fa-icon>
+          </button>
+          <h1 id="profile-title" class="me-3">داشبورد</h1>
+        </div>
+        <div class="">
+          <button class="rounded-pill p-3 fs-5" mat-button>یونس نیک بین</button>
+        </div>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
+
