@@ -21,7 +21,8 @@ import {
   faCreditCard,
   faArrowRightFromBracket,
   faBars,
-  faGaugeSimpleHigh
+  faGaugeSimpleHigh,
+  faBoxOpen
 } from "@fortawesome/free-solid-svg-icons";
 import {faTelegram, faInstagram, faLinkedin, faGithub} from "@fortawesome/free-brands-svg-icons"
 import {MatTooltipModule} from "@angular/material/tooltip";
@@ -38,8 +39,8 @@ import {MatStepperModule} from "@angular/material/stepper";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {LoginComponent} from './core/auth/login/login.component';
 import {httpInterceptorProviders} from "./shared/http.interceptor";
-import {ProfileComponent} from "./users/profile/profile.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {UsersModule} from "./users/users.module";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,6 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     FooterComponent,
     RegisterComponent,
     LoginComponent,
-    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +71,8 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     MatStepperModule,
     MatSnackBarModule,
     FormsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    UsersModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
@@ -92,7 +93,8 @@ export class AppModule {
       faGithub,
       faArrowRightFromBracket,
       faBars,
-      faGaugeSimpleHigh
+      faGaugeSimpleHigh,
+      faBoxOpen
     )
   }
 }
