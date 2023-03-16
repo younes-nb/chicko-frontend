@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DashboardComponent} from "./dashboard/dashboard.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatButtonModule} from "@angular/material/button";
@@ -9,15 +8,17 @@ import {MenusComponent} from './menus/menus.component';
 import {CategoriesComponent} from './categories/categories.component';
 import {ProductsComponent} from './products/products.component';
 import {UserInfoComponent} from './user-info/user-info.component';
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
-  declarations: [DashboardComponent, ProfileComponent, MenusComponent, CategoriesComponent, ProductsComponent, UserInfoComponent],
+  declarations: [ProfileComponent, MenusComponent, CategoriesComponent, ProductsComponent, UserInfoComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
     MatButtonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatCardModule
   ]
 })
 export class UsersModule {

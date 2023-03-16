@@ -1,4 +1,4 @@
-@import "src/styles/colors";
+@import "src/styles";
 
 
 header {
@@ -8,14 +8,6 @@ header {
     color: primary-color(600);
     margin-bottom: 2.5rem;
   }
-}
-
-.icon {
-  background-color: primary-color(50);
-  color: primary-color(600);
-  border-radius: 15px;
-  padding: 15px;
-  display: inline-flex;
 }
 
 .feature-card {

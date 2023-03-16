@@ -1,4 +1,5 @@
-@use '../../node_modules/@angular/material/index' as mat;
+@use '../node_modules/@angular/material/index' as mat;
+@use "sass:map";
 
 @include mat.core();
 
@@ -18,16 +19,22 @@ $chicko-frontend-theme: mat.define-light-theme((
 
 @font-face {
   font-family: "Vazir";
-  src: url("../assets/fonts/Vazir.eot"),
-  url("../assets/fonts/Vazir.eot?#iefix") format("embedded-opentype"),
-  url("../assets/fonts/Vazir.woff2") format("woff2"),
-  url("../assets/fonts/Vazir.woff") format("woff"),
-  url("../assets/fonts/Vazir.ttf") format("truetype");
+  src: url("/assets/fonts/Vazir.eot"),
+  url("/assets/fonts/Vazir.eot?#iefix") format("embedded-opentype"),
+  url("/assets/fonts/Vazir.woff2") format("woff2"),
+  url("/assets/fonts/Vazir.woff") format("woff"),
+  url("/assets/fonts/Vazir.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Khandevane";
-  src: url("../assets/fonts/Khandevane.ttf") format("truetype");
+  src: url("/assets/fonts/Khandevane.ttf") format("truetype");
+}
+
+$dark-blue: #1b2a4e;
+
+@function primary-color($key) {
+  @return map.get($chicko-frontend-primary, $key)
 }
 
 html, body {
@@ -47,6 +54,14 @@ a {
 
 ul {
   list-style-type: none !important;
+}
+
+.icon {
+  background-color: primary-color(50);
+  color: primary-color(600);
+  border-radius: 15px;
+  padding: 15px;
+  display: inline-flex;
 }
 
 .fs-5-5 {

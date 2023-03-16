@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-menus',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./menus.component.scss']
 })
 export class MenusComponent {
-
+  menus = [];
 }
