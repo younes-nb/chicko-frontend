@@ -26,6 +26,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 })
 export class SupportComponent {
   isChatShowing: boolean = false;
+  isUserRegistered: boolean = false;
 
   toggleChat() {
     this.isChatShowing = !this.isChatShowing;

@@ -1,0 +1,23 @@
+<section>
+  <div class="d-flex justify-content-center">
+    <img src="assets/images/support.png" class="w-75 h-100" alt="support">
+  </div>
+  <h5 class="text-center">سامانه پشتیبانی چیکو</h5>
+  <div class="d-flex justify-content-center mt-5">
+    <form [formGroup]="registerChatForm" (ngSubmit)="registerChatForm.valid && onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>ایمیل</mat-label>
+        <input matInput formControlName="email" name="email" type="email" required>
+        <mat-error class="fs-7" *ngIf="submitted && registerChatForm.get('email')?.hasError('required')">وارد کردن ایمیل
+          الزامی می
+          باشد.
+        </mat-error>
+        <mat-error class="fs-7" *ngIf="registerChatForm.get('email')?.hasError('email')">ایمیل معتبر نیست.</mat-error>
+      </mat-form-field>
+      <div class="d-flex justify-content-center mt-3">
+        <button type="submit" (click)="submitted=true" class="rounded-pill" mat-raised-button color="primary">تایید
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

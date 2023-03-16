@@ -39,9 +39,8 @@ export class LoginComponent implements OnInit {
         this.storageService.saveUser(data);
         this.router.navigate(['profile'])
       },
-      error: (err: any) => {
+      error: () => {
         this.openSnackBar('مشکلی پیش آمده است.');
-        console.log(err)
       }
     });
   }

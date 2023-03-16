@@ -39,7 +39,6 @@ import {MatInputModule} from "@angular/material/input";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {LoginComponent} from './core/auth/login/login.component';
-import {httpInterceptorProviders} from "./shared/http.interceptor";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {UsersModule} from "./users/users.module";
 import {SupportModule} from "./support/support.module";
@@ -77,7 +76,7 @@ import {SupportModule} from "./support/support.module";
     UsersModule,
     SupportModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

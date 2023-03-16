@@ -3,7 +3,7 @@
     <mat-icon>chat</mat-icon>
   </button>
 </div>
-<div [@openClose]="isChatShowing ? 'open' : 'closed'" id="chat-container"
-     class="position-absolute position-fixed rounded shadow bg-white">
-
-</div>
+<section [@openClose]="isChatShowing ? 'open' : 'closed'" id="chat-container"
+         class="position-absolute position-fixed rounded shadow bg-white">
+  <app-register-chat *ngIf="!isUserRegistered"></app-register-chat>
+</section>
