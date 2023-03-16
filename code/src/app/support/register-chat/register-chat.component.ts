@@ -9,7 +9,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class RegisterChatComponent {
   registerChatForm: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    name: new FormControl(''),
+    email: new FormControl('', [Validators.required, Validators.email])
   })
   submitted: boolean = false;
 
@@ -17,7 +18,7 @@ export class RegisterChatComponent {
   }
 
   onSubmit() {
-    this.supportService.register(this.registerChatForm.controls['email'].value).subscribe({
+    this.supportService.register(this.registerChatForm.controls['email'].value, this.registerChatForm.controls['name'].value).subscribe({
       next: data => {
         console.log(data);
       },

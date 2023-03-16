@@ -3,9 +3,13 @@
     <img src="assets/images/support.png" class="w-75 h-100" alt="support">
   </div>
   <h5 class="text-center">سامانه پشتیبانی چیکو</h5>
-  <div class="d-flex justify-content-center mt-5">
-    <form [formGroup]="registerChatForm" (ngSubmit)="registerChatForm.valid && onSubmit()">
-      <mat-form-field appearance="fill">
+  <div class="d-flex justify-content-center mt-4">
+    <form class="w-75" [formGroup]="registerChatForm" (ngSubmit)="registerChatForm.valid && onSubmit()">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>نام</mat-label>
+        <input matInput formControlName="name" name="name" type="text">
+      </mat-form-field>
+      <mat-form-field class="w-100" appearance="fill">
         <mat-label>ایمیل</mat-label>
         <input matInput formControlName="email" name="email" type="email" required>
         <mat-error class="fs-7" *ngIf="submitted && registerChatForm.get('email')?.hasError('required')">وارد کردن ایمیل
@@ -14,7 +18,7 @@
         </mat-error>
         <mat-error class="fs-7" *ngIf="registerChatForm.get('email')?.hasError('email')">ایمیل معتبر نیست.</mat-error>
       </mat-form-field>
-      <div class="d-flex justify-content-center mt-3">
+      <div class="d-flex justify-content-center mt-1">
         <button type="submit" (click)="submitted=true" class="rounded-pill" mat-raised-button color="primary">تایید
         </button>
       </div>

@@ -15,7 +15,7 @@ export class SupportService {
   constructor(private http: HttpClient) {
   }
 
-  public register(email: string): Observable<any> {
-    return this.http.post(CHAT_API + 'start/', {email}, httpOptions)
+  public register(email: string, name?: string): Observable<any> {
+    return this.http.post(CHAT_API + 'start/', {email, name}, httpOptions)
   }
 }
