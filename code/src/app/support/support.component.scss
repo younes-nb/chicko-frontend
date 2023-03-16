@@ -1,5 +1,13 @@
 #icon-container {
   bottom: 5%;
   right: 1.5%;
+  z-index: 400;
+}
+
+#chat-container {
+  width: 320px;
+  height: 512px;
+  bottom: 15%;
+  right: 1.5%;
   z-index: 300;
 }
