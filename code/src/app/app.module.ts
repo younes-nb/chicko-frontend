@@ -22,7 +22,8 @@ import {
   faArrowRightFromBracket,
   faBars,
   faGaugeSimpleHigh,
-  faBoxOpen
+  faBoxOpen,
+  faMessage
 } from "@fortawesome/free-solid-svg-icons";
 import {faTelegram, faInstagram, faLinkedin, faGithub} from "@fortawesome/free-brands-svg-icons"
 import {MatTooltipModule} from "@angular/material/tooltip";
@@ -41,6 +42,7 @@ import {LoginComponent} from './core/auth/login/login.component';
 import {httpInterceptorProviders} from "./shared/http.interceptor";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {UsersModule} from "./users/users.module";
+import {SupportModule} from "./support/support.module";
 
 @NgModule({
   declarations: [
@@ -72,7 +74,8 @@ import {UsersModule} from "./users/users.module";
     MatSnackBarModule,
     FormsModule,
     MatSidenavModule,
-    UsersModule
+    UsersModule,
+    SupportModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
@@ -94,7 +97,8 @@ export class AppModule {
       faArrowRightFromBracket,
       faBars,
       faGaugeSimpleHigh,
-      faBoxOpen
+      faBoxOpen,
+      faMessage
     )
   }
 }
