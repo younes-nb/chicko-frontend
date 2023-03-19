@@ -7,9 +7,12 @@
 </div>
 <footer>
   <div class="container">
-    <div class="row align-items-baseline justify-content-between">
-      <h1 class="col-4 brand">چیکو</h1>
-      <ul class="col-4 d-flex justify-content-center">
+    <div class="row align-items-center justify-content-between">
+      <div routerLink="/home" class="col-4 m-0 d-flex align-items-center">
+        <img id="logo" src="favicon.ico" width="75" height="75" alt="logo">
+        <h1 class="me-3 brand">چیکو</h1>
+      </div>
+      <ul class="col-4 m-0 d-flex justify-content-center">
         <li>
           <button mat-button color="accent" class="text-light rounded-pill fs-5 p-3" routerLink="/home">خانه</button>
         </li>
@@ -27,7 +30,7 @@
           </button>
         </li>
       </ul>
-      <ul id="contact-us" class="col-4 d-flex justify-content-end">
+      <ul id="contact-us" class="col-4 m-0 d-flex justify-content-end">
         <li class="ms-4">
           <fa-icon class="text-light fs-2 brand-icons" [icon]="['fab', 'telegram']"></fa-icon>
         </li>
