@@ -64,7 +64,13 @@ ul {
   display: inline-flex;
 }
 
-#logo {
+.logo {
+  cursor: pointer;
+}
+
+.title {
+  font-family: Khandevane, serif;
+  color: primary-color(600);
   cursor: pointer;
 }
 
@@ -74,6 +80,10 @@ ul {
 
 .fs-7 {
   font-size: .8rem;
+}
+
+.fs-high {
+  font-size: 4.5rem;
 }
 
 .w-85 {

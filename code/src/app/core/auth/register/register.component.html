@@ -1,6 +1,10 @@
-<div class="d-flex align-items-center justify-content-center h-100 bg-light">
-  <section class="vw-75 row p-5 d-flex align-items-center bg-white shadow rounded">
-    <mat-stepper linear #stepper class="col-8">
+<div class="d-flex flex-column align-items-center justify-content-center h-100 bg-light">
+  <div routerLink="/home" class="d-flex mb-5">
+    <img class="logo" src="favicon.ico" width="80" height="80" alt="logo">
+    <h1 class="title me-2 fs-high">چیکو</h1>
+  </div>
+  <section class="vw-75 row p-1 d-flex align-items-center bg-white shadow rounded">
+    <mat-stepper linear #stepper class="col-8 p-0 py-2">
       <mat-step [stepControl]="registerForm" [editable]="false" label="ثبت اطلاعات">
         <form [formGroup]="registerForm"
               (ngSubmit)="registerForm.valid && onSubmit()"
@@ -90,7 +94,7 @@
         </form>
       </mat-step>
     </mat-stepper>
-    <div class="col-4">
+    <div class="col-4 p-0">
       <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
            xmlns:xlink="http://www.w3.org/1999/xlink"
            viewBox="0 0 351.9 396.01" width="406" height="306" class="illustration styles_illustrationTablet__1DWOa">

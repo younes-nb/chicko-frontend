@@ -5,6 +5,7 @@
   </button>
 </div>
 <section [@openClose]="isChatShowing ? 'open' : 'closed'" id="chat-container"
-         class="position-absolute position-fixed rounded shadow bg-white">
+         class="position-absolute position-fixed rounded shadow bg-white"
+         [ngClass]="isChatShowing ? '' : 'disable'">
   <app-register-chat *ngIf="!isUserRegistered"></app-register-chat>
 </section>

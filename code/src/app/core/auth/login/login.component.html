@@ -1,4 +1,8 @@
-<div class="d-flex align-items-center justify-content-center h-100 bg-light">
+<div class="d-flex flex-column align-items-center justify-content-center h-100 bg-light">
+  <div routerLink="/home" class="d-flex mb-5">
+    <img class="logo" src="favicon.ico" width="80" height="80" alt="logo">
+    <h1 class="title me-2 fs-high">چیکو</h1>
+  </div>
   <section class="vw-50 p-5 ps-0 d-flex align-items-center bg-white shadow rounded">
     <form class="w-85" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onSubmit()">
       <h1 class="fs-2 mb-5">ورود به حساب کاربری</h1>

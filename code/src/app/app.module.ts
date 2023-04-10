@@ -22,8 +22,7 @@ import {
   faArrowRightFromBracket,
   faBars,
   faGaugeSimpleHigh,
-  faBoxOpen,
-  faMessage
+  faBoxOpen
 } from "@fortawesome/free-solid-svg-icons";
 import {faTelegram, faInstagram, faLinkedin, faGithub} from "@fortawesome/free-brands-svg-icons"
 import {MatTooltipModule} from "@angular/material/tooltip";
@@ -96,8 +95,7 @@ export class AppModule {
       faArrowRightFromBracket,
       faBars,
       faGaugeSimpleHigh,
-      faBoxOpen,
-      faMessage
+      faBoxOpen
     )
   }
 }
