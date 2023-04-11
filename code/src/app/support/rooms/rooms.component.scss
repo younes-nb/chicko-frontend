@@ -1,0 +1,13 @@
+#add-room-container {
+  bottom: 5%;
+  left: 5%;
+  z-index: 500;
+}
+
+.room {
+  cursor: pointer;
+
+  &:hover {
+    background-color: #F8F9FA;
+  }
+}

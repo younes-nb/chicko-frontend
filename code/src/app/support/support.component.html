@@ -7,5 +7,6 @@
 <section [@openClose]="isChatShowing ? 'open' : 'closed'" id="chat-container"
          class="position-absolute position-fixed rounded shadow bg-white"
          [ngClass]="isChatShowing ? '' : 'disable'">
-  <app-register-chat *ngIf="!isUserRegistered"></app-register-chat>
+  <app-register-chat *ngIf="!isUserRegistered()"></app-register-chat>
+  <app-chat *ngIf="isUserRegistered()"></app-chat>
 </section>

@@ -17,10 +17,11 @@ export class RegisterChatComponent {
   constructor(private supportService: SupportService, private snackBar: MatSnackBar) {
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.supportService.register(this.registerChatForm.controls['email'].value, this.registerChatForm.controls['name'].value).subscribe({
       next: data => {
-        console.log(data);
+        this.supportService.user = data.data;
+        this.supportService.isUserRegistered = true;
       },
       error: () => {
         this.openSnackBar('مشکلی پیش آمده است.');

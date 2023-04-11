@@ -41,6 +41,7 @@ import {LoginComponent} from './core/auth/login/login.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {UsersModule} from "./users/users.module";
 import {SupportModule} from "./support/support.module";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import {SupportModule} from "./support/support.module";
     FormsModule,
     MatSidenavModule,
     UsersModule,
-    SupportModule
+    SupportModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

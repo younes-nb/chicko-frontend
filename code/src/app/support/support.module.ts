@@ -9,20 +9,27 @@ import { RegisterChatComponent } from './register-chat/register-chat.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
+import {RouterLink} from "@angular/router";
+import {CreateRoomDialog, RoomsComponent} from "./rooms/rooms.component";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatRippleModule} from "@angular/material/core";
 
 
 @NgModule({
-  declarations: [SupportComponent, RegisterChatComponent],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatTooltipModule,
-    FontAwesomeModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule
-  ],
+  declarations: [SupportComponent, RegisterChatComponent, RoomsComponent, CreateRoomDialog],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatTooltipModule,
+        FontAwesomeModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        RouterLink,
+        MatDialogModule,
+        MatRippleModule
+    ],
   exports: [SupportComponent]
 })
 export class SupportModule {
