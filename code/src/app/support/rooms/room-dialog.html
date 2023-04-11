@@ -1,0 +1,15 @@
+<section class="d-flex flex-column justify-content-center align-items-center p-3">
+  <h3 class="mb-3">{{data.title}}</h3>
+  <form mat-dialog-content [formGroup]="roomForm">
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>{{data.label}}</mat-label>
+      <input matInput formControlName="input" name="input" type="text" required>
+      <mat-error class="fs-7 letter-space-low" *ngIf="roomForm.get('input')?.hasError('required')">وارد
+        کردن {{data.label}} الزامی می باشد.
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <div mat-dialog-actions>
+    <button [mat-dialog-close]="roomForm.controls['input'].value" mat-raised-button color="primary">تایید</button>
+  </div>
+</section>

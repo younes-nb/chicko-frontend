@@ -1,12 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {SupportService} from "../support.service";
-import {ChatUser, Room} from "../../shared/types";
+import {ChatUser, Room, RoomDialogData} from "../../shared/types";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {MatDialog} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 
 @Component({
-  selector: 'app-chat',
+  selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss']
 })
@@ -41,18 +42,50 @@ export class RoomsComponent implements OnInit {
     this.supportService.signout();
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(CreateRoomDialog);
+  openCreateRoomDialog(): void {
+    const dialogRef = this.dialog.open(RoomDialog, {
+      data: {
+        title: 'افزودن گفتگوی جدید',
+        label: 'عنوان گفتگو'
+      }
+    });
     dialogRef.afterClosed().subscribe(title => {
-      this.supportService.createRoom(this.getUser()._id, title).subscribe({
-        next: () => {
-          this.updateUserRooms();
-        },
-        error: () => {
-          this.openSnackBar('مشکلی پیش آمده است.');
-        }
-      })
-    })
+      if (title) {
+        this.supportService.createRoom(this.getUser()._id, title).subscribe({
+          next: () => {
+            this.updateUserRooms();
+          },
+          error: () => {
+            this.openSnackBar('مشکلی پیش آمده است.');
+          }
+        });
+      }
+    });
+  }
+
+  openJoinRoomDialog(): void {
+    const dialogRef = this.dialog.open(RoomDialog, {
+      data: {
+        title: 'پیوستن به گفتگو',
+        label: 'شناسه گفتگو'
+      }
+    });
+    dialogRef.afterClosed().subscribe(roomId => {
+      if (roomId) {
+        this.supportService.joinRoom(this.getUser()._id, roomId).subscribe({
+          next: () => {
+            this.updateUserRooms();
+          },
+          error: () => {
+            this.openSnackBar('مشکلی پیش آمده است.');
+          }
+        });
+      }
+    });
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.supportService.userRooms, event.previousIndex, event.currentIndex);
   }
 
   openSnackBar(message: string): void {
@@ -61,11 +94,15 @@ export class RoomsComponent implements OnInit {
 }
 
 @Component({
-  selector: 'app-create-room-dialog',
-  templateUrl: 'create-room-dialog.html',
+  selector: 'app-room-dialog',
+  templateUrl: 'room-dialog.html',
 })
-export class CreateRoomDialog {
-  createRoomForm: FormGroup = new FormGroup({
-    title: new FormControl('', Validators.required),
+export class RoomDialog {
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: RoomDialogData) {
+  }
+
+  roomForm: FormGroup = new FormGroup({
+    input: new FormControl('', Validators.required),
   });
 }

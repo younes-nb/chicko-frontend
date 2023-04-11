@@ -8,5 +8,5 @@
          class="position-absolute position-fixed rounded shadow bg-white"
          [ngClass]="isChatShowing ? '' : 'disable'">
   <app-register-chat *ngIf="!isUserRegistered()"></app-register-chat>
-  <app-chat *ngIf="isUserRegistered()"></app-chat>
+  <app-rooms *ngIf="isUserRegistered()"></app-rooms>
 </section>

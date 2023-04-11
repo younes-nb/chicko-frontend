@@ -7,8 +7,7 @@ import {User} from "../../shared/types";
 
 @Component({
   selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  templateUrl: './navbar.component.html'
 })
 export class NavbarComponent implements OnInit {
   currentUser: User = {} as User;

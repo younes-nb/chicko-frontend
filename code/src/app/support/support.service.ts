@@ -31,10 +31,14 @@ export class SupportService {
   }
 
   public getUserRooms(userId: string, email: string): Observable<any> {
-    return this.http.post(CHAT_API + 'user-rooms/', {_id: userId, email}, httpOptions)
+    return this.http.post(CHAT_API + 'user-rooms/', {_id: userId, email}, httpOptions);
   }
 
   public createRoom(userId: string, title: string): Observable<any> {
-    return this.http.post(CHAT_API + 'create-room/', {title, users: [userId]}, httpOptions)
+    return this.http.post(CHAT_API + 'create-room/', {title, users: [userId]}, httpOptions);
+  }
+
+  public joinRoom(userId: string, roomId: string): Observable<any> {
+    return this.http.post(CHAT_API + 'add-user-room/', {_id: roomId, users: [userId]}, httpOptions);
   }
 }

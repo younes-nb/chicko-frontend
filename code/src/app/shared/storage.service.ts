@@ -25,6 +25,6 @@ export class StorageService {
   }
 
   public isLoggedIn(): boolean {
-    return  window.sessionStorage.getItem(USER_KEY) !== null;
+    return window.sessionStorage.getItem(USER_KEY) !== null;
   }
 }

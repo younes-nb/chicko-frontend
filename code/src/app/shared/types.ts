@@ -18,3 +18,8 @@ export interface Room {
   createdAt: string,
   updatedAt: string
 }
+
+export interface RoomDialogData {
+  title: string,
+  label: string
+}

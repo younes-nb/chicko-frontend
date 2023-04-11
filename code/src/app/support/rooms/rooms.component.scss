@@ -1,6 +1,6 @@
 #add-room-container {
   bottom: 5%;
-  left: 5%;
+  left: 7%;
   z-index: 500;
 }
 
@@ -10,4 +10,27 @@
   &:hover {
     background-color: #F8F9FA;
   }
+}
+
+.t {
+  max-height: 376px;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
 }
