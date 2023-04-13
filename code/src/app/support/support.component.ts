@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {SupportService} from "./support.service";
+import {SupportChatComponent} from "../shared/types";
 
 @Component({
   selector: 'app-support',
@@ -36,7 +37,7 @@ export class SupportComponent {
     this.isChatShowing = !this.isChatShowing;
   }
 
-  isUserRegistered(): boolean {
-    return this.supportService.isUserRegistered;
+  getComponent(): SupportChatComponent {
+    return this.supportService.component;
   }
 }

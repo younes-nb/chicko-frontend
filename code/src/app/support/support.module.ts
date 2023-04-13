@@ -16,10 +16,13 @@ import {MatRippleModule} from "@angular/material/core";
 import {MatTableModule} from "@angular/material/table";
 import {MatMenuModule} from "@angular/material/menu";
 import {CdkDrag, CdkDropList} from "@angular/cdk/drag-drop";
+import {ChatComponent} from './chat/chat.component';
+import {ClipboardModule} from "@angular/cdk/clipboard";
+import {GetUserNamePipe} from './chat/get-user-name.pipe';
 
 
 @NgModule({
-  declarations: [SupportComponent, RegisterChatComponent, RoomsComponent, RoomDialog],
+  declarations: [SupportComponent, RegisterChatComponent, RoomsComponent, RoomDialog, ChatComponent, GetUserNamePipe],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -35,7 +38,8 @@ import {CdkDrag, CdkDropList} from "@angular/cdk/drag-drop";
     MatTableModule,
     MatMenuModule,
     CdkDropList,
-    CdkDrag
+    CdkDrag,
+    ClipboardModule
   ],
   exports: [SupportComponent]
 })

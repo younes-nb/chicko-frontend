@@ -1,0 +1,47 @@
+.room-title-container {
+  margin-top: 1rem;
+
+  p {
+    line-height: 1rem;
+  }
+}
+
+.chat-box {
+  max-height: 400px;
+
+  .message-box-container {
+    padding: .2rem 1rem;
+
+    .message-box {
+      line-height: 1.5rem;
+    }
+  }
+
+  .message-box-user {
+    border-radius: 1.25rem 1.25rem 0 1.25rem;
+  }
+
+  .message-box-others {
+    border-radius: 1.25rem 1.25rem 1.25rem 0;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+

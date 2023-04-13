@@ -9,7 +9,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class RegisterChatComponent {
   registerChatForm: FormGroup = new FormGroup({
-    name: new FormControl(''),
+    name: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email])
   })
   submitted: boolean = false;
@@ -21,7 +21,7 @@ export class RegisterChatComponent {
     this.supportService.register(this.registerChatForm.controls['email'].value, this.registerChatForm.controls['name'].value).subscribe({
       next: data => {
         this.supportService.user = data.data;
-        this.supportService.isUserRegistered = true;
+        this.supportService.component = 'rooms';
       },
       error: () => {
         this.openSnackBar('مشکلی پیش آمده است.');

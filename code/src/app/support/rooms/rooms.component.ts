@@ -30,6 +30,10 @@ export class RoomsComponent implements OnInit {
   updateUserRooms(): void {
     this.supportService.getUserRooms(this.supportService.user._id, this.supportService.user.email).subscribe({
       next: data => {
+        data.data.map((room: any) => {
+          room.createdAt = new Date(Date.parse(room.createdAt));
+          room.updatedAt = new Date(Date.parse(room.updatedAt));
+        });
         this.supportService.userRooms = data.data;
       },
       error: () => {
@@ -80,6 +84,40 @@ export class RoomsComponent implements OnInit {
             this.openSnackBar('مشکلی پیش آمده است.');
           }
         });
+      }
+    });
+  }
+
+  startChat(room: Room): void {
+    this.supportService.currentRoom = room;
+    this.supportService.getRoomHistory(room._id).subscribe({
+      next: roomData => {
+        if (roomData.data) {
+          roomData.data.map((message: any) => {
+            message.time = new Date(Date.parse(message.time));
+            message.isCurrentUser = message.user_id === this.supportService.user._id;
+            if (this.supportService.lastMessage.user_id !== message.user_id) {
+              message.isFirst = true;
+            }
+            if (this.supportService.lastMessage.time === undefined || this.supportService.lastMessage.time.getFullYear() !== message.time.getFullYear() || this.supportService.lastMessage.time.getMonth() !== message.time.getMonth() || this.supportService.lastMessage.time.getDay() !== message.time.getDay()) {
+              message.showDate = true;
+            }
+            this.supportService.lastMessage = message;
+          });
+        }
+        this.supportService.currentRoomHistory = roomData.data;
+        this.supportService.getRoomUsersDetails(this.supportService.currentRoom.users, this.supportService.currentRoom._id).subscribe({
+          next: data => {
+            this.supportService.currenRoomUsers = data.users;
+            this.supportService.component = 'chat';
+          },
+          error: () => {
+            this.openSnackBar('مشکلی پیش آمده است.');
+          }
+        });
+      },
+      error: () => {
+        this.openSnackBar('مشکلی پیش آمده است.');
       }
     });
   }

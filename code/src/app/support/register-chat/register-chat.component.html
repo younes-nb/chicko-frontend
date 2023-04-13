@@ -5,9 +5,13 @@
   <h5 class="text-center">سامانه پشتیبانی چیکو</h5>
   <div class="d-flex justify-content-center mt-4">
     <form class="w-75" [formGroup]="registerChatForm" (ngSubmit)="registerChatForm.valid && onSubmit()">
-      <mat-form-field class="w-100" appearance="fill">
+      <mat-form-field class="w-100 mb-2" appearance="fill">
         <mat-label>نام</mat-label>
-        <input matInput formControlName="name" name="name" type="text">
+        <input matInput formControlName="name" name="name" type="text" required>
+        <mat-error class="fs-7" *ngIf="submitted && registerChatForm.get('name')?.hasError('required')">وارد کردن نام
+          الزامی می
+          باشد.
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="w-100" appearance="fill">
         <mat-label>ایمیل</mat-label>

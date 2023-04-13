@@ -1,0 +1,32 @@
+<section class="">
+  <nav class="d-flex justify-content-between p-2 bg-light">
+    <div class="d-flex align-items-center">
+      <button (click)="back()" mat-icon-button color="primary">
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+      <div class="me-3 room-title-container">
+        <p class="m-0 fs-5-5 room-title">{{getRoom().title}}</p>
+        <p class="m-0 text-muted fs-7">{{numLatinToFa(getRoom().users.length.toString())}} عضو</p>
+      </div>
+    </div>
+    <button [cdkCopyToClipboard]="getRoom()._id" mat-icon-button color="primary" matTooltip="کپی کردن شناسه گتفگو">
+      <mat-icon>content_copy</mat-icon>
+    </button>
+  </nav>
+  <ul class="d-flex flex-column p-2 pt-3 overflow-auto chat-box">
+    <p class="text-muted text-center mb-3 fs-7">تشکیل شده در {{getRoom().createdAt | date:'mediumDate'}}</p>
+    <li *ngFor="let message of getMessages()" class="d-flex flex-column">
+      <p *ngIf="message.showDate" class="text-muted text-center fs-7 my-2">{{message.time | date:'mediumDate'}}</p>
+      <div class="mb-2 d-inline-block message-box-container"
+           [ngClass]="message.isCurrentUser ? 'bg-primary text-white align-self-start message-box-user' : 'bg-light  align-self-end message-box-others'">
+        <p *ngIf="!message.isCurrentUser && message.isFirst"
+           class="m-0 text-primary">{{message.user_id | getUserName}}</p>
+        <div class="d-flex">
+          <p class="m-0 ps-2 message-box">{{message.message}}</p>
+          <p [ngClass]="message.isCurrentUser ? 'text-light' : 'text-muted'" class="m-0 align-self-end fs-8"
+             dir="ltr">{{message.time | date:'shortTime'}}</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>

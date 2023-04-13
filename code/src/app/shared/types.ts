@@ -1,3 +1,5 @@
+export type SupportChatComponent = 'register' | 'rooms' | 'chat'
+
 export interface User {
   username: string,
   email: string,
@@ -15,11 +17,23 @@ export interface Room {
   _id: string,
   title: string,
   users: string[],
-  createdAt: string,
-  updatedAt: string
+  createdAt: Date,
+  updatedAt: Date
 }
 
 export interface RoomDialogData {
   title: string,
   label: string
+}
+
+export interface Message {
+  _id: string,
+  room_id: string,
+  user_id: string,
+  message: string,
+  type: string,
+  time: Date,
+  isFirst: boolean,
+  isCurrentUser: boolean,
+  showDate: boolean
 }
