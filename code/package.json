@@ -26,9 +26,13 @@
     "@ngx-loading-bar/http-client": "^6.0.2",
     "angular-typing-animator": "^0.0.9",
     "bootstrap": "^5.2.3",
+    "if-emoji": "^0.1.0",
     "jquery": "^3.6.3",
+    "ngx-autosize": "^2.0.4",
+    "ngx-emoj": "^0.0.7",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "twemoji": "^14.0.2",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {

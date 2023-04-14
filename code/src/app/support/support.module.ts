@@ -8,7 +8,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {RegisterChatComponent} from './register-chat/register-chat.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterLink} from "@angular/router";
 import {RoomDialog, RoomsComponent} from "./rooms/rooms.component";
 import {MatDialogModule} from "@angular/material/dialog";
@@ -19,6 +19,8 @@ import {CdkDrag, CdkDropList} from "@angular/cdk/drag-drop";
 import {ChatComponent} from './chat/chat.component';
 import {ClipboardModule} from "@angular/cdk/clipboard";
 import {GetUserNamePipe} from './chat/get-user-name.pipe';
+import {AutosizeModule} from "ngx-autosize";
+import {NgxEmojModule} from "ngx-emoj";
 
 
 @NgModule({
@@ -39,7 +41,10 @@ import {GetUserNamePipe} from './chat/get-user-name.pipe';
     MatMenuModule,
     CdkDropList,
     CdkDrag,
-    ClipboardModule
+    ClipboardModule,
+    FormsModule,
+    AutosizeModule,
+    NgxEmojModule
   ],
   exports: [SupportComponent]
 })

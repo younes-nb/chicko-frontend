@@ -11,6 +11,8 @@ import {numLatinToFa} from 'src/app/shared/utils';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent {
+  message: string = '';
+  isShowingEmojiPicker: boolean = false;
 
   constructor(private supportService: SupportService, private webSocketService: WebSocketService, private snackBar: MatSnackBar) {
   }
@@ -32,6 +34,10 @@ export class ChatComponent {
     this.supportService.currenRoomUsers = []
     this.supportService.lastMessage = {} as Message;
     this.supportService.component = 'rooms';
+  }
+
+  handleEmoji(event: { char: string; }) {
+    this.message += event.char;
   }
 
   openSnackBar(message: string): void {

@@ -6,24 +6,37 @@
   }
 }
 
-.chat-box {
-  max-height: 400px;
+.message-box-container {
+  padding: .2rem 1rem;
 
-  .message-box-container {
-    padding: .2rem 1rem;
-
-    .message-box {
-      line-height: 1.5rem;
-    }
+  .message-text {
+    white-space: pre;
   }
+}
 
-  .message-box-user {
-    border-radius: 1.25rem 1.25rem 0 1.25rem;
-  }
+.message-box-user {
+  border-radius: 1.25rem 1.25rem 0 1.25rem;
+}
 
-  .message-box-others {
-    border-radius: 1.25rem 1.25rem 1.25rem 0;
-  }
+.message-box-others {
+  border-radius: 1.25rem 1.25rem 1.25rem 0;
+}
+
+.message-input {
+  max-height: 120px !important;
+  overflow: scroll;
+  resize: none;
+}
+
+.send-icon {
+  transform: rotateY(180deg);
+}
+
+ngx-emoj {
+  z-index: 700;
+  position: absolute;
+  bottom: 85%;
+  left: 6%;
 }
 
 ::-webkit-scrollbar {
