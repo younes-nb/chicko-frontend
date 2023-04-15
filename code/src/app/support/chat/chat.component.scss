@@ -32,6 +32,15 @@
   transform: rotateY(180deg);
 }
 
+#scroller * {
+  overflow-anchor: none;
+}
+
+#anchor {
+  overflow-anchor: auto;
+  height: 1px;
+}
+
 ngx-emoj {
   z-index: 700;
   position: absolute;
