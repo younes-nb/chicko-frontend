@@ -17,8 +17,7 @@ export interface Room {
   _id: string,
   title: string,
   users: string[],
-  createdAt: Date,
-  updatedAt: Date
+  createdAt: Date
 }
 
 export interface RoomDialogData {

@@ -1,4 +1,10 @@
-import {Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef, OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import {SupportService} from "../support.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ChatUser, Message, Room} from "../../shared/types";
@@ -11,9 +17,8 @@ import {FormControl, FormGroup} from "@angular/forms";
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit, OnDestroy {
+export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('messageBox') messageBox!: ElementRef;
-  @ViewChild('messageBox') message!: QueryList<ElementRef>;
   isShowingEmojiPicker: boolean = false;
   messageForm: FormGroup = new FormGroup({
     message: new FormControl('')
@@ -37,7 +42,6 @@ export class ChatComponent implements OnInit, OnDestroy {
   sendMessage(): void {
     this.webSocketService.sendMessage(this.getUser()._id, this.getRoom()._id, this.messageForm.controls['message'].value)
     this.messageForm.controls['message'].setValue('');
-    this.scrollToMessage();
   }
 
   getMessages(): Message[] {
@@ -63,13 +67,6 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   handleEmoji(event: { char: string; }) {
     this.messageForm.controls['message'].setValue(this.messageForm.controls['message'].value + event.char);
-  }
-
-  scrollToMessage() {
-    this.messageBox.nativeElement.scrollTo({
-      top: this.messageBox.nativeElement.scrollHeight,
-      behavior: "smooth",
-    });
   }
 
   openSnackBar(message: string): void {

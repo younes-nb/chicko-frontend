@@ -21,10 +21,11 @@ import {ClipboardModule} from "@angular/cdk/clipboard";
 import {GetUserNamePipe} from './chat/get-user-name.pipe';
 import {AutosizeModule} from "ngx-autosize";
 import {NgxEmojModule} from "ngx-emoj";
+import {ScrollerDirective} from './chat/scroller.directive';
 
 
 @NgModule({
-  declarations: [SupportComponent, RegisterChatComponent, RoomsComponent, RoomDialog, ChatComponent, GetUserNamePipe],
+  declarations: [SupportComponent, RegisterChatComponent, RoomsComponent, RoomDialog, ChatComponent, GetUserNamePipe, ScrollerDirective],
   imports: [
     CommonModule,
     MatButtonModule,
