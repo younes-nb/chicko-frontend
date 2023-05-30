@@ -13,6 +13,8 @@ import {numLatinToFa} from "../../../shared/utils";
 export class RegisterComponent {
   @ViewChild('stepper') stepper!: MatStepper;
   registerForm: FormGroup = new FormGroup({
+    firstName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+    lastName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
     username: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     phone_number: new FormControl('', [Validators.required, Validators.pattern('09[0-9]{9}')]),
@@ -28,6 +30,8 @@ export class RegisterComponent {
   errors: Map<string, string> = new Map();
 
   constructor(private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {
+    this.errors.set('firstName', '')
+    this.errors.set('lastName', '')
     this.errors.set('username', '');
     this.errors.set('phone_number', '');
     this.errors.set('email', '');
@@ -43,13 +47,15 @@ export class RegisterComponent {
 
   onSubmit(): void {
     this.authService.register(
+      this.registerForm.controls['firstName'].value,
+      this.registerForm.controls['lastName'].value,
       this.registerForm.controls['username'].value,
       this.registerForm.controls['password'].value,
       this.registerForm.controls['phone_number'].value,
       this.registerForm.controls['email'].value
     ).subscribe({
       next: () => {
-        this.openSnackBar('کد تایید برای شما ارسال شد.')
+        this.openSnackBar('حساب کاربری شما با موفقیت ایجاد شد.');
         this.stepper.next();
       },
       error: (err: any) => {
@@ -74,9 +80,9 @@ export class RegisterComponent {
     this.authService.verify(this.verificationForm.controls['verificationCode'].value).subscribe(
       {
         next: () => {
-          this.openSnackBar('حساب کاربری شما با موفقیت ایجاد شد.');
           this.stepper.reset();
           this.router.navigate(['login']);
+          this.openSnackBar('حساب کاربری شما با موفقیت فعال شد.');
         }, error: (err: any) => {
           if (err.status === 406) {
             this.errors.set('verificationCode', 'کد وارد شده نادرست می باشد.');

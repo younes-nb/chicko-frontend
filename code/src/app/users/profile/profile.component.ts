@@ -1,21 +1,28 @@
-import {Component, ComponentRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
-import {User} from "../../shared/types";
-import {StorageService} from "../../shared/storage.service";
-import {AuthService} from "../../shared/auth.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {MenusComponent} from "../menus/menus.component";
-import {CategoriesComponent} from "../categories/categories.component";
-import {ProductsComponent} from "../products/products.component";
-import {UserInfoComponent} from "../user-info/user-info.component";
+import {
+  Component,
+  ComponentRef,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
+import { User } from '../../shared/types';
+import { StorageService } from '../../shared/storage.service';
+import { AuthService } from '../../shared/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MenusComponent } from '../menus/menus.component';
+import { CategoriesComponent } from '../categories/categories.component';
+import { ProductsComponent } from '../products/products.component';
+import { UserInfoComponent } from '../user-info/user-info.component';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  @ViewChild("viewContainerRef", {read: ViewContainerRef}) vcr!: ViewContainerRef;
-  ref!: ComponentRef<any>
+  @ViewChild('viewContainerRef', { read: ViewContainerRef })
+  vcr!: ViewContainerRef;
+  ref!: ComponentRef<any>;
   currentUser: User = {} as User;
   isInit: boolean = true;
   profileTitle: string = 'منو ها';
@@ -23,18 +30,17 @@ export class ProfileComponent implements OnInit {
   constructor(
     private storageService: StorageService,
     private authService: AuthService,
-    private snackBar: MatSnackBar,
-  ) {
-  }
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
-    this.currentUser = this.storageService.getUser();
+    this.currentUser = this.storageService.getUserToken();
   }
 
   changeChild(componentName: string) {
     if (!this.isInit) {
-      const index = this.vcr.indexOf(this.ref.hostView)
-      if (index != -1) this.vcr.remove(index)
+      const index = this.vcr.indexOf(this.ref.hostView);
+      if (index != -1) this.vcr.remove(index);
     }
     this.isInit = false;
     switch (componentName) {
@@ -65,12 +71,15 @@ export class ProfileComponent implements OnInit {
       },
       error: () => {
         this.openSnackBar('مشکلی پیش آمده است.');
-        window.location.reload();
-      }
+      },
     });
   }
 
   openSnackBar(message: string): void {
-    this.snackBar.open(message, 'بستن', {horizontalPosition: "end", verticalPosition: "top", duration: 8000});
+    this.snackBar.open(message, 'بستن', {
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+      duration: 8000,
+    });
   }
 }

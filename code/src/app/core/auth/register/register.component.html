@@ -1,5 +1,5 @@
 <div class="d-flex flex-column align-items-center justify-content-center h-100 bg-light">
-  <div routerLink="/home" class="d-flex mb-5">
+  <div routerLink="/home" class="d-flex mb-4">
     <img class="logo" src="favicon.ico" width="80" height="80" alt="logo">
     <h1 class="title me-2 fs-high">چیکو</h1>
   </div>
@@ -10,6 +10,26 @@
               (ngSubmit)="registerForm.valid && onSubmit()"
               class="row gy-3 mt-3"
         >
+          <mat-form-field class="col-6" appearance="fill">
+            <mat-label>نام</mat-label>
+            <input matInput formControlName="firstName" name="firstName" type="text" required>
+            <mat-error *ngIf="submitted && registerForm.get('firstName')?.hasError('required')">وارد کردن نام
+              الزامی می باشد.
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('firstName')?.hasError('maxlength')">حداکثر تعداد حروف مجاز ۳۰ می باشد.
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('firstName')?.hasError('invalid')">{{errors.get('firstName')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-6" appearance="fill">
+            <mat-label>نام خانوادگی</mat-label>
+            <input matInput formControlName="lastName" name="lastName" type="text" required>
+            <mat-error *ngIf="submitted && registerForm.get('lastName')?.hasError('required')">وارد کردن نام خانوادگی
+              الزامی می باشد.
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('lastName')?.hasError('maxlength')">حداکثر تعداد حروف مجاز ۳۰ می باشد.
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('lastName')?.hasError('invalid')">{{errors.get('lastName')}}</mat-error>
+          </mat-form-field>
           <mat-form-field class="col-6" appearance="fill">
             <mat-label>نام کاربری</mat-label>
             <input matInput formControlName="username" name="username" type="text" required>
@@ -62,13 +82,15 @@
             <mat-error
               *ngIf="registerForm.get('phone_number')?.hasError('invalid')">{{errors.get('phone_number')}}</mat-error>
           </mat-form-field>
-          <mat-checkbox class="mt-3" color="primary" formControlName="acceptTerms">شرایط و قوانین سایت را می پذیرم.
-            <mat-error *ngIf="submitted && !registerForm.controls['acceptTerms'].value">پذیرش شرایط و قوانین الزامی می
-              باشد.
-            </mat-error>
-          </mat-checkbox>
-          <div class="d-flex mt-4">
-            <button type="submit" class="ms-4" (click)="submitted=true" mat-raised-button color="primary">ثبت</button>
+          <div class="row">
+            <mat-checkbox class="col-6" color="primary" formControlName="acceptTerms">شرایط و قوانین چیکو را می پذیرم.
+              <mat-error *ngIf="submitted && !registerForm.controls['acceptTerms'].value">پذیرش شرایط و قوانین الزامی می
+                باشد.
+              </mat-error>
+            </mat-checkbox>
+            <div class="d-flex col-6">
+              <button type="submit" class="ms-4" (click)="submitted=true" mat-raised-button color="primary">ثبت</button>
+            </div>
           </div>
         </form>
       </mat-step>

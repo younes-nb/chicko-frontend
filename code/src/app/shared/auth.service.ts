@@ -1,58 +1,56 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
-
-const AUTH_API = 'http://localhost:8000/api/auth/';
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json', 'withCredentials': 'true'})
-};
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { BASE_API } from './api';
+import { StorageService } from './storage.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  constructor(
+    private http: HttpClient,
+    private storageService: StorageService
+  ) {}
 
-  constructor(private http: HttpClient) {
-  }
-
-  public register(username: string, password: string, phone_number: string, email: string): Observable<any> {
-    return this.http.post(
-      AUTH_API + 'signup/',
-      {
-        username,
-        password,
-        phone_number,
-        email
-      },
-      httpOptions
-    );
+  public register(
+    first_name: string,
+    last_name: string,
+    username: string,
+    password: string,
+    phone_number: string,
+    email: string
+  ): Observable<any> {
+    return this.http.post(`${BASE_API}account/register/`, {
+      first_name,
+      last_name,
+      username,
+      password,
+      phone_number,
+      email,
+    });
   }
 
   public verify(code: string): Observable<any> {
-    return this.http.post(
-      AUTH_API + 'verify/',
-      {
-        code
-      },
-      httpOptions)
+    return this.http.post(`${BASE_API}account/verify/`, {
+      code,
+    });
   }
 
   public login(username: string, password: string): Observable<any> {
     return this.http.post(
-      AUTH_API + 'signin/',
-      {
-        username,
-        password,
-      },
-      httpOptions
+      `
+      ${BASE_API}auth/token/login/`,
+      { username, password }
     );
   }
 
   public logout(): Observable<any> {
-    return this.http.post(
-      AUTH_API + 'signout/',
-      {},
-      httpOptions
-    );
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: this.storageService.getUserToken(),
+      }),
+    };
+    return this.http.post(`${BASE_API}auth/token/logout/`, {}, httpOptions);
   }
 }

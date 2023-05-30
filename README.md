@@ -1,5 +1,9 @@
 # ChickoFrontend
 
+## Backends
+`https://github.com/oldcorvus/ChickoMenu`
+`https://github.com/oldcorvus/ChickoChat`
+
 ## Build 
 
 ```shell

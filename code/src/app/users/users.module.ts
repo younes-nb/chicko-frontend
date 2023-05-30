@@ -9,6 +9,7 @@ import {CategoriesComponent} from './categories/categories.component';
 import {ProductsComponent} from './products/products.component';
 import {UserInfoComponent} from './user-info/user-info.component';
 import {MatCardModule} from "@angular/material/card";
+import { UsersService } from './users.service';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {MatCardModule} from "@angular/material/card";
     MatButtonModule,
     FontAwesomeModule,
     MatCardModule
-  ]
+  ],
+  providers: [UsersService]
 })
 export class UsersModule {
 }

@@ -1,28 +1,22 @@
-import {Injectable} from '@angular/core';
-import {Observable} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {ChatUser, Message, Room, SupportChatComponent} from "../shared/types";
-
-const CHAT_API = 'http://localhost:8080/';
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ChatUser, Message, Room, SupportChatComponent } from '../shared/types';
+import { CHAT_API } from '../shared/api';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SupportService {
   user: ChatUser = {} as ChatUser;
   userRooms: Room[] = [];
   currentRoom: Room = {} as Room;
   currentRoomHistory: Message[] = [];
-  currenRoomUsers: ChatUser[] = []
+  currenRoomUsers: ChatUser[] = [];
   component: SupportChatComponent = 'register';
   lastMessage: Message = {} as Message;
 
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   public signout() {
     this.user = {} as ChatUser;
@@ -36,7 +30,12 @@ export class SupportService {
     if (this.lastMessage.user_id !== message.user_id) {
       message.isFirst = true;
     }
-    if (this.lastMessage.time === undefined || this.lastMessage.time.getFullYear() !== message.time.getFullYear() || this.lastMessage.time.getMonth() !== message.time.getMonth() || this.lastMessage.time.getDay() !== message.time.getDay()) {
+    if (
+      this.lastMessage.time === undefined ||
+      this.lastMessage.time.getFullYear() !== message.time.getFullYear() ||
+      this.lastMessage.time.getMonth() !== message.time.getMonth() ||
+      this.lastMessage.time.getDay() !== message.time.getDay()
+    ) {
       message.showDate = true;
     }
     this.lastMessage = message;
@@ -57,26 +56,43 @@ export class SupportService {
   }
 
   public register(email: string, name?: string): Observable<any> {
-    return this.http.post(CHAT_API + 'start/', {email, name}, httpOptions);
+    return this.http.post(`${CHAT_API}start/`, {
+      email,
+      name,
+    });
   }
 
   public getUserRooms(userId: string, email: string): Observable<any> {
-    return this.http.post(CHAT_API + 'user-rooms/', {_id: userId, email}, httpOptions);
+    return this.http.post(`${CHAT_API}user-rooms/`, {
+      _id: userId,
+      email,
+    });
   }
 
   public createRoom(userId: string, title: string): Observable<any> {
-    return this.http.post(CHAT_API + 'create-room/', {title, users: [userId]}, httpOptions);
+    return this.http.post(`${CHAT_API}create-room/`, {
+      title,
+      users: [userId],
+    });
   }
 
   public joinRoom(userId: string, roomId: string): Observable<any> {
-    return this.http.post(CHAT_API + 'add-user-room/', {_id: roomId, users: [userId]}, httpOptions);
+    return this.http.post(`${CHAT_API}add-user-room/`, {
+      _id: roomId,
+      users: [userId],
+    });
   }
 
   public getRoomHistory(roomId: string): Observable<any> {
-    return this.http.post(CHAT_API + 'room-history/', {_id: roomId}, httpOptions);
+    return this.http.post(`${CHAT_API}room-history/`, {
+      _id: roomId,
+    });
   }
 
   public getRoomUsersDetails(users: string[], roomId: string): Observable<any> {
-    return this.http.post(CHAT_API + 'room-user-details/', {_id: roomId, users}, httpOptions);
+    return this.http.post(`${CHAT_API}room-user-details/`, {
+      _id: roomId,
+      users,
+    });
   }
 }

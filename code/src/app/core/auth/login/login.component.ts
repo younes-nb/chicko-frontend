@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../../shared/auth.service";
-import {StorageService} from "../../../shared/storage.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../../shared/auth.service';
+import { StorageService } from '../../../shared/storage.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({
@@ -21,31 +21,36 @@ export class LoginComponent implements OnInit {
     private storageService: StorageService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
-      this.router.navigate(['profile'])
+      this.router.navigate(['profile']);
     }
   }
 
   onSubmit(): void {
-    this.authService.login(
-      this.loginForm.controls['username'].value,
-      this.loginForm.controls['password'].value,
-    ).subscribe({
-      next: (data: any) => {
-        this.storageService.saveUser(data);
-        this.router.navigate(['profile'])
-      },
-      error: () => {
-        this.openSnackBar('مشکلی پیش آمده است.');
-      }
-    });
+    this.authService
+      .login(
+        this.loginForm.controls['username'].value,
+        this.loginForm.controls['password'].value
+      )
+      .subscribe({
+        next: (data: any) => {
+          this.storageService.saveUser(data);
+          this.router.navigate(['profile']);
+        },
+        error: () => {
+          this.openSnackBar('مشکلی پیش آمده است.');
+        },
+      });
   }
 
   openSnackBar(message: string): void {
-    this.snackBar.open(message, 'بستن', {horizontalPosition: "end", verticalPosition: "top", duration: 8000});
+    this.snackBar.open(message, 'بستن', {
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+      duration: 8000,
+    });
   }
 }
