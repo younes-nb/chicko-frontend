@@ -1,22 +1,24 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {SupportService} from "../support.service";
-import {ChatUser, Room, RoomDialogData} from "../../shared/types";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
+import { Component, Inject, OnInit } from '@angular/core';
+import { SupportService } from '../support.service';
+import { ChatUser, Room, RoomDialogData } from '../../shared/types';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
-  styleUrls: ['./rooms.component.scss']
+  styleUrls: ['./rooms.component.scss'],
 })
 export class RoomsComponent implements OnInit {
-  constructor(private supportService: SupportService, private snackBar: MatSnackBar, public dialog: MatDialog) {
-  }
+  constructor(
+    private supportService: SupportService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    this.updateUserRooms()
+    this.updateUserRooms();
   }
 
   getUser(): ChatUser {
@@ -28,18 +30,10 @@ export class RoomsComponent implements OnInit {
   }
 
   updateUserRooms(): void {
-    this.supportService.getUserRooms(this.supportService.user._id, this.supportService.user.email).subscribe({
-      next: data => {
-        data.data.map((room: any) => {
-          room.createdAt = new Date(Date.parse(room.createdAt));
-          room.updatedAt = new Date(Date.parse(room.updatedAt));
-        });
-        this.supportService.userRooms = data.data;
-      },
-      error: () => {
-        this.openSnackBar('مشکلی پیش آمده است.');
-      }
-    })
+    this.supportService.getUserRooms(
+      this.supportService.user._id,
+      this.supportService.user.email
+    );
   }
 
   signout(): void {
@@ -50,19 +44,12 @@ export class RoomsComponent implements OnInit {
     const dialogRef = this.dialog.open(RoomDialog, {
       data: {
         title: 'افزودن گفتگوی جدید',
-        label: 'عنوان گفتگو'
-      }
+        label: 'عنوان گفتگو',
+      },
     });
-    dialogRef.afterClosed().subscribe(title => {
+    dialogRef.afterClosed().subscribe((title) => {
       if (title) {
-        this.supportService.createRoom(this.getUser()._id, title).subscribe({
-          next: () => {
-            this.updateUserRooms();
-          },
-          error: () => {
-            this.openSnackBar('مشکلی پیش آمده است.');
-          }
-        });
+        this.supportService.createRoom(this.getUser()._id, title);
       }
     });
   }
@@ -71,50 +58,27 @@ export class RoomsComponent implements OnInit {
     const dialogRef = this.dialog.open(RoomDialog, {
       data: {
         title: 'پیوستن به گفتگو',
-        label: 'شناسه گفتگو'
-      }
+        label: 'شناسه گفتگو',
+      },
     });
-    dialogRef.afterClosed().subscribe(roomId => {
+    dialogRef.afterClosed().subscribe((roomId) => {
       if (roomId) {
-        this.supportService.joinRoom(this.getUser()._id, roomId).subscribe({
-          next: () => {
-            this.updateUserRooms();
-          },
-          error: () => {
-            this.openSnackBar('مشکلی پیش آمده است.');
-          }
-        });
+        this.supportService.joinRoom(this.getUser()._id, roomId);
       }
     });
   }
 
   startChat(room: Room): void {
     this.supportService.currentRoom = room;
-    this.supportService.getRoomHistory(room._id).subscribe({
-      next: roomData => {
-        this.supportService.setRoomHistory(roomData);
-        this.supportService.getRoomUsersDetails(this.supportService.currentRoom.users, this.supportService.currentRoom._id).subscribe({
-          next: data => {
-            this.supportService.currenRoomUsers = data.users;
-            this.supportService.component = 'chat';
-          },
-          error: () => {
-            this.openSnackBar('مشکلی پیش آمده است.');
-          }
-        });
-      },
-      error: () => {
-        this.openSnackBar('مشکلی پیش آمده است.');
-      }
-    });
+    this.supportService.getRoomHistory(room._id);
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.supportService.userRooms, event.previousIndex, event.currentIndex);
-  }
-
-  openSnackBar(message: string): void {
-    this.snackBar.open(message, 'بستن', {horizontalPosition: "end", verticalPosition: "top", duration: 8000});
+    moveItemInArray(
+      this.supportService.userRooms,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 }
 
@@ -123,9 +87,7 @@ export class RoomsComponent implements OnInit {
   templateUrl: 'room-dialog.html',
 })
 export class RoomDialog {
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data: RoomDialogData) {
-  }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: RoomDialogData) {}
 
   roomForm: FormGroup = new FormGroup({
     input: new FormControl('', Validators.required),

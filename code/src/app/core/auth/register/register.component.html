@@ -1,246 +1,539 @@
-<div class="d-flex flex-column align-items-center justify-content-center h-100 bg-light">
+<div
+  class="d-flex flex-column align-items-center justify-content-center h-100 bg-light"
+>
   <div routerLink="/home" class="d-flex mb-4">
-    <img class="logo" src="favicon.ico" width="80" height="80" alt="logo">
+    <img class="logo" src="favicon.ico" width="80" height="80" alt="logo" />
     <h1 class="title me-2 fs-high">چیکو</h1>
   </div>
-  <section class="vw-75 row p-1 d-flex align-items-center bg-white shadow rounded">
+  <section
+    class="vw-75 row p-1 d-flex align-items-center bg-white shadow rounded"
+  >
     <mat-stepper linear #stepper class="col-8 p-0 py-2">
-      <mat-step [stepControl]="registerForm" [editable]="false" label="ثبت اطلاعات">
-        <form [formGroup]="registerForm"
-              (ngSubmit)="registerForm.valid && onSubmit()"
-              class="row gy-3 mt-3"
+      <mat-step
+        [stepControl]="registerForm"
+        [editable]="false"
+        label="ثبت اطلاعات"
+      >
+        <form
+          [formGroup]="registerForm"
+          (ngSubmit)="registerForm.valid && onSubmit()"
+          class="row gy-3 mt-3"
         >
           <mat-form-field class="col-6" appearance="fill">
             <mat-label>نام</mat-label>
-            <input matInput formControlName="firstName" name="firstName" type="text" required>
-            <mat-error *ngIf="submitted && registerForm.get('firstName')?.hasError('required')">وارد کردن نام
-              الزامی می باشد.
+            <input
+              matInput
+              formControlName="firstName"
+              name="firstName"
+              type="text"
+              required
+            />
+            <mat-error
+              *ngIf="
+                submitted && registerForm.get('firstName')?.hasError('required')
+              "
+              >وارد کردن نام الزامی می باشد.
             </mat-error>
-            <mat-error *ngIf="registerForm.get('firstName')?.hasError('maxlength')">حداکثر تعداد حروف مجاز ۳۰ می باشد.
+            <mat-error
+              *ngIf="registerForm.get('firstName')?.hasError('maxlength')"
+              >حداکثر تعداد حروف مجاز ۳۰ می باشد.
             </mat-error>
-            <mat-error *ngIf="registerForm.get('firstName')?.hasError('invalid')">{{errors.get('firstName')}}</mat-error>
+            <mat-error
+              *ngIf="registerForm.get('firstName')?.hasError('invalid')"
+              >{{ errors.get("firstName") }}</mat-error
+            >
           </mat-form-field>
           <mat-form-field class="col-6" appearance="fill">
             <mat-label>نام خانوادگی</mat-label>
-            <input matInput formControlName="lastName" name="lastName" type="text" required>
-            <mat-error *ngIf="submitted && registerForm.get('lastName')?.hasError('required')">وارد کردن نام خانوادگی
-              الزامی می باشد.
+            <input
+              matInput
+              formControlName="lastName"
+              name="lastName"
+              type="text"
+              required
+            />
+            <mat-error
+              *ngIf="
+                submitted && registerForm.get('lastName')?.hasError('required')
+              "
+              >وارد کردن نام خانوادگی الزامی می باشد.
             </mat-error>
-            <mat-error *ngIf="registerForm.get('lastName')?.hasError('maxlength')">حداکثر تعداد حروف مجاز ۳۰ می باشد.
+            <mat-error
+              *ngIf="registerForm.get('lastName')?.hasError('maxlength')"
+              >حداکثر تعداد حروف مجاز ۳۰ می باشد.
             </mat-error>
-            <mat-error *ngIf="registerForm.get('lastName')?.hasError('invalid')">{{errors.get('lastName')}}</mat-error>
+            <mat-error
+              *ngIf="registerForm.get('lastName')?.hasError('invalid')"
+              >{{ errors.get("lastName") }}</mat-error
+            >
           </mat-form-field>
           <mat-form-field class="col-6" appearance="fill">
             <mat-label>نام کاربری</mat-label>
-            <input matInput formControlName="username" name="username" type="text" required>
-            <mat-error *ngIf="submitted && registerForm.get('username')?.hasError('required')">وارد کردن نام کاربری
-              الزامی می باشد.
+            <input
+              matInput
+              formControlName="username"
+              name="username"
+              type="text"
+              required
+            />
+            <mat-error
+              *ngIf="
+                submitted && registerForm.get('username')?.hasError('required')
+              "
+              >وارد کردن نام کاربری الزامی می باشد.
             </mat-error>
-            <mat-error *ngIf="registerForm.get('username')?.hasError('maxlength')">حداکثر تعداد حروف مجاز ۳۰ می باشد.
+            <mat-error
+              *ngIf="registerForm.get('username')?.hasError('maxlength')"
+              >حداکثر تعداد حروف مجاز ۳۰ می باشد.
             </mat-error>
-            <mat-error *ngIf="registerForm.get('username')?.hasError('minlength')">حداقل تعداد حروف مجاز ۶ می باشد.
+            <mat-error
+              *ngIf="registerForm.get('username')?.hasError('minlength')"
+              >حداقل تعداد حروف مجاز ۶ می باشد.
             </mat-error>
-            <mat-error *ngIf="registerForm.get('username')?.hasError('invalid')">{{errors.get('username')}}</mat-error>
+            <mat-error
+              *ngIf="registerForm.get('username')?.hasError('invalid')"
+              >{{ errors.get("username") }}</mat-error
+            >
           </mat-form-field>
           <mat-form-field class="col-6" appearance="fill">
             <mat-label>ایمیل</mat-label>
-            <input matInput formControlName="email" name="email" type="email" required>
-            <mat-error *ngIf="submitted && registerForm.get('email')?.hasError('required')">وارد کردن ایمیل الزامی می
-              باشد.
+            <input
+              matInput
+              formControlName="email"
+              name="email"
+              type="email"
+              required
+            />
+            <mat-error
+              *ngIf="
+                submitted && registerForm.get('email')?.hasError('required')
+              "
+              >وارد کردن ایمیل الزامی می باشد.
             </mat-error>
-            <mat-error *ngIf="registerForm.get('email')?.hasError('email')">ایمیل معتبر نیست.</mat-error>
-            <mat-error *ngIf="registerForm.get('email')?.hasError('invalid')">{{errors.get('email')}}</mat-error>
+            <mat-error *ngIf="registerForm.get('email')?.hasError('email')"
+              >ایمیل معتبر نیست.</mat-error
+            >
+            <mat-error *ngIf="registerForm.get('email')?.hasError('invalid')">{{
+              errors.get("email")
+            }}</mat-error>
           </mat-form-field>
           <mat-form-field class="col-6" appearance="fill">
             <mat-label>رمز عبور</mat-label>
-            <input matInput formControlName="password" name="password" type="password" required>
-            <mat-error *ngIf="submitted && registerForm.get('password')?.hasError('required')">وارد کردن رمز عبور الزامی
-              می باشد.
+            <input
+              matInput
+              formControlName="password"
+              name="password"
+              type="password"
+              required
+            />
+            <mat-error
+              *ngIf="
+                submitted && registerForm.get('password')?.hasError('required')
+              "
+              >وارد کردن رمز عبور الزامی می باشد.
             </mat-error>
-            <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">رمز عبور حداقل باید شامل ۸ حرف باشد.
+            <mat-error
+              *ngIf="registerForm.get('password')?.hasError('minlength')"
+              >رمز عبور حداقل باید شامل ۸ حرف باشد.
             </mat-error>
-            <mat-error class="fs-6" *ngIf="registerForm.get('password')?.hasError('maxlength')">رمز عبور حداکثر باید
-              شامل ۳۲ حرف باشد.
+            <mat-error
+              class="fs-6"
+              *ngIf="registerForm.get('password')?.hasError('maxlength')"
+              >رمز عبور حداکثر باید شامل ۳۲ حرف باشد.
             </mat-error>
-            <mat-error *ngIf="registerForm.get('password')?.hasError('invalid')">{{errors.get('password')}}</mat-error>
+            <mat-error
+              *ngIf="registerForm.get('password')?.hasError('invalid')"
+              >{{ errors.get("password") }}</mat-error
+            >
           </mat-form-field>
           <mat-form-field class="col-6" appearance="fill">
             <mat-label>تکرار رمز عبور</mat-label>
-            <input matInput formControlName="confirmPassword" name="confirmPassword" type="password"
-                   pattern="{{registerForm.value.password}}" required>
-            <mat-error *ngIf="submitted && confirmPasswordValidator(registerForm)">رمز عبور وارد شده متفاوت می باشد.
+            <input
+              matInput
+              formControlName="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              pattern="{{ registerForm.value.password }}"
+              required
+            />
+            <mat-error
+              *ngIf="submitted && confirmPasswordValidator(registerForm)"
+              >رمز عبور وارد شده متفاوت می باشد.
             </mat-error>
           </mat-form-field>
           <mat-form-field class="col-6" appearance="fill">
             <mat-label>شماره تلفن</mat-label>
-            <input matInput formControlName="phone_number" name="phone_number" type="tel" required>
-            <mat-error *ngIf="submitted && registerForm.get('phone_number')?.hasError('required')">وارد کردن شماره تلفن
-              الزامی
-              می باشد.
-            </mat-error>
-            <mat-error *ngIf="registerForm.get('phone_number')?.hasError('pattern')">شماره تلفن معتبر نیست.</mat-error>
+            <input
+              matInput
+              formControlName="phone_number"
+              name="phone_number"
+              type="tel"
+              required
+            />
             <mat-error
-              *ngIf="registerForm.get('phone_number')?.hasError('invalid')">{{errors.get('phone_number')}}</mat-error>
+              *ngIf="
+                submitted &&
+                registerForm.get('phone_number')?.hasError('required')
+              "
+              >وارد کردن شماره تلفن الزامی می باشد.
+            </mat-error>
+            <mat-error
+              *ngIf="registerForm.get('phone_number')?.hasError('pattern')"
+              >شماره تلفن معتبر نیست.</mat-error
+            >
+            <mat-error
+              *ngIf="registerForm.get('phone_number')?.hasError('invalid')"
+              >{{ errors.get("phone_number") }}</mat-error
+            >
           </mat-form-field>
           <div class="row">
-            <mat-checkbox class="col-6" color="primary" formControlName="acceptTerms">شرایط و قوانین چیکو را می پذیرم.
-              <mat-error *ngIf="submitted && !registerForm.controls['acceptTerms'].value">پذیرش شرایط و قوانین الزامی می
-                باشد.
+            <mat-checkbox
+              class="col-6"
+              color="primary"
+              formControlName="acceptTerms"
+              >شرایط و قوانین چیکو را می پذیرم.
+              <mat-error
+                *ngIf="submitted && !registerForm.controls['acceptTerms'].value"
+                >پذیرش شرایط و قوانین الزامی می باشد.
               </mat-error>
             </mat-checkbox>
             <div class="d-flex col-6">
-              <button type="submit" class="ms-4" (click)="submitted=true" mat-raised-button color="primary">ثبت</button>
+              <button
+                type="submit"
+                class="ms-4"
+                (click)="submitted = true"
+                mat-raised-button
+                color="primary"
+              >
+                ثبت
+              </button>
             </div>
           </div>
         </form>
       </mat-step>
-      <mat-step [stepControl]="verificationForm" [editable]="false" label="تایید شماره تلفن">
-        <form class="mt-3" [formGroup]="verificationForm" (ngSubmit)="verificationForm.valid && verify()">
-          <p class="fs-5-5 mb-5">لطفا کد تایید ارسال شده به شماره
-            ی <strong>{{numLatinToFa(registerForm.get('phone_number')?.value)}}</strong>
-            را وارد کنید.</p>
+      <mat-step
+        [stepControl]="verificationForm"
+        [editable]="false"
+        label="تایید شماره تلفن"
+      >
+        <form
+          class="mt-3"
+          [formGroup]="verificationForm"
+          (ngSubmit)="verificationForm.valid && verify()"
+        >
+          <p class="fs-5-5 mb-5">
+            لطفا کد تایید ارسال شده به شماره ی
+            <strong>{{
+              numLatinToFa(registerForm.get("phone_number")?.value)
+            }}</strong>
+            را وارد کنید.
+          </p>
           <mat-form-field class="col-6" appearance="fill">
             <mat-label>کد تایید</mat-label>
-            <input matInput formControlName="verificationCode" name="verificationCode" type="number" required>
-            <mat-error *ngIf="verificationForm.get('verificationCode')?.hasError('required')">وارد کردن کد تایید الزامی
-              می باشد.
-            </mat-error>
-            <mat-error *ngIf="verificationForm.get('verificationCode')?.hasError('pattern')">کد تایید معتبر نیست.
+            <input
+              matInput
+              formControlName="verificationCode"
+              name="verificationCode"
+              type="number"
+              required
+            />
+            <mat-error
+              *ngIf="
+                verificationForm.get('verificationCode')?.hasError('required')
+              "
+              >وارد کردن کد تایید الزامی می باشد.
             </mat-error>
             <mat-error
-              *ngIf="verificationForm.get('verificationCode')?.hasError('invalid')">{{errors.get('verificationCode')}}</mat-error>
+              *ngIf="
+                verificationForm.get('verificationCode')?.hasError('pattern')
+              "
+              >کد تایید معتبر نیست.
+            </mat-error>
+            <mat-error
+              *ngIf="
+                verificationForm.get('verificationCode')?.hasError('invalid')
+              "
+              >{{ errors.get("verificationCode") }}</mat-error
+            >
           </mat-form-field>
           <div class="mt-4">
-            <button type="submit" mat-raised-button color="primary">تایید</button>
+            <button type="submit" mat-raised-button color="primary">
+              تایید
+            </button>
           </div>
         </form>
       </mat-step>
     </mat-stepper>
     <div class="col-4 p-0">
-      <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
-           xmlns:xlink="http://www.w3.org/1999/xlink"
-           viewBox="0 0 351.9 396.01" width="406" height="306" class="illustration styles_illustrationTablet__1DWOa">
+      <svg
+        id="Layer_1"
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 351.9 396.01"
+        width="406"
+        height="306"
+        class="illustration styles_illustrationTablet__1DWOa"
+      >
         <defs>
-          <linearGradient id="linear-gradient" x1="258.91" y1="124.54" x2="299.95" y2="123.91"
-                          gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="linear-gradient"
+            x1="258.91"
+            y1="124.54"
+            x2="299.95"
+            y2="123.91"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop offset="0.01"></stop>
             <stop offset="0.13" stop-opacity="0.69"></stop>
             <stop offset="1" stop-opacity="0"></stop>
           </linearGradient>
-          <linearGradient id="linear-gradient-2" x1="383.34" y1="84.62" x2="71.09" y2="410.77"
-                          xlink:href="#linear-gradient"></linearGradient>
-          <linearGradient id="linear-gradient-3" x1="299.88" y1="206.77" x2="210.25" y2="300.4"
-                          xlink:href="#linear-gradient"></linearGradient>
-          <linearGradient id="linear-gradient-4" x1="169.25" y1="193.08" x2="290.38" y2="268.95"
-                          xlink:href="#linear-gradient"></linearGradient>
-          <linearGradient id="linear-gradient-5" x1="226.76" y1="234.44" x2="321.06" y2="234.44"
-                          xlink:href="#linear-gradient"></linearGradient>
-          <linearGradient id="linear-gradient-6" x1="311.61" y1="323.82" x2="285.66" y2="317.16"
-                          xlink:href="#linear-gradient"></linearGradient>
-          <linearGradient id="linear-gradient-7" x1="300.4" y1="335.06" x2="327.3" y2="335.06"
-                          xlink:href="#linear-gradient"></linearGradient>
-          <linearGradient id="linear-gradient-8" x1="200.19" y1="81.05" x2="227.92" y2="104.12"
-                          xlink:href="#linear-gradient"></linearGradient>
-          <linearGradient id="linear-gradient-9" x1="274.89" y1="85.38" x2="223.64" y2="105.68"
-                          xlink:href="#linear-gradient"></linearGradient>
-          <linearGradient id="linear-gradient-10" x1="188.44" y1="144.76" x2="251.94" y2="142.56"
-                          xlink:href="#linear-gradient"></linearGradient>
-          <linearGradient id="linear-gradient-11" x1="241.5" y1="248.75" x2="312.72" y2="218.8"
-                          xlink:href="#linear-gradient"></linearGradient>
+          <linearGradient
+            id="linear-gradient-2"
+            x1="383.34"
+            y1="84.62"
+            x2="71.09"
+            y2="410.77"
+            xlink:href="#linear-gradient"
+          ></linearGradient>
+          <linearGradient
+            id="linear-gradient-3"
+            x1="299.88"
+            y1="206.77"
+            x2="210.25"
+            y2="300.4"
+            xlink:href="#linear-gradient"
+          ></linearGradient>
+          <linearGradient
+            id="linear-gradient-4"
+            x1="169.25"
+            y1="193.08"
+            x2="290.38"
+            y2="268.95"
+            xlink:href="#linear-gradient"
+          ></linearGradient>
+          <linearGradient
+            id="linear-gradient-5"
+            x1="226.76"
+            y1="234.44"
+            x2="321.06"
+            y2="234.44"
+            xlink:href="#linear-gradient"
+          ></linearGradient>
+          <linearGradient
+            id="linear-gradient-6"
+            x1="311.61"
+            y1="323.82"
+            x2="285.66"
+            y2="317.16"
+            xlink:href="#linear-gradient"
+          ></linearGradient>
+          <linearGradient
+            id="linear-gradient-7"
+            x1="300.4"
+            y1="335.06"
+            x2="327.3"
+            y2="335.06"
+            xlink:href="#linear-gradient"
+          ></linearGradient>
+          <linearGradient
+            id="linear-gradient-8"
+            x1="200.19"
+            y1="81.05"
+            x2="227.92"
+            y2="104.12"
+            xlink:href="#linear-gradient"
+          ></linearGradient>
+          <linearGradient
+            id="linear-gradient-9"
+            x1="274.89"
+            y1="85.38"
+            x2="223.64"
+            y2="105.68"
+            xlink:href="#linear-gradient"
+          ></linearGradient>
+          <linearGradient
+            id="linear-gradient-10"
+            x1="188.44"
+            y1="144.76"
+            x2="251.94"
+            y2="142.56"
+            xlink:href="#linear-gradient"
+          ></linearGradient>
+          <linearGradient
+            id="linear-gradient-11"
+            x1="241.5"
+            y1="248.75"
+            x2="312.72"
+            y2="218.8"
+            xlink:href="#linear-gradient"
+          ></linearGradient>
         </defs>
         <path
           d="M406.19,147.48A70.63,70.63,0,0,1,395,206.08c-9,12.25-21.83,21.41-29.82,34.31-17.27,27.85-8,65.88-23.84,94.57-13.24,24-40.67,35.79-66.14,45.91C255.2,388.81,235,396.8,213.8,400s-44,1.17-62.37-9.86c-15.15-9.07-26.28-23.45-36.56-37.81C89.6,317,66.76,278.53,59,235.79s1.92-90.68,33.74-120.25c15.49-14.4,35.78-24.33,46.71-42.44,11.47-19,11.63-45.51,29.46-58.75,6.58-4.89,14.76-7.16,22.88-8.24A92.17,92.17,0,0,1,248.4,17c17.47,9.79,31.81,25.35,50.84,31.61,24.63,8.11,56.24,1.88,72.61,25.88C385,93.79,400.35,125,406.19,147.48Z"
-          transform="translate(-56.44 -5.34)" fill="#1e88e5" opacity="0.18" style="isolation: isolate;"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#1e88e5"
+          opacity="0.18"
+          style="isolation: isolate"
+        ></path>
         <path
           d="M301.39,133.82a5.7,5.7,0,0,1-1.15,1.62,27.65,27.65,0,0,1-14.16,8,25.86,25.86,0,0,1-5.83.66c-1.15-7.42-2.32-14.85-3.22-22.3h0c-.71-5.82-1.24-11.63-1.49-17.47-.17-3.66-8.1-16.42-6.48-19.84,1.79-3.76,14.68,9.11,16.13,11.56,8.05,13.5,10.94,23.94,16.46,35.55A2.94,2.94,0,0,1,301.39,133.82Z"
-          transform="translate(-56.44 -5.34)" fill="#1e88e5"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#1e88e5"
+        ></path>
         <path
           d="M287.38,142.08a9.47,9.47,0,0,1-1.3,1.38,25.86,25.86,0,0,1-5.83.66c-1.15-7.42-2.32-14.85-3.22-22.3h0q.51-8.78,1.85-17.49c-.38,2.43,2.61,7.73,3.42,10.11l3.51,10.37C287.64,130.22,291.55,136.8,287.38,142.08Z"
-          transform="translate(-56.44 -5.34)" fill="url(#linear-gradient)"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="url(#linear-gradient)"
+        ></path>
         <path
           d="M283.07,154.77c.8,4.88,1.82,9.82,4.23,14.14,1.24,2.22,3.09,4.4,5.6,4.79a8.65,8.65,0,0,0,4.1-.61,28.52,28.52,0,0,0,7.52-3.92,56.68,56.68,0,0,0,6.19-5.51,76.29,76.29,0,0,0,7.93-8.74c1.11-1.5,2.12-3.08,3.33-4.51,5-5.95,13-8.62,18.67-13.93,1.53-1.42,4.63-7.92,4.4-10-2.08-1.2-6.35,3.63-8.65,4.33s-4.45,1.84-6.76,2.49a16.54,16.54,0,0,1-8.47.11c-.94-.24-2.06-15.07-3-14.73a3.48,3.48,0,0,0-1.24.88c-1.94,2-3,19.07-4.61,21.29-2.21,3-5.27,5.28-8.3,7.46-.27.19-.61.39-.91.24a.91.91,0,0,1-.36-.62c-.79-2.93-1.68-5.84-2.65-8.71-.68-2-1.64-4.2-3.65-4.8-1.79-.53-3.65.48-5.25,1.45-2.06,1.26-4.14,2.5-6.19,3.77-1.14.7-2.52,1.38-3.06,2.67-.66,1.55-.1,3.69.09,5.28C282.33,150,282.68,152.39,283.07,154.77Z"
-          transform="translate(-56.44 -5.34)" fill="#f5bcba"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#f5bcba"
+        ></path>
         <path
           d="M301.32,290.78c0,3.06-.15,6.07-.42,9.06a100.21,100.21,0,0,1-200-8c0-.34,0-.67,0-1a100.22,100.22,0,1,1,200.43,0Z"
-          transform="translate(-56.44 -5.34)" fill="#1e88e5"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#1e88e5"
+        ></path>
         <path
           d="M301.32,290.78c0,3.06-.15,6.07-.42,9.06-23.06,15.69-57,25.59-94.85,25.59-44,0-82.66-13.37-105.15-33.64,0-.34,0-.67,0-1a100.22,100.22,0,1,1,200.43,0Z"
-          transform="translate(-56.44 -5.34)" fill="url(#linear-gradient-2)"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="url(#linear-gradient-2)"
+        ></path>
         <path
           d="M247.06,251.6c4,1.44,8.35,2.47,11.63,5.2,2.91,2.41,4.68,5.9,6.11,9.39a74.79,74.79,0,0,1,5,37c-.4,3.34-1,6.78-.13,10s3.84,6.24,7.18,5.84c4.63-9.2,4.73-19.94,4.74-30.24,0-7.52,0-15.2-2.52-22.29-2.06-5.84-5.7-11-9.46-15.91-13.71-18-30.3-34.79-51.42-42.88a4.17,4.17,0,0,0-2.84-.35c-4.35,1.59-3.64,9.33-1.95,12.44a115.45,115.45,0,0,0,8,12.39A54.91,54.91,0,0,0,247.06,251.6Z"
-          transform="translate(-56.44 -5.34)" fill="url(#linear-gradient-3)"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="url(#linear-gradient-3)"
+        ></path>
         <path
           d="M207.51,229a23.71,23.71,0,0,1,.52-4,3.66,3.66,0,0,1,2.67-2.71,12.81,12.81,0,0,0,1.64-.15c1.11-.34,1.58-1.63,1.9-2.74L217.79,207c.68-2.4,1.37-4.92.85-7.35-.82-3.8-4.31-6.37-7.71-8.23-2.47-1.36-5.25-2.57-8-2.06-4.26.79-6.73,5.19-8.32,9.22a43.46,43.46,0,0,0-3.37,13.59c-.28,5.41-.74,18.66,2.61,23.39C198.49,242.2,206.77,235,207.51,229Z"
-          transform="translate(-56.44 -5.34)" fill="url(#linear-gradient-4)"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="url(#linear-gradient-4)"
+        ></path>
         <path
           d="M261.45,213.35c9.07,3.07,18.74,4.36,27.48,8.27a2.13,2.13,0,0,1,1.3,1.11,2.19,2.19,0,0,1-.16,1.28,239.87,239.87,0,0,0-12.36,68,51,51,0,0,0,15.84.35,3.61,3.61,0,0,0,1.67-.53,3.69,3.69,0,0,0,1.06-1.58q12.69-28.49,22.78-58.05c1.19-3.49,2.37-7.14,1.89-10.8-.69-5.33-4.7-9.53-8.51-13.32l-29.69-29.62a8.05,8.05,0,0,0-2.72-2,7.74,7.74,0,0,0-3.68-.18c-11.71,1.45-27.7,1.9-49.22,1-2.79-.12,11,15.77,12.15,18.82.92,2.42,3.83,5.54,5.61,7.42C249.35,208.2,255.37,211.29,261.45,213.35Z"
-          transform="translate(-56.44 -5.34)" fill="#525263"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#525263"
+        ></path>
         <path
           d="M261.45,213.35c9.07,3.07,18.74,4.36,27.48,8.27a2.13,2.13,0,0,1,1.3,1.11,2.19,2.19,0,0,1-.16,1.28,239.87,239.87,0,0,0-12.36,68,51,51,0,0,0,15.84.35,3.61,3.61,0,0,0,1.67-.53,3.69,3.69,0,0,0,1.06-1.58q12.69-28.49,22.78-58.05c1.19-3.49,2.37-7.14,1.89-10.8-.69-5.33-4.7-9.53-8.51-13.32l-29.69-29.62a8.05,8.05,0,0,0-2.72-2,7.74,7.74,0,0,0-3.68-.18c-11.71,1.45-27.7,1.9-49.22,1-2.79-.12,11,15.77,12.15,18.82.92,2.42,3.83,5.54,5.61,7.42C249.35,208.2,255.37,211.29,261.45,213.35Z"
-          transform="translate(-56.44 -5.34)" fill="url(#linear-gradient-5)"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="url(#linear-gradient-5)"
+        ></path>
         <path
           d="M276.19,305.14a10.05,10.05,0,0,0-1.45,3.73,59.94,59.94,0,0,0-1.18,7.05c-.2,1.84-.27,3.84.78,5.35s2.78,2.06,4.4,2.69a99.47,99.47,0,0,1,11.86,5.83c2.58,1.42,5.27,2.89,8.21,3s6.19-1.5,6.86-4.36a8.35,8.35,0,0,0-.34-4.11,32.59,32.59,0,0,0-9.1-15,13.13,13.13,0,0,0-2.53-1.93,16.51,16.51,0,0,0-2.75-1.12,59.8,59.8,0,0,0-8.19-2.35C280.33,303.53,277.87,302.81,276.19,305.14Z"
-          transform="translate(-56.44 -5.34)" fill="#2e2e3f"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#2e2e3f"
+        ></path>
         <path
           d="M276.19,305.14a10.05,10.05,0,0,0-1.45,3.73,59.94,59.94,0,0,0-1.18,7.05c-.2,1.84-.27,3.84.78,5.35s2.78,2.06,4.4,2.69a99.47,99.47,0,0,1,11.86,5.83c2.58,1.42,5.27,2.89,8.21,3s6.19-1.5,6.86-4.36a8.35,8.35,0,0,0-.34-4.11,32.59,32.59,0,0,0-9.1-15,13.13,13.13,0,0,0-2.53-1.93,16.51,16.51,0,0,0-2.75-1.12,59.8,59.8,0,0,0-8.19-2.35C280.33,303.53,277.87,302.81,276.19,305.14Z"
-          transform="translate(-56.44 -5.34)" fill="url(#linear-gradient-6)"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="url(#linear-gradient-6)"
+        ></path>
         <path
           d="M279.16,292.76a66.11,66.11,0,0,0-1.18,12c0,1.77.12,3.73,1.39,5a5.79,5.79,0,0,0,4.26,1.22,16.5,16.5,0,0,0,5.37-1.11,2.35,2.35,0,0,0,1-.62,2.45,2.45,0,0,0,.41-.95,71.59,71.59,0,0,0,2.41-17.54,4.53,4.53,0,0,0-.55-2.68c-.95-1.33-2.92-1.27-4.52-.95a36.89,36.89,0,0,0-6,1.83C279.91,289.6,279.53,290.86,279.16,292.76Z"
-          transform="translate(-56.44 -5.34)" fill="#f5bcba"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#f5bcba"
+        ></path>
         <path
           d="M298.88,311.56a38.27,38.27,0,0,1,1.76,5.47c.31,1.45.49,3,1.42,4.16,1.18,1.45,3.23,1.82,5.1,1.85a10.32,10.32,0,0,0,4.51-.76,3.5,3.5,0,0,0,1.76-1.52,4.28,4.28,0,0,0,.28-2.16A34.5,34.5,0,0,0,310,304a56.15,56.15,0,0,0-4.44-6.72,4.17,4.17,0,0,0-2.43-2,4,4,0,0,0-2.91,1.11c-1.65,1.24-5.28,3.31-4.9,5.66C295.8,305.18,297.76,308.59,298.88,311.56Z"
-          transform="translate(-56.44 -5.34)" fill="#f5bcba"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#f5bcba"
+        ></path>
         <path
           d="M311,315.25a37.74,37.74,0,0,0-3.29,2.07c-1.65.91-3.59,1.09-5.4,1.61a2.42,2.42,0,0,0-1.26.67,2.36,2.36,0,0,0-.45,1.15,25.08,25.08,0,0,0,.33,8.19q1.38,8.74,3.22,17.41c.51,2.38,1.12,4.89,2.85,6.6s4.36,2.3,6.82,2.37a14.23,14.23,0,0,0,6.7-1.25,12.58,12.58,0,0,0,6.44-8.84,19.49,19.49,0,0,0-1.32-11.09,54.45,54.45,0,0,0-3.58-6.91q-2.7-4.64-5.38-9.28C315.32,315.59,314.08,313.94,311,315.25Z"
-          transform="translate(-56.44 -5.34)" fill="#2e2e3f"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#2e2e3f"
+        ></path>
         <path
           d="M311,315.25a37.74,37.74,0,0,0-3.29,2.07c-1.65.91-3.59,1.09-5.4,1.61a2.42,2.42,0,0,0-1.26.67,2.36,2.36,0,0,0-.45,1.15,25.08,25.08,0,0,0,.33,8.19q1.38,8.74,3.22,17.41c.51,2.38,1.12,4.89,2.85,6.6s4.36,2.3,6.82,2.37a14.23,14.23,0,0,0,6.7-1.25,12.58,12.58,0,0,0,6.44-8.84,19.49,19.49,0,0,0-1.32-11.09,54.45,54.45,0,0,0-3.58-6.91q-2.7-4.64-5.38-9.28C315.32,315.59,314.08,313.94,311,315.25Z"
-          transform="translate(-56.44 -5.34)" fill="url(#linear-gradient-7)"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="url(#linear-gradient-7)"
+        ></path>
         <path
           d="M189.84,132.21a27.32,27.32,0,0,0-1.74,6.86,164.27,164.27,0,0,0-1.82,18.39c-.5,11.76.26,23.54-.07,35.3-.34,12.23-1.78,24.91,2.62,36.32a14.07,14.07,0,0,0,3.38,5.5,6.4,6.4,0,0,0,6,1.64,6.66,6.66,0,0,0,4-4.35,19.83,19.83,0,0,0,.72-6.06l.16-11.18c0-.23,0-.5.23-.6a.58.58,0,0,1,.57.11,30.35,30.35,0,0,1,2.45,2.37c.89.72,2.31,1.07,3.1.24a2.59,2.59,0,0,0,.47-2.06c-.48-4.84-4.7-8.33-7.21-12.5-3.62-6-3.62-13.56-2.71-20.54,1.13-8.74,3.49-17.27,5.84-25.77l2-7.19c1.51-5.46,3-11.42.8-16.65a13.93,13.93,0,0,0-9.77-8C194.68,123.27,191.35,128.81,189.84,132.21Z"
-          transform="translate(-56.44 -5.34)" fill="#f5bcba"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#f5bcba"
+        ></path>
         <path
           d="M282.68,177.68c-1.29,3.47-8.57-.58-12.73,1.5-7.94,4-17-.11-25.85,0-9.42.17-15.92,9.45-25.27,10.63a5.1,5.1,0,0,1-2.06,0c-1.29-.38-2.05-1.67-2.6-2.88a25.15,25.15,0,0,1-1.72-5.83c-1.16-6.64,0-13.76,1.24-20.51q1.56-8.58,3.11-17.17,1.8-10,3.63-20.12a103.26,103.26,0,0,1,3-13.17c.24-.75.49-1.48.76-2.2A114.66,114.66,0,0,1,232.58,91c2-3.47,4-7,7.09-9.63,3.45-2.91,7.9-4.36,12.37-5.06a25,25,0,0,1,12.07.7c2.23.78,3.07,3.14,4.84,4.59a30.21,30.21,0,0,1,5.95,5.84,26.55,26.55,0,0,1,3.65,8.74c6.27,24.38-2.8,50.68,3.16,75.13C282.39,174.18,283.71,174.94,282.68,177.68Z"
-          transform="translate(-56.44 -5.34)" fill="#1e88e5"></path>
-        <polygon points="217.72 86.7 218.5 91.81 215.5 90.14 215.5 103.68 212.08 88.64 215.39 83.82 217.72 86.7"
-                 fill="url(#linear-gradient-8)"></polygon>
-        <path d="M248.76,91.71l1.89,1,3,2.61-8,21.46s11.62-17.88,12-27a50.63,50.63,0,0,0-2.07-16.6Z"
-              transform="translate(-56.44 -5.34)" fill="url(#linear-gradient-9)"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#1e88e5"
+        ></path>
+        <polygon
+          points="217.72 86.7 218.5 91.81 215.5 90.14 215.5 103.68 212.08 88.64 215.39 83.82 217.72 86.7"
+          fill="url(#linear-gradient-8)"
+        ></polygon>
+        <path
+          d="M248.76,91.71l1.89,1,3,2.61-8,21.46s11.62-17.88,12-27a50.63,50.63,0,0,0-2.07-16.6Z"
+          transform="translate(-56.44 -5.34)"
+          fill="url(#linear-gradient-9)"
+        ></path>
         <path
           d="M223.14,153.22a57.73,57.73,0,0,0,0,14.8c.41,3.09,1.07,6.17.86,9.27a2.71,2.71,0,0,1-.55,1.68,2.93,2.93,0,0,1-1.65.65q-4.69.74-9.39,1.51c-1.16-6.64,0-13.76,1.24-20.51q1.56-8.58,3.11-17.17,1.8-10,3.63-20.12a103.26,103.26,0,0,1,3-13.17c.24-.75.49-1.48.76-2.2,3.1-1.72,7.41-3,9.33-.22,2,3-.63,10-1.41,13C229.23,131.61,224.57,142,223.14,153.22Z"
-          transform="translate(-56.44 -5.34)" fill="url(#linear-gradient-10)"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="url(#linear-gradient-10)"
+        ></path>
         <path
           d="M295.07,66.52a16.57,16.57,0,0,1-.11,3.73,2.75,2.75,0,0,1-2.55,2.3c-3.12-.23-5.37,2.76-7.85,4.68a13.23,13.23,0,0,1-13.72,1.31,1.8,1.8,0,0,0-2.27,1,5.22,5.22,0,0,0-.2,2.75l1.15,10.94c.22,2.11.24,4.69-1.55,5.83s-3.91.15-5.39-1.14a18,18,0,0,1-4.87-8.17A38,38,0,0,1,265.82,53a23.39,23.39,0,0,1,5.77-4.68,24.89,24.89,0,0,1,7.2-2.43,19.57,19.57,0,0,1,6.86-.38A13.88,13.88,0,0,1,293.59,50c1.52,1.66,3,6.61,4.6,7.42C297,60.44,295.12,63.11,295.07,66.52Z"
-          transform="translate(-56.44 -5.34)" fill="#f5bcba"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#f5bcba"
+        ></path>
         <path
           d="M271.27,23.58a8.67,8.67,0,0,0-4.44.13c-2.82,1-4.4,3.95-5.42,6.76s-1.86,5.88-4.08,7.87c-1.91,1.72-4.62,2.41-6.34,4.31-2,2.21-2.19,5.48-2,8.45a11.87,11.87,0,0,0,1.81,6.3c1.06,1.44,2.69,2.44,3.52,4,.94,1.79,1.26,4.56,3.28,4.68a3.37,3.37,0,0,0,2.23-1,15.3,15.3,0,0,0,4.46-6.59c.49-1.42.81-3,1.89-4s3.28-1.06,3.77.36a4.52,4.52,0,0,1-.4,2.65c-.26.88-.15,2.07.71,2.37,1.62-2.5,2.53-5.44,4.45-7.71a11,11,0,0,1,17.37.82c1,1.43,1.68,3.13,3.08,4.15a8.78,8.78,0,0,0,4.37,1.28c3.44.34,7.08.47,10.18-1.06s5.39-5.24,4.2-8.49c-.94-2.55-3.62-4-6.22-4.82s-5.38-1.23-7.67-2.69c-3.11-2-4.77-5.56-6.58-8.79s-4.26-6.55-7.88-7.31a14.5,14.5,0,0,0-4.46,0,16.76,16.76,0,0,1-4.39.34C274.91,25.22,273.17,24,271.27,23.58Z"
-          transform="translate(-56.44 -5.34)" fill="#2e2e3f"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#2e2e3f"
+        ></path>
         <path
           d="M271.27,105.75a127.9,127.9,0,0,1,2,35.15c-.79,9.78-2.67,19.49-2.6,29.3a49.62,49.62,0,0,1-.25,8.27c-.44,2.72-18.68,1.68-21.34,1.65-4.48-.06,1.2,6-2.17,3.08-5.29-4.61-7.65-11.8-8.3-18.78-.93-9.95,1.11-19.91,3.33-29.66,1.54-6.75,3.18-13.52,5.94-19.87,3.42-7.85,8.83-17.84,10.57-26.23.25-1.23-4-5.7-2.17-5.64,1.19,0,.63,1.85.84,2.77a8.73,8.73,0,0,0,2.09,3.74,9.82,9.82,0,0,0,5.38,3.21c1.35.25,2.89.19,3.87,1.15,1.19,1.16,1,3.42,1.34,5C270.29,101.15,270.81,103.44,271.27,105.75Z"
-          transform="translate(-56.44 -5.34)" fill="#f2f2f2"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#f2f2f2"
+        ></path>
         <path
           d="M230.78,76c-4.84,2.22-9,5.66-12.93,9.26a108.36,108.36,0,0,0-9.2,9.36c-2.54,3-4.86,6.11-7.54,8.94-3.7,3.89-8.32,7.65-9.05,13a16.53,16.53,0,0,0,1.42,8.14,23.48,23.48,0,0,0,4.15,7.13,16.36,16.36,0,0,0,8.59,5,7.6,7.6,0,0,0,3.18.14,9.92,9.92,0,0,0,4-2.24,71.82,71.82,0,0,0,7.39-6.43c2.36-2.45,4.36-5.24,6.66-7.75,2-2.16,4.13-4.11,6.13-6.23,2.39-2.54,4.52-5.31,6.65-8.08a109.5,109.5,0,0,0,8.27-11.83,54.27,54.27,0,0,0,4.93-11.52c.77-2.62,2-5.94-.66-7.83C247.12,71.08,236.41,73.37,230.78,76Z"
-          transform="translate(-56.44 -5.34)" fill="#1e88e5"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#1e88e5"
+        ></path>
         <path
           d="M230.78,76c-4.84,2.22-9,5.66-12.93,9.26a108.36,108.36,0,0,0-9.2,9.36c-2.54,3-4.86,6.11-7.54,8.94-3.7,3.89-8.32,7.65-9.05,13a16.53,16.53,0,0,0,1.42,8.14,23.48,23.48,0,0,0,4.15,7.13,16.36,16.36,0,0,0,8.59,5,7.6,7.6,0,0,0,3.18.14,9.92,9.92,0,0,0,4-2.24,71.82,71.82,0,0,0,7.39-6.43c2.36-2.45,4.36-5.24,6.66-7.75,2-2.16,4.13-4.11,6.13-6.23,2.39-2.54,4.52-5.31,6.65-8.08a109.5,109.5,0,0,0,8.27-11.83,54.27,54.27,0,0,0,4.93-11.52c.77-2.62,2-5.94-.66-7.83C247.12,71.08,236.41,73.37,230.78,76Z"
-          transform="translate(-56.44 -5.34)" fill="#1e88e5"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#1e88e5"
+        ></path>
         <path
           d="M314.61,121.66a4.92,4.92,0,0,0-1.61,6.66,25,25,0,0,0,6.62,7.5c1.6,1.72,5.2,2,8.4.12s18.47-10.19,26.1-15.62a5,5,0,0,0,1.13-7.17l-6.39-8a4.92,4.92,0,0,0-6.48-1.08Z"
-          transform="translate(-56.44 -5.34)" fill="#3d3d54"></path>
-        <path d="M214.5,190l-.23-.23" transform="translate(-56.44 -5.34)" fill="none"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#3d3d54"
+        ></path>
+        <path
+          d="M214.5,190l-.23-.23"
+          transform="translate(-56.44 -5.34)"
+          fill="none"
+        ></path>
         <path
           d="M213.12,207.85a30.09,30.09,0,0,0,5.87,11.3c3,3.5,7.08,6,11,8.38l16.51,10.05a57.31,57.31,0,0,1,6.93,4.69c5.41,4.46,9,10.68,12.49,16.76L290,301c1.22,2.15,2.93,4.58,5.4,4.5A6.91,6.91,0,0,0,299,303.9c3.09-2.17,6.41-4.64,7.33-8.31.64-2.56,0-5.25-.77-7.79-3.7-12.51-9.5-24.29-15.32-36Q276.37,224,262.09,196.31c-2.53-4.9-5.6-12.53-9.78-16.13,0,0-38.84-2.36-39.82,1.49A48.73,48.73,0,0,0,213.12,207.85Z"
-          transform="translate(-56.44 -5.34)" fill="#525263"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#525263"
+        ></path>
         <path
           d="M213.12,207.85a30.09,30.09,0,0,0,5.87,11.3c3,3.5,7.08,6,11,8.38l16.51,10.05a57.31,57.31,0,0,1,6.93,4.69c5.41,4.46,9,10.68,12.49,16.76L290,301c1.22,2.15,2.93,4.58,5.4,4.5A6.91,6.91,0,0,0,299,303.9c3.09-2.17,6.41-4.64,7.33-8.31.64-2.56,0-5.25-.77-7.79-3.7-12.51-9.5-24.29-15.32-36Q276.37,224,262.09,196.31c-2.53-4.9-5.6-12.53-9.78-16.13,0,0-38.84-2.36-39.82,1.49A48.73,48.73,0,0,0,213.12,207.85Z"
-          transform="translate(-56.44 -5.34)" fill="url(#linear-gradient-11)"></path>
-        <polygon points="200.36 65.18 194.87 67.35 191.54 85.98 202.61 85.48 200.36 65.18" fill="#1e88e5"></polygon>
+          transform="translate(-56.44 -5.34)"
+          fill="url(#linear-gradient-11)"
+        ></path>
+        <polygon
+          points="200.36 65.18 194.87 67.35 191.54 85.98 202.61 85.48 200.36 65.18"
+          fill="#1e88e5"
+        ></polygon>
         <path
           d="M268.42,90.37c0,.84,0,1.68,0,2.52a9.82,9.82,0,0,0,.06,1.09,10.08,10.08,0,0,0,.24,1.09l1.38,5.44.57-8.84c1.63.79,3.3,1.51,5,2.14a12.59,12.59,0,0,0-1-3.84c-1-2.56-1.92-5.13-3-7.64a6.28,6.28,0,0,0-1.08-1.84,2.31,2.31,0,0,0-1.9-.8c-1,.42-.37,4.17-.36,5Z"
-          transform="translate(-56.44 -5.34)" fill="#1e88e5"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#1e88e5"
+        ></path>
         <path
           d="M349.32,117.28,329,130.13a1.78,1.78,0,0,1-2.19-.4l-6.46-7.28a1.2,1.2,0,0,1,.16-1.88l20.36-12.84a1.78,1.78,0,0,1,2.19.4l6.46,7.27A1.2,1.2,0,0,1,349.32,117.28Z"
-          transform="translate(-56.44 -5.34)" fill="#1e88e5"></path>
+          transform="translate(-56.44 -5.34)"
+          fill="#1e88e5"
+        ></path>
       </svg>
     </div>
   </section>

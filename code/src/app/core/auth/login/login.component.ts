@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../shared/auth.service';
 import { StorageService } from '../../../shared/storage.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,38 +18,19 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private storageService: StorageService,
-    private router: Router,
-    private snackBar: MatSnackBar
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
-      this.router.navigate(['profile']);
+      this.router.navigate(['dashboard']);
     }
   }
 
   onSubmit(): void {
-    this.authService
-      .login(
-        this.loginForm.controls['username'].value,
-        this.loginForm.controls['password'].value
-      )
-      .subscribe({
-        next: (data: any) => {
-          this.storageService.saveUser(data);
-          this.router.navigate(['profile']);
-        },
-        error: () => {
-          this.openSnackBar('مشکلی پیش آمده است.');
-        },
-      });
-  }
-
-  openSnackBar(message: string): void {
-    this.snackBar.open(message, 'بستن', {
-      horizontalPosition: 'end',
-      verticalPosition: 'top',
-      duration: 8000,
-    });
+    this.authService.login(
+      this.loginForm.controls['username'].value,
+      this.loginForm.controls['password'].value
+    );
   }
 }

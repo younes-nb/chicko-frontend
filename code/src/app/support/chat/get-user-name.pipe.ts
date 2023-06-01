@@ -1,13 +1,11 @@
-import {Pipe, PipeTransform} from '@angular/core';
-import {SupportService} from "../support.service";
+import { Pipe, PipeTransform } from '@angular/core';
+import { SupportService } from '../support.service';
 
 @Pipe({
-  name: 'getUserName'
+  name: 'getUserName',
 })
 export class GetUserNamePipe implements PipeTransform {
-
-  constructor(private supportService: SupportService) {
-  }
+  constructor(private supportService: SupportService) {}
 
   transform(userId: string): string {
     for (let user of this.supportService.currenRoomUsers) {
@@ -17,5 +15,4 @@ export class GetUserNamePipe implements PipeTransform {
     }
     return 'ناشناس';
   }
-
 }

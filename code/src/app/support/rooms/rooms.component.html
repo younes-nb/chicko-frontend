@@ -1,32 +1,58 @@
 <section class="position-relative d-flex flex-column h-100">
   <div id="add-room-container" class="position-absolute">
-    <button [matMenuTriggerFor]="menu" mat-mini-fab color="primary" matTooltip="ایجاد گفتگو">
+    <button
+      [matMenuTriggerFor]="menu"
+      mat-mini-fab
+      color="primary"
+      matTooltip="ایجاد گفتگو"
+    >
       <mat-icon>add</mat-icon>
     </button>
     <mat-menu #menu="matMenu" yPosition="above" class="mb-2">
-      <button mat-menu-item (click)="openCreateRoomDialog()">ایجاد گفتگوی جدید</button>
-      <button mat-menu-item (click)="openJoinRoomDialog()">پیوستن به گفتگو</button>
+      <button mat-menu-item (click)="openCreateRoomDialog()">
+        ایجاد گفتگوی جدید
+      </button>
+      <button mat-menu-item (click)="openJoinRoomDialog()">
+        پیوستن به گفتگو
+      </button>
     </mat-menu>
   </div>
   <nav class="d-flex justify-content-between align-items-center p-2 bg-light">
     <div routerLink="/home" class="d-flex">
-      <img class="logo" src="favicon.ico" width="36" height="36" alt="logo">
+      <img class="logo" src="favicon.ico" width="36" height="36" alt="logo" />
       <h2 class="title me-2">چیکو</h2>
     </div>
     <div class="d-flex justify-content-between align-items-center">
-      <p class="fs-5-5 m-0 ms-1" *ngIf="getUser().name">{{getUser().name}}</p>
+      <p class="fs-5-5 m-0 ms-1" *ngIf="getUser().name">{{ getUser().name }}</p>
       <p *ngIf="!getUser().name">ناشناس</p>
-      <button (click)="signout()" color="primary" mat-icon-button matTooltip="خروج">
-        <fa-icon [icon]="['fas','arrow-right-from-bracket']"></fa-icon>
+      <button
+        (click)="signout()"
+        color="primary"
+        mat-icon-button
+        matTooltip="خروج"
+      >
+      <mat-icon>logout</mat-icon>
       </button>
     </div>
   </nav>
   <h5 class="mt-4 px-2">گفتگوها</h5>
-  <p *ngIf="!getUserRooms()" class="text-muted text-center mt-3">گفتگویی موجود نیست.</p>
-  <ul *ngIf="getUserRooms()" cdkDropList (cdkDropListDropped)="drop($event)" class="mt-3 p-0 overflow-auto rooms-list">
-    <div *ngFor="let room of getUserRooms()" (click)="startChat(room)" cdkDrag matRipple
-         class="room border-bottom border-light py-3">
-      <p class="m-0 px-3">{{room.title}}</p>
+  <p *ngIf="!getUserRooms()" class="text-muted text-center mt-3">
+    گفتگویی موجود نیست.
+  </p>
+  <ul
+    *ngIf="getUserRooms()"
+    cdkDropList
+    (cdkDropListDropped)="drop($event)"
+    class="mt-3 p-0 overflow-auto rooms-list"
+  >
+    <div
+      *ngFor="let room of getUserRooms()"
+      (click)="startChat(room)"
+      cdkDrag
+      matRipple
+      class="room border-bottom border-light py-3"
+    >
+      <p class="m-0 px-3">{{ room.title }}</p>
     </div>
   </ul>
 </section>

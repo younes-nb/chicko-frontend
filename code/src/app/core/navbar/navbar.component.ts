@@ -1,27 +1,49 @@
-import {Component, OnInit} from '@angular/core';
-import {scrollTo} from "../../shared/utils";
-import {StorageService} from "../../shared/storage.service";
-import {AuthService} from "../../shared/auth.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {User} from "../../shared/types";
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
+import { scrollTo } from '../../shared/utils';
+import { StorageService } from '../../shared/storage.service';
+import { AuthService } from '../../shared/auth.service';
+import { User } from '../../shared/types';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { defineElement } from 'lord-icon-element';
+import lottie from 'lottie-web';
 
 @Component({
+  standalone: true,
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   selector: 'app-navbar',
-  templateUrl: './navbar.component.html'
+  templateUrl: './navbar.component.html',
 })
 export class NavbarComponent implements OnInit {
+  @Input() isInDashboard: boolean = false;
   currentUser: User = {} as User;
   isLoggedIn: boolean = false;
 
   constructor(
     private storageService: StorageService,
-    private authService: AuthService,
-    private snackBar: MatSnackBar
+    private authService: AuthService
   ) {
+    defineElement(lottie.loadAnimation);
   }
 
   ngOnInit(): void {
-    this.currentUser = this.storageService.getUserToken();
     this.isLoggedIn = this.storageService.isLoggedIn();
   }
 
@@ -30,19 +52,6 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout().subscribe({
-      next: () => {
-        this.storageService.clean();
-        window.location.reload();
-      },
-      error: () => {
-        this.openSnackBar('مشکلی پیش آمده است.');
-        window.location.reload();
-      }
-    });
-  }
-
-  openSnackBar(message: string): void {
-    this.snackBar.open(message, 'بستن', {horizontalPosition: "end", verticalPosition: "top", duration: 8000});
+    this.authService.logout();
   }
 }

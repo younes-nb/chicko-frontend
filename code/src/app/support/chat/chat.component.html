@@ -5,63 +5,110 @@
         <mat-icon>arrow_forward</mat-icon>
       </button>
       <div class="me-3 room-title-container">
-        <p class="m-0 fs-5-5 room-title">{{getRoom().title}}</p>
-        <p class="m-0 text-muted fs-7">{{numLatinToFa(getRoom().users.length.toString())}} عضو</p>
+        <p class="m-0 fs-5-5 room-title">{{ getRoom().title }}</p>
+        <p class="m-0 text-muted fs-7">
+          {{ numLatinToFa(getRoom().users.length.toString()) }} عضو
+        </p>
       </div>
     </div>
-    <button [cdkCopyToClipboard]="getRoom()._id" mat-icon-button color="primary" matTooltip="کپی کردن شناسه گتفگو">
+    <button
+      [cdkCopyToClipboard]="getRoom()._id"
+      mat-icon-button
+      color="primary"
+      matTooltip="کپی کردن شناسه گتفگو"
+    >
       <mat-icon>content_copy</mat-icon>
     </button>
   </nav>
   <ul id="scroller" #messageBox class="p-2 pt-3 m-0 flex-grow-1 overflow-auto">
-    <p class="text-muted text-center mb-3 fs-7">تشکیل شده در {{getRoom().createdAt | date:'mediumDate'}}</p>
-    <li appScroller *ngFor="let message of getMessages()" class="d-flex flex-column">
-      <p *ngIf="message.showDate" class="text-muted text-center fs-7 my-3">{{message.time | date:'mediumDate'}}</p>
-      <div class="mb-2 d-inline-block message-box-container"
-           [ngClass]="message.isCurrentUser ? 'bg-primary text-white align-self-start message-box-user' : 'bg-light  align-self-end message-box-others'">
-        <p *ngIf="!message.isCurrentUser && message.isFirst"
-           class="m-0 text-primary">{{message.user_id | getUserName}}</p>
+    <p class="text-muted text-center mb-3 fs-7">
+      تشکیل شده در {{ getRoom().createdAt | date : "mediumDate" }}
+    </p>
+    <li
+      appScroller
+      *ngFor="let message of getMessages()"
+      class="d-flex flex-column"
+    >
+      <p *ngIf="message.showDate" class="text-muted text-center fs-7 my-3">
+        {{ message.time | date : "mediumDate" }}
+      </p>
+      <div
+        class="mb-2 d-inline-block message-box-container"
+        [ngClass]="
+          message.isCurrentUser
+            ? 'bg-primary text-white align-self-start message-box-user'
+            : 'bg-light  align-self-end message-box-others'
+        "
+      >
+        <p
+          *ngIf="!message.isCurrentUser && message.isFirst"
+          class="m-0 text-primary"
+        >
+          {{ message.user_id | getUserName }}
+        </p>
         <div class="d-flex">
-          <p class="m-0 ps-2 message-text">{{message.message}}</p>
-          <span [ngClass]="message.isCurrentUser ? 'text-light' : 'text-muted'"
-                class="m-0 align-self-end fs-8 text-nowrap"
-                dir="ltr">{{message.time | date:'shortTime'}}</span>
+          <p class="m-0 ps-2 message-text">{{ message.message }}</p>
+          <span
+            [ngClass]="message.isCurrentUser ? 'text-light' : 'text-muted'"
+            class="m-0 align-self-end fs-8 text-nowrap"
+            dir="ltr"
+            >{{ message.time | date : "shortTime" }}</span
+          >
         </div>
       </div>
     </li>
   </ul>
-  <form [formGroup]="messageForm" (ngSubmit)="sendMessage()" class="d-flex align-items-end p-2 pt-1 position-relative">
-    <textarea autosize formControlName="message" class="message-input form-control"
-              name="message" placeholder="پیام"></textarea>
+  <form
+    [formGroup]="messageForm"
+    (ngSubmit)="sendMessage()"
+    class="d-flex align-items-end p-2 pt-1 position-relative"
+  >
+    <textarea
+      autosize
+      formControlName="message"
+      class="message-input form-control"
+      name="message"
+      placeholder="پیام"
+    ></textarea>
     <ngx-emoj
       *ngIf="isShowingEmojiPicker"
       (onemojipick)="handleEmoji($event)"
       [width]="'260px'"
       [height]="'250px'"
       [theme]="{
-			martShowHeader: true,
-			martShowFooter: false,
-			martHeaderPadding: {x: '0', y: '0'},
-			martFooterPadding: {x: '0', y: '0'},
-			martHeaderFontSize: '14px',
-			martHeaderBG: '#e3e7e8',
-			martBG: '#ebeff2',
-			martCategoryColor: '#94a0a6',
-			martCategoryColorActive: '#455a64',
-			martActiveCategoryIndicatorColor: '#1e88e5',
-			martEmojiFontSize: '150%',
-			martCategoryFontSize: '20px',
-			martBorderRadius: '5px',
-			martActiveCategoryIndicatorHeight: '4px',
-			martEmojiPadding: {x: '40px', y: '40px'}
-			}"
+        martShowHeader: true,
+        martShowFooter: false,
+        martHeaderPadding: { x: '0', y: '0' },
+        martFooterPadding: { x: '0', y: '0' },
+        martHeaderFontSize: '14px',
+        martHeaderBG: '#e3e7e8',
+        martBG: '#ebeff2',
+        martCategoryColor: '#94a0a6',
+        martCategoryColorActive: '#455a64',
+        martActiveCategoryIndicatorColor: '#1e88e5',
+        martEmojiFontSize: '150%',
+        martCategoryFontSize: '20px',
+        martBorderRadius: '5px',
+        martActiveCategoryIndicatorHeight: '4px',
+        martEmojiPadding: { x: '40px', y: '40px' }
+      }"
     >
     </ngx-emoj>
-    <button (click)="isShowingEmojiPicker=!isShowingEmojiPicker" class="me-2" color="primary" mat-icon-button>
+    <button
+      (click)="isShowingEmojiPicker = !isShowingEmojiPicker"
+      class="me-2"
+      color="primary"
+      mat-icon-button
+    >
       <mat-icon>mood</mat-icon>
     </button>
-    <button [disabled]="messageForm.controls['message'].value.length===0" type="submit" class="me-1" color="primary"
-            mat-icon-button>
+    <button
+      [disabled]="messageForm.controls['message'].value.length === 0"
+      type="submit"
+      class="me-1"
+      color="primary"
+      mat-icon-button
+    >
       <mat-icon class="send-icon">send</mat-icon>
     </button>
   </form>

@@ -1,52 +1,86 @@
-<div style="height: 100px; overflow: hidden;">
-  <svg viewBox="0 0 500 150" preserveAspectRatio="none"
-       style="height: 100%; width: 100%;">
-    <path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-          style="stroke: none; fill: #1B2A4E;"></path>
+<div style="height: 100px; overflow: hidden">
+  <svg
+    viewBox="0 0 500 150"
+    preserveAspectRatio="none"
+    style="height: 100%; width: 100%"
+  >
+    <path
+      d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+      style="stroke: none; fill: #1b2a4e"
+    ></path>
   </svg>
 </div>
 <footer>
   <div class="container">
     <div class="row align-items-center justify-content-between">
       <div routerLink="/home" class="col-4 m-0 d-flex align-items-center">
-        <img id="logo" src="favicon.ico" width="75" height="75" alt="logo">
+        <img id="logo" src="favicon.ico" width="75" height="75" alt="logo" />
         <h1 class="me-3 brand">چیکو</h1>
       </div>
       <ul class="col-4 m-0 d-flex justify-content-center">
         <li>
-          <button mat-button color="accent" class="text-light rounded-pill fs-5 p-3" routerLink="/home">خانه</button>
-        </li>
-        <li>
-          <button mat-button color="accent" class="text-light rounded-pill fs-5 p-3" routerLink="/">منوساز</button>
-        </li>
-        <li>
-          <button mat-button color="accent" class="text-light rounded-pill fs-5 p-3" routerLink="/home"
-                  fragment="pricing" (click)="scrollTo('pricing')">تعرفه ها
+          <button
+            mat-button
+            color="accent"
+            class="text-light rounded-pill fs-5 p-3"
+            routerLink="/home"
+          >
+            خانه
           </button>
         </li>
         <li>
-          <button mat-button color="accent" class="text-light rounded-pill fs-5 p-3" routerLink="/home"
-                  fragment="about-us" (click)="scrollTo('about-us')">درباره ی ما
+          <button
+            mat-button
+            color="accent"
+            class="text-light rounded-pill fs-5 p-3"
+            routerLink="/dashboard"
+          >
+            داشبورد
+          </button>
+        </li>
+        <li>
+          <button
+            mat-button
+            color="accent"
+            class="text-light rounded-pill fs-5 p-3"
+            routerLink="/home"
+            fragment="pricing"
+            (click)="scrollTo('pricing')"
+          >
+            تعرفه ها
+          </button>
+        </li>
+        <li>
+          <button
+            mat-button
+            color="accent"
+            class="text-light rounded-pill fs-5 p-3"
+            routerLink="/home"
+            fragment="about-us"
+            (click)="scrollTo('about-us')"
+          >
+            درباره ی ما
           </button>
         </li>
       </ul>
       <ul id="contact-us" class="col-4 m-0 d-flex justify-content-end">
         <li class="ms-4">
-          <fa-icon class="text-light fs-2 brand-icons" [icon]="['fab', 'telegram']"></fa-icon>
+          <i class="bi bi-telegram text-light fs-2 brand-icons"></i>
         </li>
         <li class="ms-4">
-          <fa-icon class="text-light fs-2 brand-icons" [icon]="['fab', 'instagram']"></fa-icon>
+          <i class="bi bi-instagram text-light fs-2 brand-icons"></i>
         </li>
         <li class="ms-4">
-          <fa-icon class="text-light fs-2 brand-icons" [icon]="['fab', 'linkedin']"></fa-icon>
+          <i class="bi bi-linkedin text-light fs-2 brand-icons"></i>
         </li>
         <li>
-          <fa-icon class="text-light fs-2 brand-icons" [icon]="['fab', 'github']"></fa-icon>
+          <i class="bi bi-github text-light fs-2 brand-icons"></i>
         </li>
       </ul>
-      <p class="col-12 text-center text-light mt-5">تمامی حقوق این سایت متعلق به <span class="brand fs-4"
-                                                                                       routerLink="/home">چیکو</span> می
-        باشد.</p>
+      <p class="col-12 text-center text-light mt-5">
+        تمامی حقوق این سایت متعلق به
+        <span class="brand fs-4" routerLink="/home">چیکو</span> می باشد.
+      </p>
     </div>
   </div>
 </footer>

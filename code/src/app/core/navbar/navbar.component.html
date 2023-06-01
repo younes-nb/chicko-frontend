@@ -1,42 +1,94 @@
-<mat-toolbar class="px-5 shadow align-items-center">
+<mat-toolbar
+  class="px-5 shadow d-flex justify-content-between align-items-center"
+>
   <div routerLink="/home" class="d-flex me-5">
-    <img class="logo" src="favicon.ico" width="45" height="45" alt="logo">
+    <img class="logo" src="favicon.ico" width="45" height="45" alt="logo" />
     <h1 class="title me-2">چیکو</h1>
   </div>
-  <ul class="m-0 ms-auto d-flex align-items-center">
+  <ul *ngIf="!isInDashboard" class="m-0 ms-auto d-flex align-items-center">
     <li>
-      <button class="rounded-pill p-3 ms-1" routerLink="/home" mat-button>خانه</button>
+      <button class="rounded-pill p-3 ms-1" routerLink="/home" mat-button>
+        خانه
+      </button>
     </li>
     <li>
-      <button class="rounded-pill p-3 ms-1" routerLink="/profile" mat-button>منو ساز</button>
+      <button class="rounded-pill p-3 ms-1" routerLink="/dashboard" mat-button>
+        داشبورد
+      </button>
     </li>
     <li>
-      <button class="rounded-pill p-3 ms-1" routerLink="/home" fragment="pricing" (click)="scrollTo('pricing')"
-              mat-button>
+      <button
+        class="rounded-pill p-3 ms-1"
+        routerLink="/home"
+        fragment="pricing"
+        (click)="scrollTo('pricing')"
+        mat-button
+      >
         تعرفه ها
       </button>
     </li>
     <li>
-      <button class="rounded-pill p-3 ms-1" routerLink="/home" fragment="about-us" (click)="scrollTo('about-us')"
-              mat-button>درباره ما
+      <button
+        class="rounded-pill p-3 ms-1"
+        routerLink="/home"
+        fragment="about-us"
+        (click)="scrollTo('about-us')"
+        mat-button
+      >
+        درباره ما
       </button>
     </li>
     <li>
-      <button class="rounded-pill p-3" routerLink="/home" fragment="contact-us" (click)="scrollTo('contact-us')"
-              mat-button>
+      <button
+        class="rounded-pill p-3"
+        routerLink="/home"
+        fragment="contact-us"
+        (click)="scrollTo('contact-us')"
+        mat-button
+      >
         تماس با ما
       </button>
     </li>
   </ul>
-  <button *ngIf="!isLoggedIn" class="align-self-center" mat-icon-button color="primary" matTooltip="ورود به حساب کاربری"
-          routerLink="/login">
-    <fa-icon [icon]="['fas','user-circle']"></fa-icon>
+  <button
+    *ngIf="isInDashboard"
+    routerLink="/dashboard"
+    class="fs-4 rounded-pill p-4"
+    mat-button
+  >
+    داشبورد
   </button>
+  <div
+    *ngIf="!isLoggedIn"
+    matTooltip="ورود به حساب کاربری"
+    routerLink="/login"
+    style="cursor: pointer"
+  >
+    <lord-icon
+      src="https://cdn.lordicon.com/hbvyhtse.json"
+      trigger="hover"
+      colors="primary:#3080e8"
+      state="hover"
+      style="width: 40px; height: 40px"
+    >
+    </lord-icon>
+  </div>
   <div *ngIf="isLoggedIn" class="d-flex align-items-center">
-    <button class="p-3 ms-2 rounded-pill" color="primary" mat-button
-            matTooltip="حساب کاربری">{{currentUser.username}}</button>
-    <button color="primary" mat-icon-button matTooltip="خروج از حساب">
-      <fa-icon [icon]="['fas','arrow-right-from-bracket']"></fa-icon>
+    <button
+      class="p-3 ms-2 rounded-pill"
+      color="primary"
+      mat-button
+      matTooltip="حساب کاربری"
+    >
+      {{ currentUser.username }}
+    </button>
+    <button
+      (click)="logout()"
+      color="primary"
+      mat-icon-button
+      matTooltip="خروج از حساب"
+    >
+      <mat-icon>logout</mat-icon>
     </button>
   </div>
 </mat-toolbar>

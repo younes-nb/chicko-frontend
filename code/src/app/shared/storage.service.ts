@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 const USER_KEY = 'auth-token';
@@ -15,10 +16,14 @@ export class StorageService {
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  public getUserToken(): any {
+  public getUserTokenHeader(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
-      return 'Token ' + JSON.parse(user).auth_token;
+      return {
+        headers: new HttpHeaders({
+          Authorization: 'Token ' + JSON.parse(user).auth_token,
+        }),
+      };
     }
     return {};
   }

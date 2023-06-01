@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,29 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import {
-  FaIconLibrary,
-  FontAwesomeModule,
-} from '@fortawesome/angular-fontawesome';
-import {
-  faUserCircle,
-  faShoppingCart,
-  faFolder,
-  faHeadset,
-  faQrcode,
-  faHome,
-  faCreditCard,
-  faArrowRightFromBracket,
-  faBars,
-  faGaugeSimpleHigh,
-  faBoxOpen,
-} from '@fortawesome/free-solid-svg-icons';
-import {
-  faTelegram,
-  faInstagram,
-  faLinkedin,
-  faGithub,
-} from '@fortawesome/free-brands-svg-icons';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TypingAnimatorModule } from 'angular-typing-animator';
 import { MatCardModule } from '@angular/material/card';
@@ -50,13 +27,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { UsersModule } from './users/users.module';
 import { SupportModule } from './support/support.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { defineElement } from 'lord-icon-element';
+import lottie from 'lottie-web';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
-    NavbarComponent,
     FooterComponent,
     RegisterComponent,
     LoginComponent,
@@ -68,7 +46,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    FontAwesomeModule,
     MatTooltipModule,
     TypingAnimatorModule,
     MatCardModule,
@@ -84,28 +61,14 @@ import { MatDialogModule } from '@angular/material/dialog';
     UsersModule,
     SupportModule,
     MatDialogModule,
+    NavbarComponent,
   ],
   providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(library: FaIconLibrary) {
-    library.addIcons(
-      faUserCircle,
-      faShoppingCart,
-      faFolder,
-      faHeadset,
-      faQrcode,
-      faHome,
-      faCreditCard,
-      faTelegram,
-      faInstagram,
-      faLinkedin,
-      faGithub,
-      faArrowRightFromBracket,
-      faBars,
-      faGaugeSimpleHigh,
-      faBoxOpen
-    );
+  constructor() {
+    defineElement(lottie.loadAnimation);
   }
 }

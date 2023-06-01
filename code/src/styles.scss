@@ -1,29 +1,38 @@
-@use '../node_modules/@angular/material/index' as mat;
+@use "../node_modules/@angular/material/index" as mat;
 @use "sass:map";
+
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 @include mat.core();
 
 $chicko-frontend-primary: mat.define-palette(mat.$blue-palette);
-$chicko-frontend-accent: mat.define-palette(mat.$cyan-palette, A200, A100, A400);
+$chicko-frontend-accent: mat.define-palette(
+  mat.$cyan-palette,
+  A200,
+  A100,
+  A400
+);
 $chicko-frontend-warn: mat.define-palette(mat.$red-palette);
 
-$chicko-frontend-theme: mat.define-light-theme((
-  color: (
-    primary: $chicko-frontend-primary,
-    accent: $chicko-frontend-accent,
-    warn: $chicko-frontend-warn,
+$chicko-frontend-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $chicko-frontend-primary,
+      accent: $chicko-frontend-accent,
+      warn: $chicko-frontend-warn,
+    ),
   )
-));
+);
 
 @include mat.all-component-themes($chicko-frontend-theme);
 
 @font-face {
   font-family: "Vazir";
   src: url("/assets/fonts/Vazir.eot"),
-  url("/assets/fonts/Vazir.eot?#iefix") format("embedded-opentype"),
-  url("/assets/fonts/Vazir.woff2") format("woff2"),
-  url("/assets/fonts/Vazir.woff") format("woff"),
-  url("/assets/fonts/Vazir.ttf") format("truetype");
+    url("/assets/fonts/Vazir.eot?#iefix") format("embedded-opentype"),
+    url("/assets/fonts/Vazir.woff2") format("woff2"),
+    url("/assets/fonts/Vazir.woff") format("woff"),
+    url("/assets/fonts/Vazir.ttf") format("truetype");
 }
 
 @font-face {
@@ -34,10 +43,11 @@ $chicko-frontend-theme: mat.define-light-theme((
 $dark-blue: #1b2a4e;
 
 @function primary-color($key) {
-  @return map.get($chicko-frontend-primary, $key)
+  @return map.get($chicko-frontend-primary, $key);
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -60,7 +70,7 @@ ul {
   background-color: primary-color(50);
   color: primary-color(600);
   border-radius: 15px;
-  padding: 15px;
+  padding: 0.4rem 0.8rem;
   display: inline-flex;
 }
 
@@ -79,7 +89,7 @@ ul {
 }
 
 .fs-7 {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .fs-8 {
@@ -107,5 +117,5 @@ ul {
 }
 
 .letter-space-low {
-  letter-spacing: .3px;
+  letter-spacing: 0.3px;
 }

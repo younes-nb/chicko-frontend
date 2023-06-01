@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BASE_API } from './api';
 import { StorageService } from './storage.service';
+import { CustomeSnackBarService } from './custome-snack-bar.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +12,9 @@ import { StorageService } from './storage.service';
 export class AuthService {
   constructor(
     private http: HttpClient,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private router: Router,
+    private customeSnackBarService: CustomeSnackBarService
   ) {}
 
   public register(
@@ -37,20 +41,39 @@ export class AuthService {
     });
   }
 
-  public login(username: string, password: string): Observable<any> {
-    return this.http.post(
-      `
+  public login(username: string, password: string): void {
+    this.http
+      .post(
+        `
       ${BASE_API}auth/token/login/`,
-      { username, password }
-    );
+        { username, password }
+      )
+      .subscribe({
+        next: (data: any) => {
+          this.storageService.saveUser(data);
+          this.router.navigate(['dashboard']);
+        },
+        error: () => {
+          this.customeSnackBarService.openSnackBar('مشکلی پیش آمده است.');
+        },
+      });
   }
 
-  public logout(): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: this.storageService.getUserToken(),
-      }),
-    };
-    return this.http.post(`${BASE_API}auth/token/logout/`, {}, httpOptions);
+  public logout() {
+    this.http
+      .post(
+        `${BASE_API}auth/token/logout/`,
+        {},
+        this.storageService.getUserTokenHeader()
+      )
+      .subscribe({
+        next: () => {
+          this.storageService.clean();
+          window.location.reload();
+        },
+        error: () => {
+          this.customeSnackBarService.openSnackBar('مشکلی پیش آمده است.');
+        },
+      });
   }
 }

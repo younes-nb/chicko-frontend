@@ -1,12 +1,32 @@
-<div id="icon-container" class="position-absolute position-fixed" (click)="toggleChat()">
-  <button mat-fab color="primary" matTooltip="پشتیبانی">
-    <mat-icon *ngIf="!isChatShowing">chat</mat-icon>
-    <mat-icon *ngIf="isChatShowing">close</mat-icon>
-  </button>
+<div
+  id="icon-container"
+  class="position-absolute position-fixed"
+  matTooltip="پشتیبانی"
+  (click)="toggleChat()"
+>
+  <lord-icon
+    *ngIf="!isChatShowing"
+    src="https://cdn.lordicon.com/pkmkagva.json"
+    trigger="hover"
+    colors="primary:#3080e8"
+    style="width: 52px; height: 52px; cursor: pointer"
+  >
+  </lord-icon>
+  <lord-icon
+    *ngIf="isChatShowing"
+    src="https://cdn.lordicon.com/jfhbogmw.json"
+    trigger="hover"
+    colors="primary:#3080e8"
+    style="width: 52px; height: 52px; cursor: pointer"
+  >
+  </lord-icon>
 </div>
-<section [@openClose]="isChatShowing ? 'open' : 'closed'" id="chat-container"
-         class="position-absolute position-fixed rounded shadow bg-white"
-         [ngClass]="isChatShowing ? '' : 'disable'">
+<section
+  [@openClose]="isChatShowing ? 'open' : 'closed'"
+  id="chat-container"
+  class="position-absolute position-fixed rounded shadow bg-white"
+  [ngClass]="isChatShowing ? '' : 'disable'"
+>
   <app-register-chat *ngIf="getComponent() === 'register'"></app-register-chat>
   <app-rooms *ngIf="getComponent() === 'rooms'"></app-rooms>
   <app-chat *ngIf="getComponent() === 'chat'"></app-chat>
