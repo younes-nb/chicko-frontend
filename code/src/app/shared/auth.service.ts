@@ -60,14 +60,22 @@ export class AuthService {
   }
 
   public logout() {
-    this.http.post(`${BASE_API}auth/token/logout/`, {}).subscribe({
-      next: () => {
-        this.storageService.clean();
-        window.location.reload();
-      },
-      error: () => {
-        this.customeSnackBarService.openSnackBar('مشکلی پیش آمده است.');
-      },
-    });
+    this.http
+      .post(
+        `${BASE_API}auth/token/logout/`,
+        {},
+        {
+          headers: { NeedsUserTokenHeader: '' },
+        }
+      )
+      .subscribe({
+        next: () => {
+          this.storageService.clean();
+          window.location.reload();
+        },
+        error: () => {
+          this.customeSnackBarService.openSnackBar('مشکلی پیش آمده است.');
+        },
+      });
   }
 }
