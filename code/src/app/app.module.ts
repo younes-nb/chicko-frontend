@@ -43,7 +43,6 @@ import { JwtInterceptor } from './shared/jwt.interceptor';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,
@@ -63,8 +62,9 @@ import { JwtInterceptor } from './shared/jwt.interceptor';
     UsersModule,
     SupportModule,
     MatDialogModule,
-    NavbarComponent,
     HttpClientModule,
+    NavbarComponent,
+    AppRoutingModule,
   ],
   providers: [
     {

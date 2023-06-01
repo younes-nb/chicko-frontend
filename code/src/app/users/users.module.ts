@@ -6,15 +6,18 @@ import { MatCardModule } from '@angular/material/card';
 import { UsersService } from './users.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from '../core/navbar/navbar.component';
+import { UsersRoutingModule } from './users-routing.module';
+import { UsersComponent } from './users.component';
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, UsersComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
     MatButtonModule,
     MatCardModule,
-    NavbarComponent
+    NavbarComponent,
+    UsersRoutingModule,
   ],
   providers: [UsersService],
 })

@@ -4,28 +4,23 @@ import { HomeComponent } from './core/home/home.component';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 import { RegisterComponent } from './core/auth/register/register.component';
 import { LoginComponent } from './core/auth/login/login.component';
-import { AuthGuardService } from './shared/auth-guard.service';
-import { DashboardComponent } from './users/dashboard/dashboard.component';
+import { UsersRoutingModule } from './users/users-routing.module';
 
-const routes: Routes = [
+const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuardService],
-  },
   { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, {
+    RouterModule.forRoot(appRoutes, {
       anchorScrolling: 'enabled',
       scrollOffset: [0, 100],
     }),
+    UsersRoutingModule,
   ],
   exports: [RouterModule],
 })
