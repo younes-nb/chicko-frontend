@@ -73,7 +73,10 @@
     >
     </lord-icon>
   </div>
-  <div *ngIf="isLoggedIn" class="d-flex align-items-center">
+  <div
+    *ngIf="currentUser$ | async as currentUser"
+    class="d-flex align-items-center"
+  >
     <button
       class="p-3 ms-2 rounded-pill"
       color="primary"

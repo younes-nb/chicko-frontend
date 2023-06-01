@@ -1,5 +1,5 @@
-import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { UsersService } from '../users/users.service';
 
 const USER_KEY = 'auth-token';
 
@@ -7,6 +7,8 @@ const USER_KEY = 'auth-token';
   providedIn: 'root',
 })
 export class StorageService {
+  constructor(private usersService: UsersService) {}
+
   public clean(): void {
     window.sessionStorage.clear();
   }
@@ -14,18 +16,15 @@ export class StorageService {
   public saveUser(user: any): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+    this.usersService.fetchUser().subscribe();
   }
 
-  public getUserTokenHeader(): any {
-    const user = window.sessionStorage.getItem(USER_KEY);
-    if (user) {
-      return {
-        headers: new HttpHeaders({
-          Authorization: 'Token ' + JSON.parse(user).auth_token,
-        }),
-      };
+  public getUserToken(): string {
+    const userToken = window.sessionStorage.getItem(USER_KEY);
+    if (userToken) {
+      return 'Token ' + JSON.parse(userToken).auth_token;
     }
-    return {};
+    return '';
   }
 
   public isLoggedIn(): boolean {

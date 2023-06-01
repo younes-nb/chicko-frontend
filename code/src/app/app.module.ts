@@ -29,6 +29,8 @@ import { SupportModule } from './support/support.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { defineElement } from 'lord-icon-element';
 import lottie from 'lottie-web';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { JwtInterceptor } from './shared/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -62,8 +64,15 @@ import lottie from 'lottie-web';
     SupportModule,
     MatDialogModule,
     NavbarComponent,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })

@@ -16,6 +16,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { defineElement } from 'lord-icon-element';
 import lottie from 'lottie-web';
+import { Observable } from 'rxjs';
+import { UsersService } from 'src/app/users/users.service';
 
 @Component({
   standalone: true,
@@ -33,17 +35,19 @@ import lottie from 'lottie-web';
 })
 export class NavbarComponent implements OnInit {
   @Input() isInDashboard: boolean = false;
-  currentUser: User = {} as User;
+  currentUser$: Observable<any> = {} as Observable<any>;
   isLoggedIn: boolean = false;
 
   constructor(
     private storageService: StorageService,
-    private authService: AuthService
+    private authService: AuthService,
+    private usersService: UsersService
   ) {
     defineElement(lottie.loadAnimation);
   }
 
   ngOnInit(): void {
+    this.currentUser$ = this.usersService.currentUser$;
     this.isLoggedIn = this.storageService.isLoggedIn();
   }
 
