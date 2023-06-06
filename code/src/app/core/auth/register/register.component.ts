@@ -1,12 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  ValidationErrors,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../shared/auth.service';
 import { MatStepper } from '@angular/material/stepper';
@@ -19,19 +12,14 @@ import { CustomeSnackBarService } from 'src/app/shared/custome-snack-bar.service
 })
 export class RegisterComponent {
   @ViewChild('stepper') stepper!: MatStepper;
+
+  hidePassword: boolean = true;
+
   registerForm: FormGroup = new FormGroup({
-    firstName: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(20),
-    ]),
-    lastName: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(20),
-    ]),
     username: new FormControl('', [
       Validators.required,
       Validators.minLength(6),
-      Validators.maxLength(20),
+      Validators.maxLength(60),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
     phone_number: new FormControl('', [
@@ -41,10 +29,8 @@ export class RegisterComponent {
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
-      Validators.maxLength(32),
+      Validators.maxLength(128),
     ]),
-    confirmPassword: new FormControl('', Validators.required),
-    acceptTerms: new FormControl(false, Validators.requiredTrue),
   });
 
   verificationForm: FormGroup = new FormGroup({
@@ -61,8 +47,6 @@ export class RegisterComponent {
     private router: Router,
     private customeSnackBarService: CustomeSnackBarService
   ) {
-    this.errors.set('firstName', '');
-    this.errors.set('lastName', '');
     this.errors.set('username', '');
     this.errors.set('phone_number', '');
     this.errors.set('email', '');
@@ -70,23 +54,9 @@ export class RegisterComponent {
     this.errors.set('verificationCode', '');
   }
 
-  confirmPasswordValidator: ValidatorFn = (
-    control: AbstractControl
-  ): ValidationErrors | null => {
-    const password = control.get('password');
-    const confirmPassword = control.get('confirmPassword');
-    return password &&
-      confirmPassword &&
-      password.value === confirmPassword.value
-      ? { confirmPassword: true }
-      : { confirmPassword: false };
-  };
-
   onSubmit(): void {
     this.authService
       .register(
-        this.registerForm.controls['firstName'].value,
-        this.registerForm.controls['lastName'].value,
         this.registerForm.controls['username'].value,
         this.registerForm.controls['password'].value,
         this.registerForm.controls['phone_number'].value,

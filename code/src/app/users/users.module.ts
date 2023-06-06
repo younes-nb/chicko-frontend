@@ -8,9 +8,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from '../core/navbar/navbar.component';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
-  declarations: [DashboardComponent, UsersComponent],
+  declarations: [DashboardComponent, UsersComponent, AccountComponent],
   imports: [
     CommonModule,
     MatSidenavModule,

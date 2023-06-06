@@ -18,20 +18,19 @@ export class AuthService {
   ) {}
 
   public register(
-    first_name: string,
-    last_name: string,
     username: string,
     password: string,
     phone_number: string,
     email: string
   ): Observable<any> {
     return this.http.post(`${BASE_API}account/register/`, {
-      first_name,
-      last_name,
       username,
       password,
       phone_number,
       email,
+    },
+    {
+      headers: { 'Accept-Language': 'fa' },
     });
   }
 

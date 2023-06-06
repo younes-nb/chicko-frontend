@@ -18,6 +18,7 @@ import { defineElement } from 'lord-icon-element';
 import lottie from 'lottie-web';
 import { Observable } from 'rxjs';
 import { UsersService } from 'src/app/users/users.service';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   standalone: true,
@@ -28,6 +29,7 @@ import { UsersService } from 'src/app/users/users.service';
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
+    MatMenuModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   selector: 'app-navbar',

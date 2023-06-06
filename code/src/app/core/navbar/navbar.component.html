@@ -12,11 +12,7 @@
       </button>
     </li>
     <li>
-      <button
-        class="rounded-pill p-3 ms-1"
-        routerLink="/dashboard"
-        mat-button
-      >
+      <button class="rounded-pill p-3 ms-1" routerLink="/dashboard" mat-button>
         داشبورد
       </button>
     </li>
@@ -79,22 +75,25 @@
   </div>
   <div
     *ngIf="currentUser$ | async as currentUser"
-    class="d-flex align-items-center"
+    class="d-flex align-items-baseline"
   >
-    <button
-      class="p-3 ms-2 rounded-pill fs-5"
-      mat-button
-      matTooltip="حساب کاربری"
-    >
-      {{ currentUser.username }}
-    </button>
-    <button
-      (click)="logout()"
-      color="primary"
-      mat-icon-button
-      matTooltip="خروج از حساب"
-    >
-      <mat-icon>logout</mat-icon>
-    </button>
+    <ng-container *ngIf="!currentUser.profile_image; else profileImage">
+      <button
+        [matMenuTriggerFor]="menu"
+        class="p-3 ms-2 rounded-pill fs-5"
+        mat-mini-fab
+        color="primary"
+        matTooltip="حساب کاربری"
+      >
+        {{ currentUser.username[0] }}
+      </button>
+    </ng-container>
+    <ng-template #profileImage>
+      <img [src]="currentUser.profile_image" alt="profile" />
+    </ng-template>
+    <mat-menu class="mt-1" #menu="matMenu">
+      <button routerLink="/dashboard/account" mat-menu-item>حساب کاربری</button>
+      <button (click)="logout()" mat-menu-item>خروج</button>
+    </mat-menu>
   </div>
 </mat-toolbar>

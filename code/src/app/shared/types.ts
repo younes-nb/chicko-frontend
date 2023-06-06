@@ -1,39 +1,41 @@
-export type SupportChatComponent = 'register' | 'rooms' | 'chat'
+export type SupportChatComponent = 'register' | 'rooms' | 'chat';
 
 export interface User {
-  id: string,
-  username: string,
-  email: string,
-  phone_number: string
+  username: string;
+  email: string;
+  phone_number: string;
+  first_name?: string;
+  last_name?: string;
+  profile_image?: string;
 }
 
 export interface ChatUser {
-  _id: string,
-  email: string,
-  active: boolean,
-  name?: string
+  _id: string;
+  email: string;
+  active: boolean;
+  name?: string;
 }
 
 export interface Room {
-  _id: string,
-  title: string,
-  users: string[],
-  createdAt: Date
+  _id: string;
+  title: string;
+  users: string[];
+  createdAt: Date;
 }
 
 export interface RoomDialogData {
-  title: string,
-  label: string
+  title: string;
+  label: string;
 }
 
 export interface Message {
-  _id: string,
-  room_id: string,
-  user_id: string,
-  message: string,
-  type: string,
-  time: Date,
-  isFirst: boolean,
-  isCurrentUser: boolean,
-  showDate: boolean
+  _id: string;
+  room_id: string;
+  user_id: string;
+  message: string;
+  type: string;
+  time: Date;
+  isFirst: boolean;
+  isCurrentUser: boolean;
+  showDate: boolean;
 }
