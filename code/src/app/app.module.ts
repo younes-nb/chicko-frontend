@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './core/home/home.component';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 import { MatButtonModule } from '@angular/material/button';
-import { NavbarComponent } from './core/navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -63,7 +62,6 @@ import { JwtInterceptor } from './shared/jwt.interceptor';
     SupportModule,
     MatDialogModule,
     HttpClientModule,
-    NavbarComponent,
     AppRoutingModule,
   ],
   providers: [

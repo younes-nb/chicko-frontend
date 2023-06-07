@@ -5,10 +5,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { UsersService } from './users.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { NavbarComponent } from '../core/navbar/navbar.component';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
 import { AccountComponent } from './account/account.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [DashboardComponent, UsersComponent, AccountComponent],
@@ -17,8 +22,13 @@ import { AccountComponent } from './account/account.component';
     MatSidenavModule,
     MatButtonModule,
     MatCardModule,
-    NavbarComponent,
     UsersRoutingModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatMenuModule,
   ],
   providers: [UsersService],
 })

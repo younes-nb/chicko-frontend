@@ -22,7 +22,27 @@ export class UsersService {
       })
       .pipe(
         tap((data: any) => {
-          console.log(data);
+          this.currentUserSubject.next(data);
+        })
+      );
+  }
+
+  public updateUser(
+    username: string,
+    email: string,
+    phone_number: string,
+    first_name: string,
+    last_name: string,
+    password: string
+  ): Observable<User> {
+    return this.httpClient
+      .put<User>(
+        `${BASE_API}auth/users/me/`,
+        { username, email, phone_number, first_name, last_name, password },
+        { headers: { NeedsUserTokenHeader: '' } }
+      )
+      .pipe(
+        tap((data: User) => {
           this.currentUserSubject.next(data);
         })
       );

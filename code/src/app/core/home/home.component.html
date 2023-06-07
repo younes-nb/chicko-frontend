@@ -1,4 +1,70 @@
-<app-navbar [isInDashboard]="false"></app-navbar>
+<mat-toolbar
+  class="px-5 shadow d-flex justify-content-between align-items-center"
+>
+  <div routerLink="/home" class="d-flex me-5">
+    <img class="logo" src="favicon.ico" width="45" height="45" alt="logo" />
+    <h1 class="title me-2">چیکو</h1>
+  </div>
+  <ul class="m-0 ms-auto d-flex align-items-center">
+    <li>
+      <button class="rounded-pill p-3 ms-1" routerLink="/home" mat-button>
+        خانه
+      </button>
+    </li>
+    <li>
+      <button class="rounded-pill p-3 ms-1" routerLink="/dashboard" mat-button>
+        داشبورد
+      </button>
+    </li>
+    <li>
+      <button
+        class="rounded-pill p-3 ms-1"
+        routerLink="/home"
+        fragment="pricing"
+        (click)="scrollTo('pricing')"
+        mat-button
+      >
+        تعرفه ها
+      </button>
+    </li>
+    <li>
+      <button
+        class="rounded-pill p-3 ms-1"
+        routerLink="/home"
+        fragment="about-us"
+        (click)="scrollTo('about-us')"
+        mat-button
+      >
+        درباره ما
+      </button>
+    </li>
+    <li>
+      <button
+        class="rounded-pill p-3"
+        routerLink="/home"
+        fragment="contact-us"
+        (click)="scrollTo('contact-us')"
+        mat-button
+      >
+        تماس با ما
+      </button>
+    </li>
+  </ul>
+  <div
+    matTooltip="ورود به حساب کاربری"
+    routerLink="/login"
+    style="cursor: pointer"
+  >
+    <lord-icon
+      src="https://cdn.lordicon.com/hbvyhtse.json"
+      trigger="hover"
+      colors="primary:#3080e8"
+      state="hover"
+      style="width: 40px; height: 40px"
+    >
+    </lord-icon>
+  </div>
+</mat-toolbar>
 <header>
   <div class="container">
     <div class="row gx-5">
@@ -6,7 +72,7 @@
         <div>
           <h1 class="mb-4 fs-1">منوساز هوشمند چیکو</h1>
           <h3 id="sub-header" class="fs-5-5">
-            سامانه ویترین محصولات و فروش آنلاین
+          سامانه ویترین و به اشتراک گذاری محصولات 
           </h3>
           <div class="mb-4">
             <span class="fs-5" routerLink="/home"
@@ -16,9 +82,8 @@
               class="fs-5-5"
               typingAnimator
               [sentences]="[
-                'خدماتت رو خیلی راحت به اشتراک بزار.',
-                'فقط با چند کلیک منوی هوشمندتو بساز.',
-                'محصولاتت رو آنلاین بفروش.'
+                'محصولاتت رو خیلی راحت به اشتراک بزار.',
+                'فقط با چند کلیک منوی هوشمندتو بساز.'
               ]"
             ></span>
           </div>
@@ -28,7 +93,7 @@
             color="primary"
             routerLink="/dashboard"
           >
-            ساخت منو
+            ساخت منوی رایگان
           </button>
         </div>
       </div>
@@ -72,7 +137,6 @@
               xlink:href="#linear-gradient"
             ></linearGradient>
           </defs>
-          <title>PP</title>
           <path
             d="M194,292.23,14.32,186c-5.72-3.21-10.63-8.49-5.05-11.94l180.37-104c2.71-1.68,6.82-2.78,9.57-1.18L387.87,178.43c5.72,3.32,6.75,12.6,1,15.93L217.74,292.06A23.9,23.9,0,0,1,194,292.23Z"
             fill="#c5a8eb"

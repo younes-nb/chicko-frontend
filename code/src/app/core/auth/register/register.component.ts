@@ -12,7 +12,8 @@ import { CustomeSnackBarService } from 'src/app/shared/custome-snack-bar.service
 })
 export class RegisterComponent {
   @ViewChild('stepper') stepper!: MatStepper;
-
+  submitted = false;
+  errors: Map<string, string> = new Map();
   hidePassword: boolean = true;
 
   registerForm: FormGroup = new FormGroup({
@@ -39,8 +40,6 @@ export class RegisterComponent {
       Validators.pattern('[0-9]{6}'),
     ]),
   });
-  submitted = false;
-  errors: Map<string, string> = new Map();
 
   constructor(
     private authService: AuthService,
