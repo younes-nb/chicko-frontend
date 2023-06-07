@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenusService } from '../menus.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SingleInputDialogComponent } from 'src/app/shared/single-input-dialog/single-input-dialog.component';
 import { Menu } from 'src/app/shared/types';
 
 @Component({
@@ -9,9 +11,26 @@ import { Menu } from 'src/app/shared/types';
 })
 export class DashboardComponent implements OnInit {
   menus: Menu[] = [];
-  constructor(private menusService: MenusService) {}
+  constructor(public menusService: MenusService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.menus = this.menusService.menus;
+    this.menusService.getMenus().subscribe((menus: Menu[]) => {
+      this.menus = menus;
+    });
+    this.menusService.fetchMenus();
+  }
+
+  openCreateMenuDialog(): void {
+    const dialogRef = this.dialog.open(SingleInputDialogComponent, {
+      data: {
+        title: 'افزودن منوی جدید',
+        label: 'عنوان منو',
+      },
+    });
+    dialogRef.afterClosed().subscribe((name) => {
+      if (name) {
+        this.menusService.createMenu(name);
+      }
+    });
   }
 }

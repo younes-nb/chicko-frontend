@@ -17,7 +17,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatChipsModule } from '@angular/material/chips';
 import { defineElement } from 'lord-icon-element';
 import lottie from 'lottie-web';
-import { AppPipModule } from '../shared/app-pip.module';
+import { AppSharedModule } from '../shared/app-shared.module';
 
 @NgModule({
   declarations: [DashboardComponent, UsersComponent, AccountComponent],
@@ -34,7 +34,7 @@ import { AppPipModule } from '../shared/app-pip.module';
     MatToolbarModule,
     MatMenuModule,
     MatChipsModule,
-    AppPipModule,
+    AppSharedModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [UsersService],

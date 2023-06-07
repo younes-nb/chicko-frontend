@@ -1,10 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SupportService } from '../support.service';
-import { ChatUser, Room, RoomDialogData } from '../../shared/types';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ChatUser, Room } from '../../shared/types';
+import { MatDialog } from '@angular/material/dialog';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { SingleInputDialogComponent } from 'src/app/shared/single-input-dialog/single-input-dialog.component';
 
 @Component({
   selector: 'app-rooms',
@@ -41,7 +40,7 @@ export class RoomsComponent implements OnInit {
   }
 
   openCreateRoomDialog(): void {
-    const dialogRef = this.dialog.open(RoomDialog, {
+    const dialogRef = this.dialog.open(SingleInputDialogComponent, {
       data: {
         title: 'افزودن گفتگوی جدید',
         label: 'عنوان گفتگو',
@@ -55,7 +54,7 @@ export class RoomsComponent implements OnInit {
   }
 
   openJoinRoomDialog(): void {
-    const dialogRef = this.dialog.open(RoomDialog, {
+    const dialogRef = this.dialog.open(SingleInputDialogComponent, {
       data: {
         title: 'پیوستن به گفتگو',
         label: 'شناسه گفتگو',
@@ -80,16 +79,4 @@ export class RoomsComponent implements OnInit {
       event.currentIndex
     );
   }
-}
-
-@Component({
-  selector: 'app-room-dialog',
-  templateUrl: 'room-dialog.html',
-})
-export class RoomDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: RoomDialogData) {}
-
-  roomForm: FormGroup = new FormGroup({
-    input: new FormControl('', Validators.required),
-  });
 }

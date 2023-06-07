@@ -9,7 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { RoomDialog, RoomsComponent } from './rooms/rooms.component';
+import { RoomsComponent } from './rooms/rooms.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatRippleModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
@@ -23,14 +23,13 @@ import { NgxEmojModule } from 'ngx-emoj';
 import { ScrollerDirective } from './chat/scroller.directive';
 import { defineElement } from 'lord-icon-element';
 import lottie from 'lottie-web';
-import { AppPipModule } from '../shared/app-pip.module';
+import { AppSharedModule } from '../shared/app-shared.module';
 
 @NgModule({
   declarations: [
     SupportComponent,
     RegisterChatComponent,
     RoomsComponent,
-    RoomDialog,
     ChatComponent,
     GetUserNamePipe,
     ScrollerDirective,
@@ -54,7 +53,7 @@ import { AppPipModule } from '../shared/app-pip.module';
     FormsModule,
     AutosizeModule,
     NgxEmojModule,
-    AppPipModule,
+    AppSharedModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [SupportComponent],

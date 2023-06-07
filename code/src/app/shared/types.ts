@@ -10,6 +10,7 @@ export interface User {
 }
 
 export interface Menu {
+  id: string;
   name: string;
   number_of_items: string;
   number_of_categories: string;
@@ -29,7 +30,7 @@ export interface Room {
   createdAt: Date;
 }
 
-export interface RoomDialogData {
+export interface DialogData {
   title: string;
   label: string;
 }
