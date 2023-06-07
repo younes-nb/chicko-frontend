@@ -23,6 +23,7 @@ import { NgxEmojModule } from 'ngx-emoj';
 import { ScrollerDirective } from './chat/scroller.directive';
 import { defineElement } from 'lord-icon-element';
 import lottie from 'lottie-web';
+import { AppPipModule } from '../shared/app-pip.module';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import lottie from 'lottie-web';
     FormsModule,
     AutosizeModule,
     NgxEmojModule,
+    AppPipModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [SupportComponent],

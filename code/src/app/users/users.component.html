@@ -1,35 +1,39 @@
-<mat-toolbar
-  class="px-5 shadow d-flex justify-content-between align-items-center"
->
-  <div routerLink="/home" class="d-flex">
-    <img class="logo" src="favicon.ico" width="45" height="45" alt="logo" />
-    <h1 class="title me-2">چیکو</h1>
-  </div>
-  <button routerLink="/dashboard" class="fs-4 rounded-pill p-4" mat-button>
-    داشبورد
-  </button>
-  <div
-    *ngIf="currentUser$ | async as currentUser"
-    class="d-flex align-items-baseline"
+<div class="bg-light h-100">
+  <mat-toolbar
+    class="px-5 bg-white shadow d-flex justify-content-between align-items-center"
   >
-    <ng-container *ngIf="!currentUser.profile_image; else profileImage">
-      <button
-        [matMenuTriggerFor]="menu"
-        class="p-3 ms-2 rounded-pill fs-5"
-        mat-mini-fab
-        color="primary"
-        matTooltip="حساب کاربری"
-      >
-        {{ currentUser.username[0] }}
-      </button>
-    </ng-container>
-    <ng-template #profileImage>
-      <img [src]="currentUser.profile_image" alt="profile" />
-    </ng-template>
-    <mat-menu class="mt-1" #menu="matMenu">
-      <button routerLink="/dashboard/account" mat-menu-item>حساب کاربری</button>
-      <button (click)="logout()" mat-menu-item>خروج</button>
-    </mat-menu>
-  </div>
-</mat-toolbar>
-<router-outlet></router-outlet>
+    <div routerLink="/home" class="d-flex">
+      <img class="logo" src="favicon.ico" width="45" height="45" alt="logo" />
+      <h1 class="title me-2">چیکو</h1>
+    </div>
+    <button routerLink="/dashboard" class="fs-4 rounded-pill p-4" mat-button>
+      داشبورد
+    </button>
+    <div
+      *ngIf="currentUser$ | async as currentUser"
+      class="d-flex align-items-baseline"
+    >
+      <ng-container *ngIf="!currentUser.profile_image; else profileImage">
+        <button
+          [matMenuTriggerFor]="menu"
+          class="p-3 ms-2 rounded-pill fs-5"
+          mat-mini-fab
+          color="primary"
+          matTooltip="حساب کاربری"
+        >
+          {{ currentUser.username[0] }}
+        </button>
+      </ng-container>
+      <ng-template #profileImage>
+        <img [src]="currentUser.profile_image" alt="profile" />
+      </ng-template>
+      <mat-menu class="mt-1" #menu="matMenu">
+        <button routerLink="/dashboard/account" mat-menu-item>
+          حساب کاربری
+        </button>
+        <button (click)="logout()" mat-menu-item>خروج</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</div>

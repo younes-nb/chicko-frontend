@@ -30,6 +30,7 @@ import { defineElement } from 'lord-icon-element';
 import lottie from 'lottie-web';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './shared/jwt.interceptor';
+import { AppPipModule } from './shared/app-pip.module';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { JwtInterceptor } from './shared/jwt.interceptor';
     SupportModule,
     MatDialogModule,
     HttpClientModule,
+    AppPipModule,
     AppRoutingModule,
   ],
   providers: [

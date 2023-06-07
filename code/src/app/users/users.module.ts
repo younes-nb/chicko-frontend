@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,6 +14,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatChipsModule } from '@angular/material/chips';
+import { defineElement } from 'lord-icon-element';
+import lottie from 'lottie-web';
+import { AppPipModule } from '../shared/app-pip.module';
 
 @NgModule({
   declarations: [DashboardComponent, UsersComponent, AccountComponent],
@@ -29,7 +33,14 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatToolbarModule,
     MatMenuModule,
+    MatChipsModule,
+    AppPipModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [UsersService],
 })
-export class UsersModule {}
+export class UsersModule {
+  constructor() {
+    defineElement(lottie.loadAnimation);
+  }
+}

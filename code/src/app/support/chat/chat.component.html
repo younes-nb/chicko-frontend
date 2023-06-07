@@ -7,7 +7,7 @@
       <div class="me-3 room-title-container">
         <p class="m-0 fs-5-5 room-title">{{ getRoom().title }}</p>
         <p class="m-0 text-muted fs-7">
-          {{ numLatinToFa(getRoom().users.length.toString()) }} عضو
+          {{ getRoom().users.length.toString() | numLatinToFa }} عضو
         </p>
       </div>
     </div>

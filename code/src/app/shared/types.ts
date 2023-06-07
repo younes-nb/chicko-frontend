@@ -9,6 +9,12 @@ export interface User {
   profile_image?: string;
 }
 
+export interface Menu {
+  name: string;
+  number_of_items: string;
+  number_of_categories: string;
+}
+
 export interface ChatUser {
   _id: string;
   email: string;

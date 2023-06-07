@@ -1,0 +1,43 @@
+<section class="px-5 mt-5">
+  <div class="d-flex justify-content-between align-items-baseline">
+    <h1 class="fs-2">منو ها</h1>
+    <button type="button" mat-raised-button color="primary">
+      <mat-icon>add</mat-icon>
+      افزودن منو
+    </button>
+  </div>
+  <ng-container *ngIf="menus.length; else noMenusRef">
+    <div class="row g-2 mt-4">
+      <mat-card *ngFor="let menu of menus" class="col-3">
+        <mat-card-header class="mb-4">
+          <mat-card-title class="fs-4">{{ menu.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="d-flex align-content-center mb-2">
+            <mat-icon class="ms-2" color="primary">link</mat-icon>
+            <a id="menu-link" class="text-muted">menu link</a>
+          </div>
+          <div class="d-flex align-content-center">
+            <mat-icon class="ms-2" color="primary">qr_code</mat-icon>
+            <p class="text-muted" style="cursor: pointer">کد QR</p>
+          </div>
+          <div class="my-2">
+            <mat-chip class="ms-2"
+              >{{ menu.number_of_items | numLatinToFa }} آیتم</mat-chip
+            >
+            <mat-chip
+              >{{ menu.number_of_categories | numLatinToFa }} دسته
+              بندی</mat-chip
+            >
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary">ویرایش</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </ng-container>
+  <ng-template #noMenusRef>
+    <h3 class="text-muted text-center mt-5">منویی وجود ندارد.</h3>
+  </ng-template>
+</section>

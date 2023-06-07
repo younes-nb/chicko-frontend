@@ -10,7 +10,6 @@ import { SupportService } from '../support.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ChatUser, Message, Room } from '../../shared/types';
 import { WebSocketService } from '../web-socket.service';
-import { numLatinToFa } from 'src/app/shared/utils';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -86,9 +85,5 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
       verticalPosition: 'top',
       duration: 8000,
     });
-  }
-
-  numLatinToFa(num: string): string {
-    return numLatinToFa(num);
   }
 }

@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../shared/auth.service';
 import { MatStepper } from '@angular/material/stepper';
-import { numLatinToFa } from '../../../shared/utils';
 import { CustomeSnackBarService } from 'src/app/shared/custome-snack-bar.service';
 
 @Component({
@@ -114,9 +113,5 @@ export class RegisterComponent {
           }
         },
       });
-  }
-
-  numLatinToFa(num: string): string {
-    return numLatinToFa(num);
   }
 }
