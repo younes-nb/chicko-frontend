@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MenusService } from '../menus.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Clipboard } from '@angular/cdk/clipboard';
 import { SingleInputDialogComponent } from 'src/app/shared/single-input-dialog/single-input-dialog.component';
 import { Menu } from 'src/app/shared/types';
+import { BASE_URL } from 'src/app/shared/api';
+import { CustomeSnackBarService } from 'src/app/shared/custome-snack-bar.service';
+import { QrCodeDialogComponent } from '../qr-code-dialog/qr-code-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +15,12 @@ import { Menu } from 'src/app/shared/types';
 })
 export class DashboardComponent implements OnInit {
   menus: Menu[] = [];
-  constructor(public menusService: MenusService, public dialog: MatDialog) {}
+  constructor(
+    public menusService: MenusService,
+    public dialog: MatDialog,
+    private clipboard: Clipboard,
+    private customeSnackBarService: CustomeSnackBarService
+  ) {}
 
   ngOnInit(): void {
     this.menusService.getMenus().subscribe((menus: Menu[]) => {
@@ -32,5 +41,18 @@ export class DashboardComponent implements OnInit {
         this.menusService.createMenu(name);
       }
     });
+  }
+
+  openQrCodeDialog(menuId: string): void {
+    this.dialog.open(QrCodeDialogComponent, {
+      data: {
+        menuId: menuId,
+      },
+    });
+  }
+
+  copyToClipboard(menuLink: string) {
+    this.clipboard.copy(BASE_URL + menuLink);
+    this.customeSnackBarService.openSnackBar('لینک منو کپی شد.');
   }
 }

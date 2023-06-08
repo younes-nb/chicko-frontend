@@ -13,25 +13,37 @@
   </div>
   <ng-container *ngIf="this.menus.length; else noMenusRef">
     <div class="row mt-4">
-      <mat-card *ngFor="let menu of this.menus" class="col-3 mb-4 ms-4">
-        <mat-card-header class="mb-4">
+      <mat-card
+        *ngFor="let menu of this.menus"
+        class="menu-card col-3 mb-4 ms-4 shadow rounded"
+      >
+        <mat-card-header class="mb-3 d-flex justify-content-between">
           <mat-card-title class="fs-4">{{ menu.name }}</mat-card-title>
+          <button
+            (click)="
+              copyToClipboard(this.menusService.generateMenuLink(menu.id))
+            "
+            type="button"
+            mat-icon-button
+            color="primary"
+          >
+            <mat-icon>content_copy</mat-icon>
+          </button>
         </mat-card-header>
         <mat-card-content>
           <div class="d-flex align-content-center mb-2">
-            <mat-icon class="ms-2" color="primary">link</mat-icon>
+            <mat-icon class="ms-2" color="primary">preview</mat-icon>
             <a
-              id="menu-link"
               [routerLink]="this.menusService.generateMenuLink(menu.id)"
-              class="text-muted"
-              >لینک منو</a
+              class="text-muted menu-card-item"
+              >نمایش منو</a
             >
           </div>
           <div class="d-flex align-content-center">
             <mat-icon class="ms-2" color="primary">qr_code</mat-icon>
-            <p class="text-muted" style="cursor: pointer">کد QR</p>
+            <p class="text-muted m-0 menu-card-item">کد QR</p>
           </div>
-          <div class="my-2">
+          <div class="my-2 mt-3">
             <mat-chip class="ms-2"
               >{{
                 menu.number_of_items.toString() | numLatinToFa

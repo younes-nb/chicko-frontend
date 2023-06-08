@@ -18,9 +18,11 @@ import { MatChipsModule } from '@angular/material/chips';
 import { defineElement } from 'lord-icon-element';
 import lottie from 'lottie-web';
 import { AppSharedModule } from '../shared/app-shared.module';
+import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
-  declarations: [DashboardComponent, UsersComponent, AccountComponent],
+  declarations: [DashboardComponent, UsersComponent, AccountComponent, QrCodeDialogComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -35,6 +37,7 @@ import { AppSharedModule } from '../shared/app-shared.module';
     MatMenuModule,
     MatChipsModule,
     AppSharedModule,
+    QRCodeModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [UsersService],
