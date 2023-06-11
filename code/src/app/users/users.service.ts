@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BASE_API } from '../shared/api';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { User } from '../shared/types';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BASE_API} from '../shared/api';
+import {BehaviorSubject, catchError, Observable, tap, throwError} from 'rxjs';
+import {User} from '../shared/types';
+import {CustomSnackBarService} from "../shared/custom-snack-bar.service";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root',
@@ -13,16 +15,25 @@ export class UsersService {
   );
   public currentUser$: Observable<User> =
     this.currentUserSubject.asObservable();
-  constructor(private httpClient: HttpClient) {}
+
+  constructor(private httpClient: HttpClient, private router: Router, private customSnackBarService: CustomSnackBarService) {
+  }
 
   public fetchUser(): Observable<User> {
     return this.httpClient
       .get(`${BASE_API}auth/users/me/`, {
-        headers: { NeedsUserTokenHeader: '' },
+        headers: {NeedsUserTokenHeader: ''},
       })
       .pipe(
         tap((data: any) => {
           this.currentUserSubject.next(data);
+        }),
+        catchError((error: any): Observable<any> => {
+          console.error('Error fetching user:', error);
+          this.router.navigate(['/home']).then(() => {
+            this.customSnackBarService.openSnackBar('مشکلی پیش آمده است.')
+          });
+          return throwError(error);
         })
       );
   }
@@ -38,8 +49,8 @@ export class UsersService {
     return this.httpClient
       .put<User>(
         `${BASE_API}auth/users/me/`,
-        { username, email, phone_number, first_name, last_name, password },
-        { headers: { NeedsUserTokenHeader: '' } }
+        {username, email, phone_number, first_name, last_name, password},
+        {headers: {NeedsUserTokenHeader: ''}}
       )
       .pipe(
         tap((data: User) => {

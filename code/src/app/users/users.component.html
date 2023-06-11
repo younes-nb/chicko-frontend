@@ -3,7 +3,7 @@
     class="px-5 bg-white shadow d-flex justify-content-between align-items-center"
   >
     <div routerLink="/home" class="d-flex">
-      <img class="logo" src="favicon.ico" width="45" height="45" alt="logo" />
+      <img class="logo" src="favicon.ico" width="45" height="45" alt="logo"/>
       <h1 class="title me-2">چیکو</h1>
     </div>
     <button routerLink="/dashboard" class="fs-4 rounded-pill p-4" mat-button>
@@ -25,7 +25,7 @@
         </button>
       </ng-container>
       <ng-template #profileImage>
-        <img [src]="currentUser.profile_image" alt="profile" />
+        <img [src]="currentUser.profile_image" alt="profile"/>
       </ng-template>
       <mat-menu class="mt-1" #menu="matMenu">
         <button routerLink="/dashboard/account" mat-menu-item>

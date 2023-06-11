@@ -52,7 +52,7 @@
             [ngClass]="message.isCurrentUser ? 'text-light' : 'text-muted'"
             class="m-0 align-self-end fs-8 text-nowrap"
             dir="ltr"
-            >{{ message.time | date : "shortTime" }}</span
+          >{{ message.time | date : "shortTime" }}</span
           >
         </div>
       </div>
@@ -70,30 +70,7 @@
       name="message"
       placeholder="پیام"
     ></textarea>
-    <ngx-emoj
-      *ngIf="isShowingEmojiPicker"
-      (onemojipick)="handleEmoji($event)"
-      [width]="'260px'"
-      [height]="'250px'"
-      [theme]="{
-        martShowHeader: true,
-        martShowFooter: false,
-        martHeaderPadding: { x: '0', y: '0' },
-        martFooterPadding: { x: '0', y: '0' },
-        martHeaderFontSize: '14px',
-        martHeaderBG: '#e3e7e8',
-        martBG: '#ebeff2',
-        martCategoryColor: '#94a0a6',
-        martCategoryColorActive: '#455a64',
-        martActiveCategoryIndicatorColor: '#1e88e5',
-        martEmojiFontSize: '150%',
-        martCategoryFontSize: '20px',
-        martBorderRadius: '5px',
-        martActiveCategoryIndicatorHeight: '4px',
-        martEmojiPadding: { x: '40px', y: '40px' }
-      }"
-    >
-    </ngx-emoj>
+    <!-- emoji picker -->
     <button
       type="button"
       (click)="isShowingEmojiPicker = !isShowingEmojiPicker"

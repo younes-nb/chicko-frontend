@@ -2,7 +2,7 @@
   class="d-flex flex-column align-items-center justify-content-center h-100 bg-light"
 >
   <div routerLink="/home" class="d-flex mb-4">
-    <img class="logo" src="favicon.ico" width="80" height="80" alt="logo" />
+    <img class="logo" src="favicon.ico" width="80" height="80" alt="logo"/>
     <h1 class="title me-2 fs-high">چیکو</h1>
   </div>
   <section class="vw-50 p-1 d-flex align-items-center bg-white shadow rounded">
@@ -33,22 +33,22 @@
                   registerForm.get('username')?.hasError('required')
                 "
                 class="fs-7"
-                >وارد کردن نام کاربری الزامی می باشد.
+              >وارد کردن نام کاربری الزامی می باشد.
               </mat-error>
               <mat-error
                 *ngIf="registerForm.get('username')?.hasError('maxlength')"
                 class="fs-7"
-                >حداکثر تعداد حروف مجاز ۶۰ می باشد.
+              >حداکثر تعداد حروف مجاز ۶۰ می باشد.
               </mat-error>
               <mat-error
                 *ngIf="registerForm.get('username')?.hasError('minlength')"
                 class="fs-7"
-                >حداقل تعداد حروف مجاز ۶ می باشد.
+              >حداقل تعداد حروف مجاز ۶ می باشد.
               </mat-error>
               <mat-error
                 *ngIf="registerForm.get('username')?.hasError('invalid')"
                 class="fs-7"
-                >{{ errors.get("username") }}</mat-error
+              >{{ errors.get("username") }}</mat-error
               >
             </mat-form-field>
             <mat-form-field appearance="fill">
@@ -65,17 +65,18 @@
                   submitted && registerForm.get('email')?.hasError('required')
                 "
                 class="fs-7"
-                >وارد کردن ایمیل الزامی می باشد.
+              >وارد کردن ایمیل الزامی می باشد.
               </mat-error>
               <mat-error
                 *ngIf="registerForm.get('email')?.hasError('email')"
                 class="fs-7"
-                >ایمیل معتبر نیست.</mat-error
+              >ایمیل معتبر نیست.
+              </mat-error
               >
               <mat-error
                 *ngIf="registerForm.get('email')?.hasError('invalid')"
                 class="fs-7"
-                >{{ errors.get("email") }}</mat-error
+              >{{ errors.get("email") }}</mat-error
               >
             </mat-form-field>
             <mat-form-field appearance="fill">
@@ -95,7 +96,7 @@
               >
                 <mat-icon>{{
                   hidePassword ? "visibility_off" : "visibility"
-                }}</mat-icon>
+                  }}</mat-icon>
               </button>
               <mat-error
                 *ngIf="
@@ -103,23 +104,23 @@
                   registerForm.get('password')?.hasError('required')
                 "
                 class="fs-7"
-                >وارد کردن رمز عبور الزامی می باشد.
+              >وارد کردن رمز عبور الزامی می باشد.
               </mat-error>
               <mat-error
                 *ngIf="registerForm.get('password')?.hasError('minlength')"
                 class="fs-7"
-                >رمز عبور حداقل باید شامل ۸ حرف باشد.
+              >رمز عبور حداقل باید شامل ۸ حرف باشد.
               </mat-error>
               <mat-error
                 class="fs-6"
                 *ngIf="registerForm.get('password')?.hasError('maxlength')"
                 class="fs-7"
-                >رمز عبور حداکثر باید شامل ۱۲۸ حرف باشد.
+              >رمز عبور حداکثر باید شامل ۱۲۸ حرف باشد.
               </mat-error>
               <mat-error
                 *ngIf="registerForm.get('password')?.hasError('invalid')"
                 class="fs-7"
-                >{{ errors.get("password") }}</mat-error
+              >{{ errors.get("password") }}</mat-error
               >
             </mat-form-field>
             <mat-form-field appearance="fill">
@@ -137,17 +138,18 @@
                   registerForm.get('phone_number')?.hasError('required')
                 "
                 class="fs-7"
-                >وارد کردن شماره تلفن الزامی می باشد.
+              >وارد کردن شماره تلفن الزامی می باشد.
               </mat-error>
               <mat-error
                 *ngIf="registerForm.get('phone_number')?.hasError('pattern')"
                 class="fs-7"
-                >شماره تلفن معتبر نیست.</mat-error
+              >شماره تلفن معتبر نیست.
+              </mat-error
               >
               <mat-error
                 *ngIf="registerForm.get('phone_number')?.hasError('invalid')"
                 class="fs-7"
-                >{{ errors.get("phone_number") }}</mat-error
+              >{{ errors.get("phone_number") }}</mat-error
               >
             </mat-form-field>
             <div>
@@ -449,7 +451,7 @@
               لطفا کد تایید ارسال شده به شماره ی
               <strong>{{
                 registerForm.get("phone_number")?.value | numLatinToFa
-              }}</strong>
+                }}</strong>
               را وارد کنید.
             </p>
             <mat-form-field appearance="fill">
@@ -466,20 +468,20 @@
                   verificationForm.get('verificationCode')?.hasError('required')
                 "
                 class="fs-7"
-                >وارد کردن کد تایید الزامی می باشد.
+              >وارد کردن کد تایید الزامی می باشد.
               </mat-error>
               <mat-error
                 *ngIf="
                   verificationForm.get('verificationCode')?.hasError('pattern')
                 "
                 class="fs-7"
-                >کد تایید معتبر نیست.
+              >کد تایید معتبر نیست.
               </mat-error>
               <mat-error
                 *ngIf="
                   verificationForm.get('verificationCode')?.hasError('invalid')
                 "
-                >{{ errors.get("verificationCode") }}</mat-error
+              >{{ errors.get("verificationCode") }}</mat-error
               >
             </mat-form-field>
             <div class="mt-4">

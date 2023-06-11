@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SupportService } from '../support.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {Component} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {SupportService} from '../support.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register-chat',
@@ -17,7 +17,8 @@ export class RegisterChatComponent {
   constructor(
     private supportService: SupportService,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+  }
 
   onSubmit(): void {
     this.supportService

@@ -20,6 +20,7 @@ import lottie from 'lottie-web';
 import { AppSharedModule } from '../shared/app-shared.module';
 import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [DashboardComponent, UsersComponent, AccountComponent, QrCodeDialogComponent],
@@ -37,7 +38,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     MatMenuModule,
     MatChipsModule,
     AppSharedModule,
-    QRCodeModule
+    QRCodeModule,
+    MatTooltipModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [UsersService],

@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { UsersService } from '../users/users.service';
+import {Injectable} from '@angular/core';
+import {UsersService} from '../users/users.service';
 
 const USER_KEY = 'auth-token';
 
@@ -7,7 +7,8 @@ const USER_KEY = 'auth-token';
   providedIn: 'root',
 })
 export class StorageService {
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService) {
+  }
 
   public clean(): void {
     window.sessionStorage.clear();

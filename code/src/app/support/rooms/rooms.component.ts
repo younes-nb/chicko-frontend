@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { SupportService } from '../support.service';
-import { ChatUser, Room } from '../../shared/types';
-import { MatDialog } from '@angular/material/dialog';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { SingleInputDialogComponent } from 'src/app/shared/single-input-dialog/single-input-dialog.component';
+import {Component, OnInit} from '@angular/core';
+import {SupportService} from '../support.service';
+import {ChatUser, Room} from '../../shared/types';
+import {MatDialog} from '@angular/material/dialog';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import {SingleInputDialogComponent} from 'src/app/shared/single-input-dialog/single-input-dialog.component';
 
 @Component({
   selector: 'app-rooms',
@@ -14,7 +14,8 @@ export class RoomsComponent implements OnInit {
   constructor(
     private supportService: SupportService,
     public dialog: MatDialog
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.updateUserRooms();
@@ -35,8 +36,8 @@ export class RoomsComponent implements OnInit {
     );
   }
 
-  signout(): void {
-    this.supportService.signout();
+  logout(): void {
+    this.supportService.logout();
   }
 
   openCreateRoomDialog(): void {

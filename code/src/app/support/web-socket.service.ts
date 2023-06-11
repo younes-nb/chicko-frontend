@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { SupportService } from './support.service';
+import {Injectable} from '@angular/core';
+import {SupportService} from './support.service';
 
 const WS_ENDPOINT = 'ws://127.0.0.1:8080/ws/';
 
@@ -9,7 +9,8 @@ const WS_ENDPOINT = 'ws://127.0.0.1:8080/ws/';
 export class WebSocketService {
   websocket: WebSocket = {} as WebSocket;
 
-  constructor(private supportService: SupportService) {}
+  constructor(private supportService: SupportService) {
+  }
 
   public open(roomId: string, userId: string): void {
     this.websocket = new WebSocket(`${WS_ENDPOINT}${roomId}/${userId}/`);

@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ChatUser, Message, Room, SupportChatComponent } from '../shared/types';
-import { CHAT_API } from '../shared/api';
-import { CustomeSnackBarService } from '../shared/custome-snack-bar.service';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {ChatUser, Message, Room, SupportChatComponent} from '../shared/types';
+import {CHAT_API} from '../shared/api';
+import {CustomSnackBarService} from '../shared/custom-snack-bar.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,10 +19,11 @@ export class SupportService {
 
   constructor(
     private http: HttpClient,
-    private customeSnackBarService: CustomeSnackBarService
-  ) {}
+    private customSnackBarService: CustomSnackBarService
+  ) {
+  }
 
-  public signout() {
+  public logout() {
     this.user = {} as ChatUser;
     this.userRooms = [];
     this.component = 'register';
@@ -81,7 +82,7 @@ export class SupportService {
           this.userRooms = data.data;
         },
         error: () => {
-          this.customeSnackBarService.openSnackBar('مشکلی پیش آمده است.');
+          this.customSnackBarService.openSnackBar('مشکلی پیش آمده است.');
         },
       });
   }
@@ -97,7 +98,7 @@ export class SupportService {
           this.getUserRooms(this.user._id, this.user.email);
         },
         error: () => {
-          this.customeSnackBarService.openSnackBar('مشکلی پیش آمده است.');
+          this.customSnackBarService.openSnackBar('مشکلی پیش آمده است.');
         },
       });
   }
@@ -113,7 +114,7 @@ export class SupportService {
           this.getUserRooms(this.user._id, this.user.email);
         },
         error: () => {
-          this.customeSnackBarService.openSnackBar('مشکلی پیش آمده است.');
+          this.customSnackBarService.openSnackBar('مشکلی پیش آمده است.');
         },
       });
   }
@@ -132,7 +133,7 @@ export class SupportService {
           );
         },
         error: () => {
-          this.customeSnackBarService.openSnackBar('مشکلی پیش آمده است.');
+          this.customSnackBarService.openSnackBar('مشکلی پیش آمده است.');
         },
       });
   }
@@ -149,7 +150,7 @@ export class SupportService {
           this.component = 'chat';
         },
         error: () => {
-          this.customeSnackBarService.openSnackBar('مشکلی پیش آمده است.');
+          this.customSnackBarService.openSnackBar('مشکلی پیش آمده است.');
         },
       });
   }

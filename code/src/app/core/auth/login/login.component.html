@@ -2,7 +2,7 @@
   class="d-flex flex-column align-items-center justify-content-center h-100 bg-light"
 >
   <div routerLink="/home" class="d-flex mb-4">
-    <img class="logo" src="favicon.ico" width="80" height="80" alt="logo" />
+    <img class="logo" src="favicon.ico" width="80" height="80" alt="logo"/>
     <h1 class="title me-2 fs-high">چیکو</h1>
   </div>
   <section
@@ -26,7 +26,7 @@
         <mat-error
           class="fs-6"
           *ngIf="submitted && loginForm.get('username')?.hasError('required')"
-          >وارد کردن نام کاربری الزامی می باشد.
+        >وارد کردن نام کاربری الزامی می باشد.
         </mat-error>
       </mat-form-field>
       <mat-form-field class="w-100 mb-3" appearance="fill">
@@ -40,7 +40,7 @@
         />
         <mat-error
           *ngIf="submitted && loginForm.get('password')?.hasError('required')"
-          >وارد کردن رمز عبور الزامی می باشد.
+        >وارد کردن رمز عبور الزامی می باشد.
         </mat-error>
       </mat-form-field>
       <div class="w-100 d-flex justify-content-between mt-4">

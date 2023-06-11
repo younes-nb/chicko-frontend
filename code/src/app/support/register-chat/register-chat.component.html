@@ -1,6 +1,6 @@
 <section>
   <div class="d-flex justify-content-center">
-    <img src="assets/images/support.png" class="w-75 h-100" alt="support" />
+    <img ngSrc="assets/images/support.png" class="w-75 h-100" alt="support" height="500" width="500"/>
   </div>
   <h5 class="text-center">سامانه پشتیبانی چیکو</h5>
   <div class="d-flex justify-content-center mt-4">
@@ -23,7 +23,7 @@
           *ngIf="
             submitted && registerChatForm.get('name')?.hasError('required')
           "
-          >وارد کردن نام الزامی می باشد.
+        >وارد کردن نام الزامی می باشد.
         </mat-error>
       </mat-form-field>
       <mat-form-field class="w-100" appearance="fill">
@@ -40,12 +40,13 @@
           *ngIf="
             submitted && registerChatForm.get('email')?.hasError('required')
           "
-          >وارد کردن ایمیل الزامی می باشد.
+        >وارد کردن ایمیل الزامی می باشد.
         </mat-error>
         <mat-error
           class="fs-7"
           *ngIf="registerChatForm.get('email')?.hasError('email')"
-          >ایمیل معتبر نیست.</mat-error
+        >ایمیل معتبر نیست.
+        </mat-error
         >
       </mat-form-field>
       <div class="d-flex justify-content-center mt-1">

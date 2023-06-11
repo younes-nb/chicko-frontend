@@ -14,6 +14,7 @@ export interface Menu {
   name: string;
   number_of_items: string;
   number_of_categories: string;
+  link?: string
 }
 
 export interface ChatUser {
@@ -33,6 +34,11 @@ export interface Room {
 export interface DialogData {
   title: string;
   label: string;
+}
+
+export interface QRCodeDialogData {
+  menuId: string,
+  menuName: string
 }
 
 export interface Message {

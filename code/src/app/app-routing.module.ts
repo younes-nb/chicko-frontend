@@ -1,17 +1,17 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './core/home/home.component';
-import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
-import { RegisterComponent } from './core/auth/register/register.component';
-import { LoginComponent } from './core/auth/login/login.component';
-import { UsersRoutingModule } from './users/users-routing.module';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from './core/home/home.component';
+import {PageNotFoundComponent} from './core/page-not-found/page-not-found.component';
+import {RegisterComponent} from './core/auth/register/register.component';
+import {LoginComponent} from './core/auth/login/login.component';
+import {UsersRoutingModule} from './users/users-routing.module';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
-  { path: '**', component: PageNotFoundComponent },
+  {path: 'home', component: HomeComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
+  {path: '**', component: PageNotFoundComponent},
 ];
 
 @NgModule({
@@ -24,4 +24,5 @@ const appRoutes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

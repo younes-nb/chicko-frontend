@@ -1,9 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '../../../shared/auth.service';
-import { MatStepper } from '@angular/material/stepper';
-import { CustomeSnackBarService } from 'src/app/shared/custome-snack-bar.service';
+import {Component, ViewChild} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {AuthService} from '../../../shared/auth.service';
+import {MatStepper} from '@angular/material/stepper';
+import {CustomSnackBarService} from 'src/app/shared/custom-snack-bar.service';
 
 @Component({
   selector: 'app-register',
@@ -43,7 +43,7 @@ export class RegisterComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private customeSnackBarService: CustomeSnackBarService
+    private customeSnackBarService: CustomSnackBarService
   ) {
     this.errors.set('username', '');
     this.errors.set('phone_number', '');
@@ -71,11 +71,11 @@ export class RegisterComponent {
           if (err.error.username || err.error.email || err.error.phone_number) {
             for (const errorsKey in err.error) {
               this.errors.set(errorsKey, err.error[errorsKey][0]);
-              this.registerForm.get(errorsKey)?.setErrors({ invalid: true });
+              this.registerForm.get(errorsKey)?.setErrors({invalid: true});
             }
           } else if (err.error.non_field_errors) {
             this.errors.set('password', err.error.non_field_errors[0]);
-            this.registerForm.get('password')?.setErrors({ invalid: true });
+            this.registerForm.get('password')?.setErrors({invalid: true});
           } else if (err.status === 429) {
             this.customeSnackBarService.openSnackBar(
               'تعداد درخواست های شما از سقف مجاز عبور کرده است.'
@@ -105,7 +105,7 @@ export class RegisterComponent {
             this.errors.set('verificationCode', 'کد وارد شده نادرست می باشد.');
             this.verificationForm
               .get('verificationCode')
-              ?.setErrors({ invalid: true });
+              ?.setErrors({invalid: true});
           } else {
             this.customeSnackBarService.openSnackBar(
               'مشکلی پیش آمده است. لطفا مجددا تلاش کنید.'

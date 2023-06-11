@@ -6,11 +6,11 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { SupportService } from '../support.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ChatUser, Message, Room } from '../../shared/types';
-import { WebSocketService } from '../web-socket.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import {SupportService} from '../support.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {ChatUser, Message, Room} from '../../shared/types';
+import {WebSocketService} from '../web-socket.service';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-chat',
@@ -28,7 +28,8 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
     private supportService: SupportService,
     private webSocketService: WebSocketService,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.webSocketService.open(this.getRoom()._id, this.getUser()._id);
@@ -71,12 +72,6 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
     this.supportService.currenRoomUsers = [];
     this.supportService.lastMessage = {} as Message;
     this.supportService.component = 'rooms';
-  }
-
-  handleEmoji(event: { char: string }) {
-    this.messageForm.controls['message'].setValue(
-      this.messageForm.controls['message'].value + event.char
-    );
   }
 
   openSnackBar(message: string): void {

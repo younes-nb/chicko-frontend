@@ -26,7 +26,7 @@
       <p class="fs-5-5 m-0 ms-1" *ngIf="getUser().name">{{ getUser().name }}</p>
       <p *ngIf="!getUser().name">ناشناس</p>
       <button
-        (click)="signout()"
+        (click)="logout()"
         color="primary"
         mat-icon-button
         matTooltip="خروج"

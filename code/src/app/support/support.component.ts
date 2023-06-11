@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {
   animate,
   state,
@@ -6,8 +6,8 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { SupportService } from './support.service';
-import { SupportChatComponent } from '../shared/types';
+import {SupportService} from './support.service';
+import {SupportChatComponent} from '../shared/types';
 
 @Component({
   selector: 'app-support',
@@ -38,7 +38,8 @@ import { SupportChatComponent } from '../shared/types';
 export class SupportComponent {
   isChatShowing: boolean = false;
 
-  constructor(private supportService: SupportService) {}
+  constructor(private supportService: SupportService) {
+  }
 
   toggleChat(): void {
     this.isChatShowing = !this.isChatShowing;

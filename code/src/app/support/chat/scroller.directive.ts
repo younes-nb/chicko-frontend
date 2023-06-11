@@ -1,12 +1,13 @@
-import { Directive, ElementRef } from '@angular/core';
+import {AfterViewInit, Directive, ElementRef} from '@angular/core';
 
 @Directive({
   selector: '[appScroller]',
 })
-export class ScrollerDirective {
+export class ScrollerDirective implements AfterViewInit {
   private observer: MutationObserver | undefined;
 
-  constructor(private elRef: ElementRef) {}
+  constructor(private elRef: ElementRef) {
+  }
 
   ngAfterViewInit() {
     this.observer = new MutationObserver((mutations) => {
@@ -19,7 +20,7 @@ export class ScrollerDirective {
         }
       });
     });
-    let config = { attributes: true, childList: true, characterData: true };
+    let config = {attributes: true, childList: true, characterData: true};
     this.observer.observe(this.elRef.nativeElement, config);
   }
 }

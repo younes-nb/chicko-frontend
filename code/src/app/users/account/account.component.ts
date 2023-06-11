@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../users.service';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/shared/types';
-import { CustomeSnackBarService } from 'src/app/shared/custome-snack-bar.service';
+import { CustomSnackBarService } from 'src/app/shared/custom-snack-bar.service';
 
 @Component({
   selector: 'app-account',
@@ -37,7 +37,7 @@ export class AccountComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private customeSnackBarService: CustomeSnackBarService
+    private customeSnackBarService: CustomSnackBarService
   ) {}
 
   ngOnInit(): void {

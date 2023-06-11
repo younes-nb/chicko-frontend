@@ -1,11 +1,14 @@
 .menu-card {
   transition: transform 0.3s ease-in-out;
+
   &:hover {
     transform: scale(1.07);
   }
+
   .menu-card-item {
     cursor: pointer;
     transition: color 0.3s;
+
     &:hover {
       color: #1e88e5 !important;
     }

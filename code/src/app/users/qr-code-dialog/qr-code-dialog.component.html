@@ -1,1 +1,10 @@
-<p>qr-code-dialog works!</p>
+<section class="d-flex flex-column justify-content-center align-items-center py-4 px-5">
+  <h2 class="mb-5">کد QR برای {{data.menuName}}</h2>
+  <qrcode [qrdata]="menuLink" (qrCodeURL)="onChangeURL($event)" [width]="256" [errorCorrectionLevel]="'H'"
+          imageSrc="../../../favicon.ico"
+          [imageHeight]="80" [imageWidth]="80" alt="Qr Code"></qrcode>
+  <a mat-icon-button color="primary" class="d-inline-block mt-3" matTooltip="بارگذاری تصویر" [href]="qrCodeSrc"
+     [download]="data.menuName">
+    <mat-icon>download</mat-icon>
+  </a>
+</section>

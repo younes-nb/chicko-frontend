@@ -1,10 +1,11 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BASE_API } from '../shared/api';
-import { Menu, User } from '../shared/types';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { UsersService } from './users.service';
-import { CustomeSnackBarService } from '../shared/custome-snack-bar.service';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {BASE_API} from '../shared/api';
+import {Menu, User} from '../shared/types';
+import {BehaviorSubject, map, Observable, throwError} from 'rxjs';
+import {UsersService} from './users.service';
+import {CustomSnackBarService} from '../shared/custom-snack-bar.service';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root',
@@ -14,16 +15,19 @@ export class MenusService {
   private menusSubject: BehaviorSubject<Menu[]> = new BehaviorSubject<Menu[]>(
     []
   );
+
   constructor(
     private httpClient: HttpClient,
     private usersService: UsersService,
-    private customeSnackBarService: CustomeSnackBarService
-  ) {}
+    private customSnackBarService: CustomSnackBarService,
+    private router: Router
+  ) {
+  }
 
   public fetchMenus(): void {
     this.httpClient
       .get(`${BASE_API}menu/menus/user/`, {
-        headers: { NeedsUserTokenHeader: '' },
+        headers: {NeedsUserTokenHeader: ''},
       })
       .subscribe({
         next: (data: any) => {
@@ -31,7 +35,7 @@ export class MenusService {
           this.menusSubject.next(this._menus);
         },
         error: () => {
-          this.customeSnackBarService.openSnackBar('مشکلی پیش آمده است.');
+          this.customSnackBarService.openSnackBar('مشکلی پیش آمده است.');
         },
       });
   }
@@ -44,9 +48,9 @@ export class MenusService {
     this.httpClient
       .post(
         `${BASE_API}menu/menus/user/`,
-        { name },
+        {name},
         {
-          headers: { NeedsUserTokenHeader: '' },
+          headers: {NeedsUserTokenHeader: ''},
         }
       )
       .subscribe({
@@ -54,16 +58,22 @@ export class MenusService {
           this.fetchMenus();
         },
         error: () => {
-          this.customeSnackBarService.openSnackBar('مشکلی پیش آمده است.');
+          this.customSnackBarService.openSnackBar('مشکلی پیش آمده است.');
         },
       });
   }
 
-  public generateMenuLink(menuId: string): string {
-    let user: User = {} as User;
-    this.usersService.currentUser$.subscribe((u: User) => {
-      user = u;
-    });
-    return `/menu/${user.username}/${menuId}`;
+  generateMenuLink(menuId: string): Observable<string> {
+    return this.usersService.currentUser$.pipe(
+      map((user: User) => {
+        if (user) {
+          return `/menu/${user.username}/${menuId}`;
+        } else {
+          this.customSnackBarService.openSnackBar('مشکلی پیش آمده است.');
+          this.router.navigate(['/home'])
+          return '';
+        }
+      })
+    );
   }
 }

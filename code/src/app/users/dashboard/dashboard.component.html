@@ -21,7 +21,7 @@
           <mat-card-title class="fs-4">{{ menu.name }}</mat-card-title>
           <button
             (click)="
-              copyToClipboard(this.menusService.generateMenuLink(menu.id))
+              copyMenuLink(menu.id)
             "
             type="button"
             mat-icon-button
@@ -34,25 +34,27 @@
           <div class="d-flex align-content-center mb-2">
             <mat-icon class="ms-2" color="primary">preview</mat-icon>
             <a
-              [routerLink]="this.menusService.generateMenuLink(menu.id)"
+              [routerLink]="this.menusService.generateMenuLink(menu.id) | async"
               class="text-muted menu-card-item"
-              >نمایش منو</a
+            >نمایش منو</a
             >
           </div>
-          <div class="d-flex align-content-center">
+          <div (click)="openQrCodeDialog(menu.id, menu.name)" class="d-flex align-content-center">
             <mat-icon class="ms-2" color="primary">qr_code</mat-icon>
             <p class="text-muted m-0 menu-card-item">کد QR</p>
           </div>
           <div class="my-2 mt-3">
             <mat-chip class="ms-2"
-              >{{
-                menu.number_of_items.toString() | numLatinToFa
+            >{{
+              menu.number_of_items.toString() | numLatinToFa
               }}
-              آیتم</mat-chip
+              آیتم
+            </mat-chip
             >
             <mat-chip
-              >{{ menu.number_of_categories.toString() | numLatinToFa }} دسته
-              بندی</mat-chip
+            >{{ menu.number_of_categories.toString() | numLatinToFa }} دسته
+              بندی
+            </mat-chip
             >
           </div>
         </mat-card-content>
