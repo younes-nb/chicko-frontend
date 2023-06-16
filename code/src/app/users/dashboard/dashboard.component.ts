@@ -9,6 +9,7 @@ import {Store} from "@ngrx/store";
 import {selectMenus} from "../../core/store/menus/menus.selectors";
 import * as MenuActions from '../../core/store/menus/menus.actions';
 import {MenusState} from "../../core/store/menus/menus.state";
+import {Menu} from "../../shared/types";
 
 @Component({
   selector: 'app-dashboard',
@@ -29,6 +30,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.menusStore.dispatch(MenuActions.fetchMenus());
+  }
+
+  hasMenu(menus: Menu[]): boolean {
+    return <boolean>(menus.length && menus[0].id !== '');
   }
 
   editMenu(menuId: string): void {

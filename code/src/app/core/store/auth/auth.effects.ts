@@ -3,12 +3,13 @@ import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {AuthService} from '../../../shared/auth.service';
 import {UsersService} from '../../../users/users.service';
 import * as AuthActions from './auth.actions';
-import {catchError, map, switchMap, withLatestFrom} from 'rxjs/operators';
+import {catchError, map, switchMap, tap, withLatestFrom} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {selectIsAuthenticated} from "./auth.selectors";
 import {Store} from "@ngrx/store";
 import {CustomSnackBarService} from "../../../shared/custom-snack-bar.service";
 import {AuthState} from "./auth.state";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthEffects {
@@ -42,6 +43,15 @@ export class AuthEffects {
       )
     )
   );
+
+  logoutSuccess$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(AuthActions.logoutSuccess),
+      tap(() => {
+        this.router.navigate(['login']);
+      })
+    );
+  }, {dispatch: false});
 
   fetchUserAfterLogin$ = createEffect(() =>
     this.actions$.pipe(
@@ -91,7 +101,8 @@ export class AuthEffects {
     private authService: AuthService,
     private usersService: UsersService,
     private authStore: Store<AuthState>,
-    private customSnackBarService: CustomSnackBarService
+    private customSnackBarService: CustomSnackBarService,
+    private router: Router
   ) {
   }
 }

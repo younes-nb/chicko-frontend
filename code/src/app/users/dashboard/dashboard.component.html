@@ -11,60 +11,62 @@
       افزودن منو
     </button>
   </div>
-  <ng-container *ngIf="(menus$ | async) as menus; else noMenusRef">
-    <div class="row mt-4">
-      <mat-card
-        *ngFor="let menu of menus"
-        class="menu-card col-3 mb-4 ms-4 shadow rounded"
-      >
-        <mat-card-header class="mb-3 d-flex justify-content-between">
-          <mat-card-title class="fs-4">{{ menu.name }}</mat-card-title>
-          <button
-            (click)="
+  <ng-container *ngIf="(menus$ | async) as menus">
+    <ng-container *ngIf="hasMenu(menus); else noMenusRef">
+      <div class="row mt-4">
+        <mat-card
+          *ngFor="let menu of menus"
+          class="menu-card col-3 mb-4 ms-4 shadow rounded"
+        >
+          <mat-card-header class="mb-3 d-flex justify-content-between">
+            <mat-card-title class="fs-4">{{ menu.name }}</mat-card-title>
+            <button
+              (click)="
               copyToClipboard(menu.link)
             "
-            type="button"
-            mat-icon-button
-            color="primary"
-          >
-            <mat-icon>content_copy</mat-icon>
-          </button>
-        </mat-card-header>
-        <mat-card-content>
-          <div class="d-flex align-content-center mb-2">
-            <mat-icon class="ms-2" color="primary">preview</mat-icon>
-            <a
-              [routerLink]="menu.link"
-              class="text-muted menu-card-item"
-            >نمایش منو</a
+              type="button"
+              mat-icon-button
+              color="primary"
             >
-          </div>
-          <div (click)="openQrCodeDialog(menu.name, menu.link)" class="d-flex align-content-center">
-            <mat-icon class="ms-2" color="primary">qr_code</mat-icon>
-            <p class="text-muted m-0 menu-card-item">کد QR</p>
-          </div>
-          <div class="my-2 mt-3">
-            <mat-chip class="ms-2"
-            >{{
-              menu.number_of_items.toString() | numLatinToFa
-              }}
-              آیتم
-            </mat-chip
-            >
-            <mat-chip
-            >{{ menu.number_of_categories.toString() | numLatinToFa }} دسته
-              بندی
-            </mat-chip
-            >
-          </div>
-        </mat-card-content>
-        <mat-card-actions class="me-auto">
-          <button (click)="editMenu(menu.id)" type="button" mat-button color="primary">ویرایش</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+              <mat-icon>content_copy</mat-icon>
+            </button>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="d-flex align-content-center mb-2">
+              <mat-icon class="ms-2" color="primary">preview</mat-icon>
+              <a
+                [routerLink]="menu.link"
+                class="text-muted menu-card-item"
+              >نمایش منو</a
+              >
+            </div>
+            <div (click)="openQrCodeDialog(menu.name, menu.link)" class="d-flex align-content-center">
+              <mat-icon class="ms-2" color="primary">qr_code</mat-icon>
+              <p class="text-muted m-0 menu-card-item">کد QR</p>
+            </div>
+            <div class="my-2 mt-3">
+              <mat-chip class="ms-2"
+              >{{
+                menu.number_of_items.toString() | numLatinToFa
+                }}
+                آیتم
+              </mat-chip
+              >
+              <mat-chip
+              >{{ menu.number_of_categories.toString() | numLatinToFa }} دسته
+                بندی
+              </mat-chip
+              >
+            </div>
+          </mat-card-content>
+          <mat-card-actions class="me-auto">
+            <button (click)="editMenu(menu.id)" type="button" mat-button color="primary">ویرایش</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </ng-container>
+    <ng-template #noMenusRef>
+      <h3 class="text-muted text-center mt-5">منویی وجود ندارد.</h3>
+    </ng-template>
   </ng-container>
-  <ng-template #noMenusRef>
-    <h3 class="text-muted text-center mt-5">منویی وجود ندارد.</h3>
-  </ng-template>
 </section>

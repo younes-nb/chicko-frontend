@@ -19,7 +19,7 @@ export const authReducer = createReducer<AuthState>(
     token: null,
     error
   })),
-  on(AuthActions.logout, (state) => ({
+  on(AuthActions.logoutSuccess, (state) => ({
     ...state,
     isAuthenticated: false,
     user: null,
