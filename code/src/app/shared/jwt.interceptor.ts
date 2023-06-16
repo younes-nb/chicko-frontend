@@ -8,8 +8,8 @@ import {
 import {Observable} from 'rxjs';
 import {switchMap, take} from 'rxjs/operators';
 import {Store} from '@ngrx/store';
-import {AuthState} from './types';
 import {selectAuthToken} from '../core/store/auth/auth.selectors';
+import {AuthState} from "../core/store/auth/auth.state";
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {

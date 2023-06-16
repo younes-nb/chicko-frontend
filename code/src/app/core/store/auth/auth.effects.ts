@@ -7,8 +7,8 @@ import {catchError, map, switchMap, withLatestFrom} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {selectIsAuthenticated} from "./auth.selectors";
 import {Store} from "@ngrx/store";
-import {AuthState} from "../../../shared/types";
 import {CustomSnackBarService} from "../../../shared/custom-snack-bar.service";
+import {AuthState} from "./auth.state";
 
 @Injectable()
 export class AuthEffects {
@@ -54,7 +54,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.fetchUser),
       withLatestFrom(this.authStore.select(selectIsAuthenticated)),
-      switchMap(([action, isAuthenticated]) => {
+      switchMap(([isAuthenticated]) => {
         if (isAuthenticated) {
           return this.usersService.fetchUser().pipe(
             map((user) => AuthActions.fetchUserSuccess({user})),

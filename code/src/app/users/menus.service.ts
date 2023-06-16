@@ -62,4 +62,8 @@ export class MenusService {
         }
       );
   }
+
+  public deleteMenu(id: string): Observable<any> {
+    return this.httpClient.delete(`${BASE_API}menu/menus/${id}`, {headers: {NeedsUserTokenHeader: ''}});
+  }
 }

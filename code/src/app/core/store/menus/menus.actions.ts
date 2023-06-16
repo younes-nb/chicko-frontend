@@ -43,3 +43,17 @@ export const setMenu = createAction(
   '[Menu Details] Set Menu',
   props<{ menu: MenuDetails }>()
 );
+
+export const deleteMenu = createAction(
+  '[Menu Details] Delete Menu',
+  props<{ menuId: string }>()
+);
+
+export const deleteMenuSuccess = createAction(
+  '[Menu Details] Delete Menu Success'
+);
+
+export const deleteMenuFailure = createAction(
+  '[Menu Details] Delete Menu Failure',
+  props<{ error: any }>()
+);

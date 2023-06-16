@@ -22,26 +22,29 @@ import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component
 import { QRCodeModule } from 'angularx-qrcode';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
+import { DeleteMenuDialogComponent } from './delete-menu-dialog/delete-menu-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
-  declarations: [DashboardComponent, UsersComponent, AccountComponent, QrCodeDialogComponent, MenuEditComponent],
-  imports: [
-    CommonModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatCardModule,
-    UsersRoutingModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatChipsModule,
-    AppSharedModule,
-    QRCodeModule,
-    MatTooltipModule
-  ],
+  declarations: [DashboardComponent, UsersComponent, AccountComponent, QrCodeDialogComponent, MenuEditComponent, DeleteMenuDialogComponent],
+    imports: [
+        CommonModule,
+        MatSidenavModule,
+        MatButtonModule,
+        MatCardModule,
+        UsersRoutingModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatChipsModule,
+        AppSharedModule,
+        QRCodeModule,
+        MatTooltipModule,
+        MatDialogModule
+    ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [UsersService],
 })

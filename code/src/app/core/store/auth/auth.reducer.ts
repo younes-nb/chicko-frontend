@@ -1,14 +1,9 @@
 import {createReducer, on} from '@ngrx/store';
 import * as AuthActions from './auth.actions';
-import {AuthState} from "../../../shared/types";
+import {AuthState, initialAuthState} from "./auth.state";
 
-const initialAuthState: AuthState = {
-  isAuthenticated: false,
-  user: null,
-  token: null,
-  error: null
-};
-export const authReducer = createReducer(
+
+export const authReducer = createReducer<AuthState>(
   initialAuthState,
   on(AuthActions.loginSuccess, (state, {token}) => ({
     ...state,

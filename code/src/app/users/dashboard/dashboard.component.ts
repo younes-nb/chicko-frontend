@@ -2,13 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Clipboard} from '@angular/cdk/clipboard';
 import {SingleInputDialogComponent} from 'src/app/shared/single-input-dialog/single-input-dialog.component';
-import {MenusState} from 'src/app/shared/types';
 import {CustomSnackBarService} from 'src/app/shared/custom-snack-bar.service';
 import {QrCodeDialogComponent} from '../qr-code-dialog/qr-code-dialog.component';
 import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {selectMenus} from "../../core/store/menus/menus.selectors";
 import * as MenuActions from '../../core/store/menus/menus.actions';
+import {MenusState} from "../../core/store/menus/menus.state";
 
 @Component({
   selector: 'app-dashboard',

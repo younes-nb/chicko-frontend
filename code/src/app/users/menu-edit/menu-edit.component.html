@@ -1,6 +1,28 @@
 <section class="container mt-5">
   <ng-container *ngIf="menu$ | async as menu">
-    <h1>{{menu.link}}</h1>
+    <div class="d-flex justify-content-between">
+      <h1 class="fs-2">{{menu.name}}</h1>
+      <div>
+        <button [routerLink]="menu.link" type="button" mat-icon-button color="primary" class="me-3" matTooltip="نمایش">
+          <mat-icon class="ms-2" color="primary">preview</mat-icon>
+        </button>
+        <button (click)="openQrCodeDialog(menu.name, menu.link)" type="button" mat-icon-button color="primary"
+                class="me-3" matTooltip="کد QR">
+          <mat-icon class="ms-2" color="primary">qr_code</mat-icon>
+        </button>
+        <button (click)="copyToClipboard(menu.link)" class="me-3" type="button" mat-icon-button color="primary"
+                matTooltip="کپی کردن لینک">
+          <mat-icon>content_copy</mat-icon>
+        </button>
+        <button (click)="openDeleteMenuDialog(menu.id)" type="button" mat-icon-button color="warn" class="me-3"
+                matTooltip="حذف">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div>
+
+    </div>
   </ng-container>
 </section>
 

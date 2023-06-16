@@ -33,7 +33,7 @@ import {JwtInterceptor} from './shared/jwt.interceptor';
 import {AppSharedModule} from './shared/app-shared.module';
 import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
-import {menusReducer} from "./core/store/menus/menus.reducer";
+import {menuDetailsReducer, menusReducer} from "./core/store/menus/menus.reducer";
 import {MenuEffects} from "./core/store/menus/menus.effects";
 import {authReducer} from "./core/store/auth/auth.reducer";
 import {AuthEffects} from "./core/store/auth/auth.effects";
@@ -71,7 +71,7 @@ import {AuthEffects} from "./core/store/auth/auth.effects";
     HttpClientModule,
     AppSharedModule,
     AppRoutingModule,
-    StoreModule.forRoot({menus: menusReducer, auth: authReducer}),
+    StoreModule.forRoot({menus: menusReducer, menuDetails: menuDetailsReducer, auth: authReducer}),
     EffectsModule.forRoot([MenuEffects, AuthEffects]),
   ],
   providers: [

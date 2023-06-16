@@ -4,9 +4,9 @@ import {AuthService} from '../../../shared/auth.service';
 import {Router} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {login} from "../../store/auth/auth.actions";
-import {AuthState} from "../../../shared/types";
 import {selectAuthError, selectIsAuthenticated} from "../../store/auth/auth.selectors";
 import {Observable} from "rxjs";
+import {AuthState} from "../../store/auth/auth.state";
 
 @Component({
   selector: 'app-login',

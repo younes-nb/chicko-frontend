@@ -1,5 +1,6 @@
 import {createFeatureSelector, createSelector, MemoizedSelector} from '@ngrx/store';
-import {Menu, MenusState} from "../../../shared/types";
+import {Menu, MenuDetails} from "../../../shared/types";
+import {MenusState} from "./menus.state";
 
 export const selectMenusState: MemoizedSelector<object, MenusState> = createFeatureSelector<MenusState>('menus');
 
@@ -13,7 +14,8 @@ export const selectMenus: MemoizedSelector<object, Menu[]> = createSelector(
   }
 );
 
+export const selectMenuDetailsState: MemoizedSelector<object, MenuDetails> = createFeatureSelector<MenuDetails>('menuDetails');
 export const selectMenuDetails = createSelector(
-  (state: MenusState) => state.menuDetails,
+  selectMenuDetailsState,
   (menuDetails) => ({...menuDetails, link: menuDetails?.link || ''})
 );

@@ -3,13 +3,14 @@ import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {
   map,
   mergeMap,
-  catchError,
+  catchError, tap, switchMap,
 } from 'rxjs/operators';
 import {MenusService} from '../../../users/menus.service';
 import * as MenuActions from './menus.actions';
 import {of} from "rxjs";
-import {Menu, MenuDetails} from "../../../shared/types";
+import {Menu} from "../../../shared/types";
 import {BASE_URL} from "../../../shared/api";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class MenuEffects {
@@ -36,14 +37,12 @@ export class MenuEffects {
       ofType(MenuActions.fetchMenu),
       mergeMap(({menuId}) =>
         this.menusService.fetchMenu(menuId).pipe(
-          map((menu: MenuDetails) => ({
+          map(menu => ({
             ...menu,
             link: `${BASE_URL}/menus/${menu.id}`,
           })),
-          map((menuWithLink) => MenuActions.setMenu({menu: menuWithLink})),
-          catchError((error) =>
-            of(MenuActions.fetchMenuFailure({error: error}))
-          )
+          map(menuWithLink => MenuActions.setMenu({menu: menuWithLink})),
+          catchError(error => of(MenuActions.fetchMenuFailure({error})))
         )
       )
     )
@@ -69,10 +68,24 @@ export class MenuEffects {
     )
   );
 
+  deleteMenu$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MenuActions.deleteMenu),
+      switchMap(({menuId}) =>
+        this.menusService.deleteMenu(menuId).pipe(
+          map(() => MenuActions.deleteMenuSuccess()),
+          catchError((error) => of(MenuActions.deleteMenuFailure({error})))
+        )
+      ),
+      tap(() => this.router.navigate(['dashboard']))
+    )
+  );
+
 
   constructor(
     private actions$: Actions,
-    private menusService: MenusService
+    private menusService: MenusService,
+    private router: Router
   ) {
   }
 }
