@@ -11,17 +11,17 @@
       افزودن منو
     </button>
   </div>
-  <ng-container *ngIf="this.menus.length; else noMenusRef">
+  <ng-container *ngIf="(menus$ | async) as menus; else noMenusRef">
     <div class="row mt-4">
       <mat-card
-        *ngFor="let menu of this.menus"
+        *ngFor="let menu of menus"
         class="menu-card col-3 mb-4 ms-4 shadow rounded"
       >
         <mat-card-header class="mb-3 d-flex justify-content-between">
           <mat-card-title class="fs-4">{{ menu.name }}</mat-card-title>
           <button
             (click)="
-              copyMenuLink(menu.id)
+              copyToClipboard(menu.link)
             "
             type="button"
             mat-icon-button
@@ -34,12 +34,12 @@
           <div class="d-flex align-content-center mb-2">
             <mat-icon class="ms-2" color="primary">preview</mat-icon>
             <a
-              [routerLink]="this.menusService.generateMenuLink(menu.id) | async"
+              [routerLink]="menu.link"
               class="text-muted menu-card-item"
             >نمایش منو</a
             >
           </div>
-          <div (click)="openQrCodeDialog(menu.id, menu.name)" class="d-flex align-content-center">
+          <div (click)="openQrCodeDialog(menu.name, menu.link)" class="d-flex align-content-center">
             <mat-icon class="ms-2" color="primary">qr_code</mat-icon>
             <p class="text-muted m-0 menu-card-item">کد QR</p>
           </div>
@@ -59,7 +59,7 @@
           </div>
         </mat-card-content>
         <mat-card-actions class="me-auto">
-          <button mat-button color="primary">ویرایش</button>
+          <button (click)="editMenu(menu.id)" type="button" mat-button color="primary">ویرایش</button>
         </mat-card-actions>
       </mat-card>
     </div>

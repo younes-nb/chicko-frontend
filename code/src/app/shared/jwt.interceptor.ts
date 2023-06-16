@@ -6,32 +6,32 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {StorageService} from './storage.service';
+import {switchMap, take} from 'rxjs/operators';
+import {Store} from '@ngrx/store';
+import {AuthState} from './types';
+import {selectAuthToken} from '../core/store/auth/auth.selectors';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-  constructor(private storageService: StorageService) {
+  constructor(private authStore: Store<AuthState>) {
   }
 
-  intercept(
-    request: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
-    if (request.headers.has('NeedsUserTokenHeader')) {
-      const userToken: string = this.storageService.getUserToken();
-      if (userToken) {
-        request = request.clone({
-          setHeaders: {
-            Authorization: userToken,
-          },
-        });
-
-        request = request.clone({
-          headers: request.headers.delete('NeedsUserTokenHeader'),
-        });
-      }
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const needsToken = request.headers.has('NeedsUserTokenHeader');
+    if (needsToken) {
+      return this.authStore.select(selectAuthToken).pipe(
+        take(1),
+        switchMap((token) => {
+          if (token) {
+            const headers = request.headers
+              .set('Authorization', `Token ${token}`)
+              .delete('NeedsUserTokenHeader');
+            request = request.clone({headers});
+          }
+          return next.handle(request);
+        })
+      );
     }
-
     return next.handle(request);
   }
 }

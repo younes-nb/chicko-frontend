@@ -21,9 +21,10 @@ import { AppSharedModule } from '../shared/app-shared.module';
 import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { MenuEditComponent } from './menu-edit/menu-edit.component';
 
 @NgModule({
-  declarations: [DashboardComponent, UsersComponent, AccountComponent, QrCodeDialogComponent],
+  declarations: [DashboardComponent, UsersComponent, AccountComponent, QrCodeDialogComponent, MenuEditComponent],
   imports: [
     CommonModule,
     MatSidenavModule,

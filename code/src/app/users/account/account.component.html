@@ -2,7 +2,7 @@
   <div class="p-5 vw-50 bg-white shadow rounded">
     <h1 class="fs-2 mb-5">ویرایش حساب کاربری</h1>
     <form
-      *ngIf="currentUser$ | async as currentUser"
+      *ngIf="user$ | async as user"
       [formGroup]="accountForm"
       (ngSubmit)="accountForm.valid && onSubmit()"
       class="row gy-2"
@@ -14,12 +14,12 @@
           formControlName="first_name"
           name="first_name"
           type="text"
-          [ngModel]="currentUser.first_name"
+          [ngModel]="user.first_name"
         />
         <mat-error
           *ngIf="accountForm.get('first_name')?.hasError('maxlength')"
           class="fs-7"
-          >حداکثر تعداد حروف مجاز ۲۰ می باشد.
+        >حداکثر تعداد حروف مجاز ۲۰ می باشد.
         </mat-error>
       </mat-form-field>
       <mat-form-field class="col-6" appearance="fill">
@@ -29,12 +29,12 @@
           formControlName="last_name"
           name="last_name"
           type="text"
-          [ngModel]="currentUser.last_name"
+          [ngModel]="user.last_name"
         />
         <mat-error
           *ngIf="accountForm.get('last_name')?.hasError('maxlength')"
           class="fs-7"
-          >حداکثر تعداد حروف مجاز ۲۰ می باشد.
+        >حداکثر تعداد حروف مجاز ۲۰ می باشد.
         </mat-error>
       </mat-form-field>
       <mat-form-field class="col-6" appearance="fill">
@@ -44,28 +44,28 @@
           formControlName="username"
           name="username"
           type="text"
-          [ngModel]="currentUser.username"
+          [ngModel]="user.username"
           required
         />
         <mat-error
           *ngIf="submitted && accountForm.get('username')?.hasError('required')"
           class="fs-7"
-          >وارد کردن نام کاربری الزامی می باشد.
+        >وارد کردن نام کاربری الزامی می باشد.
         </mat-error>
         <mat-error
           *ngIf="accountForm.get('username')?.hasError('maxlength')"
           class="fs-7"
-          >حداکثر تعداد حروف مجاز ۶۰ می باشد.
+        >حداکثر تعداد حروف مجاز ۶۰ می باشد.
         </mat-error>
         <mat-error
           *ngIf="accountForm.get('username')?.hasError('minlength')"
           class="fs-7"
-          >حداقل تعداد حروف مجاز ۶ می باشد.
+        >حداقل تعداد حروف مجاز ۶ می باشد.
         </mat-error>
         <mat-error
           *ngIf="accountForm.get('username')?.hasError('invalid')"
           class="fs-7"
-          >{{ errors.get("username") }}</mat-error
+        >{{ errors.get("username") }}</mat-error
         >
       </mat-form-field>
       <mat-form-field class="col-6" appearance="fill">
@@ -75,23 +75,24 @@
           formControlName="email"
           name="email"
           type="email"
-          [ngModel]="currentUser.email"
+          [ngModel]="user.email"
           required
         />
         <mat-error
           *ngIf="submitted && accountForm.get('email')?.hasError('required')"
           class="fs-7"
-          >وارد کردن ایمیل الزامی می باشد.
+        >وارد کردن ایمیل الزامی می باشد.
         </mat-error>
         <mat-error
           *ngIf="accountForm.get('email')?.hasError('email')"
           class="fs-7"
-          >ایمیل معتبر نیست.</mat-error
+        >ایمیل معتبر نیست.
+        </mat-error
         >
         <mat-error
           *ngIf="accountForm.get('email')?.hasError('invalid')"
           class="fs-7"
-          >{{ errors.get("email") }}</mat-error
+        >{{ errors.get("email") }}</mat-error
         >
       </mat-form-field>
       <mat-form-field class="col-6" appearance="fill">
@@ -101,7 +102,7 @@
           formControlName="phone_number"
           name="phone_number"
           type="tel"
-          [ngModel]="currentUser.phone_number"
+          [ngModel]="user.phone_number"
           required
         />
         <mat-error
@@ -109,17 +110,18 @@
             submitted && accountForm.get('phone_number')?.hasError('required')
           "
           class="fs-7"
-          >وارد کردن شماره تلفن الزامی می باشد.
+        >وارد کردن شماره تلفن الزامی می باشد.
         </mat-error>
         <mat-error
           *ngIf="accountForm.get('phone_number')?.hasError('pattern')"
           class="fs-7"
-          >شماره تلفن معتبر نیست.</mat-error
+        >شماره تلفن معتبر نیست.
+        </mat-error
         >
         <mat-error
           *ngIf="accountForm.get('phone_number')?.hasError('invalid')"
           class="fs-7"
-          >{{ errors.get("phone_number") }}</mat-error
+        >{{ errors.get("phone_number") }}</mat-error
         >
       </mat-form-field>
       <mat-form-field class="col-6" appearance="fill">
@@ -138,23 +140,22 @@
         >
           <mat-icon>{{
             hidePassword ? "visibility_off" : "visibility"
-          }}</mat-icon>
+            }}</mat-icon>
         </button>
         <mat-error
           *ngIf="accountForm.get('password')?.hasError('minlength')"
           class="fs-7"
-          >رمز عبور حداقل باید شامل ۸ حرف باشد.
+        >رمز عبور حداقل باید شامل ۸ حرف باشد.
         </mat-error>
         <mat-error
-          class="fs-6"
           *ngIf="accountForm.get('password')?.hasError('maxlength')"
           class="fs-7"
-          >رمز عبور حداکثر باید شامل ۱۲۸ حرف باشد.
+        >رمز عبور حداکثر باید شامل ۱۲۸ حرف باشد.
         </mat-error>
         <mat-error
           *ngIf="accountForm.get('password')?.hasError('invalid')"
           class="fs-7"
-          >{{ errors.get("password") }}</mat-error
+        >{{ errors.get("password") }}</mat-error
         >
       </mat-form-field>
       <div>

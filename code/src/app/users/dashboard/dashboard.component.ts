@@ -1,48 +1,38 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {MenusService} from '../menus.service';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Clipboard} from '@angular/cdk/clipboard';
 import {SingleInputDialogComponent} from 'src/app/shared/single-input-dialog/single-input-dialog.component';
-import {Menu} from 'src/app/shared/types';
-import {BASE_URL} from 'src/app/shared/api';
+import {MenusState} from 'src/app/shared/types';
 import {CustomSnackBarService} from 'src/app/shared/custom-snack-bar.service';
 import {QrCodeDialogComponent} from '../qr-code-dialog/qr-code-dialog.component';
-import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
+import {Store} from "@ngrx/store";
+import {selectMenus} from "../../core/store/menus/menus.selectors";
+import * as MenuActions from '../../core/store/menus/menus.actions';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements OnInit, OnDestroy {
-  menus: Menu[] = [];
-  private currentUserSubscription: Subscription = Subscription.EMPTY;
+export class DashboardComponent implements OnInit {
+  menus$ = this.menusStore.select(selectMenus);
 
   constructor(
-    public menusService: MenusService,
     public dialog: MatDialog,
     private clipboard: Clipboard,
     private customSnackBarService: CustomSnackBarService,
+    private router: Router,
+    private menusStore: Store<MenusState>,
   ) {
   }
 
   ngOnInit(): void {
-    this.menusService.getMenus().subscribe((menus: Menu[]) => {
-      this.menus = menus;
-      this.menus.forEach((menu: Menu) => {
-        this.menusService.generateMenuLink(menu.id).subscribe((link: string) => {
-          menu.link = BASE_URL + link;
-        });
-      });
-
-    });
-    this.menusService.fetchMenus();
+    this.menusStore.dispatch(MenuActions.fetchMenus());
   }
 
-  ngOnDestroy() {
-    if (this.currentUserSubscription) {
-      this.currentUserSubscription.unsubscribe();
-    }
+  editMenu(menuId: string): void {
+    this.router.navigate(['/dashboard/menus', menuId]);
   }
 
   openCreateMenuDialog(): void {
@@ -54,33 +44,24 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
     dialogRef.afterClosed().subscribe((name) => {
       if (name) {
-        this.menusService.createMenu(name);
+        this.menusStore.dispatch(MenuActions.createMenu({name}));
       }
     });
   }
 
-  openQrCodeDialog(menuId: string, menuName: string): void {
+  openQrCodeDialog(menuName: string, menuLink: string): void {
     this.dialog.open(QrCodeDialogComponent, {
       data: {
-        menuId: menuId,
-        menuName: menuName
+        menuName: menuName,
+        menuLink: menuLink
       },
-    });
-  }
-
-  copyMenuLink(menuId: string) {
-    this.menusService.generateMenuLink(menuId).subscribe({
-      next: (menuLink: string) => {
-        this.copyToClipboard(BASE_URL + menuLink);
-      },
-      error: (error: any) => {
-        console.error(error);
-      }
     });
   }
 
   copyToClipboard(menuLink: string) {
-    this.clipboard.copy(menuLink);
-    this.customSnackBarService.openSnackBar('لینک منو کپی شد.');
+    if (menuLink) {
+      this.clipboard.copy(menuLink);
+      this.customSnackBarService.openSnackBar('لینک منو کپی شد.');
+    }
   }
 }

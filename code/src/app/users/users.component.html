@@ -1,4 +1,4 @@
-<div class="bg-light h-100">
+<div class="bg-light min-vh-100">
   <mat-toolbar
     class="px-5 bg-white shadow d-flex justify-content-between align-items-center"
   >
@@ -10,10 +10,10 @@
       داشبورد
     </button>
     <div
-      *ngIf="currentUser$ | async as currentUser"
+      *ngIf="user"
       class="d-flex align-items-baseline"
     >
-      <ng-container *ngIf="!currentUser.profile_image; else profileImage">
+      <ng-container *ngIf="!user.profile_image; else profileImage">
         <button
           [matMenuTriggerFor]="menu"
           class="p-3 ms-2 rounded-pill fs-5"
@@ -21,11 +21,11 @@
           color="primary"
           matTooltip="حساب کاربری"
         >
-          {{ currentUser.username[0] }}
+          {{ user.username[0] }}
         </button>
       </ng-container>
       <ng-template #profileImage>
-        <img [src]="currentUser.profile_image" alt="profile"/>
+        <img [src]="user.profile_image" alt="profile"/>
       </ng-template>
       <mat-menu class="mt-1" #menu="matMenu">
         <button routerLink="/dashboard/account" mat-menu-item>

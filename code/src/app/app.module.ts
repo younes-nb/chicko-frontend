@@ -31,6 +31,12 @@ import lottie from 'lottie-web';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from './shared/jwt.interceptor';
 import {AppSharedModule} from './shared/app-shared.module';
+import {StoreModule} from "@ngrx/store";
+import {EffectsModule} from "@ngrx/effects";
+import {menusReducer} from "./core/store/menus/menus.reducer";
+import {MenuEffects} from "./core/store/menus/menus.effects";
+import {authReducer} from "./core/store/auth/auth.reducer";
+import {AuthEffects} from "./core/store/auth/auth.effects";
 
 @NgModule({
   declarations: [
@@ -65,6 +71,8 @@ import {AppSharedModule} from './shared/app-shared.module';
     HttpClientModule,
     AppSharedModule,
     AppRoutingModule,
+    StoreModule.forRoot({menus: menusReducer, auth: authReducer}),
+    EffectsModule.forRoot([MenuEffects, AuthEffects]),
   ],
   providers: [
     {
