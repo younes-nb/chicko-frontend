@@ -73,4 +73,12 @@ export class MenusService {
       menu
     }, {headers: {NeedsUserTokenHeader: ''}})
   }
+
+  public updateCategory(id: string, name: string, menu: string): Observable<any> {
+    return this.httpClient.put(`${BASE_API}menu/categories/${id}/`, {
+      id,
+      name,
+      menu
+    }, {headers: {NeedsUserTokenHeader: ''}})
+  }
 }

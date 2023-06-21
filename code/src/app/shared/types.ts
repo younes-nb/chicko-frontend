@@ -79,6 +79,7 @@ export interface Room {
 export interface DialogData {
   title: string;
   label: string;
+  value?: string;
 }
 
 export interface QRCodeDialogData {

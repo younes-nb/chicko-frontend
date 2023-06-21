@@ -49,7 +49,9 @@
                       <mat-icon>more_vert</mat-icon>
                     </button>
                     <mat-menu #moreMenu="matMenu">
-                      <button mat-menu-item>ویرایش دسته بندی</button>
+                      <button (click)="openUpdateCategoryDialog(menu.id, category.id, category.name)" mat-menu-item>
+                        ویرایش دسته بندی
+                      </button>
                       <button mat-menu-item>حذف دسته بندی</button>
                     </mat-menu>
                   </div>
@@ -182,7 +184,7 @@
           </ng-template>
         </mat-tab>
         <mat-tab label="اطلاعات کسب و کار">
-          <p>اطلاعات کسب و کار</p>
+          <p>اطلاعات منو</p>
         </mat-tab>
         <mat-tab label="شخصی سازی">
           <p>شخصی سازی</p>

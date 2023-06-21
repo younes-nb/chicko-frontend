@@ -58,6 +58,7 @@ export class MenuEditComponent implements OnInit {
 
   }
 
+
   openDeleteMenuDialog(menuId: string): void {
     const dialogRef = this.dialog.open(DeleteMenuDialogComponent);
     dialogRef.afterClosed().subscribe((result: boolean) => {
@@ -79,6 +80,21 @@ export class MenuEditComponent implements OnInit {
         this.menusStore.dispatch(MenuActions.createCategory({name, menu: menuId}));
       }
     });
+  }
+
+  openUpdateCategoryDialog(menuId: string, categoryId: string, categoryName: string): void {
+    const dialogRef = this.dialog.open(SingleInputDialogComponent, {
+      data: {
+        title: 'ویرایش دسته بندی',
+        label: 'عنوان دسته بندی',
+        value: categoryName
+      }
+    });
+    dialogRef.afterClosed().subscribe(name => {
+      if (name && name !== categoryName) {
+        this.menusStore.dispatch(MenuActions.updateCategory({id: categoryId, name, menu: menuId}));
+      }
+    })
   }
 
   copyToClipboard(menuLink: string) {

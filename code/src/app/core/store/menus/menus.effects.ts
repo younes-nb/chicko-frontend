@@ -93,6 +93,18 @@ export class MenuEffects {
     )
   );
 
+  updateCategory$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MenuActions.updateCategory),
+      switchMap(({id, name, menu}) =>
+        this.menusService.updateCategory(id, name, menu).pipe(
+          map((category: Category) => MenuActions.updateCategorySuccess({category})),
+          catchError((error) => of(MenuActions.updateCategoryFailure({error})))
+        )
+      )
+    )
+  );
+
 
   constructor(
     private actions$: Actions,

@@ -16,5 +16,14 @@ export const menuDetailsReducer = createReducer<MenuDetails>(
   on(MenuActions.createCategorySuccess, (state, {category}) => ({
     ...state,
     categories: [...state.categories, category]
+  })),
+  on(MenuActions.updateCategorySuccess, (state, {category}) => ({
+    ...state,
+    categories: state.categories.map(c => {
+      if (c.id === category.id) {
+        return {...c, name: category.name};
+      }
+      return c;
+    })
   }))
 );
