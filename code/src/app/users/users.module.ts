@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -24,27 +24,34 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
 import { DeleteMenuDialogComponent } from './delete-menu-dialog/delete-menu-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {NgxMatFileModule} from "ngx-mat-file";
 
 @NgModule({
   declarations: [DashboardComponent, UsersComponent, AccountComponent, QrCodeDialogComponent, MenuEditComponent, DeleteMenuDialogComponent],
-    imports: [
-        CommonModule,
-        MatSidenavModule,
-        MatButtonModule,
-        MatCardModule,
-        UsersRoutingModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatMenuModule,
-        MatChipsModule,
-        AppSharedModule,
-        QRCodeModule,
-        MatTooltipModule,
-        MatDialogModule
-    ],
+  imports: [
+    CommonModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatCardModule,
+    UsersRoutingModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatChipsModule,
+    AppSharedModule,
+    QRCodeModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatTabsModule,
+    MatExpansionModule,
+    NgxMatFileModule,
+    NgOptimizedImage,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [UsersService],
 })

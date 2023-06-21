@@ -1,6 +1,6 @@
 <section class="container mt-5">
   <ng-container *ngIf="menu$ | async as menu">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between mb-5">
       <h1 class="fs-2">{{menu.name}}</h1>
       <div>
         <button [routerLink]="menu.link" type="button" mat-icon-button color="primary" class="me-3" matTooltip="نمایش">
@@ -11,7 +11,7 @@
           <mat-icon class="ms-2" color="primary">qr_code</mat-icon>
         </button>
         <button (click)="copyToClipboard(menu.link)" class="me-3" type="button" mat-icon-button color="primary"
-                matTooltip="کپی کردن لینک">
+                matTooltip="کپی کردن پیوند">
           <mat-icon>content_copy</mat-icon>
         </button>
         <button (click)="openDeleteMenuDialog(menu.id)" type="button" mat-icon-button color="warn" class="me-3"
@@ -21,7 +21,150 @@
       </div>
     </div>
     <div>
-
+      <mat-tab-group>
+        <mat-tab label="محصولات">
+          <button mat-raised-button color="primary" type="button" class="mb-4 mt-3">
+            <mat-icon>add</mat-icon>
+            افزودن دسته بندی
+          </button>
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  دسته بندی ۱
+                </mat-panel-title>
+                <mat-panel-description>
+                  <mat-chip>۵</mat-chip>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="mb-4 d-flex justify-content-between">
+                <button mat-stroked-button color="primary" type="button">
+                  <mat-icon>add</mat-icon>
+                  افزودن محصول
+                </button>
+                <button [matMenuTriggerFor]="moreMenu" mat-icon-button type="button">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #moreMenu="matMenu">
+                  <button mat-menu-item>ویرایش دسته بندی</button>
+                  <button mat-menu-item>حذف دسته بندی</button>
+                </mat-menu>
+              </div>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    محصول ۱
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div>
+                  <form
+                    class="row"
+                    [formGroup]="menuItemForm"
+                    (ngSubmit)="menuItemForm.valid && onSubmit()"
+                  >
+                    <mat-form-field class="col-4" appearance="fill">
+                      <mat-label>نام</mat-label>
+                      <input
+                        matInput
+                        formControlName="name"
+                        name="name"
+                        type="text"
+                        required
+                      />
+                      <mat-error
+                        class="fs-7"
+                        *ngIf="submitted && menuItemForm.get('name')?.hasError('required')"
+                      >وارد کردن نام محصول الزامی می باشد.
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="col-4" appearance="fill">
+                      <mat-label>قیمت</mat-label>
+                      <input
+                        matInput
+                        formControlName="price"
+                        name="price"
+                        type="number"
+                        placeholder="۰"
+                        class="number-input"
+                      />
+                      <span matTextSuffix>تومان</span>
+                      <mat-error
+                        class="fs-7"
+                        *ngIf="submitted && menuItemForm.get('price')?.hasError('pattern')"
+                      >قیمت محصول معتبر نیست.
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="col-4" appearance="fill">
+                      <mat-label>تخفیف</mat-label>
+                      <input
+                        matInput
+                        formControlName="discount"
+                        name="discount"
+                        type="number"
+                        placeholder="۰"
+                        class="number-input"
+                      />
+                      <span matTextSuffix>درصد</span>
+                      <mat-error
+                        class="fs-7"
+                        *ngIf="submitted && menuItemForm.get('discount')?.hasError('pattern')"
+                      >تخفیف محصول معتبر نیست.
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>توضیحات</mat-label>
+                      <textarea
+                        matInput
+                        formControlName="description"
+                        name="description"
+                      ></textarea>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <ngx-mat-file
+                        accept="image/*"
+                        [maxlength]="1"
+                        [hiddenUpload]="true"
+                        buttonBrowseText="جستجو"
+                        buttonRemoveAllText="حذف همه"
+                        dragAndDropText="تصویر را به اینجا بکشید"
+                        invalidMaxFileCountMessage="حداکثر یک تصویر مجاز است."
+                        invalidFileTypeMessage="نوع فایل مجاز نیست."
+                        invalidFileSizeMessage="حداکثر اندازه تصویر ۵ مگابایت می باشد."
+                        formControlName="image">
+                      </ngx-mat-file>
+                    </mat-form-field>
+                    <div class="mt-4">
+                      <button
+                        class="ms-3"
+                        type="submit"
+                        (click)="submitted = true"
+                        mat-raised-button
+                        color="primary"
+                      >
+                        ثبت
+                      </button>
+                      <button
+                        class=""
+                        mat-stroked-button
+                        color="warn"
+                        type="button"
+                      >
+                        حذف محصول
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </mat-expansion-panel>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-tab>
+        <mat-tab label="اطلاعات کسب و کار">
+          <p>اطلاعات کسب و کار</p>
+        </mat-tab>
+        <mat-tab label="شخصی سازی">
+          <p>شخصی سازی</p>
+        </mat-tab>
+      </mat-tab-group>
     </div>
   </ng-container>
 </section>

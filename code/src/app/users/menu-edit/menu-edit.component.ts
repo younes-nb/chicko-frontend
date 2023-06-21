@@ -8,6 +8,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Clipboard} from "@angular/cdk/clipboard";
 import {CustomSnackBarService} from "../../shared/custom-snack-bar.service";
 import {DeleteMenuDialogComponent} from "../delete-menu-dialog/delete-menu-dialog.component";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -17,6 +18,15 @@ import {DeleteMenuDialogComponent} from "../delete-menu-dialog/delete-menu-dialo
 })
 export class MenuEditComponent implements OnInit {
   menu$ = this.store.select(selectMenuDetails);
+  submitted: boolean = false;
+  menuItemForm: FormGroup = new FormGroup({
+    name: new FormControl('', Validators.required),
+    price: new FormControl('', Validators.pattern("[0-9]+")),
+    discount: new FormControl('', Validators.pattern("([0-9]+[.])?[0-9]+")),
+    description: new FormControl(''),
+    image: new FormControl(''),
+    is_available: new FormControl('', Validators.required),
+  });
 
   constructor(
     private route: ActivatedRoute,
@@ -41,6 +51,10 @@ export class MenuEditComponent implements OnInit {
         menuLink: menuLink
       },
     });
+  }
+
+  onSubmit() {
+
   }
 
   openDeleteMenuDialog(menuId: string): void {

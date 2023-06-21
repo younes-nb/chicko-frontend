@@ -43,13 +43,13 @@ export interface Category {
 export interface MenuItem {
   id: string;
   name: string;
-  description: string;
-  price: string;
-  discount: string;
-  image: string;
   is_available: boolean;
   menu: string;
   category: string;
+  description?: string;
+  price?: string;
+  discount?: string;
+  image?: string;
 }
 
 export interface Theme {

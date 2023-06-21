@@ -24,7 +24,7 @@
           required
         />
         <mat-error
-          class="fs-6"
+          class="fs-7"
           *ngIf="submitted && loginForm.get('username')?.hasError('required')"
         >وارد کردن نام کاربری الزامی می باشد.
         </mat-error>
@@ -39,6 +39,7 @@
           required
         />
         <mat-error
+          class="fs-7"
           *ngIf="submitted && loginForm.get('password')?.hasError('required')"
         >وارد کردن رمز عبور الزامی می باشد.
         </mat-error>
