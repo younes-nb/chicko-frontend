@@ -66,4 +66,11 @@ export class MenusService {
   public deleteMenu(id: string): Observable<any> {
     return this.httpClient.delete(`${BASE_API}menu/menus/${id}`, {headers: {NeedsUserTokenHeader: ''}});
   }
+
+  public createCategory(name: string, menu: string): Observable<any> {
+    return this.httpClient.post(`${BASE_API}menu/menus/categories/create/`, {
+      name,
+      menu
+    }, {headers: {NeedsUserTokenHeader: ''}})
+  }
 }

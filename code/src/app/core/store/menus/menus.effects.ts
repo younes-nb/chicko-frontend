@@ -8,7 +8,7 @@ import {
 import {MenusService} from '../../../users/menus.service';
 import * as MenuActions from './menus.actions';
 import {of} from "rxjs";
-import {Menu} from "../../../shared/types";
+import {Category, Menu} from "../../../shared/types";
 import {BASE_URL} from "../../../shared/api";
 import {Router} from "@angular/router";
 
@@ -78,6 +78,18 @@ export class MenuEffects {
         )
       ),
       tap(() => this.router.navigate(['dashboard']))
+    )
+  );
+
+  createCategory$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MenuActions.createCategory),
+      switchMap(({name, menu}) =>
+        this.menusService.createCategory(name, menu).pipe(
+          map((category: Category) => MenuActions.createCategorySuccess({category})),
+          catchError((error) => of(MenuActions.createCategoryFailure({error})))
+        )
+      )
     )
   );
 

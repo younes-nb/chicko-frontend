@@ -9,6 +9,7 @@ import {Clipboard} from "@angular/cdk/clipboard";
 import {CustomSnackBarService} from "../../shared/custom-snack-bar.service";
 import {DeleteMenuDialogComponent} from "../delete-menu-dialog/delete-menu-dialog.component";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {SingleInputDialogComponent} from "../../shared/single-input-dialog/single-input-dialog.component";
 
 
 @Component({
@@ -17,7 +18,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./menu-edit.component.scss']
 })
 export class MenuEditComponent implements OnInit {
-  menu$ = this.store.select(selectMenuDetails);
+  menu$ = this.menusStore.select(selectMenuDetails);
   submitted: boolean = false;
   menuItemForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -30,7 +31,7 @@ export class MenuEditComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store,
+    private menusStore: Store,
     public dialog: MatDialog,
     private clipboard: Clipboard,
     private customSnackBarService: CustomSnackBarService
@@ -40,7 +41,7 @@ export class MenuEditComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       const menuId = params['menuId'];
-      this.store.dispatch(MenuActions.fetchMenu({menuId}));
+      this.menusStore.dispatch(MenuActions.fetchMenu({menuId}));
     });
   }
 
@@ -61,9 +62,23 @@ export class MenuEditComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteMenuDialogComponent);
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
-        this.store.dispatch(MenuActions.deleteMenu({menuId}))
+        this.menusStore.dispatch(MenuActions.deleteMenu({menuId}))
       }
     })
+  }
+
+  openCreateCategoryDialog(menuId: string): void {
+    const dialogRef = this.dialog.open(SingleInputDialogComponent, {
+      data: {
+        title: 'افزودن دسته بندی جدید',
+        label: 'عنوان دسته بندی'
+      }
+    });
+    dialogRef.afterClosed().subscribe(name => {
+      if (name) {
+        this.menusStore.dispatch(MenuActions.createCategory({name, menu: menuId}));
+      }
+    });
   }
 
   copyToClipboard(menuLink: string) {

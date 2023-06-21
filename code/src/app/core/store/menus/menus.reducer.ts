@@ -12,5 +12,9 @@ export const menusReducer = createReducer<MenusState>(
 
 export const menuDetailsReducer = createReducer<MenuDetails>(
   menuDetailsInitialState,
-  on(MenuActions.setMenu, (state, {menu}) => menu)
+  on(MenuActions.setMenu, (state, {menu}) => menu),
+  on(MenuActions.createCategorySuccess, (state, {category}) => ({
+    ...state,
+    categories: [...state.categories, category]
+  }))
 );

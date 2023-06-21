@@ -1,8 +1,9 @@
 <section
+  style="width: 350px"
   class="d-flex flex-column justify-content-center align-items-center p-3"
 >
-  <h3 class="mb-3">{{ data.title }}</h3>
-  <form mat-dialog-content [formGroup]="formGroup">
+  <h3 class="p-2 mb-3">{{ data.title }}</h3>
+  <form class="w-100" mat-dialog-content [formGroup]="formGroup">
     <mat-form-field class="w-100" appearance="fill">
       <mat-label>{{ data.label }}</mat-label>
       <input
@@ -19,7 +20,7 @@
       </mat-error>
     </mat-form-field>
   </form>
-  <div mat-dialog-actions>
+  <div class="mt-2" mat-dialog-actions>
     <button
       [mat-dialog-close]="formGroup.controls['input'].value"
       mat-raised-button
