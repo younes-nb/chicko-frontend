@@ -28,16 +28,11 @@
         formControlName="price"
         name="price"
         type="number"
-        placeholder="۰"
         class="number-input"
         [ngModel]="data.price"
+        appNumbersOnly
       />
       <span matTextSuffix>تومان</span>
-      <mat-error
-        class="fs-7"
-        *ngIf="submitted && menuItemForm.get('price')?.hasError('pattern')"
-      >قیمت محصول معتبر نیست.
-      </mat-error>
     </mat-form-field>
     <mat-form-field class="col-4" appearance="fill">
       <mat-label>تخفیف</mat-label>
@@ -46,16 +41,11 @@
         formControlName="discount"
         name="discount"
         type="number"
-        placeholder="۰"
         class="number-input"
         [ngModel]="data.discount"
+        appNumbersOnly
       />
       <span matTextSuffix>درصد</span>
-      <mat-error
-        class="fs-7"
-        *ngIf="submitted && menuItemForm.get('discount')?.hasError('pattern')"
-      >تخفیف محصول معتبر نیست.
-      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>توضیحات</mat-label>
@@ -88,7 +78,9 @@
         </ngx-mat-file>
       </mat-form-field>
     </div>
-    <mat-checkbox formControlName="is_available" color="primary" class="mt-2">آیا محصول فعال است؟</mat-checkbox>
+    <mat-checkbox [ngModel]="data.is_available" formControlName="is_available" color="primary" class="mt-2">آیا محصول
+      فعال است؟
+    </mat-checkbox>
     <div class="mt-4">
       <button
         type="submit"

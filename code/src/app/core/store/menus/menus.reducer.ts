@@ -43,5 +43,24 @@ export const menuDetailsReducer = createReducer<MenuDetails>(
         return category;
       }
     })
+  })),
+  on(MenuActions.updateMenuItemSuccess, (state, {menuItem}) => ({
+    ...state,
+    categories: state.categories.map(category => {
+      if (category.id === menuItem.category) {
+        return {
+          ...category,
+          menu_items: category.menu_items.map(item => {
+            if (item.id === menuItem.id) {
+              return menuItem;
+            } else {
+              return item;
+            }
+          })
+        };
+      } else {
+        return category;
+      }
+    })
   }))
 );

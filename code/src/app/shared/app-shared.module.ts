@@ -9,9 +9,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { ImageDialogComponent } from './image-dialog/image-dialog.component';
+import { NumbersOnlyDirective } from './numbers-only.directive';
 
 @NgModule({
-  declarations: [NumLatinToFaPipe, SingleInputDialogComponent, DeleteDialogComponent, ImageDialogComponent],
+  declarations: [NumLatinToFaPipe, SingleInputDialogComponent, DeleteDialogComponent, ImageDialogComponent, NumbersOnlyDirective],
     imports: [
         CommonModule,
         MatDialogModule,
@@ -21,7 +22,7 @@ import { ImageDialogComponent } from './image-dialog/image-dialog.component';
         MatInputModule,
         NgOptimizedImage
     ],
-  exports: [NumLatinToFaPipe, SingleInputDialogComponent],
+  exports: [NumLatinToFaPipe, SingleInputDialogComponent, NumbersOnlyDirective],
 })
 export class AppSharedModule {
 }

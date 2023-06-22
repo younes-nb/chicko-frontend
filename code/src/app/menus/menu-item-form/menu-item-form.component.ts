@@ -17,8 +17,8 @@ export class MenuItemFormComponent {
   submitted: boolean = false;
   menuItemForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
-    price: new FormControl('', Validators.pattern("[0-9]+")),
-    discount: new FormControl('', Validators.pattern("([0-9]+[.])?[0-9]+")),
+    price: new FormControl(''),
+    discount: new FormControl(''),
     description: new FormControl(''),
     image: new FormControl(''),
     is_available: new FormControl('')
@@ -41,7 +41,7 @@ export class MenuItemFormComponent {
     if (this.formMethod === "post") {
       this.menusStore.dispatch(MenuActions.createMenuItem(props));
     } else if (this.formMethod === "put") {
-      // this.menusStore.dispatch(MenuActions.updateMenuItem(props));
+      this.menusStore.dispatch(MenuActions.updateMenuItem({id: this.data.id, ...props}));
     }
   }
 

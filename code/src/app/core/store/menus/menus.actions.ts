@@ -126,3 +126,28 @@ export const createMenuItemFailure = createAction(
   '[Menus Details] Create Menu Item Failure',
   props<{ error: any }>()
 );
+
+export const updateMenuItem = createAction(
+  '[Menus Details] Update Menu Item',
+  props<{
+    id: string,
+    name: string,
+    menu: string,
+    category: string,
+    is_available: boolean,
+    image?: File,
+    description?: string,
+    price?: string,
+    discount?: string
+  }>()
+);
+
+export const updateMenuItemSuccess = createAction(
+  '[Menus Details] Update Menu Item Success',
+  props<{ menuItem: MenuItem }>()
+);
+
+export const updateMenuItemFailure = createAction(
+  '[Menus Details] Update Menu Item Failure',
+  props<{ error: any }>()
+);

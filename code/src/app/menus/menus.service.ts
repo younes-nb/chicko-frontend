@@ -117,4 +117,34 @@ export class MenusService {
       }
     );
   }
+
+  public updateMenuItem(
+    id: string,
+    name: string,
+    menu: string,
+    category: string,
+    is_available: boolean,
+    image?: File,
+    description?: string,
+    price?: string,
+    discount?: string
+  ): Observable<any> {
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('menu', menu);
+    formData.append('category', category);
+    formData.append('is_available', is_available.toString());
+    if (image) formData.append('image', image);
+    if (description) formData.append('description', description);
+    if (price) formData.append('price', price);
+    if (discount) formData.append('discount', discount);
+
+    return this.httpClient.put(
+      `${BASE_API}menu/menu-item/${id}/`,
+      formData,
+      {
+        headers: {NeedsUserTokenHeader: ''},
+      }
+    );
+  }
 }
