@@ -18,28 +18,31 @@ import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatMenuModule} from "@angular/material/menu";
 import {QRCodeModule} from "angularx-qrcode";
+import { MenuItemFormComponent } from './menu-item-form/menu-item-form.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 @NgModule({
-  declarations: [MenuComponent, MenusListComponent, QrCodeDialogComponent],
-  imports: [
-    CommonModule,
-    AppSharedModule,
-    MatButtonModule,
-    MatCardModule,
-    MatChipsModule,
-    MatIconModule,
-    MatExpansionModule,
-    MatTabsModule,
-    RouterLink,
-    MatTooltipModule,
-    NgOptimizedImage,
-    NgxMatFileModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatMenuModule,
-    QRCodeModule,
-  ],
+  declarations: [MenuComponent, MenusListComponent, QrCodeDialogComponent, MenuItemFormComponent],
+    imports: [
+        CommonModule,
+        AppSharedModule,
+        MatButtonModule,
+        MatCardModule,
+        MatChipsModule,
+        MatIconModule,
+        MatExpansionModule,
+        MatTabsModule,
+        RouterLink,
+        MatTooltipModule,
+        NgOptimizedImage,
+        NgxMatFileModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatMenuModule,
+        QRCodeModule,
+        MatCheckboxModule,
+    ],
   providers: [MenusService]
 })
 export class MenusModule {

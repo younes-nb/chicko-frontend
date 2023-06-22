@@ -1,3 +1,4 @@
+export type MenuItemFormMethod = "post" | "put";
 export type SupportChatComponent = 'register' | 'rooms' | 'chat';
 
 
@@ -47,10 +48,10 @@ export interface MenuItem {
   is_available: boolean;
   menu: string;
   category: string;
+  image: string;
   description?: string;
   price?: string;
   discount?: string;
-  image?: string;
 }
 
 export interface Theme {
@@ -93,6 +94,10 @@ export interface DeleteDialogData {
 export interface QRCodeDialogData {
   menuName: string;
   menuLink: string;
+}
+
+export interface ImageDialogData {
+  image: string;
 }
 
 export interface Message {

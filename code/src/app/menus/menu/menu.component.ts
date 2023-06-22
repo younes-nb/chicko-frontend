@@ -7,7 +7,6 @@ import {QrCodeDialogComponent} from "../qr-code-dialog/qr-code-dialog.component"
 import {MatDialog} from "@angular/material/dialog";
 import {Clipboard} from "@angular/cdk/clipboard";
 import {CustomSnackBarService} from "../../shared/custom-snack-bar.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SingleInputDialogComponent} from "../../shared/single-input-dialog/single-input-dialog.component";
 import {DeleteDialogComponent} from "../../shared/delete-dialog/delete-dialog.component";
 
@@ -19,15 +18,7 @@ import {DeleteDialogComponent} from "../../shared/delete-dialog/delete-dialog.co
 })
 export class MenuComponent implements OnInit {
   menu$ = this.menusStore.select(selectMenuDetails);
-  submitted: boolean = false;
-  menuItemForm: FormGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
-    price: new FormControl('', Validators.pattern("[0-9]+")),
-    discount: new FormControl('', Validators.pattern("([0-9]+[.])?[0-9]+")),
-    description: new FormControl(''),
-    image: new FormControl(''),
-    is_available: new FormControl('', Validators.required),
-  });
+
 
   constructor(
     private route: ActivatedRoute,
@@ -53,11 +44,6 @@ export class MenuComponent implements OnInit {
       },
     });
   }
-
-  onSubmit() {
-
-  }
-
 
   openDeleteMenuDialog(menuId: string, menuName: string): void {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {

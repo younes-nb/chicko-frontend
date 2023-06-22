@@ -1,0 +1,112 @@
+<div>
+  <form
+    class="row"
+    [formGroup]="menuItemForm"
+    (ngSubmit)="menuItemForm.valid && onSubmit()"
+    enctype="multipart/form-data"
+  >
+    <mat-form-field class="col-4" appearance="fill">
+      <mat-label>نام</mat-label>
+      <input
+        matInput
+        formControlName="name"
+        name="name"
+        type="text"
+        required
+        [ngModel]="data.name"
+      />
+      <mat-error
+        class="fs-7"
+        *ngIf="submitted && menuItemForm.get('name')?.hasError('required')"
+      >وارد کردن نام محصول الزامی می باشد.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-4" appearance="fill">
+      <mat-label>قیمت</mat-label>
+      <input
+        matInput
+        formControlName="price"
+        name="price"
+        type="number"
+        placeholder="۰"
+        class="number-input"
+        [ngModel]="data.price"
+      />
+      <span matTextSuffix>تومان</span>
+      <mat-error
+        class="fs-7"
+        *ngIf="submitted && menuItemForm.get('price')?.hasError('pattern')"
+      >قیمت محصول معتبر نیست.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-4" appearance="fill">
+      <mat-label>تخفیف</mat-label>
+      <input
+        matInput
+        formControlName="discount"
+        name="discount"
+        type="number"
+        placeholder="۰"
+        class="number-input"
+        [ngModel]="data.discount"
+      />
+      <span matTextSuffix>درصد</span>
+      <mat-error
+        class="fs-7"
+        *ngIf="submitted && menuItemForm.get('discount')?.hasError('pattern')"
+      >تخفیف محصول معتبر نیست.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>توضیحات</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        name="description"
+        [ngModel]="data.description"
+      ></textarea>
+    </mat-form-field>
+    <div class="mt-3">
+      <div class="d-flex mb-3">
+        <h4 class="ms-5">بارگذاری تصویر جدید</h4>
+        <button *ngIf="data.image" (click)="openShowMenuItemImage(data.image)" mat-button color="primary"
+                type="button">تصویر فعلی
+        </button>
+      </div>
+      <mat-form-field class="w-100" appearance="outline">
+        <ngx-mat-file
+          accept="image/*"
+          [maxlength]="1"
+          [hiddenUpload]="true"
+          buttonBrowseText="جستجو"
+          buttonRemoveAllText="حذف همه"
+          dragAndDropText="تصویر را به اینجا بکشید"
+          invalidMaxFileCountMessage="حداکثر یک تصویر مجاز است."
+          invalidFileTypeMessage="نوع فایل مجاز نیست."
+          invalidFileSizeMessage="حداکثر اندازه تصویر ۵ مگابایت می باشد."
+          formControlName="image">
+        </ngx-mat-file>
+      </mat-form-field>
+    </div>
+    <mat-checkbox formControlName="is_available" color="primary" class="mt-2">آیا محصول فعال است؟</mat-checkbox>
+    <div class="mt-4">
+      <button
+        type="submit"
+        (click)="submitted = true"
+        mat-raised-button
+        color="primary"
+      >
+        ثبت
+      </button>
+      <button
+        *ngIf="formMethod==='put'"
+        class="me-3"
+        mat-stroked-button
+        color="warn"
+        type="button"
+      >
+        حذف محصول
+      </button>
+    </div>
+  </form>
+</div>

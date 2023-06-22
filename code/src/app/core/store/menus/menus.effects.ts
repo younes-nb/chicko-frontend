@@ -8,7 +8,7 @@ import {
 import {MenusService} from '../../../menus/menus.service';
 import * as MenuActions from './menus.actions';
 import {of} from "rxjs";
-import {Category, Menu} from "../../../shared/types";
+import {Category, Menu, MenuItem} from "../../../shared/types";
 import {BASE_URL} from "../../../shared/api";
 import {Router} from "@angular/router";
 
@@ -112,6 +112,27 @@ export class MenuEffects {
         this.menusService.deleteCategory(id).pipe(
           map(() => MenuActions.deleteCategorySuccess({id})),
           catchError((error) => of(MenuActions.deleteCategoryFailure({error})))
+        )
+      )
+    )
+  );
+
+  createMenuItem$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MenuActions.createMenuItem),
+      switchMap(({
+                   name,
+                   menu,
+                   category,
+                   image,
+                   is_available,
+                   description,
+                   price,
+                   discount
+                 }) =>
+        this.menusService.createMenuItem(name, menu, category, image, is_available, description, price, discount).pipe(
+          map((menuItem: MenuItem) => MenuActions.createMenuItemSuccess({menuItem})),
+          catchError((error) => of(MenuActions.createMenuItemFailure({error})))
         )
       )
     )

@@ -1,0 +1,14 @@
+.number-input {
+  text-align: right;
+  -moz-appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-outer-spin-button {
+    display: none;
+  }
+}
+
+textarea {
+  resize: none;
+}
+

@@ -8,7 +8,7 @@ import {CustomSnackBarService} from '../shared/custom-snack-bar.service';
 import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {selectAuthUser} from "../core/store/auth/auth.selectors";
-import {catchError} from "rxjs/operators";
+import {catchError, switchMap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root',
@@ -87,5 +87,34 @@ export class MenusService {
       headers: {NeedsUserTokenHeader: ''},
       body: {category_pk: id}
     });
+  }
+
+  public createMenuItem(
+    name: string,
+    menu: string,
+    category: string,
+    image: File,
+    is_available: boolean,
+    description?: string,
+    price?: string,
+    discount?: string
+  ): Observable<any> {
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('menu', menu);
+    formData.append('category', category);
+    formData.append('image', image);
+    formData.append('is_available', is_available.toString());
+    if (description) formData.append('description', description);
+    if (price) formData.append('price', price);
+    if (discount) formData.append('discount', discount);
+
+    return this.httpClient.post(
+      `${BASE_API}menu/menus/menuitems/create/`,
+      formData,
+      {
+        headers: {NeedsUserTokenHeader: ''},
+      }
+    );
   }
 }

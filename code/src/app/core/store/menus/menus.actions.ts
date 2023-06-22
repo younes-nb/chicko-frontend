@@ -1,5 +1,5 @@
 import {createAction, props} from '@ngrx/store';
-import {Category, Menu, MenuDetails} from '../../../shared/types';
+import {Category, Menu, MenuDetails, MenuItem} from '../../../shared/types';
 
 export const fetchMenus = createAction('[Menus] Fetch Menus');
 
@@ -100,5 +100,29 @@ export const deleteCategorySuccess = createAction(
 
 export const deleteCategoryFailure = createAction(
   '[Menus Details] Delete Category Failure',
+  props<{ error: any }>()
+);
+
+export const createMenuItem = createAction(
+  '[Menus Details] Create Menu Item',
+  props<{
+    name: string,
+    menu: string,
+    category: string,
+    image: File,
+    is_available: boolean,
+    description?: string,
+    price?: string,
+    discount?: string
+  }>()
+);
+
+export const createMenuItemSuccess = createAction(
+  '[Menus Details] Create Menu Item Success',
+  props<{ menuItem: MenuItem }>()
+);
+
+export const createMenuItemFailure = createAction(
+  '[Menus Details] Create Menu Item Failure',
   props<{ error: any }>()
 );

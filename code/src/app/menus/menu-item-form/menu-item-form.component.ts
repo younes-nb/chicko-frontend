@@ -1,0 +1,51 @@
+import {Component, Input} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {MenuItem, MenuItemFormMethod} from "../../shared/types";
+import {Store} from "@ngrx/store";
+import * as MenuActions from "../../core/store/menus/menus.actions";
+import {MatDialog} from "@angular/material/dialog";
+import {ImageDialogComponent} from "../../shared/image-dialog/image-dialog.component";
+
+@Component({
+  selector: 'app-menu-item-form',
+  templateUrl: './menu-item-form.component.html',
+  styleUrls: ['./menu-item-form.component.scss']
+})
+export class MenuItemFormComponent {
+  @Input() data: MenuItem = {} as MenuItem;
+  @Input() formMethod: MenuItemFormMethod = 'post';
+  submitted: boolean = false;
+  menuItemForm: FormGroup = new FormGroup({
+    name: new FormControl('', Validators.required),
+    price: new FormControl('', Validators.pattern("[0-9]+")),
+    discount: new FormControl('', Validators.pattern("([0-9]+[.])?[0-9]+")),
+    description: new FormControl(''),
+    image: new FormControl(''),
+    is_available: new FormControl('')
+  });
+
+  constructor(private menusStore: Store, public dialog: MatDialog,) {
+  }
+
+  onSubmit(): void {
+    const props = {
+      name: this.menuItemForm.controls['name'].value,
+      menu: this.data.menu,
+      category: this.data.category,
+      image: this.menuItemForm.controls['image'].value[0],
+      is_available: this.menuItemForm.controls['is_available'].value,
+      description: this.menuItemForm.controls['description'].value,
+      price: this.menuItemForm.controls['price'].value,
+      discount: this.menuItemForm.controls['discount'].value
+    }
+    if (this.formMethod === "post") {
+      this.menusStore.dispatch(MenuActions.createMenuItem(props));
+    } else if (this.formMethod === "put") {
+      // this.menusStore.dispatch(MenuActions.updateMenuItem(props));
+    }
+  }
+
+  openShowMenuItemImage(image: string): void {
+    this.dialog.open(ImageDialogComponent, {data: {image}});
+  }
+}

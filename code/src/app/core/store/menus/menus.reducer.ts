@@ -29,5 +29,19 @@ export const menuDetailsReducer = createReducer<MenuDetails>(
   on(MenuActions.deleteCategorySuccess, (state, {id}) => ({
     ...state,
     categories: state.categories.filter(c => c.id !== id)
+  })),
+  on(MenuActions.createMenuItemSuccess, (state, {menuItem}) => ({
+    ...state,
+    categories: state.categories.map(category => {
+      if (category.id === menuItem.category) {
+        return {
+          ...category,
+          menu_items: [...category.menu_items, menuItem],
+          number_of_items: String(Number(category.number_of_items) + 1)
+        };
+      } else {
+        return category;
+      }
+    })
   }))
 );
