@@ -7,17 +7,17 @@ import {QrCodeDialogComponent} from "../qr-code-dialog/qr-code-dialog.component"
 import {MatDialog} from "@angular/material/dialog";
 import {Clipboard} from "@angular/cdk/clipboard";
 import {CustomSnackBarService} from "../../shared/custom-snack-bar.service";
-import {DeleteMenuDialogComponent} from "../delete-menu-dialog/delete-menu-dialog.component";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SingleInputDialogComponent} from "../../shared/single-input-dialog/single-input-dialog.component";
+import {DeleteDialogComponent} from "../../shared/delete-dialog/delete-dialog.component";
 
 
 @Component({
-  selector: 'app-menu-edit',
-  templateUrl: './menu-edit.component.html',
-  styleUrls: ['./menu-edit.component.scss']
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss']
 })
-export class MenuEditComponent implements OnInit {
+export class MenuComponent implements OnInit {
   menu$ = this.menusStore.select(selectMenuDetails);
   submitted: boolean = false;
   menuItemForm: FormGroup = new FormGroup({
@@ -59,8 +59,13 @@ export class MenuEditComponent implements OnInit {
   }
 
 
-  openDeleteMenuDialog(menuId: string): void {
-    const dialogRef = this.dialog.open(DeleteMenuDialogComponent);
+  openDeleteMenuDialog(menuId: string, menuName: string): void {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      data: {
+        name: menuName,
+        isMenu: true
+      }
+    });
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
         this.menusStore.dispatch(MenuActions.deleteMenu({menuId}))
@@ -93,6 +98,20 @@ export class MenuEditComponent implements OnInit {
     dialogRef.afterClosed().subscribe(name => {
       if (name && name !== categoryName) {
         this.menusStore.dispatch(MenuActions.updateCategory({id: categoryId, name, menu: menuId}));
+      }
+    })
+  }
+
+  openDeleteCategoryDialog(categoryId: string, categoryName: string): void {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      data: {
+        name: categoryName,
+        isMenu: false
+      }
+    });
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.menusStore.dispatch(MenuActions.deleteCategory({id: categoryId}))
       }
     })
   }

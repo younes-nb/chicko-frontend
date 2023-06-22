@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {DialogData} from '../types';
+import {SingleInputDialogData} from '../types';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -8,7 +8,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   templateUrl: './single-input-dialog.component.html',
 })
 export class SingleInputDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: SingleInputDialogData) {
   }
 
   formGroup: FormGroup = new FormGroup({

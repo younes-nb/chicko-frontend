@@ -25,5 +25,9 @@ export const menuDetailsReducer = createReducer<MenuDetails>(
       }
       return c;
     })
+  })),
+  on(MenuActions.deleteCategorySuccess, (state, {id}) => ({
+    ...state,
+    categories: state.categories.filter(c => c.id !== id)
   }))
 );

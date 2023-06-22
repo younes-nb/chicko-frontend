@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {BASE_API} from '../shared/api';
 import {User} from '../shared/types';
 import {map, Observable} from 'rxjs';
-import {UsersService} from './users.service';
+import {UsersService} from '../users/users.service';
 import {CustomSnackBarService} from '../shared/custom-snack-bar.service';
 import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
@@ -71,7 +71,7 @@ export class MenusService {
     return this.httpClient.post(`${BASE_API}menu/menus/categories/create/`, {
       name,
       menu
-    }, {headers: {NeedsUserTokenHeader: ''}})
+    }, {headers: {NeedsUserTokenHeader: ''}});
   }
 
   public updateCategory(id: string, name: string, menu: string): Observable<any> {
@@ -79,6 +79,13 @@ export class MenusService {
       id,
       name,
       menu
-    }, {headers: {NeedsUserTokenHeader: ''}})
+    }, {headers: {NeedsUserTokenHeader: ''}});
+  }
+
+  public deleteCategory(id: string): Observable<any> {
+    return this.httpClient.delete(`${BASE_API}menu/categories/${id}/`, {
+      headers: {NeedsUserTokenHeader: ''},
+      body: {category_pk: id}
+    });
   }
 }

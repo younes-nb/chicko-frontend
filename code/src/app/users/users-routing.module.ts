@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {DashboardComponent} from './dashboard/dashboard.component';
 import {AuthGuardService} from '../shared/auth-guard.service';
 import {UsersComponent} from './users.component';
 import {AccountComponent} from './account/account.component';
-import {MenuEditComponent} from "./menu-edit/menu-edit.component";
+import {MenuComponent} from "../menus/menu/menu.component";
+import {MenusListComponent} from "../menus/menus-list/menus-list.component";
 
 const usersRoutes: Routes = [
   {
@@ -12,9 +12,9 @@ const usersRoutes: Routes = [
     component: UsersComponent,
     canActivate: [AuthGuardService],
     children: [
-      {path: '', component: DashboardComponent},
+      {path: '', component: MenusListComponent},
       {path: 'account', component: AccountComponent},
-      {path: 'menus/:menuId', component: MenuEditComponent},
+      {path: 'menus/:menuId', component: MenuComponent},
     ],
   },
 ];

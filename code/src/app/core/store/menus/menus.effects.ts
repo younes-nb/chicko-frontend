@@ -5,7 +5,7 @@ import {
   mergeMap,
   catchError, tap, switchMap,
 } from 'rxjs/operators';
-import {MenusService} from '../../../users/menus.service';
+import {MenusService} from '../../../menus/menus.service';
 import * as MenuActions from './menus.actions';
 import {of} from "rxjs";
 import {Category, Menu} from "../../../shared/types";
@@ -100,6 +100,18 @@ export class MenuEffects {
         this.menusService.updateCategory(id, name, menu).pipe(
           map((category: Category) => MenuActions.updateCategorySuccess({category})),
           catchError((error) => of(MenuActions.updateCategoryFailure({error})))
+        )
+      )
+    )
+  );
+
+  deleteCategory$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MenuActions.deleteCategory),
+      switchMap(({id}) =>
+        this.menusService.deleteCategory(id).pipe(
+          map(() => MenuActions.deleteCategorySuccess({id})),
+          catchError((error) => of(MenuActions.deleteCategoryFailure({error})))
         )
       )
     )

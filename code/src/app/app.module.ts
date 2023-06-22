@@ -37,6 +37,7 @@ import {menuDetailsReducer, menusReducer} from "./core/store/menus/menus.reducer
 import {MenuEffects} from "./core/store/menus/menus.effects";
 import {authReducer} from "./core/store/auth/auth.reducer";
 import {AuthEffects} from "./core/store/auth/auth.effects";
+import {MenusModule} from "./menus/menus.module";
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import {AuthEffects} from "./core/store/auth/auth.effects";
     MatSidenavModule,
     UsersModule,
     SupportModule,
+    MenusModule,
     MatDialogModule,
     HttpClientModule,
     AppSharedModule,

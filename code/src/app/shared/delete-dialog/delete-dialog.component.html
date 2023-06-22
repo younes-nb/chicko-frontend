@@ -1,6 +1,6 @@
-<section class="p-4">
-  <h4>آیا از حذف این منو اطمینان دارید؟</h4>
-  <p class="text-muted mt-3 mb-4">پس از حذف منو لینک و کد QR آن دیگر در دسترس نخواهد بود.</p>
+<section class="d-flex flex-column justify-content-center align-items-center p-4">
+  <h4 class="mb-3 p-2">آیا از حذف {{data.name}} اطمینان دارید؟</h4>
+  <p *ngIf="data.isMenu" class="text-muted mb-4">پس از حذف منو لینک و کد QR آن دیگر در دسترس نخواهد بود.</p>
   <div>
     <button [mat-dialog-close]="false" type="button" mat-raised-button color="primary" class="ms-3">خیر، می خواهم آن را
       نگه

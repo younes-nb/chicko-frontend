@@ -7,9 +7,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 @NgModule({
-  declarations: [NumLatinToFaPipe, SingleInputDialogComponent],
+  declarations: [NumLatinToFaPipe, SingleInputDialogComponent, DeleteDialogComponent],
   imports: [
     CommonModule,
     MatDialogModule,

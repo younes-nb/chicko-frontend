@@ -1,4 +1,4 @@
-import {Menu, MenuDetails, User} from "../../../shared/types";
+import {Menu, MenuDetails, Theme, User} from "../../../shared/types";
 
 
 export interface MenusState {
@@ -23,6 +23,7 @@ export const menuDetailsInitialState: MenuDetails = {
   is_paid: false,
   is_active: false,
   categories: [],
+  theme: {} as Theme,
   telephone: '',
   phone: '',
   address: '',

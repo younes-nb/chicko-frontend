@@ -26,6 +26,7 @@ export interface MenuDetails {
   is_paid: boolean;
   is_active: boolean;
   categories: Category[];
+  theme: Theme;
   telephone: string;
   phone: string;
   address: string;
@@ -60,6 +61,8 @@ export interface Theme {
   font_family: string;
   menu_background_color: string;
   menu_text_color: string;
+  header_image: string;
+  header_color: string;
 }
 
 export interface ChatUser {
@@ -76,10 +79,15 @@ export interface Room {
   createdAt: Date;
 }
 
-export interface DialogData {
+export interface SingleInputDialogData {
   title: string;
   label: string;
   value?: string;
+}
+
+export interface DeleteDialogData {
+  name: string;
+  isMenu: boolean;
 }
 
 export interface QRCodeDialogData {

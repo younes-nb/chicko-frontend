@@ -14,7 +14,8 @@
                 matTooltip="کپی کردن پیوند">
           <mat-icon>content_copy</mat-icon>
         </button>
-        <button (click)="openDeleteMenuDialog(menu.id)" type="button" mat-icon-button color="warn" class="me-3"
+        <button (click)="openDeleteMenuDialog(menu.id, menu.name)" type="button" mat-icon-button color="warn"
+                class="me-3"
                 matTooltip="حذف">
           <mat-icon>delete</mat-icon>
         </button>
@@ -52,7 +53,9 @@
                       <button (click)="openUpdateCategoryDialog(menu.id, category.id, category.name)" mat-menu-item>
                         ویرایش دسته بندی
                       </button>
-                      <button mat-menu-item>حذف دسته بندی</button>
+                      <button (click)="openDeleteCategoryDialog(category.id, category.name)" mat-menu-item>حذف دسته
+                        بندی
+                      </button>
                     </mat-menu>
                   </div>
                   <ng-container *ngIf="category.menu_items.length; else noMenuItemRef">
@@ -183,7 +186,7 @@
             <h3 class="text-muted text-center mt-5">دسته بندی برای {{menu.name}} وجود ندارد.</h3>
           </ng-template>
         </mat-tab>
-        <mat-tab label="اطلاعات کسب و کار">
+        <mat-tab label="اطلاعات منو">
           <p>اطلاعات منو</p>
         </mat-tab>
         <mat-tab label="شخصی سازی">

@@ -87,3 +87,18 @@ export const updateCategoryFailure = createAction(
   '[Menus Details] Update Category Failure',
   props<{ error: any }>()
 );
+
+export const deleteCategory = createAction(
+  '[Menus Details] Delete Category',
+  props<{ id: string }>()
+);
+
+export const deleteCategorySuccess = createAction(
+  '[Menus Details] Delete Category Success',
+  props<{ id: string }>()
+);
+
+export const deleteCategoryFailure = createAction(
+  '[Menus Details] Delete Category Failure',
+  props<{ error: any }>()
+);
