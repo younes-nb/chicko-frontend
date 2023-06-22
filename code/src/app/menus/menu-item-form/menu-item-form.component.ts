@@ -5,6 +5,7 @@ import {Store} from "@ngrx/store";
 import * as MenuActions from "../../core/store/menus/menus.actions";
 import {MatDialog} from "@angular/material/dialog";
 import {ImageDialogComponent} from "../../shared/image-dialog/image-dialog.component";
+import {DeleteDialogComponent} from "../../shared/delete-dialog/delete-dialog.component";
 
 @Component({
   selector: 'app-menu-item-form',
@@ -45,7 +46,21 @@ export class MenuItemFormComponent {
     }
   }
 
-  openShowMenuItemImage(image: string): void {
+  openShowMenuItemImageDialog(image: string): void {
     this.dialog.open(ImageDialogComponent, {data: {image}});
+  }
+
+  openDeleteMenuItemDialog(menuItemId: string, menuItemName: string): void {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      data: {
+        name: menuItemName,
+        isMenu: false
+      }
+    });
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.menusStore.dispatch(MenuActions.deleteMenuItem({id: menuItemId}))
+      }
+    })
   }
 }

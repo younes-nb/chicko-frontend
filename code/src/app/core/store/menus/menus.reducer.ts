@@ -62,5 +62,17 @@ export const menuDetailsReducer = createReducer<MenuDetails>(
         return category;
       }
     })
+  })),
+  on(MenuActions.deleteMenuItemSuccess, (state, {id}) => ({
+    ...state,
+    categories: state.categories.map(category => {
+      const filteredMenuItems = category.menu_items.filter(item => item.id !== id);
+      const numberOfItems = filteredMenuItems.length.toString();
+      return {
+        ...category,
+        menu_items: filteredMenuItems,
+        number_of_items: numberOfItems
+      };
+    })
   }))
 );

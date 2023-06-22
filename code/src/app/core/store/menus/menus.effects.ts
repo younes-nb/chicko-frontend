@@ -160,6 +160,18 @@ export class MenuEffects {
     )
   );
 
+  deleteMenuItem$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MenuActions.deleteMenuItem),
+      switchMap(({id}) =>
+        this.menusService.deleteMenuItem(id).pipe(
+          map(() => MenuActions.deleteMenuItemSuccess({id})),
+          catchError((error) => of(MenuActions.deleteMenuItemFailure({error})))
+        )
+      )
+    )
+  );
+
 
   constructor(
     private actions$: Actions,

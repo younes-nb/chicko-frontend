@@ -151,3 +151,18 @@ export const updateMenuItemFailure = createAction(
   '[Menus Details] Update Menu Item Failure',
   props<{ error: any }>()
 );
+
+export const deleteMenuItem = createAction(
+  '[Menus Details] Delete Menu Item',
+  props<{ id: string }>()
+);
+
+export const deleteMenuItemSuccess = createAction(
+  '[Menus Details] Delete Menu Item Success',
+  props<{ id: string }>()
+);
+
+export const deleteMenuItemFailure = createAction(
+  '[Menus Details] Delete Menu Item Failure',
+  props<{ error: any }>()
+);

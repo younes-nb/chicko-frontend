@@ -8,7 +8,7 @@ import {CustomSnackBarService} from '../shared/custom-snack-bar.service';
 import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {selectAuthUser} from "../core/store/auth/auth.selectors";
-import {catchError, switchMap} from "rxjs/operators";
+import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root',
@@ -146,5 +146,12 @@ export class MenusService {
         headers: {NeedsUserTokenHeader: ''},
       }
     );
+  }
+
+  public deleteMenuItem(id: string): Observable<any> {
+    return this.httpClient.delete(`${BASE_API}menu/menu-item/${id}/`, {
+      headers: {NeedsUserTokenHeader: ''},
+      body: {menu_item_pk: id}
+    })
   }
 }
