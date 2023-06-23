@@ -1,0 +1,15 @@
+<div class="dropzone-container">
+  <ngx-dropzone
+    (change)="onFileAdded($event)"
+    [class.dropzone-disabled]="file"
+    [multiple]="false"
+  >
+    <ngx-dropzone-label *ngIf="!file">Click or drag to upload an image</ngx-dropzone-label>
+    <div class="preview-container" *ngIf="previewUrl">
+      <img [src]="previewUrl" alt="Image preview" class="preview-image"/>
+      <button mat-mini-fab color="warn" (click)="onFileRemoved()" class="delete-button">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </ngx-dropzone>
+</div>

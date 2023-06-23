@@ -168,4 +168,15 @@ export class MenusService {
   public fetchThemes(): Observable<any> {
     return this.httpClient.get(`${BASE_API}theme/themes/`, {headers: {NeedsUserTokenHeader: ''}});
   }
+
+  public createTheme(name: string, font_family?: string, menu_background_color?: string, menu_text_color?: string, header_color?: string, logo_image?: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('name', name);
+    if (font_family) formData.append('font_family', font_family);
+    if (menu_background_color) formData.append('menu_background_color', menu_background_color);
+    if (menu_text_color) formData.append('menu_text_color', menu_text_color);
+    if (header_color) formData.append('header_color', header_color);
+    if (logo_image) formData.append('logo_image', logo_image);
+    return this.httpClient.post(`${BASE_API}theme/themes/`, formData, {headers: {NeedsUserTokenHeader: ''}});
+  }
 }

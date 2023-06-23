@@ -8,7 +8,8 @@ export const menusReducer = createReducer<MenusState>(
   menusInitialState,
   on(MenuActions.setMenus, (state, {menus}) => ({...state, menus: [...menus]})),
   on(MenuActions.createMenuSuccess, (state, {menu}) => ({...state, menus: [...state.menus, menu]})),
-  on(MenuActions.setThemes, (state, {themes}) => ({...state, themes: [...themes]}))
+  on(MenuActions.setThemes, (state, {themes}) => ({...state, themes: [...themes]})),
+  on(MenuActions.createThemeSuccess, (state, {theme}) => ({...state, themes: [...state.themes, theme]}))
 );
 
 export const menuDetailsReducer = createReducer<MenuDetails>(

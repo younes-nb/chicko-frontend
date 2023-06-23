@@ -196,6 +196,18 @@ export class MenuEffects {
     )
   );
 
+  createTheme$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MenuActions.createTheme),
+      switchMap(({name, font_family, menu_background_color, menu_text_color, header_color, logo_image}) =>
+        this.menusService.createTheme(name, font_family, menu_background_color, menu_text_color, header_color, logo_image).pipe(
+          map((theme: Theme) => MenuActions.createThemeSuccess({theme})),
+          catchError((error) => of(MenuActions.createThemeFailure({error})))
+        )
+      )
+    )
+  );
+
 
   constructor(
     private actions$: Actions,

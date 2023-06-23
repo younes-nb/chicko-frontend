@@ -7,22 +7,27 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
-import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
-import { ImageDialogComponent } from './image-dialog/image-dialog.component';
-import { NumbersOnlyDirective } from './numbers-only.directive';
+import {DeleteDialogComponent} from './delete-dialog/delete-dialog.component';
+import {ImageDialogComponent} from './image-dialog/image-dialog.component';
+import {NumbersOnlyDirective} from './numbers-only.directive';
+import { DropzoneComponent } from './dropzone/dropzone.component';
+import {NgxDropzoneModule} from "ngx-dropzone";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
-  declarations: [NumLatinToFaPipe, SingleInputDialogComponent, DeleteDialogComponent, ImageDialogComponent, NumbersOnlyDirective],
-    imports: [
-        CommonModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        MatButtonModule,
-        MatInputModule,
-        NgOptimizedImage
-    ],
-  exports: [NumLatinToFaPipe, SingleInputDialogComponent, NumbersOnlyDirective],
+  declarations: [NumLatinToFaPipe, SingleInputDialogComponent, DeleteDialogComponent, ImageDialogComponent, NumbersOnlyDirective, DropzoneComponent],
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule,
+    NgOptimizedImage,
+    NgxDropzoneModule,
+    MatIconModule,
+  ],
+  exports: [NumLatinToFaPipe, SingleInputDialogComponent, NumbersOnlyDirective, DropzoneComponent],
 })
 export class AppSharedModule {
 }

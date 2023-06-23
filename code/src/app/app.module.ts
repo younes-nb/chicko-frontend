@@ -81,7 +81,7 @@ import {MenusModule} from "./menus/menus.module";
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true,
-    },
+    }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],

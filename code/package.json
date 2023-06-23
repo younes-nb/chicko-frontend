@@ -35,7 +35,7 @@
     "lottie-web": "^5.12.0",
     "material-design-icons-iconfont": "^6.7.0",
     "ngx-autosize": "^2.0.4",
-    "ngx-mat-file": "^1.0.4",
+    "ngx-dropzone": "^3.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "twemoji": "^14.0.2",

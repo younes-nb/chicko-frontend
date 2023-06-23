@@ -190,3 +190,25 @@ export const setThemes = createAction(
   '[Themes] Set Themes',
   props<{ themes: Theme[] }>()
 );
+
+export const createTheme = createAction(
+  '[Themes] Create Theme',
+  props<{
+    name: string,
+    font_family?: string,
+    menu_background_color?: string,
+    menu_text_color?: string,
+    header_color?: string,
+    logo_image?: File
+  }>()
+);
+
+export const createThemeSuccess = createAction(
+  '[Themes] Create Theme Success',
+  props<{ theme: Theme }>()
+);
+
+export const createThemeFailure = createAction(
+  '[Themes] Create Theme Failure',
+  props<{ error: any }>()
+);

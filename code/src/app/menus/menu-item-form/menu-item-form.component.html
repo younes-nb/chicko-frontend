@@ -63,20 +63,7 @@
                 type="button">تصویر فعلی
         </button>
       </div>
-      <mat-form-field class="w-100" appearance="outline">
-        <ngx-mat-file
-          accept="image/*"
-          [maxlength]="1"
-          [hiddenUpload]="true"
-          buttonBrowseText="جستجو"
-          buttonRemoveAllText="حذف همه"
-          dragAndDropText="تصویر را به اینجا بکشید"
-          invalidMaxFileCountMessage="حداکثر یک تصویر مجاز است."
-          invalidFileTypeMessage="نوع فایل مجاز نیست."
-          invalidFileSizeMessage="حداکثر اندازه تصویر ۵ مگابایت می باشد."
-          formControlName="image">
-        </ngx-mat-file>
-      </mat-form-field>
+      <app-dropzone formControlName="image"></app-dropzone>
     </div>
     <mat-checkbox [ngModel]="data.is_available" formControlName="is_available" color="primary" class="mt-2">آیا محصول
       فعال است؟

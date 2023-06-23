@@ -1,0 +1,39 @@
+<div class="py-3">
+  <div class="mb-4 d-flex justify-content-between">
+    <button data-bs-toggle="collapse" data-bs-target="#collapseThemeForm" mat-raised-button
+            color="primary"
+            type="button">
+      <mat-icon>add</mat-icon>
+      افزودن تم
+    </button>
+  </div>
+  <div class="collapse" id="collapseThemeForm">
+    <div class="card card-body">
+      <app-theme-form
+        [formMethod]="'post'">
+      </app-theme-form>
+    </div>
+  </div>
+  <ng-container *ngIf="themes$ | async as themes">
+    <ng-container *ngIf="themes.length; else noThemeRef">
+      <ng-container *ngFor="let theme of themes">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{theme.name}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-theme-form
+              [formMethod]="'put'"
+              [theme]="theme">
+            </app-theme-form>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </ng-container>
+    </ng-container>
+    <ng-template #noThemeRef>
+      <h4 class="text-muted text-center mt-5">هیچ تمی وجود ندارد.</h4>
+    </ng-template>
+  </ng-container>
+</div>

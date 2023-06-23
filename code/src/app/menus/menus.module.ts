@@ -13,39 +13,40 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatTabsModule} from "@angular/material/tabs";
 import {RouterLink} from "@angular/router";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import {NgxMatFileModule} from "ngx-mat-file";
 import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatMenuModule} from "@angular/material/menu";
 import {QRCodeModule} from "angularx-qrcode";
-import { MenuItemFormComponent } from './menu-item-form/menu-item-form.component';
+import {MenuItemFormComponent} from './menu-item-form/menu-item-form.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
-import { MenuFormComponent } from './menu-form/menu-form.component';
+import {MenuFormComponent} from './menu-form/menu-form.component';
 import {MatSelectModule} from "@angular/material/select";
+import {ThemesComponent} from './themes/themes.component';
+import {ThemeFormComponent} from './theme-form/theme-form.component';
 
 
 @NgModule({
-  declarations: [MenuComponent, MenusListComponent, QrCodeDialogComponent, MenuItemFormComponent, MenuFormComponent],
-    imports: [
-        CommonModule,
-        AppSharedModule,
-        MatButtonModule,
-        MatCardModule,
-        MatChipsModule,
-        MatIconModule,
-        MatExpansionModule,
-        MatTabsModule,
-        RouterLink,
-        MatTooltipModule,
-        NgOptimizedImage,
-        NgxMatFileModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatMenuModule,
-        QRCodeModule,
-        MatCheckboxModule,
-        MatSelectModule,
-    ],
+  declarations: [MenuComponent, MenusListComponent, QrCodeDialogComponent, MenuItemFormComponent, MenuFormComponent, ThemesComponent, ThemeFormComponent],
+  imports: [
+    CommonModule,
+    AppSharedModule,
+    MatButtonModule,
+    MatCardModule,
+    MatChipsModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatTabsModule,
+    RouterLink,
+    MatTooltipModule,
+    NgOptimizedImage,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatMenuModule,
+    QRCodeModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    FormsModule,
+  ],
   providers: [MenusService]
 })
 export class MenusModule {
