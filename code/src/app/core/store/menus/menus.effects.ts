@@ -208,6 +208,18 @@ export class MenuEffects {
     )
   );
 
+  updateTheme$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MenuActions.updateTheme),
+      switchMap(({id, name, font_family, menu_background_color, menu_text_color, header_color, logo_image}) =>
+        this.menusService.updateTheme(id, name, font_family, menu_background_color, menu_text_color, header_color, logo_image).pipe(
+          map((theme: Theme) => MenuActions.updateThemeSuccess({theme})),
+          catchError((error) => of(MenuActions.updateThemeFailure({error})))
+        )
+      )
+    )
+  );
+
 
   constructor(
     private actions$: Actions,

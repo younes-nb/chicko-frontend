@@ -3,6 +3,7 @@
     (change)="onFileAdded($event)"
     [class.dropzone-disabled]="file"
     [multiple]="false"
+    accept="image/*"
   >
     <ngx-dropzone-label *ngIf="!file">Click or drag to upload an image</ngx-dropzone-label>
     <div class="preview-container" *ngIf="previewUrl">

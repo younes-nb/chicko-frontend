@@ -212,3 +212,26 @@ export const createThemeFailure = createAction(
   '[Themes] Create Theme Failure',
   props<{ error: any }>()
 );
+
+export const updateTheme = createAction(
+  '[Themes] Update Theme',
+  props<{
+    id: string,
+    name: string,
+    font_family?: string,
+    menu_background_color?: string,
+    menu_text_color?: string,
+    header_color?: string,
+    logo_image?: File
+  }>()
+);
+
+export const updateThemeSuccess = createAction(
+  '[Themes] Update Theme Success',
+  props<{ theme: Theme }>()
+);
+
+export const updateThemeFailure = createAction(
+  '[Themes] Update Theme Failure',
+  props<{ error: any }>()
+);

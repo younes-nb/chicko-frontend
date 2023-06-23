@@ -4,6 +4,7 @@ import {MenuItemFormMethod, Theme} from "../../shared/types";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import * as MenuActions from "../../core/store/menus/menus.actions";
+import {ImageDialogComponent} from "../../shared/image-dialog/image-dialog.component";
 
 @Component({
   selector: 'app-theme-form',
@@ -44,12 +45,12 @@ export class ThemeFormComponent {
       this.menusStore.dispatch(MenuActions.createTheme(props));
 
     } else if (this.formMethod === "put") {
-
+      this.menusStore.dispatch(MenuActions.updateTheme({id: this.theme.id, ...props}))
     }
   }
 
-  openShowLogoImageDialog(logoImage: string): void {
-
+  openShowLogoImageDialog(image: string): void {
+    this.dialog.open(ImageDialogComponent, {data: {image}});
   }
 
   openDeleteThemeDialog(themeId: string, themeName: string): void {
