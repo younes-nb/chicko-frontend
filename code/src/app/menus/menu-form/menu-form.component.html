@@ -1,0 +1,82 @@
+<div class="py-4 w-100">
+  <form
+    class="row gy-3 col-8"
+    [formGroup]="menuForm"
+    (ngSubmit)="menuForm.valid && onSubmit()"
+    enctype="multipart/form-data"
+  >
+    <mat-form-field class="col-6" appearance="fill">
+      <mat-label>نام</mat-label>
+      <input
+        matInput
+        formControlName="name"
+        name="name"
+        type="text"
+        required
+        [ngModel]="menu.name"
+      />
+      <mat-error
+        class="fs-7"
+        *ngIf="submitted && menuForm.get('name')?.hasError('required')"
+      >وارد کردن نام منو الزامی می باشد.
+      </mat-error>
+    </mat-form-field>
+    <ng-container *ngIf="themes$ | async as themes">
+      <mat-form-field class="col-6">
+        <mat-label>تم</mat-label>
+        <mat-select formControlName="theme" [compareWith]="compareThemes">
+          <mat-option *ngFor="let theme of themes" [value]="theme">
+            {{theme.name}}
+          </mat-option>
+        </mat-select>
+        <mat-hint *ngIf="themes.length===0" class="fs-7">برای ایجاد تم به بخش شخصی سازی بروید.</mat-hint>
+      </mat-form-field>
+    </ng-container>
+    <mat-form-field class="col-6" appearance="fill">
+      <mat-label>تلفن</mat-label>
+      <input
+        matInput
+        formControlName="telephone"
+        name="telephone"
+        type="text"
+        class="number-input"
+        [ngModel]="menu.telephone"
+        appNumbersOnly
+      />
+      <span matTextSuffix><mat-icon>call</mat-icon></span>
+    </mat-form-field>
+    <mat-form-field class="col-6" appearance="fill">
+      <mat-label>تلفن همراه</mat-label>
+      <input
+        matInput
+        formControlName="phone"
+        name="phone"
+        type="text"
+        class="number-input"
+        [ngModel]="menu.phone"
+        appNumbersOnly
+      />
+      <span matTextSuffix><mat-icon>smartphone</mat-icon></span>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>آدرس</mat-label>
+      <textarea
+        matInput
+        formControlName="address"
+        name="address"
+        [ngModel]="menu.address"
+      ></textarea>
+    </mat-form-field>
+    <div class="mt-4">
+      <button
+        type="submit"
+        (click)="submitted = true"
+        mat-raised-button
+        color="primary"
+      >
+        ثبت
+      </button>
+    </div>
+  </form>
+</div>
+

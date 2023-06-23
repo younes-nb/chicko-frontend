@@ -1,5 +1,5 @@
 import {createAction, props} from '@ngrx/store';
-import {Category, Menu, MenuDetails, MenuItem} from '../../../shared/types';
+import {Category, Menu, MenuDetails, MenuItem, Theme} from '../../../shared/types';
 
 export const fetchMenus = createAction('[Menus] Fetch Menus');
 
@@ -44,6 +44,16 @@ export const setMenu = createAction(
   props<{ menu: MenuDetails }>()
 );
 
+export const updateMenu = createAction(
+  '[Menu Details] Update Menu',
+  props<{ id: string, name: string, theme?: Theme, telephone?: string, phone?: string, address?: string }>()
+)
+
+export const updateMenuFailure = createAction(
+  '[Menu Details] Update Menu Failure',
+  props<{ error: any }>()
+);
+
 export const deleteMenu = createAction(
   '[Menu Details] Delete Menu',
   props<{ menuId: string }>()
@@ -59,52 +69,52 @@ export const deleteMenuFailure = createAction(
 );
 
 export const createCategory = createAction(
-  '[Menus Details] Create Category',
+  '[Categories] Create Category',
   props<{ name: string, menu: string }>()
 );
 
 export const createCategorySuccess = createAction(
-  '[Menus Details] Create Category Success',
+  '[Categories] Create Category Success',
   props<{ category: Category }>()
 );
 
 export const createCategoryFailure = createAction(
-  '[Menus Details] Create Category Failure',
+  '[Categories] Create Category Failure',
   props<{ error: any }>()
 );
 
 export const updateCategory = createAction(
-  '[Menus Details] Update Category',
+  '[Categories] Update Category',
   props<{ id: string, name: string, menu: string }>()
 );
 
 export const updateCategorySuccess = createAction(
-  '[Menus Details] Update Category Success',
+  '[Categories] Update Category Success',
   props<{ category: Category }>()
 );
 
 export const updateCategoryFailure = createAction(
-  '[Menus Details] Update Category Failure',
+  '[Categories] Update Category Failure',
   props<{ error: any }>()
 );
 
 export const deleteCategory = createAction(
-  '[Menus Details] Delete Category',
+  '[Categories] Delete Category',
   props<{ id: string }>()
 );
 
 export const deleteCategorySuccess = createAction(
-  '[Menus Details] Delete Category Success',
+  '[Categories] Delete Category Success',
   props<{ id: string }>()
 );
 
 export const deleteCategoryFailure = createAction(
-  '[Menus Details] Delete Category Failure',
+  '[Categories] Delete Category Failure',
   props<{ error: any }>()
 );
 
 export const createMenuItem = createAction(
-  '[Menus Details] Create Menu Item',
+  '[Menu Items] Create Menu Item',
   props<{
     name: string,
     menu: string,
@@ -118,17 +128,17 @@ export const createMenuItem = createAction(
 );
 
 export const createMenuItemSuccess = createAction(
-  '[Menus Details] Create Menu Item Success',
+  '[Menu Items] Create Menu Item Success',
   props<{ menuItem: MenuItem }>()
 );
 
 export const createMenuItemFailure = createAction(
-  '[Menus Details] Create Menu Item Failure',
+  '[Menu Items] Create Menu Item Failure',
   props<{ error: any }>()
 );
 
 export const updateMenuItem = createAction(
-  '[Menus Details] Update Menu Item',
+  '[Menu Items] Update Menu Item',
   props<{
     id: string,
     name: string,
@@ -143,26 +153,40 @@ export const updateMenuItem = createAction(
 );
 
 export const updateMenuItemSuccess = createAction(
-  '[Menus Details] Update Menu Item Success',
+  '[Menu Items] Update Menu Item Success',
   props<{ menuItem: MenuItem }>()
 );
 
 export const updateMenuItemFailure = createAction(
-  '[Menus Details] Update Menu Item Failure',
+  '[Menu Items] Update Menu Item Failure',
   props<{ error: any }>()
 );
 
 export const deleteMenuItem = createAction(
-  '[Menus Details] Delete Menu Item',
+  '[Menu Items] Delete Menu Item',
   props<{ id: string }>()
 );
 
 export const deleteMenuItemSuccess = createAction(
-  '[Menus Details] Delete Menu Item Success',
+  '[Menu Items] Delete Menu Item Success',
   props<{ id: string }>()
 );
 
 export const deleteMenuItemFailure = createAction(
-  '[Menus Details] Delete Menu Item Failure',
+  '[Menu Items] Delete Menu Item Failure',
   props<{ error: any }>()
+);
+
+export const fetchThemes = createAction(
+  '[Themes] Fetch Themes',
+);
+
+export const fetchThemesFailure = createAction(
+  '[Themes] Fetch Themes Failure',
+  props<{ error: any }>()
+);
+
+export const setThemes = createAction(
+  '[Themes] Set Themes',
+  props<{ themes: Theme[] }>()
 );

@@ -8,7 +8,7 @@ import {
 import {MenusService} from '../../../menus/menus.service';
 import * as MenuActions from './menus.actions';
 import {of} from "rxjs";
-import {Category, Menu, MenuItem} from "../../../shared/types";
+import {Category, Menu, MenuDetails, MenuItem, Theme} from "../../../shared/types";
 import {BASE_URL} from "../../../shared/api";
 import {Router} from "@angular/router";
 
@@ -63,6 +63,18 @@ export class MenuEffects {
           catchError((error) =>
             of(MenuActions.createMenuFailure({error: error}))
           )
+        )
+      )
+    )
+  );
+
+  updateMenu$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MenuActions.updateMenu),
+      switchMap(({id, name, theme, telephone, phone, address}) =>
+        this.menusService.updateMenu(id, name, theme, telephone, phone, address).pipe(
+          map((menu: MenuDetails) => MenuActions.setMenu({menu})),
+          catchError((error) => of(MenuActions.updateMenuFailure({error})))
         )
       )
     )
@@ -167,6 +179,18 @@ export class MenuEffects {
         this.menusService.deleteMenuItem(id).pipe(
           map(() => MenuActions.deleteMenuItemSuccess({id})),
           catchError((error) => of(MenuActions.deleteMenuItemFailure({error})))
+        )
+      )
+    )
+  );
+
+  fetchThemes$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MenuActions.fetchThemes),
+      switchMap(() =>
+        this.menusService.fetchThemes().pipe(
+          map((themes: Theme[]) => MenuActions.setThemes({themes})),
+          catchError((error) => of(MenuActions.fetchThemesFailure({error})))
         )
       )
     )

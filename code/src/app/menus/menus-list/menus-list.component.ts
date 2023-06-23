@@ -5,11 +5,11 @@ import {Clipboard} from "@angular/cdk/clipboard";
 import {CustomSnackBarService} from "../../shared/custom-snack-bar.service";
 import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
-import {MenusState} from "../../core/store/menus/menus.state";
 import * as MenuActions from "../../core/store/menus/menus.actions";
 import {Menu} from "../../shared/types";
 import {SingleInputDialogComponent} from "../../shared/single-input-dialog/single-input-dialog.component";
 import {QrCodeDialogComponent} from "../qr-code-dialog/qr-code-dialog.component";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-menus-list',
@@ -17,19 +17,20 @@ import {QrCodeDialogComponent} from "../qr-code-dialog/qr-code-dialog.component"
   styleUrls: ['./menus-list.component.scss']
 })
 export class MenusListComponent implements OnInit {
-  menus$ = this.menusStore.select(selectMenus);
+  menus$: Observable<Menu[]> = this.menusStore.select(selectMenus);
 
   constructor(
     public dialog: MatDialog,
     private clipboard: Clipboard,
     private customSnackBarService: CustomSnackBarService,
     private router: Router,
-    private menusStore: Store<MenusState>,
+    private menusStore: Store,
   ) {
   }
 
   ngOnInit(): void {
     this.menusStore.dispatch(MenuActions.fetchMenus());
+    this.menusStore.dispatch(MenuActions.fetchThemes());
   }
 
   hasMenu(menus: Menu[]): boolean {

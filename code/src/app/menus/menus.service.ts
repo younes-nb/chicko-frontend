@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BASE_API} from '../shared/api';
-import {User} from '../shared/types';
+import {Theme, User} from '../shared/types';
 import {map, Observable} from 'rxjs';
 import {UsersService} from '../users/users.service';
 import {CustomSnackBarService} from '../shared/custom-snack-bar.service';
@@ -61,6 +61,16 @@ export class MenusService {
           headers: {NeedsUserTokenHeader: ''},
         }
       );
+  }
+
+  public updateMenu(id: string, name: string, theme?: Theme, telephone?: string, phone?: string, address?: string): Observable<any> {
+    return this.httpClient.put(`${BASE_API}menu/menus/${id}`, {
+      name,
+      theme,
+      telephone,
+      phone,
+      address
+    }, {headers: {NeedsUserTokenHeader: ''}})
   }
 
   public deleteMenu(id: string): Observable<any> {
@@ -153,5 +163,9 @@ export class MenusService {
       headers: {NeedsUserTokenHeader: ''},
       body: {menu_item_pk: id}
     })
+  }
+
+  public fetchThemes(): Observable<any> {
+    return this.httpClient.get(`${BASE_API}theme/themes/`, {headers: {NeedsUserTokenHeader: ''}});
   }
 }

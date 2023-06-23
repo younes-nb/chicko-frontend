@@ -7,7 +7,8 @@ import {menuDetailsInitialState, menusInitialState, MenusState} from "./menus.st
 export const menusReducer = createReducer<MenusState>(
   menusInitialState,
   on(MenuActions.setMenus, (state, {menus}) => ({...state, menus: [...menus]})),
-  on(MenuActions.createMenuSuccess, (state, {menu}) => ({...state, menus: [...state.menus, menu]}))
+  on(MenuActions.createMenuSuccess, (state, {menu}) => ({...state, menus: [...state.menus, menu]})),
+  on(MenuActions.setThemes, (state, {themes}) => ({...state, themes: [...themes]}))
 );
 
 export const menuDetailsReducer = createReducer<MenuDetails>(

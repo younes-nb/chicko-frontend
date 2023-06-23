@@ -3,6 +3,7 @@ import {Menu, MenuDetails, Theme, User} from "../../../shared/types";
 
 export interface MenusState {
   menus: Menu[];
+  themes: Theme[];
 }
 
 export const menusInitialState: MenusState = {
@@ -12,6 +13,10 @@ export const menusInitialState: MenusState = {
     number_of_categories: '',
     number_of_items: '',
     link: ''
+  }],
+  themes: [{
+    id: '',
+    name: 'پیش فرض'
   }]
 };
 

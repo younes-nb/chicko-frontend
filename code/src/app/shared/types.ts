@@ -57,13 +57,13 @@ export interface MenuItem {
 export interface Theme {
   id: string;
   name: string;
-  description: string;
-  background_image: string;
-  font_family: string;
-  menu_background_color: string;
-  menu_text_color: string;
-  header_image: string;
-  header_color: string;
+  description?: string;
+  background_image?: string;
+  font_family?: string;
+  menu_background_color?: string;
+  menu_text_color?: string;
+  header_image?: string;
+  header_color?: string;
 }
 
 export interface ChatUser {

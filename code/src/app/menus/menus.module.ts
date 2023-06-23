@@ -20,10 +20,12 @@ import {MatMenuModule} from "@angular/material/menu";
 import {QRCodeModule} from "angularx-qrcode";
 import { MenuItemFormComponent } from './menu-item-form/menu-item-form.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { MenuFormComponent } from './menu-form/menu-form.component';
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
-  declarations: [MenuComponent, MenusListComponent, QrCodeDialogComponent, MenuItemFormComponent],
+  declarations: [MenuComponent, MenusListComponent, QrCodeDialogComponent, MenuItemFormComponent, MenuFormComponent],
     imports: [
         CommonModule,
         AppSharedModule,
@@ -42,6 +44,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
         MatMenuModule,
         QRCodeModule,
         MatCheckboxModule,
+        MatSelectModule,
     ],
   providers: [MenusService]
 })

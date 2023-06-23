@@ -62,15 +62,19 @@
                   </div>
                   <div class="collapse" id="collapseMenuItemForm">
                     <div class="card card-body">
-                      <app-menu-item-form [formMethod]="'post'" [data]="{id: '',
-                                             name: '',
-                                             is_available: false,
-                                             menu: menu.id,
-                                             category: category.id,
-                                             description: undefined,
-                                             price: undefined,
-                                             discount: undefined,
-                                             image: ''}"></app-menu-item-form>
+                      <app-menu-item-form
+                        [formMethod]="'post'"
+                        [data]="{
+                          id: '',
+                          name: '',
+                          is_available: false,
+                          menu: menu.id,
+                          category: category.id,
+                          description: undefined,
+                          price: undefined,
+                          discount: undefined,
+                          image: ''}">
+                      </app-menu-item-form>
                     </div>
                   </div>
                   <ng-container *ngIf="category.menu_items.length; else noMenuItemRef">
@@ -81,17 +85,18 @@
                             {{menuItem.name}}
                           </mat-panel-title>
                         </mat-expansion-panel-header>
-                        <app-menu-item-form [formMethod]="'put'"
-                                            [data]="{id: menuItem.id,
-                                             name: menuItem.name,
-                                             is_available: menuItem.is_available,
-                                             menu: menu.id,
-                                             category: category.id,
-                                             description: menuItem.description,
-                                             price: menuItem.price,
-                                             discount: menuItem.discount,
-                                             image: menuItem.image}">
-
+                        <app-menu-item-form
+                          [formMethod]="'put'"
+                          [data]="{
+                            id: menuItem.id,
+                            name: menuItem.name,
+                            is_available: menuItem.is_available,
+                            menu: menu.id,
+                            category: category.id,
+                            description: menuItem.description,
+                            price: menuItem.price,
+                            discount: menuItem.discount,
+                            image: menuItem.image}">
                         </app-menu-item-form>
                       </mat-expansion-panel>
                     </ng-container>
@@ -108,7 +113,7 @@
           </ng-template>
         </mat-tab>
         <mat-tab label="اطلاعات منو">
-          <p>اطلاعات منو</p>
+          <app-menu-form [menu]="menu"></app-menu-form>
         </mat-tab>
         <mat-tab label="شخصی سازی">
           <p>شخصی سازی</p>
