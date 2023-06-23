@@ -235,3 +235,18 @@ export const updateThemeFailure = createAction(
   '[Themes] Update Theme Failure',
   props<{ error: any }>()
 );
+
+export const deleteTheme = createAction(
+  '[Themes] Delete Theme',
+  props<{ id: string }>()
+);
+
+export const deleteThemeSuccess = createAction(
+  '[Themes] Delete Theme Success',
+  props<{ id: string }>()
+);
+
+export const deleteThemeFailure = createAction(
+  '[Themes] Delete Theme Failure',
+  props<{ error: any }>()
+);

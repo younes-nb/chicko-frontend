@@ -23,10 +23,12 @@ export class MenuFormComponent {
     theme: new FormControl('')
   });
 
-  constructor(private menusStore: Store,) {
+  constructor(private menusStore: Store) {
   }
 
   onSubmit(): void {
+    console.log(this.menu)
+    console.log(this.menuForm.controls['theme'].value)
     this.menusStore.dispatch(MenuActions.updateMenu({
       id: this.menu.id,
       name: this.menuForm.controls['name'].value,
@@ -36,9 +38,4 @@ export class MenuFormComponent {
       address: this.menuForm.controls['address'].value
     }))
   }
-
-  compareThemes(theme1: Theme, theme2: Theme): boolean {
-    return theme1 && theme2 ? theme1.id === theme2.id : theme1 === theme2;
-  }
-
 }

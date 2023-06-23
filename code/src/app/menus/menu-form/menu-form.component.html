@@ -23,7 +23,7 @@
     <ng-container *ngIf="themes$ | async as themes">
       <mat-form-field class="col-6">
         <mat-label>تم</mat-label>
-        <mat-select formControlName="theme" [compareWith]="compareThemes">
+        <mat-select [ngModel]="menu.theme" formControlName="theme">
           <mat-option *ngFor="let theme of themes" [value]="theme">
             {{theme.name}}
           </mat-option>

@@ -220,6 +220,18 @@ export class MenuEffects {
     )
   );
 
+  deleteTheme$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MenuActions.deleteTheme),
+      switchMap(({id}) =>
+        this.menusService.deleteTheme(id).pipe(
+          map(() => MenuActions.deleteThemeSuccess({id})),
+          catchError((error) => of(MenuActions.deleteThemeFailure({error})))
+        )
+      )
+    )
+  );
+
 
   constructor(
     private actions$: Actions,

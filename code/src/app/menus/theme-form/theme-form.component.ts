@@ -5,6 +5,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import * as MenuActions from "../../core/store/menus/menus.actions";
 import {ImageDialogComponent} from "../../shared/image-dialog/image-dialog.component";
+import {DeleteDialogComponent} from "../../shared/delete-dialog/delete-dialog.component";
 
 @Component({
   selector: 'app-theme-form',
@@ -54,6 +55,16 @@ export class ThemeFormComponent {
   }
 
   openDeleteThemeDialog(themeId: string, themeName: string): void {
-
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      data: {
+        name: themeName,
+        isMenu: false
+      }
+    });
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.menusStore.dispatch(MenuActions.deleteTheme({id: themeId}))
+      }
+    })
   }
 }

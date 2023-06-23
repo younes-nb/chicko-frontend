@@ -190,4 +190,11 @@ export class MenusService {
     if (logo_image) formData.append('logo_image', logo_image);
     return this.httpClient.put(`${BASE_API}theme/themes/${id}/`, formData, {headers: {NeedsUserTokenHeader: ''}});
   }
+
+  public deleteTheme(id: string): Observable<any> {
+    return this.httpClient.delete(`${BASE_API}theme/themes/${id}/`, {
+      headers: {NeedsUserTokenHeader: ''},
+      body: {theme_pk: id}
+    })
+  }
 }

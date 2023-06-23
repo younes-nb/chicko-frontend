@@ -19,6 +19,10 @@ export const menusReducer = createReducer<MenusState>(
       return t;
     })
   })),
+  on(MenuActions.deleteThemeSuccess, (state, {id}) => ({
+    ...state,
+    themes: state.themes.filter(t => t.id !== id)
+  }))
 );
 
 export const menuDetailsReducer = createReducer<MenuDetails>(
