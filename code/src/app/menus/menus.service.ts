@@ -64,9 +64,16 @@ export class MenusService {
   }
 
   public updateMenu(id: string, name: string, theme?: Theme, telephone?: string, phone?: string, address?: string): Observable<any> {
+    const newTheme = {
+      name: theme?.name,
+      menu_background_color: theme?.menu_background_color,
+      font_family: theme?.font_family,
+      menu_text_color: theme?.menu_text_color,
+      header_color: theme?.header_color
+    }
     return this.httpClient.put(`${BASE_API}menu/menus/${id}`, {
       name,
-      theme,
+      theme: newTheme,
       telephone,
       phone,
       address

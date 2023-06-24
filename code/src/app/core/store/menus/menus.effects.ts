@@ -9,7 +9,6 @@ import {MenusService} from '../../../menus/menus.service';
 import * as MenuActions from './menus.actions';
 import {of} from "rxjs";
 import {Category, Menu, MenuDetails, MenuItem, Theme} from "../../../shared/types";
-import {BASE_URL} from "../../../shared/api";
 import {Router} from "@angular/router";
 
 @Injectable()
@@ -22,7 +21,7 @@ export class MenuEffects {
           map((menus: Menu[]) => {
             const menusWithLinks = menus.map((menu) => ({
               ...menu,
-              link: `${BASE_URL}/menus/${menu.id}`,
+              link: `/menus/${menu.id}`,
             }));
             return MenuActions.setMenus({menus: menusWithLinks});
           }),
@@ -39,7 +38,7 @@ export class MenuEffects {
         this.menusService.fetchMenu(menuId).pipe(
           map(menu => ({
             ...menu,
-            link: `${BASE_URL}/menus/${menu.id}`,
+            link: `/menus/${menu.id}`,
           })),
           map(menuWithLink => MenuActions.setMenu({menu: menuWithLink})),
           catchError(error => of(MenuActions.fetchMenuFailure({error})))
@@ -55,7 +54,7 @@ export class MenuEffects {
         this.menusService.createMenu(name).pipe(
           map((menu: Menu) => ({
             ...menu,
-            link: `${BASE_URL}/menus/${menu.id}`,
+            link: `/menus/${menu.id}`,
           })),
           map((menuWithLink) =>
             MenuActions.createMenuSuccess({menu: menuWithLink})

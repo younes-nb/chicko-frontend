@@ -9,6 +9,7 @@ import {Clipboard} from "@angular/cdk/clipboard";
 import {CustomSnackBarService} from "../../shared/custom-snack-bar.service";
 import {SingleInputDialogComponent} from "../../shared/single-input-dialog/single-input-dialog.component";
 import {DeleteDialogComponent} from "../../shared/delete-dialog/delete-dialog.component";
+import {BASE_URL} from "../../shared/api";
 
 
 @Component({
@@ -40,7 +41,7 @@ export class MenuComponent implements OnInit {
     this.dialog.open(QrCodeDialogComponent, {
       data: {
         menuName: menuName,
-        menuLink: menuLink
+        menuLink: BASE_URL + menuLink
       },
     });
   }

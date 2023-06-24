@@ -23,10 +23,11 @@ import {MenuFormComponent} from './menu-form/menu-form.component';
 import {MatSelectModule} from "@angular/material/select";
 import {ThemesComponent} from './themes/themes.component';
 import {ThemeFormComponent} from './theme-form/theme-form.component';
+import { MenuPreviewComponent } from './menu-preview/menu-preview.component';
 
 
 @NgModule({
-  declarations: [MenuComponent, MenusListComponent, QrCodeDialogComponent, MenuItemFormComponent, MenuFormComponent, ThemesComponent, ThemeFormComponent],
+  declarations: [MenuComponent, MenusListComponent, QrCodeDialogComponent, MenuItemFormComponent, MenuFormComponent, ThemesComponent, ThemeFormComponent, MenuPreviewComponent],
   imports: [
     CommonModule,
     AppSharedModule,

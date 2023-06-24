@@ -33,7 +33,7 @@ export class MenuItemFormComponent {
       name: this.menuItemForm.controls['name'].value,
       menu: this.data.menu,
       category: this.data.category,
-      image: this.menuItemForm.controls['image'].value[0],
+      image: this.menuItemForm.controls['image'].value,
       is_available: this.menuItemForm.controls['is_available'].value,
       description: this.menuItemForm.controls['description'].value,
       price: this.menuItemForm.controls['price'].value,

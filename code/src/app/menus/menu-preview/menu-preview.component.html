@@ -1,0 +1,53 @@
+<ng-container *ngIf="menu$ | async as menu; else noMenuRef">
+  <section [ngStyle]="{'background-color':menu.theme.header_color}">
+    <header class="d-flex justify-content-center align-items-center">
+      <img *ngIf="menu.theme.logo_image" [src]="menu.theme.logo_image" alt="logo" id="logo-image"
+           class="rounded-circle">
+    </header>
+    <div [ngStyle]="{'background-color':menu.theme.menu_background_color}" class="px-5 py-4" id="main-container">
+      <div class="mb-5">
+        <h1 class="mb-5">{{menu.name}}</h1>
+        <div class="d-flex mb-3">
+          <div *ngIf="menu.telephone" class="ms-5">
+            <mat-icon color="primary">call</mat-icon>
+            <span class="fs-5 me-2">{{menu.telephone | numLatinToFa}}</span></div>
+          <div *ngIf="menu.phone" class="ms-5">
+            <mat-icon color="primary">smartphone</mat-icon>
+            <span class="fs-5 me-2">{{menu.phone | numLatinToFa}}</span></div>
+          <div *ngIf="menu.address">
+            <mat-icon color="primary">location_on</mat-icon>
+            <span class="fs-5 me-2">{{menu.address}}</span></div>
+        </div>
+      </div>
+      <div>
+        <mat-tab-group>
+          <mat-tab *ngFor="let category of menu.categories" [label]="category.name">
+            <div class="row g-3 p-3 m-0">
+              <mat-card *ngFor="let menuItem of category.menu_items" class="col-3 p-0 ms-3">
+                <ng-container *ngIf="menuItem.is_available">
+                  <img class="menu-item-image" mat-card-image [src]="menuItem.image" alt="Menu Item Image">
+                  <mat-card-content>
+                    <h2 mat-card-title class="fs-4 mt-2">{{ menuItem.name }}</h2>
+                    <div *ngIf="menuItem.price !== '0.00'" class="d-flex mt-3">
+                      <span *ngIf="menuItem.price && menuItem.discount === '1.00'" class="fs-5-5">{{ menuItem.price | numLatinToFa }}
+                        تومان</span>
+                      <span *ngIf="menuItem.price && menuItem.discount !== '1.00'"
+                            class="text-muted text-decoration-line-through ms-3">{{ menuItem.price | numLatinToFa }}</span>
+                      <span *ngIf="menuItem.price && menuItem.discount && menuItem.discount !== '1.00'"
+                            class="fs-5-5">{{ (round((toNumber(menuItem.price) - toNumber(menuItem.price) * toNumber(menuItem.discount) / 100))).toString() | numLatinToFa }}
+                        تومان</span>
+                    </div>
+                    <p *ngIf="menuItem.description" class="fs-5 mt-3">{{ menuItem.description }}</p>
+                  </mat-card-content>
+                </ng-container>
+              </mat-card>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </section>
+</ng-container>
+<ng-template #noMenuRef>
+  <h3 class="text-muted text-center mt-5">منو یافت نشد</h3>
+</ng-template>

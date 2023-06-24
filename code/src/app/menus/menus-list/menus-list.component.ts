@@ -10,6 +10,7 @@ import {Menu} from "../../shared/types";
 import {SingleInputDialogComponent} from "../../shared/single-input-dialog/single-input-dialog.component";
 import {QrCodeDialogComponent} from "../qr-code-dialog/qr-code-dialog.component";
 import {Observable} from "rxjs";
+import {BASE_URL} from "../../shared/api";
 
 @Component({
   selector: 'app-menus-list',
@@ -59,7 +60,7 @@ export class MenusListComponent implements OnInit {
     this.dialog.open(QrCodeDialogComponent, {
       data: {
         menuName: menuName,
-        menuLink: menuLink
+        menuLink: BASE_URL + menuLink
       },
     });
   }
