@@ -70,16 +70,6 @@
       name="message"
       placeholder="پیام"
     ></textarea>
-    <!-- emoji picker -->
-    <button
-      type="button"
-      (click)="isShowingEmojiPicker = !isShowingEmojiPicker"
-      class="me-2"
-      color="primary"
-      mat-icon-button
-    >
-      <mat-icon>mood</mat-icon>
-    </button>
     <button
       [disabled]="messageForm.controls['message'].value.length === 0"
       type="submit"

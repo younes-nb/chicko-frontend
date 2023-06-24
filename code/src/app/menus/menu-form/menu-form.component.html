@@ -1,10 +1,10 @@
-<div class="py-4 w-100">
+<div class="py-4 px-lg-0 px-5 w-100">
   <form
-    class="row gy-3 col-8"
+    class="row gy-3 col-lg-8"
     [formGroup]="menuForm"
     (ngSubmit)="menuForm.valid && onSubmit()"
   >
-    <mat-form-field class="col-6" appearance="fill">
+    <mat-form-field class="col-lg-6" appearance="fill">
       <mat-label>نام</mat-label>
       <input
         matInput
@@ -21,17 +21,18 @@
       </mat-error>
     </mat-form-field>
     <ng-container *ngIf="themes$ | async as themes">
-      <mat-form-field class="col-6">
+      <mat-form-field class="col-lg-6">
         <mat-label>تم</mat-label>
-        <mat-select [ngModel]="menu.theme" formControlName="theme">
+        <mat-select formControlName="theme">
           <mat-option *ngFor="let theme of themes" [value]="theme">
             {{theme.name}}
           </mat-option>
         </mat-select>
         <mat-hint *ngIf="themes.length===0" class="fs-7">برای ایجاد تم به بخش شخصی سازی بروید.</mat-hint>
+        <mat-hint *ngIf="menu.theme">تم فعلی: {{menu.theme.name}}</mat-hint>
       </mat-form-field>
     </ng-container>
-    <mat-form-field class="col-6" appearance="fill">
+    <mat-form-field class="col-lg-6" appearance="fill">
       <mat-label>تلفن</mat-label>
       <input
         matInput
@@ -44,7 +45,7 @@
       />
       <span matTextSuffix><mat-icon>call</mat-icon></span>
     </mat-form-field>
-    <mat-form-field class="col-6" appearance="fill">
+    <mat-form-field class="col-lg-6" appearance="fill">
       <mat-label>تلفن همراه</mat-label>
       <input
         matInput

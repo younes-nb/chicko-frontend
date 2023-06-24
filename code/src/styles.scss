@@ -7,21 +7,21 @@
 
 $chicko-frontend-primary: mat.define-palette(mat.$blue-palette);
 $chicko-frontend-accent: mat.define-palette(
-  mat.$cyan-palette,
-  A200,
-  A100,
-  A400
+    mat.$cyan-palette,
+    A200,
+    A100,
+    A400
 );
 $chicko-frontend-warn: mat.define-palette(mat.$red-palette);
 
 $chicko-frontend-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $chicko-frontend-primary,
-      accent: $chicko-frontend-accent,
-      warn: $chicko-frontend-warn,
-    ),
-  )
+    (
+      color: (
+        primary: $chicko-frontend-primary,
+        accent: $chicko-frontend-accent,
+        warn: $chicko-frontend-warn,
+      ),
+    )
 );
 
 @include mat.all-component-themes($chicko-frontend-theme);
@@ -29,10 +29,10 @@ $chicko-frontend-theme: mat.define-light-theme(
 @font-face {
   font-family: "Vazir";
   src: url("/assets/fonts/Vazir.eot"),
-    url("/assets/fonts/Vazir.eot?#iefix") format("embedded-opentype"),
-    url("/assets/fonts/Vazir.woff2") format("woff2"),
-    url("/assets/fonts/Vazir.woff") format("woff"),
-    url("/assets/fonts/Vazir.ttf") format("truetype");
+  url("/assets/fonts/Vazir.eot?#iefix") format("embedded-opentype"),
+  url("/assets/fonts/Vazir.woff2") format("woff2"),
+  url("/assets/fonts/Vazir.woff") format("woff"),
+  url("/assets/fonts/Vazir.ttf") format("truetype");
 }
 
 @font-face {
@@ -118,4 +118,10 @@ ul {
 
 .letter-space-low {
   letter-spacing: 0.3px;
+}
+
+@media (max-width: 767px) {
+  .resp-form {
+    width: 75vw !important;
+  }
 }

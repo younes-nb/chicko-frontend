@@ -1,13 +1,13 @@
 <section class="container d-flex justify-content-center mt-5">
-  <div class="p-5 vw-50 bg-white shadow rounded">
-    <h1 class="fs-2 mb-5">ویرایش حساب کاربری</h1>
+  <div class="p-lg-5 p-3 vw-50 bg-white shadow rounded mb-5">
+    <h1 class="fs-lg-2 fs-3 mb-5">ویرایش حساب کاربری</h1>
     <form
       *ngIf="user$ | async as user"
       [formGroup]="accountForm"
       (ngSubmit)="accountForm.valid && onSubmit()"
       class="row gy-2"
     >
-      <mat-form-field class="col-6" appearance="fill">
+      <mat-form-field class="col-lg-6 col-12" appearance="fill">
         <mat-label>نام</mat-label>
         <input
           matInput
@@ -22,7 +22,7 @@
         >حداکثر تعداد حروف مجاز ۲۰ می باشد.
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="col-6" appearance="fill">
+      <mat-form-field class="col-lg-6 col-12" appearance="fill">
         <mat-label>نام خانوادگی</mat-label>
         <input
           matInput
@@ -37,7 +37,7 @@
         >حداکثر تعداد حروف مجاز ۲۰ می باشد.
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="col-6" appearance="fill">
+      <mat-form-field class="col-lg-6 col-12" appearance="fill">
         <mat-label>نام کاربری</mat-label>
         <input
           matInput
@@ -68,7 +68,7 @@
         >{{ errors.get("username") }}</mat-error
         >
       </mat-form-field>
-      <mat-form-field class="col-6" appearance="fill">
+      <mat-form-field class="col-lg-6 col-12" appearance="fill">
         <mat-label>ایمیل</mat-label>
         <input
           matInput
@@ -95,7 +95,7 @@
         >{{ errors.get("email") }}</mat-error
         >
       </mat-form-field>
-      <mat-form-field class="col-6" appearance="fill">
+      <mat-form-field class="col-lg-6 col-12" appearance="fill">
         <mat-label>شماره تلفن</mat-label>
         <input
           matInput
@@ -124,7 +124,7 @@
         >{{ errors.get("phone_number") }}</mat-error
         >
       </mat-form-field>
-      <mat-form-field class="col-6" appearance="fill">
+      <mat-form-field class="col-lg-6 col-12" appearance="fill">
         <mat-label>رمز عبور جدید</mat-label>
         <input
           [type]="hidePassword ? 'password' : 'text'"

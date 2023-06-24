@@ -7,7 +7,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import {SupportService} from '../support.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import {ChatUser, Message, Room} from '../../shared/types';
 import {WebSocketService} from '../web-socket.service';
 import {FormControl, FormGroup} from '@angular/forms';
@@ -19,7 +18,6 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('messageBox') messageBox!: ElementRef;
-  isShowingEmojiPicker: boolean = false;
   messageForm: FormGroup = new FormGroup({
     message: new FormControl(''),
   });
@@ -27,7 +25,6 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private supportService: SupportService,
     private webSocketService: WebSocketService,
-    private snackBar: MatSnackBar
   ) {
   }
 
@@ -72,13 +69,5 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
     this.supportService.currenRoomUsers = [];
     this.supportService.lastMessage = {} as Message;
     this.supportService.component = 'rooms';
-  }
-
-  openSnackBar(message: string): void {
-    this.snackBar.open(message, 'بستن', {
-      horizontalPosition: 'end',
-      verticalPosition: 'top',
-      duration: 8000,
-    });
   }
 }

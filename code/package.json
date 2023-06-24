@@ -20,7 +20,6 @@
     "@angular/platform-browser": "^16.0.4",
     "@angular/platform-browser-dynamic": "^16.0.4",
     "@angular/router": "^16.0.4",
-    "@ctrl/ngx-emoji-mart": "^9.1.2",
     "@ngrx/effects": "^16.0.1",
     "@ngrx/entity": "^16.0.1",
     "@ngrx/store": "^16.0.1",

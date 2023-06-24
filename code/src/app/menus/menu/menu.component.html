@@ -1,7 +1,7 @@
 <section class="container mt-5">
   <ng-container *ngIf="menu$ | async as menu">
-    <div class="d-flex justify-content-between mb-5">
-      <h1 class="fs-2">{{menu.name}}</h1>
+    <div class="d-flex justify-content-between mb-5 flex-lg-row flex-column">
+      <h1 class="fs-2 mb-lg-0 mb-4">{{menu.name}}</h1>
       <div>
         <button [routerLink]="menu.link" type="button" mat-icon-button color="primary" class="me-3" matTooltip="نمایش">
           <mat-icon class="ms-2" color="primary">preview</mat-icon>

@@ -5,8 +5,8 @@
     <img class="logo" src="favicon.ico" width="80" height="80" alt="logo"/>
     <h1 class="title me-2 fs-high">چیکو</h1>
   </div>
-  <section class="vw-50 p-1 d-flex align-items-center bg-white shadow rounded">
-    <mat-stepper linear #stepper class="p-2 m-0">
+  <section class="vw-50 resp-form p-1 d-flex align-items-center bg-white shadow rounded">
+    <mat-stepper linear #stepper class="p-lg-2 p-0 m-0">
       <mat-step
         [stepControl]="registerForm"
         [editable]="false"
@@ -16,7 +16,7 @@
           <form
             [formGroup]="registerForm"
             (ngSubmit)="registerForm.valid && onSubmit()"
-            class="row col-7 gy-2"
+            class="row col-lg-7 gy-2"
           >
             <mat-form-field appearance="fill">
               <mat-label>نام کاربری</mat-label>
@@ -164,7 +164,7 @@
               </button>
             </div>
           </form>
-          <div class="col-5 p-0">
+          <div class="d-lg-block d-none col-5 p-0">
             <svg
               id="Layer_1"
               data-name="Layer 1"
@@ -443,7 +443,7 @@
       >
         <div class="row d-flex align-items-center justify-content-between mt-3">
           <form
-            class="col-8"
+            class="col-lg-8"
             [formGroup]="verificationForm"
             (ngSubmit)="verificationForm.valid && verify()"
           >
@@ -490,7 +490,7 @@
               </button>
             </div>
           </form>
-          <div class="col-4 p-0">
+          <div class="d-lg-block d-none col-4 p-0">
             <svg
               id="Layer_1"
               data-name="Layer 1"

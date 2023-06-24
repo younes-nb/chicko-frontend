@@ -5,7 +5,7 @@
     (ngSubmit)="themeForm.valid && onSubmit()"
     enctype="multipart/form-data"
   >
-    <mat-form-field class="col-6" appearance="fill">
+    <mat-form-field class="col-md-6" appearance="fill">
       <mat-label>نام</mat-label>
       <input
         matInput
@@ -21,7 +21,7 @@
       >وارد کردن نام تم الزامی می باشد.
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="col-6">
+    <mat-form-field class="col-md-6">
       <mat-label>فونت</mat-label>
       <mat-select [ngModel]="theme.font_family" formControlName="font_family">
         <mat-option *ngFor="let font of fontFamilies" [value]="font">
@@ -29,17 +29,17 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <div class="col-4 d-flex align-items-center">
+    <div class="col-md-4 d-flex align-items-center">
       <label for="menu_background_color" class="form-label fs-5">رنگ پس زمینه </label>
       <input [ngModel]="theme.menu_background_color" id="menu_background_color" formControlName="menu_background_color"
              type="color" class="form-control form-control-color me-2">
     </div>
-    <div class="col-4 d-flex align-items-center">
+    <div class="col-md-4 d-flex align-items-center">
       <label for="menu_text_color" class="form-label fs-5">رنگ متن </label>
       <input [ngModel]="theme.menu_text_color" id="menu_text_color" formControlName="menu_text_color" type="color"
              class="form-control form-control-color me-2" value="#563d7c">
     </div>
-    <div class="col-4 d-flex align-items-center">
+    <div class="col-md-4 d-flex align-items-center">
       <label for="header_color" class="form-label fs-5">رنگ هدر </label>
       <input [ngModel]="theme.header_color" id="header_color" formControlName="header_color" type="color"
              class="form-control form-control-color me-2" value="#563d7c">

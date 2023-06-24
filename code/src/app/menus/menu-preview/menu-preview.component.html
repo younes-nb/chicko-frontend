@@ -7,7 +7,7 @@
     <div [ngStyle]="{'background-color':menu.theme.menu_background_color}" class="px-5 py-4" id="main-container">
       <div class="mb-5">
         <h1 class="mb-5">{{menu.name}}</h1>
-        <div class="d-flex mb-3">
+        <div class="d-flex flex-lg-row flex-column mb-3">
           <div *ngIf="menu.telephone" class="ms-5">
             <mat-icon color="primary">call</mat-icon>
             <span class="fs-5 me-2">{{menu.telephone | numLatinToFa}}</span></div>
@@ -23,13 +23,14 @@
         <mat-tab-group>
           <mat-tab *ngFor="let category of menu.categories" [label]="category.name">
             <div class="row g-3 p-3 m-0">
-              <mat-card *ngFor="let menuItem of category.menu_items" class="col-3 p-0 ms-3">
+              <mat-card *ngFor="let menuItem of category.menu_items" class="col-lg-3 col-md-4 col-sm-6 p-0 ms-3">
                 <ng-container *ngIf="menuItem.is_available">
                   <img class="menu-item-image" mat-card-image [src]="menuItem.image" alt="Menu Item Image">
                   <mat-card-content>
                     <h2 mat-card-title class="fs-4 mt-2">{{ menuItem.name }}</h2>
                     <div *ngIf="menuItem.price !== '0.00'" class="d-flex mt-3">
-                      <span *ngIf="menuItem.price && menuItem.discount === '1.00'" class="fs-5-5">{{ menuItem.price | numLatinToFa }}
+                      <span *ngIf="menuItem.price && menuItem.discount === '1.00'"
+                            class="fs-5-5">{{ menuItem.price | numLatinToFa }}
                         تومان</span>
                       <span *ngIf="menuItem.price && menuItem.discount !== '1.00'"
                             class="text-muted text-decoration-line-through ms-3">{{ menuItem.price | numLatinToFa }}</span>

@@ -1,48 +1,53 @@
-<mat-toolbar
-  class="px-5 shadow d-flex justify-content-between align-items-center"
->
-  <div routerLink="/home" class="d-flex me-5">
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-5 shadow">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand d-inline-block" routerLink="/home">
     <img class="logo" src="favicon.ico" width="45" height="45" alt="logo"/>
-    <h1 class="title me-2">چیکو</h1>
+    <h1 class="title d-inline">چیکو</h1>
+  </a>
+  <div class="collapse navbar-collapse order-lg-0 order-2" id="navbarNav">
+    <ul class="navbar-nav">
+      <li>
+        <button class="rounded-pill p-3 ms-1" routerLink="/home" mat-button>
+          خانه
+        </button>
+      </li>
+      <li>
+        <button class="rounded-pill p-3 ms-1" routerLink="/dashboard" mat-button>
+          داشبورد
+        </button>
+      </li>
+      <li>
+        <button
+          class="rounded-pill p-3 ms-1"
+          routerLink="/home"
+          fragment="about-us"
+          (click)="scrollTo('about-us')"
+          mat-button
+        >
+          درباره ما
+        </button>
+      </li>
+      <li>
+        <button
+          class="rounded-pill p-3"
+          routerLink="/home"
+          fragment="contact-us"
+          (click)="scrollTo('contact-us')"
+          mat-button
+        >
+          تماس با ما
+        </button>
+      </li>
+    </ul>
   </div>
-  <ul class="m-0 ms-auto d-flex align-items-center">
-    <li>
-      <button class="rounded-pill p-3 ms-1" routerLink="/home" mat-button>
-        خانه
-      </button>
-    </li>
-    <li>
-      <button class="rounded-pill p-3 ms-1" routerLink="/dashboard" mat-button>
-        داشبورد
-      </button>
-    </li>
-    <li>
-      <button
-        class="rounded-pill p-3 ms-1"
-        routerLink="/home"
-        fragment="about-us"
-        (click)="scrollTo('about-us')"
-        mat-button
-      >
-        درباره ما
-      </button>
-    </li>
-    <li>
-      <button
-        class="rounded-pill p-3"
-        routerLink="/home"
-        fragment="contact-us"
-        (click)="scrollTo('contact-us')"
-        mat-button
-      >
-        تماس با ما
-      </button>
-    </li>
-  </ul>
   <div
     matTooltip="ورود به حساب کاربری"
     routerLink="/login"
     style="cursor: pointer"
+    class="order-lg-0 order-1"
   >
     <lord-icon
       src="https://cdn.lordicon.com/hbvyhtse.json"
@@ -53,40 +58,30 @@
     >
     </lord-icon>
   </div>
-</mat-toolbar>
+</nav>
+
+
 <header>
   <div class="container">
-    <div class="row gx-5">
-      <div class="col-6 d-flex justify-content-center flex-column">
+    <div class="row gx-5 align-items-center">
+      <div
+        class="col-lg-6 col-md-12 mb-lg-0 mb-5 d-flex justify-content-lg-start justify-content-center flex-column align-items-lg-start align-items-center">
         <div>
           <h1 class="mb-4 fs-1">منوساز هوشمند چیکو</h1>
           <h3 id="sub-header" class="fs-5-5">
             سامانه ویترین و به اشتراک گذاری محصولات
           </h3>
           <div class="mb-4">
-            <span class="fs-5" routerLink="/home"
-            >با <span class="fs-3 brand">چیکو </span>
-            </span>
-            <span
-              class="fs-5-5"
-              typingAnimator
-              [sentences]="[
-                'محصولاتت رو خیلی راحت به اشتراک بزار.',
-                'فقط با چند کلیک منوی هوشمندتو بساز.'
-              ]"
-            ></span>
+            <span class="fs-5" routerLink="/home">با <span class="fs-3 brand">چیکو </span></span>
+            <span class="fs-5-5" typingAnimator
+                  [sentences]="['محصولاتت رو خیلی راحت به اشتراک بزار.', 'فقط با چند کلیک منوی هوشمندتو بساز.']"></span>
           </div>
-          <button
-            class="fs-5-5 p-4 rounded-pill"
-            mat-stroked-button
-            color="primary"
-            routerLink="/dashboard"
-          >
+          <button class="fs-5-5 p-4 rounded-pill" mat-stroked-button color="primary" routerLink="/dashboard">
             ساخت منوی رایگان
           </button>
         </div>
       </div>
-      <div class="col-6 d-flex justify-content-center">
+      <div class="col-lg-6 col-md-12 d-flex justify-content-lg-end justify-content-center">
         <svg
           id="Layer_2"
           data-name="Layer 2"
@@ -457,15 +452,9 @@
   </div>
 </header>
 <div style="height: 150px; overflow: hidden">
-  <svg
-    viewBox="0 0 500 150"
-    preserveAspectRatio="none"
-    style="height: 100%; width: 100%"
-  >
-    <path
-      d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-      style="stroke: none; fill: #f8f9fa"
-    ></path>
+  <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%">
+    <path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+          style="stroke: none; fill: #f8f9fa"></path>
   </svg>
 </div>
 <section id="about-us" class="bg-light">
@@ -484,19 +473,13 @@
           <div class="col-md-6">
             <mat-card class="feature-card text-center shadow mb-4">
               <mat-card-content>
-                <mat-icon class="fs-2 icon text-primary" inline="true"
-                >tune
-                </mat-icon
-                >
+                <mat-icon class="fs-2 icon text-primary" inline="true">tune</mat-icon>
                 <h5 class="mt-4">شخصی سازی منو ها</h5>
               </mat-card-content>
             </mat-card>
             <mat-card class="feature-card text-center shadow mb-4">
               <mat-card-content>
-                <mat-icon class="fs-2 icon text-primary" inline="true"
-                >folder
-                </mat-icon
-                >
+                <mat-icon class="fs-2 icon text-primary" inline="true">folder</mat-icon>
                 <h5 class="mt-4">ایجاد دسته بندی ها</h5>
               </mat-card-content>
             </mat-card>
@@ -504,19 +487,13 @@
           <div class="col-md-6 mt-md-5 mt-0">
             <mat-card class="feature-card text-center shadow mb-4">
               <mat-card-content>
-                <mat-icon class="fs-2 icon text-primary" inline="true"
-                >support_agent
-                </mat-icon
-                >
+                <mat-icon class="fs-2 icon text-primary" inline="true">support_agent</mat-icon>
                 <h5 class="mt-4">پشتیبانی ۲۴ ساعته</h5>
               </mat-card-content>
             </mat-card>
             <mat-card class="feature-card text-center shadow mb-4">
               <mat-card-content>
-                <mat-icon class="fs-2 icon text-primary" inline="true"
-                >qr_code_2
-                </mat-icon
-                >
+                <mat-icon class="fs-2 icon text-primary" inline="true">qr_code_2</mat-icon>
                 <h5 class="mt-4">کد QR برای منو ها</h5>
               </mat-card-content>
             </mat-card>
@@ -527,15 +504,9 @@
   </div>
 </section>
 <div style="height: 100px; overflow: hidden">
-  <svg
-    viewBox="0 0 500 150"
-    preserveAspectRatio="none"
-    style="height: 100%; width: 100%"
-  >
-    <path
-      d="M0.00,49.98 C149.99,150.00 271.49,-49.98 500.00,49.98 L500.00,0.00 L0.00,0.00 Z"
-      style="stroke: none; fill: #f8f9fa"
-    ></path>
+  <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%">
+    <path d="M0.00,49.98 C149.99,150.00 271.49,-49.98 500.00,49.98 L500.00,0.00 L0.00,0.00 Z"
+          style="stroke: none; fill: #f8f9fa"></path>
   </svg>
 </div>
 <app-footer></app-footer>
