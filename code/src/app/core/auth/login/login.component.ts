@@ -4,8 +4,6 @@ import {AuthService} from '../../../shared/auth.service';
 import {Router} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {login} from "../../store/auth/auth.actions";
-import {selectAuthError, selectIsAuthenticated} from "../../store/auth/auth.selectors";
-import {Observable} from "rxjs";
 import {AuthState} from "../../store/auth/auth.state";
 
 @Component({
@@ -17,8 +15,6 @@ export class LoginComponent implements OnInit {
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
-  error$: Observable<string | null>;
-  isAuthenticated$: Observable<boolean>;
   submitted: boolean = false;
 
   constructor(
@@ -26,16 +22,12 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authStore: Store<AuthState>
   ) {
-    this.error$ = this.authStore.select(selectAuthError);
-    this.isAuthenticated$ = this.authStore.select(selectIsAuthenticated);
   }
 
   ngOnInit(): void {
-    this.isAuthenticated$.subscribe((isAuthenticated) => {
-      if (isAuthenticated) {
-        this.router.navigate(['dashboard']);
-      }
-    });
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['dashboard']);
+    }
   }
 
   onSubmit(): void {

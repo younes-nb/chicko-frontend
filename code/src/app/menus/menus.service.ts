@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {BASE_API} from '../shared/api';
+import {BASE_API} from '../shared/url';
 import {Theme, User} from '../shared/types';
 import {map, Observable} from 'rxjs';
 import {UsersService} from '../users/users.service';

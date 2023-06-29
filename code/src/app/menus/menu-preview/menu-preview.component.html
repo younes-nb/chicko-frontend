@@ -6,17 +6,19 @@
     </header>
     <div [ngStyle]="{'background-color':menu.theme.menu_background_color}" class="px-5 py-4" id="main-container">
       <div class="mb-5">
-        <h1 class="mb-5">{{menu.name}}</h1>
+        <h1 [ngStyle]="{'color':menu.theme.menu_text_color}" class="mb-5">{{menu.name}}</h1>
         <div class="d-flex flex-lg-row flex-column mb-3">
           <div *ngIf="menu.telephone" class="ms-5">
             <mat-icon color="primary">call</mat-icon>
-            <span class="fs-5 me-2">{{menu.telephone | numLatinToFa}}</span></div>
+            <span [ngStyle]="{'color':menu.theme.menu_text_color}"
+                  class="fs-5 me-2">{{menu.telephone | numLatinToFa}}</span></div>
           <div *ngIf="menu.phone" class="ms-5">
             <mat-icon color="primary">smartphone</mat-icon>
-            <span class="fs-5 me-2">{{menu.phone | numLatinToFa}}</span></div>
+            <span [ngStyle]="{'color':menu.theme.menu_text_color}"
+                  class="fs-5 me-2">{{menu.phone | numLatinToFa}}</span></div>
           <div *ngIf="menu.address">
             <mat-icon color="primary">location_on</mat-icon>
-            <span class="fs-5 me-2">{{menu.address}}</span></div>
+            <span [ngStyle]="{'color':menu.theme.menu_text_color}" class="fs-5 me-2">{{menu.address}}</span></div>
         </div>
       </div>
       <div>
@@ -27,18 +29,22 @@
                 <ng-container *ngIf="menuItem.is_available">
                   <img class="menu-item-image" mat-card-image [src]="menuItem.image" alt="Menu Item Image">
                   <mat-card-content>
-                    <h2 mat-card-title class="fs-4 mt-2">{{ menuItem.name }}</h2>
+                    <h2 mat-card-title class="fs-4 mt-2"
+                        [ngStyle]="{'color':menu.theme.menu_text_color}">{{ menuItem.name }}</h2>
                     <div *ngIf="menuItem.price !== '0.00'" class="d-flex mt-3">
-                      <span *ngIf="menuItem.price && menuItem.discount === '1.00'"
+                      <span [ngStyle]="{'color':menu.theme.menu_text_color}"
+                            *ngIf="menuItem.price && menuItem.discount === '1.00'"
                             class="fs-5-5">{{ menuItem.price | numLatinToFa }}
                         تومان</span>
                       <span *ngIf="menuItem.price && menuItem.discount !== '1.00'"
                             class="text-muted text-decoration-line-through ms-3">{{ menuItem.price | numLatinToFa }}</span>
-                      <span *ngIf="menuItem.price && menuItem.discount && menuItem.discount !== '1.00'"
+                      <span [ngStyle]="{'color':menu.theme.menu_text_color}"
+                            *ngIf="menuItem.price && menuItem.discount && menuItem.discount !== '1.00'"
                             class="fs-5-5">{{ (round((toNumber(menuItem.price) - toNumber(menuItem.price) * toNumber(menuItem.discount) / 100))).toString() | numLatinToFa }}
                         تومان</span>
                     </div>
-                    <p *ngIf="menuItem.description" class="fs-5 mt-3">{{ menuItem.description }}</p>
+                    <p *ngIf="menuItem.description" [ngStyle]="{'color':menu.theme.menu_text_color}"
+                       class="fs-5 mt-3">{{ menuItem.description }}</p>
                   </mat-card-content>
                 </ng-container>
               </mat-card>

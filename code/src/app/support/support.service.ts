@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {ChatUser, Message, Room, SupportChatComponent} from '../shared/types';
-import {CHAT_API} from '../shared/api';
+import {CHAT_API} from '../shared/url';
 import {CustomSnackBarService} from '../shared/custom-snack-bar.service';
 
 @Injectable({

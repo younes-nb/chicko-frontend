@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BASE_API} from '../shared/api';
+import {BASE_API} from '../shared/url';
 import {Observable} from 'rxjs';
 import {User} from '../shared/types';
 

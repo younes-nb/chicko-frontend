@@ -7,8 +7,7 @@ export const login = createAction(
 );
 
 export const loginSuccess = createAction(
-  '[Auth/API] Login Success',
-  props<{ token: string }>()
+  '[Auth/API] Login Success'
 );
 
 export const loginFailure = createAction(

@@ -10,7 +10,7 @@ import {Menu} from "../../shared/types";
 import {SingleInputDialogComponent} from "../../shared/single-input-dialog/single-input-dialog.component";
 import {QrCodeDialogComponent} from "../qr-code-dialog/qr-code-dialog.component";
 import {Observable} from "rxjs";
-import {BASE_URL} from "../../shared/api";
+import {BASE_URL} from "../../shared/url";
 
 @Component({
   selector: 'app-menus-list',
@@ -67,7 +67,7 @@ export class MenusListComponent implements OnInit {
 
   copyToClipboard(menuLink: string) {
     if (menuLink) {
-      this.clipboard.copy(menuLink);
+      this.clipboard.copy(BASE_URL + menuLink);
       this.customSnackBarService.openSnackBar('لینک منو کپی شد.');
     }
   }

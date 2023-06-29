@@ -3,9 +3,8 @@ import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {AuthService} from '../../../shared/auth.service';
 import {UsersService} from '../../../users/users.service';
 import * as AuthActions from './auth.actions';
-import {catchError, map, switchMap, tap, withLatestFrom} from 'rxjs/operators';
+import {catchError, map, switchMap, tap} from 'rxjs/operators';
 import {of} from 'rxjs';
-import {selectIsAuthenticated} from "./auth.selectors";
 import {Store} from "@ngrx/store";
 import {CustomSnackBarService} from "../../../shared/custom-snack-bar.service";
 import {AuthState} from "./auth.state";
@@ -18,9 +17,10 @@ export class AuthEffects {
       ofType(AuthActions.login),
       switchMap((action) =>
         this.authService.login(action.username, action.password).pipe(
-          map((response) =>
-            AuthActions.loginSuccess({token: response.auth_token})
-          ),
+          map((token) => {
+            this.authService.setToken(token.auth_token);
+            return AuthActions.loginSuccess();
+          }),
           catchError((error) => {
             const errorMessage = error?.error?.message || 'An unknown error occurred.';
             this.customSnackBarService.openSnackBar('ورود به حساب ناموفق بود.')
@@ -31,6 +31,15 @@ export class AuthEffects {
     )
   );
 
+  loginSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.loginSuccess),
+      switchMap(async () => {
+        this.router.navigate(['dashboard']);
+        return AuthActions.fetchUser();
+      })
+    )
+  );
 
   logout$ = createEffect(() =>
     this.actions$.pipe(
@@ -49,23 +58,16 @@ export class AuthEffects {
       ofType(AuthActions.logoutSuccess),
       tap(() => {
         this.router.navigate(['login']);
+        this.authService.removeToken();
       })
     );
   }, {dispatch: false});
 
-  fetchUserAfterLogin$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(AuthActions.loginSuccess),
-      switchMap(async () => AuthActions.fetchUser())
-    )
-  );
-
   fetchUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.fetchUser),
-      withLatestFrom(this.authStore.select(selectIsAuthenticated)),
-      switchMap(([isAuthenticated]) => {
-        if (isAuthenticated) {
+      switchMap(() => {
+        if (this.authService.isLoggedIn()) {
           return this.usersService.fetchUser().pipe(
             map((user) => AuthActions.fetchUserSuccess({user})),
             catchError((error) => of(AuthActions.fetchUserFailure({error: error.message})))
