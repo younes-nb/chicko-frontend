@@ -56,7 +56,7 @@ export class MenusService {
     return this.httpClient
       .post(
         `${BASE_API}menu/menus/user/`,
-        {name},
+        {name, theme: {name: 'def'}},
         {
           headers: {NeedsUserTokenHeader: ''},
         }

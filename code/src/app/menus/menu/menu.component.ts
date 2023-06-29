@@ -26,7 +26,7 @@ export class MenuComponent implements OnInit {
     private menusStore: Store,
     public dialog: MatDialog,
     private clipboard: Clipboard,
-    private customSnackBarService: CustomSnackBarService
+    private customSnackBarService: CustomSnackBarService,
   ) {
   }
 
@@ -34,6 +34,7 @@ export class MenuComponent implements OnInit {
     this.route.params.subscribe(params => {
       const menuId = params['menuId'];
       this.menusStore.dispatch(MenuActions.fetchMenu({menuId}));
+      this.menusStore.dispatch(MenuActions.fetchThemes());
     });
   }
 

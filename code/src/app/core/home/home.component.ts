@@ -10,6 +10,7 @@ import {selectPlans} from "../store/plans/plans.selectors";
 })
 export class HomeComponent {
   plans$ = this.store.select(selectPlans);
+
   constructor(private store: Store) {
   }
 

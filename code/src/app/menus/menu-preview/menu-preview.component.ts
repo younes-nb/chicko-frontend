@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as MenuActions from "../../core/store/menus/menus.actions";
 import {ActivatedRoute} from "@angular/router";
 import {Store} from "@ngrx/store";
@@ -10,7 +10,6 @@ import {selectMenuDetails} from "../../core/store/menus/menus.selectors";
   styleUrls: ['./menu-preview.component.scss']
 })
 export class MenuPreviewComponent implements OnInit {
-  @Input() menuId: string = '';
   menu$ = this.menusStore.select(selectMenuDetails);
 
   constructor(private route: ActivatedRoute, private menusStore: Store,) {

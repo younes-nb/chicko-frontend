@@ -27,8 +27,6 @@ export class MenuFormComponent {
   }
 
   onSubmit(): void {
-    console.log(this.menu)
-    console.log(this.menuForm.controls['theme'].value)
     this.menusStore.dispatch(MenuActions.updateMenu({
       id: this.menu.id,
       name: this.menuForm.controls['name'].value,

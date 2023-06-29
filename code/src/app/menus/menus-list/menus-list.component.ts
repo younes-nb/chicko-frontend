@@ -31,7 +31,6 @@ export class MenusListComponent implements OnInit {
 
   ngOnInit(): void {
     this.menusStore.dispatch(MenuActions.fetchMenus());
-    this.menusStore.dispatch(MenuActions.fetchThemes());
   }
 
   hasMenu(menus: Menu[]): boolean {

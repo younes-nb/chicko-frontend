@@ -21,50 +21,51 @@
         </button>
       </div>
     </div>
-    <div>
-      <mat-tab-group>
-        <mat-tab label="محصولات">
-          <button (click)="openCreateCategoryDialog(menu.id)" mat-raised-button color="primary" type="button"
-                  class="mb-4 mt-3">
-            <mat-icon>add</mat-icon>
-            افزودن دسته بندی
-          </button>
-          <ng-container *ngIf="menu.categories.length; else noCategoriesRef">
-            <ng-container *ngFor="let category of menu.categories">
-              <mat-accordion>
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      {{category.name}}
-                    </mat-panel-title>
-                    <mat-panel-description>
-                      <mat-chip>{{category.number_of_items.toString() | numLatinToFa}}</mat-chip>
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
-                  <div class="mb-4 d-flex justify-content-between">
-                    <button data-bs-toggle="collapse" data-bs-target="#collapseMenuItemForm" mat-stroked-button
-                            color="primary"
-                            type="button">
-                      <mat-icon>add</mat-icon>
-                      افزودن محصول
-                    </button>
-                    <button [matMenuTriggerFor]="moreMenu" mat-icon-button type="button">
-                      <mat-icon>more_vert</mat-icon>
-                    </button>
-                    <mat-menu #moreMenu="matMenu">
-                      <button (click)="openUpdateCategoryDialog(menu.id, category.id, category.name)" mat-menu-item>
-                        ویرایش دسته بندی
+    <div class="row gx-4">
+      <div class="col-8">
+        <mat-tab-group>
+          <mat-tab label="محصولات">
+            <button (click)="openCreateCategoryDialog(menu.id)" mat-raised-button color="primary" type="button"
+                    class="mb-4 mt-3">
+              <mat-icon>add</mat-icon>
+              افزودن دسته بندی
+            </button>
+            <ng-container *ngIf="menu.categories.length; else noCategoriesRef">
+              <ng-container *ngFor="let category of menu.categories">
+                <mat-accordion>
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        {{category.name}}
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        <mat-chip>{{category.number_of_items.toString() | numLatinToFa}}</mat-chip>
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="mb-4 d-flex justify-content-between">
+                      <button data-bs-toggle="collapse" data-bs-target="#collapseMenuItemForm" mat-stroked-button
+                              color="primary"
+                              type="button">
+                        <mat-icon>add</mat-icon>
+                        افزودن محصول
                       </button>
-                      <button (click)="openDeleteCategoryDialog(category.id, category.name)" mat-menu-item>حذف دسته
-                        بندی
+                      <button [matMenuTriggerFor]="moreMenu" mat-icon-button type="button">
+                        <mat-icon>more_vert</mat-icon>
                       </button>
-                    </mat-menu>
-                  </div>
-                  <div class="collapse" id="collapseMenuItemForm">
-                    <div class="card card-body">
-                      <app-menu-item-form
-                        [formMethod]="'post'"
-                        [data]="{
+                      <mat-menu #moreMenu="matMenu">
+                        <button (click)="openUpdateCategoryDialog(menu.id, category.id, category.name)" mat-menu-item>
+                          ویرایش دسته بندی
+                        </button>
+                        <button (click)="openDeleteCategoryDialog(category.id, category.name)" mat-menu-item>حذف دسته
+                          بندی
+                        </button>
+                      </mat-menu>
+                    </div>
+                    <div class="collapse" id="collapseMenuItemForm">
+                      <div class="card card-body">
+                        <app-menu-item-form
+                          [formMethod]="'post'"
+                          [data]="{
                           id: '',
                           name: '',
                           is_available: false,
@@ -74,20 +75,20 @@
                           price: undefined,
                           discount: undefined,
                           image: ''}">
-                      </app-menu-item-form>
+                        </app-menu-item-form>
+                      </div>
                     </div>
-                  </div>
-                  <ng-container *ngIf="category.menu_items.length; else noMenuItemRef">
-                    <ng-container *ngFor="let menuItem of category.menu_items">
-                      <mat-expansion-panel>
-                        <mat-expansion-panel-header>
-                          <mat-panel-title>
-                            {{menuItem.name}}
-                          </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <app-menu-item-form
-                          [formMethod]="'put'"
-                          [data]="{
+                    <ng-container *ngIf="category.menu_items.length; else noMenuItemRef">
+                      <ng-container *ngFor="let menuItem of category.menu_items">
+                        <mat-expansion-panel>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              {{menuItem.name}}
+                            </mat-panel-title>
+                          </mat-expansion-panel-header>
+                          <app-menu-item-form
+                            [formMethod]="'put'"
+                            [data]="{
                             id: menuItem.id,
                             name: menuItem.name,
                             is_available: menuItem.is_available,
@@ -97,28 +98,52 @@
                             price: menuItem.price,
                             discount: menuItem.discount,
                             image: menuItem.image}">
-                        </app-menu-item-form>
-                      </mat-expansion-panel>
+                          </app-menu-item-form>
+                        </mat-expansion-panel>
+                      </ng-container>
                     </ng-container>
-                  </ng-container>
-                  <ng-template #noMenuItemRef>
-                    <h4 class="text-muted text-center mt-5">محصولی برای {{category.name}} وجود ندارد.</h4>
-                  </ng-template>
-                </mat-expansion-panel>
-              </mat-accordion>
+                    <ng-template #noMenuItemRef>
+                      <h4 class="text-muted text-center mt-5">محصولی برای {{category.name}} وجود ندارد.</h4>
+                    </ng-template>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </ng-container>
             </ng-container>
-          </ng-container>
-          <ng-template #noCategoriesRef>
-            <h3 class="text-muted text-center mt-5">دسته بندی برای {{menu.name}} وجود ندارد.</h3>
-          </ng-template>
-        </mat-tab>
-        <mat-tab label="اطلاعات منو">
-          <app-menu-form [menu]="menu"></app-menu-form>
-        </mat-tab>
-        <mat-tab label="شخصی سازی">
-          <app-themes></app-themes>
-        </mat-tab>
-      </mat-tab-group>
+            <ng-template #noCategoriesRef>
+              <h3 class="text-muted text-center mt-5">دسته بندی برای {{menu.name}} وجود ندارد.</h3>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="اطلاعات منو">
+            <app-menu-form [menu]="menu"></app-menu-form>
+          </mat-tab>
+          <mat-tab label="شخصی سازی">
+            <app-themes></app-themes>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <div class="col-4">
+        <div class="iphone shadow">
+          <div class="iphone-top">
+            <span class="camera"></span>
+            <span class="sensor"></span>
+            <span class="speaker"></span>
+          </div>
+          <div class="top-bar"></div>
+          <div class="iphone-screen border">
+            <app-menu-demo [menu]="menu"></app-menu-demo>
+          </div>
+          <div class="buttons">
+            <span class="on-off"></span>
+            <span class="sleep"></span>
+            <span class="up"></span>
+            <span class="down"></span>
+          </div>
+          <div class="bottom-bar"></div>
+          <div class="iphone-bottom">
+            <span></span>
+          </div>
+        </div>
+      </div>
     </div>
   </ng-container>
 </section>
