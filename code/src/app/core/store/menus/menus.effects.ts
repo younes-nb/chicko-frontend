@@ -12,7 +12,7 @@ import {Category, Menu, MenuDetails, MenuItem, Theme} from "../../../shared/type
 import {Router} from "@angular/router";
 
 @Injectable()
-export class MenuEffects {
+export class MenusEffects {
   fetchMenus$ = createEffect(() =>
     this.actions$.pipe(
       ofType(MenuActions.fetchMenus),

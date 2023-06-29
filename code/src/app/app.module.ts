@@ -34,10 +34,12 @@ import {AppSharedModule} from './shared/app-shared.module';
 import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
 import {menuDetailsReducer, menusReducer} from "./core/store/menus/menus.reducer";
-import {MenuEffects} from "./core/store/menus/menus.effects";
+import {MenusEffects} from "./core/store/menus/menus.effects";
 import {authReducer} from "./core/store/auth/auth.reducer";
 import {AuthEffects} from "./core/store/auth/auth.effects";
 import {MenusModule} from "./menus/menus.module";
+import {plansReducer} from "./core/store/plans/plans.reducer";
+import {PlansEffects} from "./core/store/plans/plans.effects";
 
 @NgModule({
   declarations: [
@@ -73,8 +75,8 @@ import {MenusModule} from "./menus/menus.module";
     HttpClientModule,
     AppSharedModule,
     AppRoutingModule,
-    StoreModule.forRoot({menus: menusReducer, menuDetails: menuDetailsReducer, auth: authReducer}),
-    EffectsModule.forRoot([MenuEffects, AuthEffects]),
+    StoreModule.forRoot({menus: menusReducer, menuDetails: menuDetailsReducer, auth: authReducer, plans: plansReducer}),
+    EffectsModule.forRoot([MenusEffects, AuthEffects, PlansEffects]),
   ],
   providers: [
     {

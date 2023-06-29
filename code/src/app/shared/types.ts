@@ -64,6 +64,29 @@ export interface Theme {
   header_color?: string;
 }
 
+export interface Plan {
+  id: string;
+  name: string;
+  description: string;
+  price: string;
+  features: PlanItem[];
+}
+
+export interface PlanItem {
+  id: string;
+  name: string;
+  description: string;
+}
+
+export interface UserPlan {
+  id: string;
+  user: string;
+  plan: string;
+  start_date: string;
+  end_date: string;
+  is_active: boolean;
+}
+
 export interface ChatUser {
   _id: string;
   email: string;

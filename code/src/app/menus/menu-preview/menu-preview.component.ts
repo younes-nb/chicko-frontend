@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import * as MenuActions from "../../core/store/menus/menus.actions";
 import {ActivatedRoute} from "@angular/router";
 import {Store} from "@ngrx/store";
@@ -9,8 +9,10 @@ import {selectMenuDetails} from "../../core/store/menus/menus.selectors";
   templateUrl: './menu-preview.component.html',
   styleUrls: ['./menu-preview.component.scss']
 })
-export class MenuPreviewComponent implements OnInit{
+export class MenuPreviewComponent implements OnInit {
+  @Input() menuId: string = '';
   menu$ = this.menusStore.select(selectMenuDetails);
+
   constructor(private route: ActivatedRoute, private menusStore: Store,) {
   }
 
@@ -19,12 +21,9 @@ export class MenuPreviewComponent implements OnInit{
       const menuId = params['menuId'];
       this.menusStore.dispatch(MenuActions.fetchMenu({menuId}));
     });
-    this.menu$.subscribe(menu => {
-      console.log(menu)
-    })
   }
 
-  toNumber(value: string): number{
+  toNumber(value: string): number {
     return parseInt(value);
   }
 
