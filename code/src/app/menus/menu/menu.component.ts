@@ -34,7 +34,6 @@ export class MenuComponent implements OnInit {
     this.route.params.subscribe(params => {
       const menuId = params['menuId'];
       this.menusStore.dispatch(MenuActions.fetchMenu({menuId}));
-      this.menusStore.dispatch(MenuActions.fetchThemes());
     });
   }
 

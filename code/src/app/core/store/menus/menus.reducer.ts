@@ -8,21 +8,6 @@ export const menusReducer = createReducer<MenusState>(
   menusInitialState,
   on(MenuActions.setMenus, (state, {menus}) => ({...state, menus: [...menus]})),
   on(MenuActions.createMenuSuccess, (state, {menu}) => ({...state, menus: [...state.menus, menu]})),
-  on(MenuActions.setThemes, (state, {themes}) => ({...state, themes: [...themes]})),
-  on(MenuActions.createThemeSuccess, (state, {theme}) => ({...state, themes: [...state.themes, theme]})),
-  on(MenuActions.updateThemeSuccess, (state, {theme}) => ({
-    ...state,
-    themes: state.themes.map(t => {
-      if (t.id === theme.id) {
-        return theme;
-      }
-      return t;
-    })
-  })),
-  on(MenuActions.deleteThemeSuccess, (state, {id}) => ({
-    ...state,
-    themes: state.themes.filter(t => t.id !== id)
-  }))
 );
 
 export const menuDetailsReducer = createReducer<MenuDetails>(
@@ -89,5 +74,9 @@ export const menuDetailsReducer = createReducer<MenuDetails>(
         number_of_items: numberOfItems
       };
     })
+  })),
+  on(MenuActions.updateThemeSuccess, (state, {theme}) => ({
+    ...state,
+    theme: theme
   }))
 );

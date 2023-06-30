@@ -8,6 +8,7 @@ import {MenuDetails} from "../../shared/types";
 })
 export class MenuDemoComponent {
   @Input() menu: MenuDetails = {} as MenuDetails;
+  selectedCategoryIndex = 0;
 
   toNumber(value: string): number {
     return parseInt(value);
@@ -18,3 +19,6 @@ export class MenuDemoComponent {
   }
 
 }
+
+
+

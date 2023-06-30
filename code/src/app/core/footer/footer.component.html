@@ -11,9 +11,9 @@
   </svg>
 </div>
 <footer>
-  <div class="container">
+  <div class="px-5">
     <div class="row gy-lg-0 gy-5 align-items-center justify-content-lg-between justify-content-center">
-      <div class="col-lg-4 col-12 d-flex align-items-center justify-content-center">
+      <div class="col-lg-4 col-12 d-flex">
         <img id="logo" src="favicon.ico" width="75" height="75" alt="logo"/>
         <h1 class="me-3 brand">چیکو</h1>
       </div>
@@ -36,6 +36,18 @@
             routerLink="/dashboard"
           >
             داشبورد
+          </button>
+        </li>
+        <li>
+          <button
+            mat-button
+            color="accent"
+            class="text-light rounded-pill fs-5 p-3"
+            routerLink="/home"
+            fragment="pricing"
+            (click)="scrollTo('pricing')"
+          >
+            تعرفه ها
           </button>
         </li>
         <li>

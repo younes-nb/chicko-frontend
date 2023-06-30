@@ -1,39 +1,68 @@
-<div class="py-3">
-  <div class="mb-4 d-flex justify-content-between">
-    <button data-bs-toggle="collapse" data-bs-target="#collapseThemeForm" mat-raised-button
-            color="primary"
-            type="button">
-      <mat-icon>add</mat-icon>
-      افزودن تم
-    </button>
-  </div>
-  <div class="collapse" id="collapseThemeForm">
-    <div class="card card-body">
-      <app-theme-form
-        [formMethod]="'post'">
-      </app-theme-form>
+<div class="py-4 pe-lg-0 px-5 w-100">
+  <form
+    class="row gy-3"
+    [formGroup]="themeForm"
+    (ngSubmit)="themeForm.valid && onSubmit()"
+    enctype="multipart/form-data"
+  >
+    <mat-form-field class="col-md-6" appearance="fill">
+      <mat-label>نام</mat-label>
+      <input
+        matInput
+        formControlName="name"
+        name="name"
+        type="text"
+        required
+        [ngModel]="menu.theme.name"
+      />
+      <mat-error
+        class="fs-7"
+        *ngIf="submitted && themeForm.get('name')?.hasError('required')"
+      >وارد کردن نام تم الزامی می باشد.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-md-6">
+      <mat-label>فونت</mat-label>
+      <mat-select [ngModel]="menu.theme.font_family" formControlName="font_family">
+        <mat-option *ngFor="let font of fontFamilies" [value]="font">
+          {{font}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="col-md-4 d-flex align-items-center">
+      <label for="menu_background_color" class="form-label fs-5">رنگ پس زمینه </label>
+      <input [ngModel]="menu.theme.menu_background_color" id="menu_background_color" formControlName="menu_background_color"
+             type="color" class="form-control form-control-color me-2">
     </div>
-  </div>
-  <ng-container *ngIf="themes$ | async as themes">
-    <ng-container *ngIf="themes.length; else noThemeRef">
-      <ng-container *ngFor="let theme of themes">
-        <mat-accordion>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                {{theme.name}}
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <app-theme-form
-              [formMethod]="'put'"
-              [theme]="theme">
-            </app-theme-form>
-          </mat-expansion-panel>
-        </mat-accordion>
-      </ng-container>
-    </ng-container>
-    <ng-template #noThemeRef>
-      <h4 class="text-muted text-center mt-5">هیچ تمی وجود ندارد.</h4>
-    </ng-template>
-  </ng-container>
+    <div class="col-md-4 d-flex align-items-center">
+      <label for="menu_text_color" class="form-label fs-5">رنگ متن </label>
+      <input [ngModel]="menu.theme.menu_text_color" id="menu_text_color" formControlName="menu_text_color" type="color"
+             class="form-control form-control-color me-2" value="#563d7c">
+    </div>
+    <div class="col-md-4 d-flex align-items-center">
+      <label for="header_color" class="form-label fs-5">رنگ تم </label>
+      <input [ngModel]="menu.theme.header_color" id="header_color" formControlName="header_color" type="color"
+             class="form-control form-control-color me-2" value="#563d7c">
+    </div>
+    <div class="mt-5">
+      <div class="d-flex mb-3">
+        <h4 class="ms-5">بارگذاری لوگو</h4>
+        <button *ngIf="menu.theme.logo_image" (click)="openShowLogoImageDialog(menu.theme.logo_image)" mat-button color="primary"
+                type="button">لوگوی فعلی
+        </button>
+      </div>
+      <app-dropzone formControlName="logo_image"></app-dropzone>
+    </div>
+    <div class="mt-4">
+      <button
+        type="submit"
+        (click)="submitted = true"
+        mat-raised-button
+        color="primary"
+      >
+        ثبت
+      </button>
+    </div>
+  </form>
 </div>
+

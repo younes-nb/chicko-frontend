@@ -177,42 +177,6 @@ export const deleteMenuItemFailure = createAction(
   props<{ error: any }>()
 );
 
-export const fetchThemes = createAction(
-  '[Themes] Fetch Themes',
-);
-
-export const fetchThemesFailure = createAction(
-  '[Themes] Fetch Themes Failure',
-  props<{ error: any }>()
-);
-
-export const setThemes = createAction(
-  '[Themes] Set Themes',
-  props<{ themes: Theme[] }>()
-);
-
-export const createTheme = createAction(
-  '[Themes] Create Theme',
-  props<{
-    name: string,
-    font_family?: string,
-    menu_background_color?: string,
-    menu_text_color?: string,
-    header_color?: string,
-    logo_image?: File
-  }>()
-);
-
-export const createThemeSuccess = createAction(
-  '[Themes] Create Theme Success',
-  props<{ theme: Theme }>()
-);
-
-export const createThemeFailure = createAction(
-  '[Themes] Create Theme Failure',
-  props<{ error: any }>()
-);
-
 export const updateTheme = createAction(
   '[Themes] Update Theme',
   props<{
@@ -233,20 +197,5 @@ export const updateThemeSuccess = createAction(
 
 export const updateThemeFailure = createAction(
   '[Themes] Update Theme Failure',
-  props<{ error: any }>()
-);
-
-export const deleteTheme = createAction(
-  '[Themes] Delete Theme',
-  props<{ id: string }>()
-);
-
-export const deleteThemeSuccess = createAction(
-  '[Themes] Delete Theme Success',
-  props<{ id: string }>()
-);
-
-export const deleteThemeFailure = createAction(
-  '[Themes] Delete Theme Failure',
   props<{ error: any }>()
 );

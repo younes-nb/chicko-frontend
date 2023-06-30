@@ -183,30 +183,6 @@ export class MenusEffects {
     )
   );
 
-  fetchThemes$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(MenuActions.fetchThemes),
-      switchMap(() =>
-        this.menusService.fetchThemes().pipe(
-          map((themes: Theme[]) => MenuActions.setThemes({themes})),
-          catchError((error) => of(MenuActions.fetchThemesFailure({error})))
-        )
-      )
-    )
-  );
-
-  createTheme$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(MenuActions.createTheme),
-      switchMap(({name, font_family, menu_background_color, menu_text_color, header_color, logo_image}) =>
-        this.menusService.createTheme(name, font_family, menu_background_color, menu_text_color, header_color, logo_image).pipe(
-          map((theme: Theme) => MenuActions.createThemeSuccess({theme})),
-          catchError((error) => of(MenuActions.createThemeFailure({error})))
-        )
-      )
-    )
-  );
-
   updateTheme$ = createEffect(() =>
     this.actions$.pipe(
       ofType(MenuActions.updateTheme),
@@ -218,19 +194,6 @@ export class MenusEffects {
       )
     )
   );
-
-  deleteTheme$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(MenuActions.deleteTheme),
-      switchMap(({id}) =>
-        this.menusService.deleteTheme(id).pipe(
-          map(() => MenuActions.deleteThemeSuccess({id})),
-          catchError((error) => of(MenuActions.deleteThemeFailure({error})))
-        )
-      )
-    )
-  );
-
 
   constructor(
     private actions$: Actions,
