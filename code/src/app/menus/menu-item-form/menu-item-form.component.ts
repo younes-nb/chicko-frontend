@@ -25,7 +25,7 @@ export class MenuItemFormComponent {
     is_available: new FormControl('')
   });
 
-  constructor(private menusStore: Store, public dialog: MatDialog,) {
+  constructor(private menusStore: Store, private dialog: MatDialog) {
   }
 
   onSubmit(): void {

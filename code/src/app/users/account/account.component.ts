@@ -4,6 +4,8 @@ import {User} from 'src/app/shared/types';
 import {Store} from "@ngrx/store";
 import {selectAuthUser} from "../../core/store/auth/auth.selectors";
 import * as AuthActions from "../../core/store/auth/auth.actions"
+import {ImageDialogComponent} from "../../shared/image-dialog/image-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-account',
@@ -33,20 +35,29 @@ export class AccountComponent {
       Validators.minLength(8),
       Validators.maxLength(128),
     ]),
+    profile_image: new FormControl('')
   });
 
   constructor(
-    private authStore: Store<{ auth: { user: User } }>
+    private authStore: Store<{ auth: { user: User } }>,
+    private dialog: MatDialog
   ) {
   }
 
   onSubmit() {
-    const username = this.accountForm.controls['username'].value;
-    const email = this.accountForm.controls['email'].value;
-    const phone_number = this.accountForm.controls['phone_number'].value;
-    const first_name = this.accountForm.controls['first_name'].value;
-    const last_name = this.accountForm.controls['last_name'].value;
-    const password = this.accountForm.controls['password'].value;
-    this.authStore.dispatch(AuthActions.updateUser({username, email, phone_number, first_name, last_name, password}))
+    const props = {
+      username: this.accountForm.controls['username'].value,
+      email: this.accountForm.controls['email'].value,
+      phone_number: this.accountForm.controls['phone_number'].value,
+      first_name: this.accountForm.controls['first_name'].value,
+      last_name: this.accountForm.controls['last_name'].value,
+      password: this.accountForm.controls['password'].value,
+      profile_image: this.accountForm.controls['profile_image'].value
+    }
+    this.authStore.dispatch(AuthActions.updateUser(props))
+  }
+
+  openShowProfileImageDialog(profileImage: string): void {
+    this.dialog.open(ImageDialogComponent, {data: {profileImage}});
   }
 }

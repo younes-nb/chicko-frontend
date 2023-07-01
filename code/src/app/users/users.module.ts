@@ -12,22 +12,24 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {AppSharedModule} from "../shared/app-shared.module";
 
 @NgModule({
   declarations: [UsersComponent, AccountComponent],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatTooltipModule,
-    NgOptimizedImage,
-    UsersRoutingModule,
-  ],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatTooltipModule,
+        NgOptimizedImage,
+        UsersRoutingModule,
+        AppSharedModule,
+    ],
   providers: [UsersService],
 })
 export class UsersModule {

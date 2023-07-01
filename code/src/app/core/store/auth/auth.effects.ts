@@ -86,14 +86,15 @@ export class AuthEffects {
   updateUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.updateUser),
-      switchMap(({username, email, phone_number, first_name, last_name, password}) =>
+      switchMap(({username, email, phone_number, first_name, last_name, password, profile_image}) =>
         this.usersService.updateUser(
           username,
           email,
           phone_number,
           first_name,
           last_name,
-          password
+          password,
+          profile_image
         ).pipe(
           map((updatedUser) => AuthActions.updateUserSuccess({user: updatedUser})),
           catchError((error) => {

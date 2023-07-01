@@ -40,6 +40,7 @@ export const updateUser = createAction(
     first_name: string;
     last_name: string;
     password: string;
+    profile_image: string;
   }>()
 );
 

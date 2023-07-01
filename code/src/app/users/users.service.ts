@@ -25,12 +25,21 @@ export class UsersService {
     phone_number: string,
     first_name: string,
     last_name: string,
-    password: string
+    password: string,
+    profile_image: string
   ): Observable<User> {
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('email', email);
+    formData.append('phone_number', phone_number);
+    formData.append('first_name', first_name);
+    formData.append('last_name', last_name);
+    formData.append('password', password);
+    formData.append('profile_image', profile_image);
     return this.httpClient
       .put<User>(
         `${BASE_API}auth/users/me/`,
-        {username, email, phone_number, first_name, last_name, password},
+        formData,
         {headers: {NeedsUserTokenHeader: ''}}
       )
   }
