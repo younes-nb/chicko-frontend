@@ -2,13 +2,13 @@
   <section class="h-100"
            [ngStyle]="{'background-color':menu.theme.header_color, 'font-family':menu.theme.font_family+', serif'}">
     <header class="d-flex justify-content-center align-items-center">
-      <img *ngIf="menu.theme.logo_image" [src]="menu.theme.logo_image" alt="logo" id="logo-image"
-           class="rounded-circle">
+      <img *ngIf="menu.theme.logo_image" [ngSrc]="menu.theme.logo_image" alt="logo" id="logo-image"
+           class="rounded-circle" width="90" height="90">
     </header>
     <div [ngStyle]="{'background-color':menu.theme.menu_background_color}" class="px-3 pt-3 h-100" id="main-container">
       <div class="mb-3">
         <h1 [ngStyle]="{'color':menu.theme.menu_text_color}" class="mb-5">{{menu.name}}</h1>
-        <div class="d-flex flex-lg-row flex-column mb-3">
+        <div class="d-flex flex-column mb-3">
           <div *ngIf="menu.telephone" class="ms-5">
             <mat-icon color="primary">call</mat-icon>
             <span [ngStyle]="{'color':menu.theme.menu_text_color}"

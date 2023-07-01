@@ -47,7 +47,10 @@ export class AuthEffects {
       switchMap(() =>
         this.authService.logout().pipe(
           map(() => AuthActions.logoutSuccess()),
-          catchError((error) => of(AuthActions.logoutFailure({error: error.message})))
+          catchError((error) => {
+            this.customSnackBarService.openSnackBar('عملیات ناموفق بود.');
+            return of(AuthActions.logoutFailure({error: error.message}));
+          })
         )
       )
     )
@@ -73,6 +76,7 @@ export class AuthEffects {
             catchError((error) => of(AuthActions.fetchUserFailure({error: error.message})))
           )
         } else {
+          this.router.navigate(['login']);
           return of(AuthActions.fetchUserFailure({error: 'User is not authenticated.'}));
         }
       })
@@ -92,7 +96,10 @@ export class AuthEffects {
           password
         ).pipe(
           map((updatedUser) => AuthActions.updateUserSuccess({user: updatedUser})),
-          catchError((error) => of(AuthActions.updateUserFailure({error: error.message})))
+          catchError((error) => {
+            this.customSnackBarService.openSnackBar('عملیات ناموفق بود.');
+            return of(AuthActions.updateUserFailure({error: error.message}));
+          })
         )
       )
     )

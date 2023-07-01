@@ -11,6 +11,7 @@ import {selectMenuDetails} from "../../core/store/menus/menus.selectors";
 })
 export class MenuPreviewComponent implements OnInit {
   menu$ = this.menusStore.select(selectMenuDetails);
+  selectedCategoryIndex = 0;
 
   constructor(private route: ActivatedRoute, private menusStore: Store,) {
   }

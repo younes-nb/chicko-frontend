@@ -1,16 +1,39 @@
-header{
+* {
+  font-family: inherit;
+}
+
+header {
   height: 20vh;
 
-  #logo-image{
+  #logo-image {
     width: 90px;
     height: 90px;
   }
 }
 
-#main-container{
+#main-container {
   border-radius: 30px 30px 0 0;
+
+  .menu-item-image {
+    height: 300px;
+  }
 }
 
-.menu-item-image{
-  height: 300px;
+.category-container {
+  overflow-x: auto;
+
+  .category-chip {
+    cursor: pointer;
+    border: 2px solid;
+    transition: opacity 0.5s ease;
+    font-weight: bolder;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:last-child {
+      margin-left: 0 !important;
+    }
+  }
 }

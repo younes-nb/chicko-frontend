@@ -10,6 +10,7 @@ import * as MenuActions from './menus.actions';
 import {of} from "rxjs";
 import {Category, Menu, MenuDetails, MenuItem, Theme} from "../../../shared/types";
 import {Router} from "@angular/router";
+import {CustomSnackBarService} from "../../../shared/custom-snack-bar.service";
 
 @Injectable()
 export class MenusEffects {
@@ -25,7 +26,11 @@ export class MenusEffects {
             }));
             return MenuActions.setMenus({menus: menusWithLinks});
           }),
-          catchError((error) => of(MenuActions.fetchMenusFailure({error})))
+          catchError((error) => {
+            this.router.navigate(['home']);
+            this.customSnackBarService.openSnackBar('مشکلی پیش آمده است.');
+            return of(MenuActions.fetchMenusFailure({error}));
+          })
         )
       )
     )
@@ -41,7 +46,11 @@ export class MenusEffects {
             link: `/menus/${menu.id}`,
           })),
           map(menuWithLink => MenuActions.setMenu({menu: menuWithLink})),
-          catchError(error => of(MenuActions.fetchMenuFailure({error})))
+          catchError(error => {
+            this.router.navigate(['dashboard']);
+            this.customSnackBarService.openSnackBar('مشکلی پیش آمده است.');
+            return of(MenuActions.fetchMenuFailure({error}));
+          })
         )
       )
     )
@@ -59,8 +68,10 @@ export class MenusEffects {
           map((menuWithLink) =>
             MenuActions.createMenuSuccess({menu: menuWithLink})
           ),
-          catchError((error) =>
-            of(MenuActions.createMenuFailure({error: error}))
+          catchError((error) => {
+              this.customSnackBarService.openSnackBar('عملیات ناموفق بود.');
+              return of(MenuActions.createMenuFailure({error: error}));
+            }
           )
         )
       )
@@ -73,7 +84,10 @@ export class MenusEffects {
       switchMap(({id, name, theme, telephone, phone, address}) =>
         this.menusService.updateMenu(id, name, theme, telephone, phone, address).pipe(
           map((menu: MenuDetails) => MenuActions.setMenu({menu})),
-          catchError((error) => of(MenuActions.updateMenuFailure({error})))
+          catchError((error) => {
+            this.customSnackBarService.openSnackBar('عملیات ناموفق بود.');
+            return of(MenuActions.updateMenuFailure({error}));
+          })
         )
       )
     )
@@ -85,7 +99,10 @@ export class MenusEffects {
       switchMap(({menuId}) =>
         this.menusService.deleteMenu(menuId).pipe(
           map(() => MenuActions.deleteMenuSuccess()),
-          catchError((error) => of(MenuActions.deleteMenuFailure({error})))
+          catchError((error) => {
+            this.customSnackBarService.openSnackBar('عملیات ناموفق بود.');
+            return of(MenuActions.deleteMenuFailure({error}));
+          })
         )
       ),
       tap(() => this.router.navigate(['dashboard']))
@@ -98,7 +115,10 @@ export class MenusEffects {
       switchMap(({name, menu}) =>
         this.menusService.createCategory(name, menu).pipe(
           map((category: Category) => MenuActions.createCategorySuccess({category})),
-          catchError((error) => of(MenuActions.createCategoryFailure({error})))
+          catchError((error) => {
+            this.customSnackBarService.openSnackBar('عملیات ناموفق بود.');
+            return of(MenuActions.createCategoryFailure({error}));
+          })
         )
       )
     )
@@ -110,7 +130,10 @@ export class MenusEffects {
       switchMap(({id, name, menu}) =>
         this.menusService.updateCategory(id, name, menu).pipe(
           map((category: Category) => MenuActions.updateCategorySuccess({category})),
-          catchError((error) => of(MenuActions.updateCategoryFailure({error})))
+          catchError((error) => {
+            this.customSnackBarService.openSnackBar('عملیات ناموفق بود.');
+            return of(MenuActions.updateCategoryFailure({error}));
+          })
         )
       )
     )
@@ -122,7 +145,10 @@ export class MenusEffects {
       switchMap(({id}) =>
         this.menusService.deleteCategory(id).pipe(
           map(() => MenuActions.deleteCategorySuccess({id})),
-          catchError((error) => of(MenuActions.deleteCategoryFailure({error})))
+          catchError((error) => {
+            this.customSnackBarService.openSnackBar('عملیات ناموفق بود.');
+            return of(MenuActions.deleteCategoryFailure({error}));
+          })
         )
       )
     )
@@ -143,7 +169,10 @@ export class MenusEffects {
                  }) =>
         this.menusService.createMenuItem(name, menu, category, image, is_available, description, price, discount).pipe(
           map((menuItem: MenuItem) => MenuActions.createMenuItemSuccess({menuItem})),
-          catchError((error) => of(MenuActions.createMenuItemFailure({error})))
+          catchError((error) => {
+            this.customSnackBarService.openSnackBar('عملیات ناموفق بود.');
+            return of(MenuActions.createMenuItemFailure({error}));
+          })
         )
       )
     )
@@ -165,7 +194,10 @@ export class MenusEffects {
                  }) =>
         this.menusService.updateMenuItem(id, name, menu, category, is_available, image, description, price, discount).pipe(
           map((menuItem: MenuItem) => MenuActions.updateMenuItemSuccess({menuItem})),
-          catchError((error) => of(MenuActions.updateMenuItemFailure({error})))
+          catchError((error) => {
+            this.customSnackBarService.openSnackBar('عملیات ناموفق بود.');
+            return of(MenuActions.updateMenuItemFailure({error}));
+          })
         )
       )
     )
@@ -177,7 +209,10 @@ export class MenusEffects {
       switchMap(({id}) =>
         this.menusService.deleteMenuItem(id).pipe(
           map(() => MenuActions.deleteMenuItemSuccess({id})),
-          catchError((error) => of(MenuActions.deleteMenuItemFailure({error})))
+          catchError((error) => {
+            this.customSnackBarService.openSnackBar('عملیات ناموفق بود.');
+            return of(MenuActions.deleteMenuItemFailure({error}));
+          })
         )
       )
     )
@@ -189,7 +224,10 @@ export class MenusEffects {
       switchMap(({id, name, font_family, menu_background_color, menu_text_color, header_color, logo_image}) =>
         this.menusService.updateTheme(id, name, font_family, menu_background_color, menu_text_color, header_color, logo_image).pipe(
           map((theme: Theme) => MenuActions.updateThemeSuccess({theme})),
-          catchError((error) => of(MenuActions.updateThemeFailure({error})))
+          catchError((error) => {
+            this.customSnackBarService.openSnackBar('عملیات ناموفق بود.');
+            return of(MenuActions.updateThemeFailure({error}));
+          })
         )
       )
     )
@@ -198,7 +236,8 @@ export class MenusEffects {
   constructor(
     private actions$: Actions,
     private menusService: MenusService,
-    private router: Router
+    private router: Router,
+    private customSnackBarService: CustomSnackBarService
   ) {
   }
 }
