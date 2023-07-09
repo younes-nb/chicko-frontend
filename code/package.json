@@ -28,7 +28,6 @@
     "angular-typing-animator": "^0.0.9",
     "angularx-qrcode": "^16.0.0",
     "bootstrap": "^5.2.3",
-    "if-emoji": "^0.1.0",
     "jquery": "^3.6.3",
     "lord-icon-element": "^4.1.1",
     "lottie-web": "^5.12.0",
@@ -37,7 +36,6 @@
     "ngx-dropzone": "^3.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "twemoji": "^14.0.2",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {

@@ -58,6 +58,6 @@ export class AccountComponent {
   }
 
   openShowProfileImageDialog(profileImage: string): void {
-    this.dialog.open(ImageDialogComponent, {data: {profileImage}});
+    this.dialog.open(ImageDialogComponent, {data: {image: profileImage}});
   }
 }

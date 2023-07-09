@@ -81,8 +81,8 @@ export class MenusEffects {
   updateMenu$ = createEffect(() =>
     this.actions$.pipe(
       ofType(MenuActions.updateMenu),
-      switchMap(({id, name, theme, telephone, phone, address}) =>
-        this.menusService.updateMenu(id, name, theme, telephone, phone, address).pipe(
+      switchMap(({id, name, telephone, phone, address}) =>
+        this.menusService.updateMenu(id, name, telephone, phone, address).pipe(
           map((menu: MenuDetails) => MenuActions.setMenu({menu})),
           catchError((error) => {
             this.customSnackBarService.openSnackBar('عملیات ناموفق بود.');

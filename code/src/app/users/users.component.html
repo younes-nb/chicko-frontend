@@ -25,7 +25,8 @@
         </button>
       </ng-container>
       <ng-template #profileImage>
-        <img [ngSrc]="user.profile_image || ''" alt="profile" class="rounded-circle" width="60" height="60"/>
+        <img [matMenuTriggerFor]="menu" [ngSrc]="user.profile_image || ''" alt="profile" class="rounded-circle"
+             width="50" height="50" style="cursor: pointer"/>
       </ng-template>
       <mat-menu class="mt-1" #menu="matMenu">
         <button routerLink="/dashboard/account" mat-menu-item>

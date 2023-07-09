@@ -105,7 +105,7 @@ export class MenuComponent implements OnInit {
 
   copyToClipboard(menuLink: string) {
     if (menuLink) {
-      this.clipboard.copy(menuLink);
+      this.clipboard.copy(BASE_URL + menuLink);
       this.customSnackBarService.openSnackBar('لینک منو کپی شد.');
     }
   }

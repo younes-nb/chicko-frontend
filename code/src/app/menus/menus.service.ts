@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BASE_API} from '../shared/url';
-import {Theme, User} from '../shared/types';
+import {User} from '../shared/types';
 import {map, Observable} from 'rxjs';
 import {UsersService} from '../users/users.service';
 import {CustomSnackBarService} from '../shared/custom-snack-bar.service';
@@ -63,17 +63,9 @@ export class MenusService {
       );
   }
 
-  public updateMenu(id: string, name: string, theme?: Theme, telephone?: string, phone?: string, address?: string): Observable<any> {
-    const newTheme = {
-      name: theme?.name,
-      menu_background_color: theme?.menu_background_color,
-      font_family: theme?.font_family,
-      menu_text_color: theme?.menu_text_color,
-      header_color: theme?.header_color
-    }
+  public updateMenu(id: string, name: string, telephone?: string, phone?: string, address?: string): Observable<any> {
     return this.httpClient.put(`${BASE_API}menu/menus/${id}`, {
       name,
-      theme: newTheme,
       telephone,
       phone,
       address
