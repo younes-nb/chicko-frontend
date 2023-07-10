@@ -62,6 +62,7 @@ export interface Theme {
   menu_text_color?: string;
   logo_image?: string;
   header_color?: string;
+  menu_item_background_color?: string;
 }
 
 export interface Plan {

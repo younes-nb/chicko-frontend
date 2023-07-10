@@ -1,4 +1,4 @@
-<section class="px-5 mt-5">
+<section class="px-sm-5 px-4 mt-5">
   <ng-container *ngIf="menu$ | async as menu">
     <div class="d-flex justify-content-between mb-5 flex-lg-row flex-column">
       <h1 class="fs-2 mb-lg-0 mb-4">{{menu.name}}</h1>
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="row gx-4">
-      <div class="col-8">
+      <div class="col-xl-8 col-lg-6">
         <mat-tab-group>
           <mat-tab label="محصولات">
             <button (click)="openCreateCategoryDialog(menu.id)" mat-raised-button color="primary" type="button"
@@ -121,7 +121,7 @@
           </mat-tab>
         </mat-tab-group>
       </div>
-      <div class="col-4">
+      <div class="col-xl-4 col-lg-6 d-lg-block d-none">
         <div class="iphone shadow">
           <div class="iphone-top">
             <span class="camera"></span>

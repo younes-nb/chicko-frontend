@@ -37,7 +37,8 @@
         </div>
         <div *ngFor="let category of menu.categories; let i = index" [hidden]="selectedCategoryIndex !== i">
           <div class="row gy-3 m-0">
-            <mat-card *ngFor="let menuItem of category.menu_items" class="p-0">
+            <mat-card *ngFor="let menuItem of category.menu_items" class="p-0"
+                      [ngStyle]="{'background-color': menu.theme.menu_item_background_color}">
               <ng-container *ngIf="menuItem.is_available">
                 <img class="menu-item-image" mat-card-image [src]="menuItem.image" alt="Menu Item Image">
                 <mat-card-content>
@@ -49,7 +50,8 @@
                           class="fs-5-5">{{ menuItem.price | numLatinToFa }}
                       تومان</span>
                     <span *ngIf="menuItem.price && menuItem.discount !== '1.00'"
-                          class="text-muted text-decoration-line-through ms-3">{{ menuItem.price | numLatinToFa }}</span>
+                          [ngStyle]="{'color':menu.theme.menu_text_color}"
+                          class="text-decoration-line-through ms-3">{{ menuItem.price | numLatinToFa }}</span>
                     <span [ngStyle]="{'color':menu.theme.menu_text_color}"
                           *ngIf="menuItem.price && menuItem.discount && menuItem.discount !== '1.00'"
                           class="fs-5-5">{{ (round((toNumber(menuItem.price) - toNumber(menuItem.price) * toNumber(menuItem.discount) / 100))).toString() | numLatinToFa }}

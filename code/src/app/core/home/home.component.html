@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light px-5 shadow">
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-sm-5 px-4 shadow">
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand d-inline-block" routerLink="/home">
+  <a class="navbar-brand m-0 d-inline-block" routerLink="/home">
     <img class="logo" src="favicon.ico" width="45" height="45" alt="logo"/>
-    <h1 class="title d-inline">چیکو</h1>
+    <h1 style="font-size: 40px" class="title d-inline">چیکو</h1>
   </a>
   <div class="collapse navbar-collapse order-lg-0 order-2" id="navbarNav">
     <ul class="navbar-nav">
@@ -73,16 +73,16 @@
 
 
 <header>
-  <div class="px-5">
+  <div class="px-sm-5 px-4">
     <div class="row gx-5 align-items-center">
       <div
-        class="col-md-5 col-12 mb-lg-0 mb-5 d-flex justify-content-lg-start justify-content-center flex-column align-items-lg-start align-items-center">
+        class="col-md-5 mb-lg-0 mb-5 d-flex justify-content-lg-start justify-content-center flex-column align-items-lg-start align-items-center">
         <div>
           <h1 class="mb-4 fs-1">منوساز هوشمند چیکو</h1>
           <h3 id="sub-header" class="fs-5-5">
             سامانه ویترین و به اشتراک گذاری محصولات
           </h3>
-          <div class="mb-4">
+          <div class="mb-5">
             <span class="fs-5" routerLink="/home">با <span class="fs-3 brand">چیکو </span></span>
             <span class="fs-5-5" typingAnimator
                   [sentences]="['محصولاتت رو خیلی راحت به اشتراک بزار.', 'فقط با چند کلیک منوی هوشمندتو بساز.']"></span>
@@ -92,7 +92,7 @@
           </button>
         </div>
       </div>
-      <div class="col-md-7 d-md-block d-none d-flex justify-content-lg-end justify-content-center">
+      <div class="col-md-7 d-sm-block d-none d-flex justify-content-lg-end justify-content-center">
         <img class="w-100" src="../../../assets/images/header-image.jpg" alt="">
       </div>
     </div>
@@ -105,7 +105,7 @@
   </svg>
 </div>
 <section id="about-us" class="bg-light">
-  <div class="px-5">
+  <div class="px-sm-5 px-4">
     <div class="row align-items-center">
       <div class="col-md-6">
         <h2 class="my-3 fw-bold">
@@ -158,11 +158,11 @@
 </div>
 <ng-container *ngIf="plans$ | async as plans">
   <section id="pricing">
-    <div class="px-5">
+    <div class="px-sm-5 px-4">
       <h3 id="pricing-header" class="text-center fw-bold">تعرفه ها</h3>
       <ng-container *ngIf="plans.length; else noPlansRef">
-        <div class="row g-4 align-items-center">
-          <div *ngFor="let plan of plans" class="col-md-3">
+        <div class="row g-4 align-items-center justify-content-center">
+          <div *ngFor="let plan of plans" class="col-xl-3 col-lg-4 col-md-6">
             <mat-card
               data-aos="flip-right"
               class="pricing-card shadow text-center py-1"

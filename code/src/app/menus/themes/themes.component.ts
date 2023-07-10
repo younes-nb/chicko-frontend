@@ -20,6 +20,7 @@ export class ThemesComponent {
     menu_background_color: new FormControl(''),
     menu_text_color: new FormControl(''),
     header_color: new FormControl(''),
+    menu_item_background_color: new FormControl(''),
     logo_image: new FormControl('')
   });
   fontFamilies: string[] = [
@@ -40,6 +41,7 @@ export class ThemesComponent {
       menu_background_color: this.themeForm.controls['menu_background_color'].value,
       menu_text_color: this.themeForm.controls['menu_text_color'].value,
       header_color: this.themeForm.controls['header_color'].value,
+      menu_item_background_color: this.themeForm.controls['menu_item_background_color'].value,
       logo_image: this.themeForm.controls['logo_image'].value,
     }
     this.menusStore.dispatch(MenuActions.updateTheme(props))

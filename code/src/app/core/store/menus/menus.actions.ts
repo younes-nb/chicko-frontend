@@ -186,6 +186,7 @@ export const updateTheme = createAction(
     menu_background_color?: string,
     menu_text_color?: string,
     header_color?: string,
+    menu_item_background_color?: string,
     logo_image?: File
   }>()
 );

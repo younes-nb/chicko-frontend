@@ -11,38 +11,38 @@
   </svg>
 </div>
 <footer>
-  <div class="px-5">
+  <div class="px-sm-5 px-4">
     <div class="row gy-lg-0 gy-5 align-items-center justify-content-lg-between justify-content-center">
-      <div class="col-lg-4 col-12 d-flex">
+      <div class="col-lg-4 col-12 d-flex justify-content-lg-start justify-content-center">
         <img id="logo" src="favicon.ico" width="75" height="75" alt="logo"/>
         <h1 class="me-3 brand">چیکو</h1>
       </div>
-      <ul class="col-lg-4 col-12 d-flex justify-content-center">
-        <li>
+      <ul class="col-lg-4 col-12 d-flex flex-sm-row flex-column justify-content-center align-items-center">
+        <li class="mb-sm-0 mb-3">
           <button
             mat-button
             color="accent"
-            class="text-light rounded-pill fs-5 p-3"
+            class="text-light text-nowrap rounded-pill fs-5 p-3"
             routerLink="/home"
           >
             خانه
           </button>
         </li>
-        <li>
+        <li class="mb-sm-0 mb-3">
           <button
             mat-button
             color="accent"
-            class="text-light rounded-pill fs-5 p-3"
+            class="text-light text-nowrap rounded-pill fs-5 p-3"
             routerLink="/dashboard"
           >
             داشبورد
           </button>
         </li>
-        <li>
+        <li class="mb-sm-0 mb-3">
           <button
             mat-button
             color="accent"
-            class="text-light rounded-pill fs-5 p-3"
+            class="text-light text-nowrap rounded-pill fs-5 p-3"
             routerLink="/home"
             fragment="pricing"
             (click)="scrollTo('pricing')"
@@ -50,11 +50,11 @@
             تعرفه ها
           </button>
         </li>
-        <li>
+        <li class="mb-sm-0 mb-3">
           <button
             mat-button
             color="accent"
-            class="text-light rounded-pill fs-5 p-3"
+            class="text-light text-nowrap rounded-pill fs-5 p-3"
             routerLink="/home"
             fragment="about-us"
             (click)="scrollTo('about-us')"
@@ -63,7 +63,7 @@
           </button>
         </li>
       </ul>
-      <ul class="col-lg-4 col-12 d-flex justify-content-lg-end justify-content-center">
+      <ul class="col-lg-4 col-12 d-flex justify-content-lg-end justify-content-center m-lg-0 mt-4">
         <li class="ms-4">
           <i class="bi bi-telegram text-light fs-2 brand-icons"></i>
         </li>
@@ -79,7 +79,7 @@
       </ul>
     </div>
     <div class="row">
-      <div class="col-12 text-center text-light mt-5">
+      <div class="col-12 text-center text-nowrap text-light mt-5">
         <p>
           تمامی حقوق این سایت متعلق به
           <span class="brand fs-4" routerLink="/home">چیکو</span> می باشد.
