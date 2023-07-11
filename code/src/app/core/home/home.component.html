@@ -173,10 +173,12 @@
                 </mat-icon
                 >
                 <h3 class="pricing-card-title fw-bold mt-4 mb-5">{{plan.name}}</h3>
-                <h5 class="pricing-card-header">{{plan.price | numLatinToFa}}</h5>
-                <h6 class="pricing-card-header mb-4">{{plan.description}}</h6>
+                <h5 class="pricing-card-header"><span class="fs-4 fw-bold">{{plan.price | numLatinToFa}}</span> تومان
+                </h5>
+                <h6 class="pricing-card-header mb-4 mt-3">{{plan.description}}</h6>
                 <p *ngFor="let planItem of plan.features" class="pricing-card-text text-muted">{{planItem.name}}</p>
-                <button (click)="openRegisterPlanDialog(plan)" mat-raised-button color="primary" class="mt-3 rounded-pill">
+                <button (click)="openRegisterPlanDialog(plan)" mat-raised-button color="primary"
+                        class="mt-3 rounded-pill">
                   خرید
                 </button>
               </mat-card-content>

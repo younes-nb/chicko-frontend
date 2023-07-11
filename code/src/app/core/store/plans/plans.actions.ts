@@ -1,5 +1,5 @@
 import {createAction, props} from "@ngrx/store";
-import {Plan, UserPlan} from "../../../shared/types";
+import {Order, Plan, UserPlan} from "../../../shared/types";
 
 export const fetchPlans = createAction('[Plans] Fetch Plans');
 
@@ -39,3 +39,17 @@ export const createUserPlanSuccess = createAction(
   '[User Plans] Create User Plan Success',
   props<{ userPlan: UserPlan }>()
 )
+
+export const createOrder = createAction(
+  '[Payment] Create Order',
+  props<{ user: string, plan: string }>()
+);
+
+export const createOrderFailure = createAction(
+  '[Payment] Create Order Failure',
+);
+
+export const createOrderSuccess = createAction(
+  '[Payment] Create Order Success',
+  props<{ userOrder: Order }>()
+);

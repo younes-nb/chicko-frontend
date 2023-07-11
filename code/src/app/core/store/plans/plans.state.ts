@@ -1,11 +1,13 @@
-import {Plan, UserPlan} from "../../../shared/types";
+import {Order, Plan, UserPlan} from "../../../shared/types";
 
 export interface PlansState {
   plans: Plan[];
-  userPlans: UserPlan[] | [];
+  userPlans: UserPlan[];
+  userOrders: Order[];
 }
 
 export const initialPlansState: PlansState = {
   plans: [],
-  userPlans: []
+  userPlans: [],
+  userOrders: []
 }

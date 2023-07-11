@@ -89,6 +89,14 @@ export interface UserPlan {
   is_active: boolean;
 }
 
+export interface Order {
+  id: string;
+  user_plan: UserPlan;
+  payable_amount: string;
+  is_paid: boolean;
+  authority: string;
+}
+
 export interface ChatUser {
   _id: string;
   email: string;

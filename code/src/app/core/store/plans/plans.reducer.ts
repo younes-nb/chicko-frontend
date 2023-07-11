@@ -6,5 +6,6 @@ export const plansReducer = createReducer<PlansState>(
   initialPlansState,
   on(PlanActions.setPlans, (state, {plans}) => ({...state, plans: [...plans]})),
   on(PlanActions.setUserPlans, (state, {userPlans}) => ({...state, userPlans})),
-  on(PlanActions.createUserPlanSuccess, (state, {userPlan}) => ({...state, userPlans: [...state.userPlans, userPlan]}))
+  on(PlanActions.createUserPlanSuccess, (state, {userPlan}) => ({...state, userPlans: [...state.userPlans, userPlan]})),
+  on(PlanActions.createOrderSuccess, (state, {userOrder}) => ({...state, userOrders: [...state.userOrders, userOrder]}))
 )

@@ -27,12 +27,21 @@ export class PlansService {
     }, {headers: {NeedsUserTokenHeader: ''}});
   }
 
-  hasActivePlan(userPlans: UserPlan[]): boolean {
+  public hasActivePlan(userPlans: UserPlan[]): boolean {
     for (const userPlan of userPlans) {
       if (userPlan.is_active) {
         return true;
       }
     }
     return false;
+  }
+
+  public createOrder(user: string, plan: string): Observable<any> {
+    return this.httpClient.post(`${BASE_API}payment/orders/`, {
+      user_plan: {
+        user,
+        plan
+      }
+    }, {headers: {NeedsUserTokenHeader: ''}})
   }
 }

@@ -3,7 +3,7 @@ import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {PlansService} from "../../../users/plans.service";
 import * as PlanActions from './plans.actions'
 import {map, of, switchMap} from "rxjs";
-import {Plan, UserPlan} from "../../../shared/types";
+import {Order, Plan, UserPlan} from "../../../shared/types";
 import {catchError} from "rxjs/operators";
 import {CustomSnackBarService} from "../../../shared/custom-snack-bar.service";
 
@@ -48,6 +48,29 @@ export class PlansEffects {
           catchError(() => {
             this.customSnackBarService.openSnackBar("عملیات ناموفق بود.")
             return of(PlanActions.createUserPlanFailure())
+          })
+        )
+      )
+    )
+  )
+
+  createUserPlanSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PlanActions.createUserPlanSuccess),
+      switchMap(async ({userPlan}) => PlanActions.createOrder({user: userPlan.user, plan: userPlan.plan})
+      )
+    )
+  )
+
+  createOrder$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PlanActions.createOrder),
+      switchMap(({user, plan}) =>
+        this.plansService.createOrder(user, plan).pipe(
+          map((userOrder: Order) => PlanActions.createOrderSuccess({userOrder})),
+          catchError(() => {
+            this.customSnackBarService.openSnackBar("عملیات ناموفق بود.")
+            return of(PlanActions.createOrderFailure())
           })
         )
       )
