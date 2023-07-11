@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private menusStore: Store,
-    public dialog: MatDialog,
+    private dialog: MatDialog,
     private clipboard: Clipboard,
     private customSnackBarService: CustomSnackBarService,
   ) {

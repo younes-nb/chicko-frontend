@@ -1,0 +1,16 @@
+<section class="py-4 px-5">
+  <h3 class="mb-5 text-center">خرید اشتراک جدید</h3>
+  <ul class="mb-4 p-0">
+    <li class="fs-5 fw-bold mb-3">{{data.name}}</li>
+    <li>مبلغ پرداختی: <span class="fs-5-5 fw-bold">{{data.price | numLatinToFa}}</span> تومان</li>
+  </ul>
+  <div class="mt-2 d-flex justify-content-center" mat-dialog-actions>
+    <button
+      [mat-dialog-close]="true"
+      mat-raised-button
+      color="primary"
+    >
+      پرداخت
+    </button>
+  </div>
+</section>

@@ -13,23 +13,26 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {AppSharedModule} from "../shared/app-shared.module";
+import {PlanRegisterDialogComponent} from './plan-register-dialog/plan-register-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
-  declarations: [UsersComponent, AccountComponent],
-    imports: [
-        CommonModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatMenuModule,
-        MatTooltipModule,
-        NgOptimizedImage,
-        UsersRoutingModule,
-        AppSharedModule,
-    ],
+  declarations: [UsersComponent, AccountComponent, PlanRegisterDialogComponent],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatTooltipModule,
+    NgOptimizedImage,
+    UsersRoutingModule,
+    AppSharedModule,
+    MatDialogModule,
+  ],
   providers: [UsersService],
 })
 export class UsersModule {

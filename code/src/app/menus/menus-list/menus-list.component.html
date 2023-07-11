@@ -3,7 +3,7 @@
     <h1 class="fs-2">منو ها</h1>
     <ng-container *ngIf="userPlans$ | async as userPlans">
       <button
-        *ngIf="userPlans.length"
+        *ngIf="plansService.hasActivePlan(userPlans)"
         (click)="openCreateMenuDialog()"
         type="button"
         mat-raised-button
@@ -17,7 +17,7 @@
   <ng-container *ngIf="(menus$ | async) as menus">
     <ng-container *ngIf="hasMenu(menus); else noMenusRef">
       <div class="row g-3 mt-4 px-lg-0 px-3">
-        <div *ngFor="let menu of menus; let i = index"
+        <div *ngFor="let menu of menus"
              class="col-xl-3 col-lg-4 col-md-6">
           <mat-card class="shadow rounded menu-card">
             <mat-card-header class="mb-3 d-flex justify-content-between">

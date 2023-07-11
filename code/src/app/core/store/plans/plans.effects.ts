@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {PlansService} from "../../../shared/plans.service";
+import {PlansService} from "../../../users/plans.service";
 import * as PlanActions from './plans.actions'
 import {map, of, switchMap} from "rxjs";
 import {Plan, UserPlan} from "../../../shared/types";
@@ -24,7 +24,7 @@ export class PlansEffects {
     )
   )
 
-  fetchUserPlan$ = createEffect(() =>
+  fetchUserPlans$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PlanActions.fetchUserPlans),
       switchMap(({user_id}) =>
@@ -33,6 +33,21 @@ export class PlansEffects {
           catchError(() => {
             this.customSnackBarService.openSnackBar("ارتباط با سرور ناموفق بود.")
             return of(PlanActions.fetchUserPlansFailure())
+          })
+        )
+      )
+    )
+  )
+
+  createUserPlan$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PlanActions.createUserPlan),
+      switchMap(({user, plan}) =>
+        this.plansService.createUserPlan(user, plan).pipe(
+          map((userPlan: UserPlan) => PlanActions.createUserPlanSuccess({userPlan})),
+          catchError(() => {
+            this.customSnackBarService.openSnackBar("عملیات ناموفق بود.")
+            return of(PlanActions.createUserPlanFailure())
           })
         )
       )

@@ -1,10 +1,12 @@
 <div class="bg-light min-vh-100">
-  <ng-container *ngIf="userPlans$ | async as userPlan">
-    <div *ngIf="!userPlan.length" class="alert alert-warning d-flex align-items-center m-0" role="alert">
+  <ng-container *ngIf="userPlans$ | async as userPlans">
+    <div *ngIf="!plansService.hasActivePlan(userPlans)" class="alert alert-warning d-flex align-items-center m-0"
+         role="alert">
       <i class="bi bi-exclamation-triangle ms-2"></i>
       <div>
         در حال حاضر اشتراک فعالی برای ایجاد منو ندارید. برای خرید اشتراک جدید <a routerLink="/home" fragment="pricing"
-                                                                  class="alert-link">کلیک</a> کنید.
+                                                                                 class="alert-link text-decoration-underline">کلیک</a>
+        کنید.
       </div>
     </div>
   </ng-container>

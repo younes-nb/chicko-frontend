@@ -7,6 +7,7 @@ import * as AuthActions from "../core/store/auth/auth.actions"
 import * as PlanActions from "../core/store/plans/plans.actions";
 import {selectUserPlans} from "../core/store/plans/plans.selectors";
 import {selectAuthUser} from "../core/store/auth/auth.selectors";
+import {PlansService} from "./plans.service";
 
 @Component({
   selector: 'app-users',
@@ -19,6 +20,7 @@ export class UsersComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private usersService: UsersService,
+    public plansService: PlansService,
     private store: Store
   ) {
   }

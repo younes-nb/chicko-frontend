@@ -12,6 +12,7 @@ import {QrCodeDialogComponent} from "../qr-code-dialog/qr-code-dialog.component"
 import {Observable} from "rxjs";
 import {BASE_URL} from "../../shared/url";
 import {selectUserPlans} from "../../core/store/plans/plans.selectors";
+import {PlansService} from "../../users/plans.service";
 
 @Component({
   selector: 'app-menus-list',
@@ -28,6 +29,7 @@ export class MenusListComponent implements OnInit {
     private customSnackBarService: CustomSnackBarService,
     private router: Router,
     private store: Store,
+    public plansService: PlansService,
   ) {
   }
 
