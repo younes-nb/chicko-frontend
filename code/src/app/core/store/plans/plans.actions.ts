@@ -42,7 +42,7 @@ export const createUserPlanSuccess = createAction(
 
 export const createOrder = createAction(
   '[Payment] Create Order',
-  props<{ user: string, plan: string }>()
+  props<{ user_plan_id: string }>()
 );
 
 export const createOrderFailure = createAction(

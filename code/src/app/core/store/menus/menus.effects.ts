@@ -8,7 +8,7 @@ import {
 import {MenusService} from '../../../menus/menus.service';
 import * as MenuActions from './menus.actions';
 import {of} from "rxjs";
-import {Category, Menu, MenuDetails, MenuItem, Theme} from "../../../shared/types";
+import {Category, Menu, MenuItem, Theme} from "../../../shared/types";
 import {Router} from "@angular/router";
 import {CustomSnackBarService} from "../../../shared/custom-snack-bar.service";
 
@@ -81,10 +81,14 @@ export class MenusEffects {
   updateMenu$ = createEffect(() =>
     this.actions$.pipe(
       ofType(MenuActions.updateMenu),
-      switchMap(({id, name, telephone, phone, address}) =>
+      mergeMap(({id, name, telephone, phone, address}) =>
         this.menusService.updateMenu(id, name, telephone, phone, address).pipe(
-          map((menu: MenuDetails) => MenuActions.setMenu({menu})),
-          catchError((error) => {
+          map(menu => ({
+            ...menu,
+            link: `/menus/${menu.id}`,
+          })),
+          map(menuWithLink => MenuActions.setMenu({menu: menuWithLink})),
+          catchError(error => {
             this.customSnackBarService.openSnackBar('عملیات ناموفق بود.');
             return of(MenuActions.updateMenuFailure({error}));
           })

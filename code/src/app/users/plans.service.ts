@@ -36,12 +36,9 @@ export class PlansService {
     return false;
   }
 
-  public createOrder(user: string, plan: string): Observable<any> {
+  public createOrder(user_plan_id: string): Observable<any> {
     return this.httpClient.post(`${BASE_API}payment/orders/`, {
-      user_plan: {
-        user,
-        plan
-      }
+      user_plan_id
     }, {headers: {NeedsUserTokenHeader: ''}})
   }
 }

@@ -29,6 +29,8 @@ export class JwtInterceptor implements HttpInterceptor {
       }
       return next.handle(request);
     }
+    const headers = request.headers.set('Accept-Language', 'fa');
+    request = request.clone({headers})
     return next.handle(request);
   }
 }

@@ -28,7 +28,7 @@
                (click)="selectedCategoryIndex = i"
                [ngStyle]="{
                 'border-color': selectedCategoryIndex !== i ? menu.theme.header_color : 'transparent',
-                'color':  selectedCategoryIndex !== i ? menu.theme.header_color : '#ffffff',
+                'color':  selectedCategoryIndex !== i ? menu.theme.header_color : menu.theme.menu_background_color,
                 'background-color': selectedCategoryIndex !== i ? 'transparent' : menu.theme.header_color,
                }"
                class="category-chip rounded-pill py-2 px-3 ms-3 d-inline-block">

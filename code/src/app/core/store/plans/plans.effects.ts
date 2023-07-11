@@ -57,7 +57,7 @@ export class PlansEffects {
   createUserPlanSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PlanActions.createUserPlanSuccess),
-      switchMap(async ({userPlan}) => PlanActions.createOrder({user: userPlan.user, plan: userPlan.plan})
+      switchMap(async ({userPlan}) => PlanActions.createOrder({user_plan_id: userPlan.id})
       )
     )
   )
@@ -65,8 +65,8 @@ export class PlansEffects {
   createOrder$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PlanActions.createOrder),
-      switchMap(({user, plan}) =>
-        this.plansService.createOrder(user, plan).pipe(
+      switchMap(({user_plan_id}) =>
+        this.plansService.createOrder(user_plan_id).pipe(
           map((userOrder: Order) => PlanActions.createOrderSuccess({userOrder})),
           catchError(() => {
             this.customSnackBarService.openSnackBar("عملیات ناموفق بود.")

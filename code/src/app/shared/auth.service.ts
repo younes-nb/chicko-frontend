@@ -21,14 +21,11 @@ export class AuthService {
     email: string
   ): Observable<any> {
     return this.http.post(`${BASE_API}account/register/`, {
-        username,
-        password,
-        phone_number,
-        email,
-      },
-      {
-        headers: {'Accept-Language': 'fa'},
-      });
+      username,
+      password,
+      phone_number,
+      email,
+    });
   }
 
   public verify(code: string): Observable<any> {
