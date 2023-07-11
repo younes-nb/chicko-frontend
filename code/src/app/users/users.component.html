@@ -1,4 +1,13 @@
 <div class="bg-light min-vh-100">
+  <ng-container *ngIf="userPlans$ | async as userPlan">
+    <div *ngIf="!userPlan.length" class="alert alert-warning d-flex align-items-center m-0" role="alert">
+      <i class="bi bi-exclamation-triangle ms-2"></i>
+      <div>
+        در حال حاضر اشتراک فعالی برای ایجاد منو ندارید. برای خرید اشتراک جدید <a routerLink="/home" fragment="pricing"
+                                                                  class="alert-link">کلیک</a> کنید.
+      </div>
+    </div>
+  </ng-container>
   <mat-toolbar
     class="px-sm-5 px-4 bg-white shadow d-flex justify-content-between align-items-center"
   >
@@ -15,6 +24,7 @@
     >
       <ng-container *ngIf="!user.profile_image; else profileImage">
         <button
+          *ngIf="user.username"
           [matMenuTriggerFor]="menu"
           class="p-3 ms-2 rounded-pill fs-5"
           mat-mini-fab

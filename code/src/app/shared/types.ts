@@ -3,6 +3,7 @@ export type SupportChatComponent = 'register' | 'rooms' | 'chat';
 
 
 export interface User {
+  id: string;
   username: string;
   email: string;
   phone_number: string;

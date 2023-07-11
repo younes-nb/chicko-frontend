@@ -1,15 +1,18 @@
-<section class="container mt-5">
+<section class="px-sm-5 px-4 mt-5">
   <div class="d-flex justify-content-between align-items-baseline">
     <h1 class="fs-2">منو ها</h1>
-    <button
-      (click)="openCreateMenuDialog()"
-      type="button"
-      mat-raised-button
-      color="primary"
-    >
-      <mat-icon>add</mat-icon>
-      افزودن منو
-    </button>
+    <ng-container *ngIf="userPlans$ | async as userPlans">
+      <button
+        *ngIf="userPlans.length"
+        (click)="openCreateMenuDialog()"
+        type="button"
+        mat-raised-button
+        color="primary"
+      >
+        <mat-icon>add</mat-icon>
+        افزودن منو
+      </button>
+    </ng-container>
   </div>
   <ng-container *ngIf="(menus$ | async) as menus">
     <ng-container *ngIf="hasMenu(menus); else noMenusRef">

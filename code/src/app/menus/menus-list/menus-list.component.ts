@@ -11,6 +11,7 @@ import {SingleInputDialogComponent} from "../../shared/single-input-dialog/singl
 import {QrCodeDialogComponent} from "../qr-code-dialog/qr-code-dialog.component";
 import {Observable} from "rxjs";
 import {BASE_URL} from "../../shared/url";
+import {selectUserPlans} from "../../core/store/plans/plans.selectors";
 
 @Component({
   selector: 'app-menus-list',
@@ -18,19 +19,20 @@ import {BASE_URL} from "../../shared/url";
   styleUrls: ['./menus-list.component.scss']
 })
 export class MenusListComponent implements OnInit {
-  menus$: Observable<Menu[]> = this.menusStore.select(selectMenus);
+  menus$: Observable<Menu[]> = this.store.select(selectMenus);
+  userPlans$ = this.store.select(selectUserPlans);
 
   constructor(
     public dialog: MatDialog,
     private clipboard: Clipboard,
     private customSnackBarService: CustomSnackBarService,
     private router: Router,
-    private menusStore: Store,
+    private store: Store,
   ) {
   }
 
   ngOnInit(): void {
-    this.menusStore.dispatch(MenuActions.fetchMenus());
+    this.store.dispatch(MenuActions.fetchMenus());
   }
 
   hasMenu(menus: Menu[]): boolean {
@@ -50,7 +52,7 @@ export class MenusListComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((name) => {
       if (name) {
-        this.menusStore.dispatch(MenuActions.createMenu({name}));
+        this.store.dispatch(MenuActions.createMenu({name}));
       }
     });
   }

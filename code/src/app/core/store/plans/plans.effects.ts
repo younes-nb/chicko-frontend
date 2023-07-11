@@ -3,7 +3,7 @@ import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {PlansService} from "../../../shared/plans.service";
 import * as PlanActions from './plans.actions'
 import {map, of, switchMap} from "rxjs";
-import {Plan} from "../../../shared/types";
+import {Plan, UserPlan} from "../../../shared/types";
 import {catchError} from "rxjs/operators";
 import {CustomSnackBarService} from "../../../shared/custom-snack-bar.service";
 
@@ -18,6 +18,21 @@ export class PlansEffects {
           catchError(() => {
             this.customSnackBarService.openSnackBar("ارتباط با سرور ناموفق بود.")
             return of(PlanActions.fetchPlansFailure())
+          })
+        )
+      )
+    )
+  )
+
+  fetchUserPlan$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PlanActions.fetchUserPlans),
+      switchMap(({user_id}) =>
+        this.plansService.fetchUserPlan(user_id).pipe(
+          map((userPlans: UserPlan[]) => PlanActions.setUserPlans({userPlans})),
+          catchError(() => {
+            this.customSnackBarService.openSnackBar("ارتباط با سرور ناموفق بود.")
+            return of(PlanActions.fetchUserPlansFailure())
           })
         )
       )

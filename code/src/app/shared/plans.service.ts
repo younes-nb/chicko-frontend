@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {BASE_API} from "./url";
@@ -8,9 +8,14 @@ import {BASE_API} from "./url";
 })
 export class PlansService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
   public fetchPlans(): Observable<any> {
     return this.httpClient.get(`${BASE_API}plan/plans/`);
+  }
+
+  public fetchUserPlan(user_id: string): Observable<any> {
+    return this.httpClient.get(`${BASE_API}plan/user-plans/${user_id}/`, {headers: {NeedsUserTokenHeader: ''}});
   }
 }
