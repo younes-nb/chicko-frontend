@@ -25,7 +25,6 @@ export interface MenuDetails {
   name: string;
   code: string;
   owner: User;
-  is_paid: boolean;
   is_active: boolean;
   categories: Category[];
   theme: Theme;

@@ -1,73 +1,76 @@
 <ng-container *ngIf="menu$ | async as menu; else noMenuRef">
-  <section class="h-100"
-           [ngStyle]="{'background-color':menu.theme.header_color, 'font-family':menu.theme.font_family+', serif'}">
-    <header class="d-flex justify-content-center align-items-center">
-      <img *ngIf="menu.theme.logo_image" [ngSrc]="menu.theme.logo_image" alt="logo" id="logo-image"
-           class="rounded-circle" width="90" height="90">
-    </header>
-    <div [ngStyle]="{'background-color':menu.theme.menu_background_color}" class="p-sm-5 p-3" id="main-container">
-      <div class="mb-3">
-        <h1 [ngStyle]="{'color':menu.theme.menu_text_color}" class="mb-4">{{menu.name}}</h1>
-        <div class="d-flex flex-lg-row flex-column mb-3">
-          <div *ngIf="menu.telephone" class="ms-5">
-            <i class="bi bi-telephone-fill" [ngStyle]="{'color': menu.theme.header_color}"></i>
-            <span [ngStyle]="{'color':menu.theme.menu_text_color}"
-                  class="fs-5 me-2">{{menu.telephone | numLatinToFa}}</span></div>
-          <div *ngIf="menu.phone" class="ms-5">
-            <i class="bi bi-phone-fill" [ngStyle]="{'color': menu.theme.header_color}"></i>
-            <span [ngStyle]="{'color':menu.theme.menu_text_color}"
-                  class="fs-5 me-2">{{menu.phone | numLatinToFa}}</span></div>
-          <div *ngIf="menu.address">
-            <i class="bi bi-geo-alt-fill" [ngStyle]="{'color': menu.theme.header_color}"></i>
-            <span [ngStyle]="{'color':menu.theme.menu_text_color}" class="fs-5 me-2">{{menu.address}}</span></div>
+  <ng-container *ngIf="menu.is_active; else noMenuRef">
+    <section class="h-100"
+             [ngStyle]="{'background-color':menu.theme.header_color, 'font-family':menu.theme.font_family+', serif'}">
+      <header class="d-flex justify-content-center align-items-center">
+        <img *ngIf="menu.theme.logo_image" [ngSrc]="menu.theme.logo_image" alt="logo" id="logo-image"
+             class="rounded-circle" width="90" height="90">
+      </header>
+      <div [ngStyle]="{'background-color':menu.theme.menu_background_color}" class="p-sm-5 p-3" id="main-container">
+        <div class="mb-3">
+          <h1 [ngStyle]="{'color':menu.theme.menu_text_color}" class="mb-4">{{menu.name}}</h1>
+          <div class="d-flex flex-lg-row flex-column mb-3">
+            <div *ngIf="menu.telephone" class="ms-5">
+              <i class="bi bi-telephone-fill" [ngStyle]="{'color': menu.theme.header_color}"></i>
+              <span [ngStyle]="{'color':menu.theme.menu_text_color}"
+                    class="fs-5 me-2">{{menu.telephone | numLatinToFa}}</span></div>
+            <div *ngIf="menu.phone" class="ms-5">
+              <i class="bi bi-phone-fill" [ngStyle]="{'color': menu.theme.header_color}"></i>
+              <span [ngStyle]="{'color':menu.theme.menu_text_color}"
+                    class="fs-5 me-2">{{menu.phone | numLatinToFa}}</span></div>
+            <div *ngIf="menu.address">
+              <i class="bi bi-geo-alt-fill" [ngStyle]="{'color': menu.theme.header_color}"></i>
+              <span [ngStyle]="{'color':menu.theme.menu_text_color}" class="fs-5 me-2">{{menu.address}}</span></div>
+          </div>
         </div>
-      </div>
-      <div>
-        <div class="d-flex text-nowrap my-3 pb-3 category-container">
-          <div *ngFor="let category of menu.categories; let i = index"
-               (click)="selectedCategoryIndex = i"
-               [ngStyle]="{
+        <div>
+          <div class="d-flex text-nowrap my-3 pb-3 category-container">
+            <div *ngFor="let category of menu.categories; let i = index"
+                 (click)="selectedCategoryIndex = i"
+                 [ngStyle]="{
                 'border-color': selectedCategoryIndex !== i ? menu.theme.header_color : 'transparent',
                 'color':  selectedCategoryIndex !== i ? menu.theme.header_color : menu.theme.menu_background_color,
                 'background-color': selectedCategoryIndex !== i ? 'transparent' : menu.theme.header_color,
                }"
-               class="category-chip rounded-pill py-2 px-3 ms-3 d-inline-block">
-            {{ category.name }}
+                 class="category-chip rounded-pill py-2 px-3 ms-3 d-inline-block">
+              {{ category.name }}
+            </div>
           </div>
-        </div>
-        <div *ngFor="let category of menu.categories; let i = index" [hidden]="selectedCategoryIndex !== i">
-          <div class="row g-3 m-0">
-            <div *ngFor="let menuItem of category.menu_items" class="col-xl-3 col-lg-4col-sm-6">
-              <mat-card [ngStyle]="{'background-color': menu.theme.menu_item_background_color}" class="h-100">
-                <ng-container *ngIf="menuItem.is_available">
-                  <img class="menu-item-image" mat-card-image [src]="menuItem.image" alt="Menu Item Image">
-                  <mat-card-content>
-                    <h2 mat-card-title class="fs-4 mt-2"
-                        [ngStyle]="{'color':menu.theme.menu_text_color}">{{ menuItem.name }}</h2>
-                    <div *ngIf="menuItem.price !== '0.00'" class="d-flex mt-3">
+          <div *ngFor="let category of menu.categories; let i = index" [hidden]="selectedCategoryIndex !== i">
+            <div class="row g-3 m-0">
+              <div *ngFor="let menuItem of category.menu_items" class="col-xl-3 col-lg-4col-sm-6">
+                <mat-card [ngStyle]="{'background-color': menu.theme.menu_item_background_color}" class="h-100">
+                  <ng-container *ngIf="menuItem.is_available">
+                    <img *ngIf="menuItem.image" class="menu-item-image mb-2" mat-card-image [src]="menuItem.image"
+                         alt="Menu Item Image">
+                    <mat-card-content>
+                      <h2 mat-card-title class="fs-4"
+                          [ngStyle]="{'color':menu.theme.menu_text_color}">{{ menuItem.name }}</h2>
+                      <div *ngIf="menuItem.price !== '0.00'" class="d-flex mt-3">
                     <span [ngStyle]="{'color':menu.theme.menu_text_color}"
                           *ngIf="menuItem.price && menuItem.discount === '1.00'"
                           class="fs-5-5">{{ menuItem.price | numLatinToFa }}
                       تومان</span>
-                      <span *ngIf="menuItem.price && menuItem.discount !== '1.00'"
-                            [ngStyle]="{'color':menu.theme.menu_text_color}"
-                            class="text-decoration-line-through ms-3">{{ menuItem.price | numLatinToFa }}</span>
-                      <span [ngStyle]="{'color':menu.theme.menu_text_color}"
-                            *ngIf="menuItem.price && menuItem.discount && menuItem.discount !== '1.00'"
-                            class="fs-5-5">{{ (round((toNumber(menuItem.price) - toNumber(menuItem.price) * toNumber(menuItem.discount) / 100))).toString() | numLatinToFa }}
-                        تومان</span>
-                    </div>
-                    <p *ngIf="menuItem.description" [ngStyle]="{'color':menu.theme.menu_text_color}"
-                       class="fs-5 mt-3">{{ menuItem.description }}</p>
-                  </mat-card-content>
-                </ng-container>
-              </mat-card>
+                        <span *ngIf="menuItem.price && menuItem.discount !== '1.00'"
+                              [ngStyle]="{'color':menu.theme.menu_text_color}"
+                              class="text-decoration-line-through ms-3">{{ menuItem.price | numLatinToFa }}</span>
+                        <span [ngStyle]="{'color':menu.theme.menu_text_color}"
+                              *ngIf="menuItem.price && menuItem.discount && menuItem.discount !== '1.00'"
+                              class="fs-5-5">{{ (round((toNumber(menuItem.price) - toNumber(menuItem.price) * toNumber(menuItem.discount) / 100))).toString() | numLatinToFa }}
+                          تومان</span>
+                      </div>
+                      <p *ngIf="menuItem.description" [ngStyle]="{'color':menu.theme.menu_text_color}"
+                         class="fs-5 mt-3">{{ menuItem.description }}</p>
+                    </mat-card-content>
+                  </ng-container>
+                </mat-card>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </ng-container>
 </ng-container>
 <ng-template #noMenuRef>
   <h3 class="text-muted text-center mt-5">منو یافت نشد</h3>

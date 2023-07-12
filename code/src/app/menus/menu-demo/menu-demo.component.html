@@ -40,9 +40,10 @@
             <mat-card *ngFor="let menuItem of category.menu_items" class="p-0"
                       [ngStyle]="{'background-color': menu.theme.menu_item_background_color}">
               <ng-container *ngIf="menuItem.is_available">
-                <img class="menu-item-image" mat-card-image [src]="menuItem.image" alt="Menu Item Image">
+                <img *ngIf="menuItem.image" class="menu-item-image mb-2" mat-card-image [src]="menuItem.image"
+                     alt="Menu Item Image">
                 <mat-card-content>
-                  <h2 mat-card-title class="fs-4 mt-2"
+                  <h2 mat-card-title class="fs-4"
                       [ngStyle]="{'color':menu.theme.menu_text_color}">{{ menuItem.name }}</h2>
                   <div *ngIf="menuItem.price !== '0.00'" class="d-flex mt-3">
                     <span [ngStyle]="{'color':menu.theme.menu_text_color}"

@@ -81,8 +81,8 @@ export class MenusEffects {
   updateMenu$ = createEffect(() =>
     this.actions$.pipe(
       ofType(MenuActions.updateMenu),
-      mergeMap(({id, name, telephone, phone, address}) =>
-        this.menusService.updateMenu(id, name, telephone, phone, address).pipe(
+      mergeMap(({id, name, telephone, phone, address, is_active}) =>
+        this.menusService.updateMenu(id, name, telephone, phone, address, is_active).pipe(
           map(menu => ({
             ...menu,
             link: `/menus/${menu.id}`,

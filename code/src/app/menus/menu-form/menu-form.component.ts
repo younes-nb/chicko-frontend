@@ -16,7 +16,8 @@ export class MenuFormComponent {
     name: new FormControl('', Validators.required),
     telephone: new FormControl(''),
     phone: new FormControl(''),
-    address: new FormControl('')
+    address: new FormControl(''),
+    is_active: new FormControl('')
   });
 
   constructor(private menusStore: Store) {
@@ -28,7 +29,8 @@ export class MenuFormComponent {
       name: this.menuForm.controls['name'].value,
       telephone: this.menuForm.controls['telephone'].value,
       phone: this.menuForm.controls['phone'].value,
-      address: this.menuForm.controls['address'].value
+      address: this.menuForm.controls['address'].value,
+      is_active: this.menuForm.controls['is_active'].value
     }))
   }
 }

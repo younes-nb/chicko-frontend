@@ -46,7 +46,7 @@ export const setMenu = createAction(
 
 export const updateMenu = createAction(
   '[Menu Details] Update Menu',
-  props<{ id: string, name: string, telephone?: string, phone?: string, address?: string }>()
+  props<{ id: string, name: string, telephone?: string, phone?: string, address?: string, is_active?: boolean }>()
 )
 
 export const updateMenuFailure = createAction(

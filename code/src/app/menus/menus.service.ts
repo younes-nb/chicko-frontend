@@ -1,41 +1,15 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BASE_API} from '../shared/url';
-import {User} from '../shared/types';
-import {map, Observable} from 'rxjs';
-import {UsersService} from '../users/users.service';
-import {CustomSnackBarService} from '../shared/custom-snack-bar.service';
-import {Router} from "@angular/router";
-import {Store} from "@ngrx/store";
-import {selectAuthUser} from "../core/store/auth/auth.selectors";
-import {catchError} from "rxjs/operators";
+import {Observable} from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class MenusService {
-  user$: Observable<User | null>;
-  user: User = {} as User;
 
-  constructor(
-    private httpClient: HttpClient,
-    private usersService: UsersService,
-    private customSnackBarService: CustomSnackBarService,
-    private router: Router,
-    private authStore: Store<{ auth: { user: User } }>
-  ) {
-    this.user$ = this.authStore.select(selectAuthUser);
-    this.user$.pipe(
-      map((user: User | null) => {
-        if (user) {
-          this.user = user;
-        }
-      }),
-      catchError((error) => {
-        console.log(error);
-        throw error;
-      })
-    );
+  constructor(private httpClient: HttpClient) {
   }
 
   public fetchMenus(): Observable<any> {
@@ -56,19 +30,20 @@ export class MenusService {
     return this.httpClient
       .post(
         `${BASE_API}menu/menus/user/`,
-        {name, theme: {name: 'def'}},
+        {name, theme: {name: 'پیش فرض'}},
         {
           headers: {NeedsUserTokenHeader: ''},
         }
       );
   }
 
-  public updateMenu(id: string, name: string, telephone?: string, phone?: string, address?: string): Observable<any> {
+  public updateMenu(id: string, name: string, telephone?: string, phone?: string, address?: string, is_active?: boolean): Observable<any> {
     return this.httpClient.put(`${BASE_API}menu/menus/${id}`, {
       name,
       telephone,
       phone,
-      address
+      address,
+      is_active
     }, {headers: {NeedsUserTokenHeader: ''}})
   }
 

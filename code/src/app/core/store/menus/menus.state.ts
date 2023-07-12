@@ -20,7 +20,6 @@ export const menuDetailsInitialState: MenuDetails = {
   name: '',
   code: '',
   owner: {} as User,
-  is_paid: false,
   is_active: false,
   categories: [],
   theme: {} as Theme,
