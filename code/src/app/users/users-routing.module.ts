@@ -5,6 +5,7 @@ import {UsersComponent} from './users.component';
 import {AccountComponent} from './account/account.component';
 import {MenuComponent} from "../menus/menu/menu.component";
 import {MenusListComponent} from "../menus/menus-list/menus-list.component";
+import {UserPlansComponent} from "./user-plans/user-plans.component";
 
 const usersRoutes: Routes = [
   {
@@ -14,6 +15,7 @@ const usersRoutes: Routes = [
     children: [
       {path: '', component: MenusListComponent},
       {path: 'account', component: AccountComponent},
+      {path: 'user-plans', component: UserPlansComponent},
       {path: 'menus/:menuId', component: MenuComponent},
     ],
   },

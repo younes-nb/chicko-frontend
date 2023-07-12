@@ -15,9 +15,11 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {AppSharedModule} from "../shared/app-shared.module";
 import {PlanRegisterDialogComponent} from './plan-register-dialog/plan-register-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {UserPlansComponent} from './user-plans/user-plans.component';
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
-  declarations: [UsersComponent, AccountComponent, PlanRegisterDialogComponent],
+  declarations: [UsersComponent, AccountComponent, PlanRegisterDialogComponent, UserPlansComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -32,6 +34,7 @@ import {MatDialogModule} from "@angular/material/dialog";
     UsersRoutingModule,
     AppSharedModule,
     MatDialogModule,
+    MatTableModule,
   ],
   providers: [UsersService],
 })
