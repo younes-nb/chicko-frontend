@@ -28,7 +28,7 @@ export class PlansEffects {
     this.actions$.pipe(
       ofType(PlanActions.fetchUserPlans),
       switchMap(({user_id}) =>
-        this.plansService.fetchUserPlan(user_id).pipe(
+        this.plansService.fetchUserPlans(user_id).pipe(
           map((userPlans: UserPlan[]) => PlanActions.setUserPlans({userPlans})),
           catchError(() => {
             this.customSnackBarService.openSnackBar("ارتباط با سرور ناموفق بود.")
@@ -58,6 +58,21 @@ export class PlansEffects {
     this.actions$.pipe(
       ofType(PlanActions.createUserPlanSuccess),
       switchMap(async ({userPlan}) => PlanActions.createOrder({user_plan_id: userPlan.id})
+      )
+    )
+  )
+
+  fetchUserOrders$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PlanActions.fetchUserOrders),
+      switchMap(() =>
+        this.plansService.fetchUserOrders().pipe(
+          map((userOrders: Order[]) => PlanActions.fetchUserOrdersSuccess({userOrders})),
+          catchError(() => {
+            this.customSnackBarService.openSnackBar("ارتباط با سرور ناموفق بود.")
+            return of(PlanActions.fetchUserOrdersFailure())
+          })
+        )
       )
     )
   )

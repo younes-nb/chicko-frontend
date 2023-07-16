@@ -17,9 +17,10 @@ import {PlanRegisterDialogComponent} from './plan-register-dialog/plan-register-
 import {MatDialogModule} from "@angular/material/dialog";
 import {UserPlansComponent} from './user-plans/user-plans.component';
 import {MatTableModule} from "@angular/material/table";
+import { UserOrdersComponent } from './user-orders/user-orders.component';
 
 @NgModule({
-  declarations: [UsersComponent, AccountComponent, PlanRegisterDialogComponent, UserPlansComponent],
+  declarations: [UsersComponent, AccountComponent, PlanRegisterDialogComponent, UserPlansComponent, UserOrdersComponent],
   imports: [
     CommonModule,
     MatButtonModule,

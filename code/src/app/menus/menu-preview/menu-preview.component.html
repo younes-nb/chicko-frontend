@@ -8,13 +8,13 @@
       </header>
       <div [ngStyle]="{'background-color':menu.theme.menu_background_color}" class="p-sm-5 p-3" id="main-container">
         <div class="mb-3">
-          <h1 [ngStyle]="{'color':menu.theme.menu_text_color}" class="mb-4">{{menu.name}}</h1>
+          <h1 [ngStyle]="{'color':menu.theme.menu_text_color}" class="mb-5">{{menu.name}}</h1>
           <div class="d-flex flex-lg-row flex-column mb-3">
-            <div *ngIf="menu.telephone" class="ms-5">
+            <div *ngIf="menu.telephone" class="ms-lg-5 mb-3">
               <i class="bi bi-telephone-fill" [ngStyle]="{'color': menu.theme.header_color}"></i>
               <span [ngStyle]="{'color':menu.theme.menu_text_color}"
                     class="fs-5 me-2">{{menu.telephone | numLatinToFa}}</span></div>
-            <div *ngIf="menu.phone" class="ms-5">
+            <div *ngIf="menu.phone" class="ms-lg-5 mb-3">
               <i class="bi bi-phone-fill" [ngStyle]="{'color': menu.theme.header_color}"></i>
               <span [ngStyle]="{'color':menu.theme.menu_text_color}"
                     class="fs-5 me-2">{{menu.phone | numLatinToFa}}</span></div>
@@ -24,7 +24,7 @@
           </div>
         </div>
         <div>
-          <div class="d-flex text-nowrap my-3 pb-3 category-container">
+          <div class="d-flex text-nowrap mb-4 mt-5 pb-3 category-container">
             <div *ngFor="let category of menu.categories; let i = index"
                  (click)="selectedCategoryIndex = i"
                  [ngStyle]="{

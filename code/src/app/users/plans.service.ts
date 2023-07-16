@@ -16,7 +16,7 @@ export class PlansService {
     return this.httpClient.get(`${BASE_API}plan/plans/`);
   }
 
-  public fetchUserPlan(user_id: string): Observable<any> {
+  public fetchUserPlans(user_id: string): Observable<any> {
     return this.httpClient.get(`${BASE_API}plan/user-plans/${user_id}/`, {headers: {NeedsUserTokenHeader: ''}});
   }
 
@@ -34,6 +34,10 @@ export class PlansService {
       }
     }
     return false;
+  }
+
+  public fetchUserOrders(): Observable<any> {
+    return this.httpClient.get(`${BASE_API}payment/orders/`, {headers: {NeedsUserTokenHeader: ''}})
   }
 
   public createOrder(user_plan_id: string): Observable<any> {

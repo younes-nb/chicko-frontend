@@ -10,7 +10,7 @@ import * as PlanActions from "../../core/store/plans/plans.actions"
 })
 export class UserPlansComponent {
   userPlans$ = this.store.select(selectUserPlans);
-  displayedColumns: string[] = ['start_date', 'end_date', 'is_active']
+  displayedColumns: string[] = ['type', 'price', 'start_date', 'end_date', 'is_active']
 
   constructor(private store: Store) {
   }

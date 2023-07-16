@@ -82,7 +82,7 @@ export interface PlanItem {
 export interface UserPlan {
   id: string;
   user: string;
-  plan: string;
+  plan: Plan;
   start_date: string;
   end_date: string;
   is_active: boolean;

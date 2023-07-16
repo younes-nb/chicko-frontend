@@ -30,6 +30,7 @@ export class UsersComponent implements OnInit {
       if (user) {
         this.user = user;
         this.store.dispatch(PlanActions.fetchUserPlans({user_id: this.user.id}));
+        this.store.dispatch(PlanActions.fetchUserOrders());
       }
     });
   }

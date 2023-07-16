@@ -22,9 +22,12 @@ export class AuthEffects {
             return AuthActions.loginSuccess();
           }),
           catchError((error) => {
-            const errorMessage = error?.error?.message || 'An unknown error occurred.';
-            this.customSnackBarService.openSnackBar('ورود به حساب ناموفق بود.')
-            return of(AuthActions.loginFailure({error: errorMessage}));
+            if (error.error.non_field_errors[0]) {
+              this.customSnackBarService.openSnackBar(error.error.non_field_errors[0]);
+            } else {
+              this.customSnackBarService.openSnackBar('ورود به حساب ناموفق بود.');
+            }
+            return of(AuthActions.loginFailure({error}));
           })
         )
       )

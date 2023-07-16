@@ -176,7 +176,8 @@
                 <h5 class="pricing-card-header"><span class="fs-4 fw-bold">{{plan.price | numLatinToFa}}</span> تومان
                 </h5>
                 <h6 class="pricing-card-header mb-4 mt-3">{{plan.description}}</h6>
-                <p *ngFor="let planItem of plan.features" class="pricing-card-text text-muted">{{planItem.name}}</p>
+                <p *ngFor="let planItem of plan.features"
+                   class="pricing-card-text text-muted">{{planItem.name}}: {{planItem.description}}</p>
                 <button (click)="openRegisterPlanDialog(plan)" mat-raised-button color="primary"
                         class="mt-3 rounded-pill">
                   خرید

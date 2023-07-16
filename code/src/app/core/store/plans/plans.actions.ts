@@ -40,6 +40,19 @@ export const createUserPlanSuccess = createAction(
   props<{ userPlan: UserPlan }>()
 )
 
+export const fetchUserOrders = createAction(
+  '[Payment] Fetch User Orders'
+);
+
+export const fetchUserOrdersFailure = createAction(
+  '[Payment] Fetch User Orders Failure'
+);
+
+export const fetchUserOrdersSuccess = createAction(
+  '[Payment] Fetch User Orders Success',
+  props<{ userOrders: Order[] }>()
+);
+
 export const createOrder = createAction(
   '[Payment] Create Order',
   props<{ user_plan_id: string }>()

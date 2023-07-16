@@ -11,6 +11,7 @@ import {of} from "rxjs";
 import {Category, Menu, MenuItem, Theme} from "../../../shared/types";
 import {Router} from "@angular/router";
 import {CustomSnackBarService} from "../../../shared/custom-snack-bar.service";
+import {AuthService} from "../../../shared/auth.service";
 
 @Injectable()
 export class MenusEffects {
@@ -27,8 +28,13 @@ export class MenusEffects {
             return MenuActions.setMenus({menus: menusWithLinks});
           }),
           catchError((error) => {
-            this.router.navigate(['home']);
-            this.customSnackBarService.openSnackBar('مشکلی پیش آمده است.');
+            if (error.status === 401) {
+              this.authService.removeToken();
+              this.router.navigate(['login']);
+            } else {
+              this.router.navigate(['home']);
+              this.customSnackBarService.openSnackBar('مشکلی پیش آمده است.');
+            }
             return of(MenuActions.fetchMenusFailure({error}));
           })
         )
@@ -250,7 +256,8 @@ export class MenusEffects {
     private actions$: Actions,
     private menusService: MenusService,
     private router: Router,
-    private customSnackBarService: CustomSnackBarService
+    private customSnackBarService: CustomSnackBarService,
+    private authService: AuthService
   ) {
   }
 }
