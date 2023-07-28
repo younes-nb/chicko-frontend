@@ -21,6 +21,7 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
   messageForm: FormGroup = new FormGroup({
     message: new FormControl(''),
   });
+  isShowingEmojiPicker: boolean = false;
 
   constructor(
     private supportService: SupportService,
@@ -69,5 +70,9 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
     this.supportService.currenRoomUsers = [];
     this.supportService.lastMessage = {} as Message;
     this.supportService.component = 'rooms';
+  }
+
+  sendEmoji(event: any) {
+    this.messageForm.controls['message'].setValue(this.messageForm.controls['message'].value + event.emoji.native);
   }
 }

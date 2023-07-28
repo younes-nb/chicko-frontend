@@ -1,5 +1,6 @@
 export type MenuItemFormMethod = "post" | "put";
 export type SupportChatComponent = 'register' | 'rooms' | 'chat';
+type MessageType = 'send' | 'join' | 'leave';
 
 
 export interface User {
@@ -135,7 +136,7 @@ export interface Message {
   room_id: string;
   user_id: string;
   message: string;
-  type: string;
+  type: MessageType;
   time: Date;
   isFirst: boolean;
   isCurrentUser: boolean;

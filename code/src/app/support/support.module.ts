@@ -23,6 +23,7 @@ import {ScrollerDirective} from './chat/scroller.directive';
 import {defineElement} from 'lord-icon-element';
 import lottie from 'lottie-web';
 import {AppSharedModule} from '../shared/app-shared.module';
+import {PickerComponent} from "@ctrl/ngx-emoji-mart";
 
 @NgModule({
   declarations: [
@@ -33,27 +34,28 @@ import {AppSharedModule} from '../shared/app-shared.module';
     GetUserNamePipe,
     ScrollerDirective,
   ],
-    imports: [
-        CommonModule,
-        MatButtonModule,
-        MatTooltipModule,
-        MatIconModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        RouterLink,
-        MatDialogModule,
-        MatRippleModule,
-        MatTableModule,
-        MatMenuModule,
-        CdkDropList,
-        CdkDrag,
-        ClipboardModule,
-        FormsModule,
-        AutosizeModule,
-        AppSharedModule,
-        NgOptimizedImage,
-    ],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    RouterLink,
+    MatDialogModule,
+    MatRippleModule,
+    MatTableModule,
+    MatMenuModule,
+    CdkDropList,
+    CdkDrag,
+    ClipboardModule,
+    FormsModule,
+    AutosizeModule,
+    AppSharedModule,
+    NgOptimizedImage,
+    PickerComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [SupportComponent],
 })

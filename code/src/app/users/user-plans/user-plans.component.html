@@ -11,7 +11,7 @@
         <ng-container matColumnDef="price">
           <th mat-header-cell *matHeaderCellDef>قیمت (تومان)</th>
           <td mat-cell
-              *matCellDef="let element"> {{element.plan.price | numLatinToFa}} </td>
+              *matCellDef="let element"> {{element.plan.price ? (element.plan.price | numLatinToFa) : '۰'}} </td>
         </ng-container>
         <ng-container matColumnDef="start_date">
           <th mat-header-cell *matHeaderCellDef>زمان شروع</th>

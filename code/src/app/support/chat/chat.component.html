@@ -29,33 +29,41 @@
       *ngFor="let message of getMessages()"
       class="d-flex flex-column"
     >
-      <p *ngIf="message.showDate" class="text-muted text-center fs-7 my-3">
-        {{ message.time | date : "mediumDate" }}
-      </p>
-      <div
-        class="mb-2 d-inline-block message-box-container"
-        [ngClass]="
+      <ng-container *ngIf="message.type === 'send'">
+        <p *ngIf="message.showDate" class="text-muted text-center fs-7 my-3">
+          {{ message.time | date : "mediumDate" }}
+        </p>
+        <div
+          class="mb-2 d-inline-block message-box-container"
+          [ngClass]="
           message.isCurrentUser
             ? 'bg-primary text-white align-self-start message-box-user'
             : 'bg-light  align-self-end message-box-others'
         "
-      >
-        <p
-          *ngIf="!message.isCurrentUser && message.isFirst"
-          class="m-0 text-primary"
         >
-          {{ message.user_id | getUserName }}
-        </p>
-        <div class="d-flex">
-          <p class="m-0 ps-2 message-text">{{ message.message }}</p>
-          <span
-            [ngClass]="message.isCurrentUser ? 'text-light' : 'text-muted'"
-            class="m-0 align-self-end fs-8 text-nowrap"
-            dir="ltr"
-          >{{ message.time | date : "shortTime" }}</span
+          <p
+            *ngIf="!message.isCurrentUser && message.isFirst"
+            class="m-0 text-primary"
           >
+            {{ message.user_id | getUserName }}
+          </p>
+          <div class="d-flex">
+            <p class="m-0 ps-2 message-text">{{ message.message }}</p>
+            <span
+              [ngClass]="message.isCurrentUser ? 'text-light' : 'text-muted'"
+              class="m-0 align-self-end fs-8 text-nowrap"
+              dir="ltr"
+            >{{ message.time | date : "shortTime" }}</span
+            >
+          </div>
         </div>
-      </div>
+      </ng-container>
+      <ng-container *ngIf="message.type === 'join'">
+        <p class="text-center text-muted fs-7 mt-2">{{message.user_id | getUserName}} به گفتگو پیوست</p>
+      </ng-container>
+      <ng-container *ngIf="message.type === 'leave'">
+        <p class="text-center text-muted fs-7 mt-2">{{message.user_id | getUserName}} گفتگو را ترک کرد</p>
+      </ng-container>
     </li>
   </ul>
   <form
@@ -79,5 +87,12 @@
     >
       <mat-icon class="send-icon">send</mat-icon>
     </button>
+    <button mat-icon-button color="primary" type="button" class="me-1"
+            (click)="isShowingEmojiPicker=!isShowingEmojiPicker">
+      <mat-icon>mood</mat-icon>
+    </button>
+    <emoji-mart *ngIf="isShowingEmojiPicker" set="google" [skin]="2" (emojiSelect)="sendEmoji($event)"
+                [showPreview]="false"
+                [style]="{ position: 'absolute', bottom: '80px', right: '30px' }"></emoji-mart>
   </form>
 </section>
